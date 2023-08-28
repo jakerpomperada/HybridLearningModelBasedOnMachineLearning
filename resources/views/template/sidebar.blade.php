@@ -12,17 +12,13 @@
                     <span>Manage</span>
                 </li>
                 <li>
-                    <a href="#"><i class="fas fa-building"></i> <span>Departments</span></a>
-                </li>
-                <li>
-                    <a href="/"><i class="fas fa-graduation-cap"></i> <span>Students</span></a>
-                </li>
-
-                <li>
-                    <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Teachers</span></a>
+                    <a href="/course"><i class="fas fa-building"></i> <span>Courses</span></a>
                 </li>
                 <li>
                     <a href="#"><i class="fas fa-book-reader"></i> <span> Subjects</span></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Teachers</span></a>
                 </li>
                 <li class="submenu">
                     <a href="#"><i class="fas fa-list"></i> <span>Curriculum</span><span class="menu-arrow"></span></a>
@@ -30,6 +26,9 @@
                         <li><a href="/">Curriculum List</a></li>
                         <li><a href="/">Subject Curriculum</a></li>
                     </ul>
+                </li>
+                <li>
+                    <a href="/"><i class="fas fa-graduation-cap"></i> <span>Students</span></a>
                 </li>
 
 

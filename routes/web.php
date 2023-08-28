@@ -22,6 +22,8 @@
         Route::get('dashboard', 'DashboardAdminController@index');
     });
 
+    Route::resource('/course', 'CourseController');
+
     Route::get('/', 'LoginController@index');
     Route::post('/login', 'LoginController@login');
 
