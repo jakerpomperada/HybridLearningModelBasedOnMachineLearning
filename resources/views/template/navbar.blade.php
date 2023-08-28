@@ -2,7 +2,7 @@
 
     <div class="header-left">
         <a href="index-2.html" class="logo">
-{{--            <img src="{{asset("assets/img/logo.png")}}" alt="Logo">--}}
+            {{--            <img src="{{asset("assets/img/logo.png")}}" alt="Logo">--}}
         </a>
         <a href="index-2.html" class="logo logo-small">
             <img src="{{asset("assets/img/logo-small.png")}}" alt="Logo" width="30" height="30">
@@ -36,9 +36,9 @@
             <div class="dropdown-menu ">
                 <div class="noti-content">
                     <div>
-                        <a class="dropdown-item" href="javascript:;"><i class="flag flag-lr me-2"></i>English</a>
-                        <a class="dropdown-item" href="javascript:;"><i class="flag flag-bl me-2"></i>Francais</a>
-                        <a class="dropdown-item" href="javascript:;"><i class="flag flag-cn me-2"></i>Turkce</a>
+                        <a class="dropdown-item" href="javascript:"><i class="flag flag-lr me-2"></i>English</a>
+                        <a class="dropdown-item" href="javascript:"><i class="flag flag-bl me-2"></i>Francais</a>
+                        <a class="dropdown-item" href="javascript:"><i class="flag flag-cn me-2"></i>Turkce</a>
                     </div>
                 </div>
             </div>
@@ -62,7 +62,8 @@
 <img class="avatar-img rounded-circle" alt="User Image" src="{{asset("assets/img/profiles/avatar-02.jpg")}}">
 </span>
                                     <div class="media-body flex-grow-1">
-                                        <p class="noti-details"><span class="noti-title">Carlson Tech</span> has approved <span class="noti-title">your estimate</span></p>
+                                        <p class="noti-details"><span class="noti-title">Carlson Tech</span> has
+                                            approved <span class="noti-title">your estimate</span></p>
                                         <p class="noti-time"><span class="notification-time">4 mins ago</span></p>
                                     </div>
                                 </div>
@@ -75,7 +76,9 @@
 <img class="avatar-img rounded-circle" alt="User Image" src="{{asset("assets/img/profiles/avatar-11.jpg")}}">
 </span>
                                     <div class="media-body flex-grow-1">
-                                        <p class="noti-details"><span class="noti-title">International Software Inc</span> has sent you a invoice in the amount of <span class="noti-title">$218</span></p>
+                                        <p class="noti-details"><span
+                                                class="noti-title">International Software Inc</span> has sent you a
+                                            invoice in the amount of <span class="noti-title">$218</span></p>
                                         <p class="noti-time"><span class="notification-time">6 mins ago</span></p>
                                     </div>
                                 </div>
@@ -88,7 +91,8 @@
 <img class="avatar-img rounded-circle" alt="User Image" src="{{asset("assets/img/profiles/avatar-17.jpg")}}">
 </span>
                                     <div class="media-body flex-grow-1">
-                                        <p class="noti-details"><span class="noti-title">John Hendry</span> sent a cancellation request <span class="noti-title">Apple iPhone XR</span></p>
+                                        <p class="noti-details"><span class="noti-title">John Hendry</span> sent a
+                                            cancellation request <span class="noti-title">Apple iPhone XR</span></p>
                                         <p class="noti-time"><span class="notification-time">8 mins ago</span></p>
                                     </div>
                                 </div>
@@ -101,7 +105,8 @@
 <img class="avatar-img rounded-circle" alt="User Image" src="{{asset("assets/img/profiles/avatar-13.jpg")}}">
 </span>
                                     <div class="media-body flex-grow-1">
-                                        <p class="noti-details"><span class="noti-title">Mercury Software Inc</span> added a new product <span class="noti-title">Apple MacBook Pro</span></p>
+                                        <p class="noti-details"><span class="noti-title">Mercury Software Inc</span>
+                                            added a new product <span class="noti-title">Apple MacBook Pro</span></p>
                                         <p class="noti-time"><span class="notification-time">12 mins ago</span></p>
                                     </div>
                                 </div>
@@ -134,16 +139,16 @@
             <div class="dropdown-menu">
                 <div class="user-header">
                     <div class="avatar avatar-sm">
-                        <img src="{{asset("assets/img/profiles/avatar-01.jpg")}}" alt="User Image" class="avatar-img rounded-circle">
+                        <img src="{{asset("assets/img/profiles/avatar-01.jpg")}}" alt="User Image"
+                             class="avatar-img rounded-circle">
                     </div>
                     <div class="user-text">
                         <h6>Ryan Taylor</h6>
                         <p class="text-muted mb-0">Administrator</p>
                     </div>
                 </div>
-                <a class="dropdown-item" href="profile.html">My Profile</a>
-                <a class="dropdown-item" href="inbox.html">Inbox</a>
-                <a class="dropdown-item" href="login.html">Logout</a>
+                <a class="dropdown-item" href="profile.html">Settings</a>
+                <a class="dropdown-item" href="/">Logout</a>
             </div>
         </li>
 
