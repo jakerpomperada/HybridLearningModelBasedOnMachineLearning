@@ -45,6 +45,7 @@
                         <h2>Sign in</h2>
 
                         <form action="/login" method="POST">
+                            @csrf
                             <div class="form-group">
                                 <label>Username <span class="login-danger">*</span></label>
                                 <input class="form-control" type="text">
