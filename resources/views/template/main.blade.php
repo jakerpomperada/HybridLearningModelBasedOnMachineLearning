@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{asset("assets/plugins/fontawesome/css/all.min.css")}}">
 
     <link rel="stylesheet" href="{{asset("assets/css/style.css")}}">
+    @stack('styles')
 </head>
 <body>
 
@@ -37,28 +38,27 @@
     <div class="page-wrapper">
         @yield('content')
 
-        <footer>
-            <p>Copyright © 2023 Jake Pomperada.</p>
-        </footer>
 
     </div>
+    <footer>
+        <p>Copyright © 2023 Jake Pomperada.</p>
+    </footer>
+
 
 </div>
 
 
+
+</body>
 <script src="{{asset("assets/js/jquery-3.6.0.min.js")}}"></script>
-
 <script src="{{asset("assets/plugins/bootstrap/js/bootstrap.bundle.min.js")}}"></script>
-
 <script src="{{asset("assets/js/feather.min.js")}}"></script>
-
 <script src="{{asset("assets/plugins/slimscroll/jquery.slimscroll.min.js")}}"></script>
-
 <script src="{{asset("assets/plugins/apexchart/apexcharts.min.js")}}"></script>
 <script src="{{asset("assets/plugins/apexchart/chart-data.js")}}"></script>
-
 <script src="{{asset("assets/js/script.js")}}"></script>
-</body>
+
+@stack('scripts')
 
 <!-- Mirrored from preschool.dreamguystech.com/template/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 02 Jul 2023 08:45:26 GMT -->
 </html>
