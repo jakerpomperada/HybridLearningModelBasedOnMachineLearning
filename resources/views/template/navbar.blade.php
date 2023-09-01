@@ -16,16 +16,12 @@
     </div>
 
 
-
-
     <a class="mobile_btn" id="mobile_btn">
         <i class="fas fa-bars"></i>
     </a>
 
 
     <ul class="nav user-menu">
-
-
 
 
         <li class="nav-item dropdown has-arrow new-user-menus">

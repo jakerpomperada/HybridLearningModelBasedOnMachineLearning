@@ -22,6 +22,7 @@
         <div class="row">
             <div class="col-lg-1"></div>
             <div class="col-lg-8 col-sm-12">
+                @include('template.alert')
                 <div class="card card-table">
                     <div class="card-body">
 
@@ -29,7 +30,7 @@
                             <div class="row align-items-center">
 
                                 <div class="col-auto text-end">
-                                    <a href="add-department.html" class="btn btn-sm btn-primary">Add Course &nbsp;<i class="fas fa-plus"></i></a>
+                                    <a href="/course/create" class="btn btn-sm btn-primary">Add Course &nbsp;<i class="fas fa-plus"></i></a>
                                 </div>
                             </div>
                         </div>
