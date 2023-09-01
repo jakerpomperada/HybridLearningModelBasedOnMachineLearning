@@ -25,7 +25,11 @@
 
         public function Update(Course $course): void
         {
-            // TODO: Implement Update() method.
+           DB::table('courses')->where(['id' => $course->getId()])->update([
+               'code'        => $course->getCode(),
+               'description' => $course->getDescription(),
+               'updated_at'  => now(),
+           ]);
         }
 
         public function Delete(string $id): void
@@ -36,5 +40,10 @@
         public function GetAllPaginate(int $page, int $limit): Paginator
         {
             return CourseDB::paginate($limit);
+        }
+
+        public function Find(string $id): object|null
+        {
+            return DB::table('courses')->where(['id' => $id])->first();
         }
     }

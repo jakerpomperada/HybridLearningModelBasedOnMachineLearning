@@ -30,7 +30,7 @@
                             <div class="row align-items-center">
 
                                 <div class="col-auto text-end">
-                                    <a href="/course/create" class="btn btn-sm btn-primary">Add Course &nbsp;<i class="fas fa-plus"></i></a>
+                                    <a href="/course/create" class="btn btn-sm btn-success">Add Course &nbsp;<i class="fas fa-plus"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -44,24 +44,30 @@
                             </tr>
                             </thead>
                             <tbody>
+                            @foreach($courses as $course)
                             <tr>
-                                <td>John</td>
-                                <td>Doe</td>
+                                <td>{{ $course->code }}</td>
+                                <td>{{ $course->description }}</td>
                                 <td>
-                                    <div class="actions" style="display: inline-flex">
-                                        <a href="javascript:;" class="btn btn-sm bg-success-light me-2">
-                                            <i class="feather-eye"></i>
-                                        </a>
-                                        <a href="edit-department.html" class="btn btn-sm bg-danger-light">
-                                            <i class="feather-edit"></i>
-                                        </a>
-                                    </div>
+                                    <a href="course/{{$course->id}}" class="btn btn-sm btn-rounded btn-primary">
+                                        <i class="feather-edit"></i>&nbsp; Edit
+                                    </a>
+                                    <a href="javascript:;" id="{{$course->id}}" class="btn btn-sm btn-danger btn-rounded button_delete">
+                                        <i class="feather-trash"></i>&nbsp; Delete
+                                    </a>
                                 </td>
                             </tr>
+                            @endforeach
 
                             </tbody>
+
                         </table>
+
                     </div>
+                    <div style="margin-left:auto; margin-right: auto;">
+                        {!!  $paginate !!}
+                    </div>
+
                 </div>
             </div>
         </div>
@@ -75,4 +81,31 @@
     <script src="assets/plugins/datatables/datatables.min.js"></script>
 
     <script src="assets/js/script.js"></script>
+
+    @push('scripts')
+        <script>
+            $(document).ready(function () {
+
+                $(".button_delete").click(function () {
+                    if (confirm("Are you sure you want to delete this?")) {
+                        let id = $(this).attr("id");
+                        $.ajax({
+                            url: `medicine/${id}`,
+                            type: 'DELETE',
+                            data: {
+                                "_token": "{{ csrf_token() }}",
+                            },
+                            success: function (result) {
+                                location.reload();
+                            }
+                        });
+                    } else {
+                        return false;
+                    }
+                });
+            });
+        </script>
+    @endpush
+
+
 @endpush

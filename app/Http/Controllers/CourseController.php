@@ -19,10 +19,13 @@
         }
 
 
-        public function index() {
-            $courses = $this->courseRepository->GetAllPaginate(1,10);
+        public function index() : View {
+            $courses = $this->courseRepository->GetAllPaginate(1,5);
 
-            return view('course.index');
+            return view('course.index')->with([
+                'courses' => $courses->items(),
+                'paginate' => $courses->links()
+            ]);
         }
 
         public function create() : View {
@@ -49,5 +52,39 @@
             return redirectWithAlert('/course', [
                 'alert-success' => 'New Course has been added!'
             ]);
+        }
+
+        public function show(string $id): View {
+
+            $course = $this->courseRepository->Find($id);
+
+            return view('course.edit')->with([
+                'course' => $course
+            ]);
+        }
+
+        public function update(Request $req, string $id) : RedirectResponse {
+            $val = Validator::make($req->all(), [
+                'course_code' => 'required',
+                'course_description' => 'required'
+            ]);
+
+            if ($val->fails()) {
+                return redirectWithErrors($val);
+            }
+
+            $course = new Course(
+                $req->input('course_code'),
+                $req->input('course_description'),
+                $id
+            );
+
+            $this->courseRepository->Update($course);
+
+            return redirectWithAlert('/course', [
+                'alert-info' => 'Course has been updated!'
+            ]);
+
+
         }
     }
