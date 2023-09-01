@@ -4,8 +4,10 @@
 
     use Domain\Modules\Course\Entities\Course;
     use Domain\Modules\Course\Repositories\ICourseRepository;
+    use Illuminate\Http\JsonResponse;
     use Illuminate\Http\RedirectResponse;
     use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\Session;
     use Illuminate\Support\Facades\Validator;
     use Illuminate\View\View;
 
@@ -85,6 +87,19 @@
                 'alert-info' => 'Course has been updated!'
             ]);
 
+
+        }
+
+
+        public function destroy(string $id) : JsonResponse {
+
+            $this->courseRepository->Delete($id);
+
+            Session::flash('alert-danger', 'Course has been deleted');
+
+            return response()->json([
+                'success' => true
+            ]);
 
         }
     }
