@@ -3,7 +3,7 @@
 
 
 @push('styles')
-    <link rel="stylesheet" href="assets/plugins/datatables/datatables.min.css">
+    <link rel="stylesheet" href="{{asset('assets/plugins/datatables/datatables.min.css')}}">
 @endpush
 
 @section('content')
@@ -78,11 +78,9 @@
 
 @push('scripts')
 
-    <script src="assets/plugins/datatables/datatables.min.js"></script>
+    <script src="{{asset('assets/plugins/datatables/datatables.min.js')}}"></script>
 
-    <script src="assets/js/script.js"></script>
 
-    @push('scripts')
         <script>
             $(document).ready(function () {
 
@@ -108,4 +106,3 @@
     @endpush
 
 
-@endpush

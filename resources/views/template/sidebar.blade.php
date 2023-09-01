@@ -20,6 +20,7 @@
                 <li>
                     <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Teachers</span></a>
                 </li>
+
                 <li class="submenu">
                     <a href="#"><i class="fas fa-list"></i> <span>Curriculum</span><span class="menu-arrow"></span></a>
                     <ul>
