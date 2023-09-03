@@ -31,6 +31,6 @@
 
         public function GetAllPaginate(int $page, int $limit): Paginator
         {
-            // TODO: Implement GetAllPaginate() method.
+           return SubjectDB::paginate($limit);
         }
     }

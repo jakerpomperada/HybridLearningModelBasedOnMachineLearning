@@ -44,6 +44,7 @@
                             </tr>
                             </thead>
                             <tbody>
+
                             @foreach($subjects as $subject)
                             <tr>
                                 <td>{{ $subject->code }}</td>

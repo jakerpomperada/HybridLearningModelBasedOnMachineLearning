@@ -22,9 +22,20 @@
         public function index(): View
         {
 
+            $data = $this->subjectRepository->GetAllPaginate(1, 5);
+
+            $subjects = collect($data->items())->map(function ($i) {
+                return (object)[
+                    'id'          => $i->id,
+                    'code'        => $i->code,
+                    'description' => $i->description
+                ];
+            });
+
+
             return view('subject.index')->with([
-                'subjects' => [],
-                'paginate' => ""
+                'subjects' => $subjects,
+                'paginate' => $data->links()
             ]);
         }
 
@@ -41,7 +52,7 @@
                 'subject_description' => 'required'
             ]);
 
-            if ($val->fails())  {
+            if ($val->fails()) {
                 return redirectWithErrors($val);
             }
 
@@ -52,8 +63,8 @@
 
             $this->subjectRepository->Save($subject);
 
-            return redirectWithAlert('/subject',[
-               'alert-success' => 'New subject has been added!'
+            return redirectWithAlert('/subject', [
+                'alert-success' => 'New subject has been added!'
             ]);
 
 
