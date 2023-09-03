@@ -12,7 +12,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="page-title"><i class="fas fa-building"></i>&nbsp;Courses Information</h3>
+                    <h3 class="page-title"><i class="fas fa-book-reader"></i>&nbsp;Subjects Information</h3>
 
                 </div>
             </div>
@@ -30,7 +30,7 @@
                             <div class="row align-items-center">
 
                                 <div class="col-auto text-end">
-                                    <a href="/course/create" class="btn btn-sm btn-success">Add Course &nbsp;<i class="fas fa-plus"></i></a>
+                                    <a href="/subject/create" class="btn btn-sm btn-success">Add Subject &nbsp;<i class="fas fa-plus"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -38,21 +38,21 @@
                         <table class="table table-hover table-center mb-0 table-striped mb-0 text-center">
                             <thead>
                             <tr>
-                                <th>Course Code</th>
+                                <th>Subject Code</th>
                                 <th>Description</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($courses as $course)
+                            @foreach($subjects as $subject)
                             <tr>
-                                <td>{{ $course->code }}</td>
-                                <td>{{ $course->description }}</td>
+                                <td>{{ $subject->code }}</td>
+                                <td>{{ $subject->description }}</td>
                                 <td>
-                                    <a href="course/{{$course->id}}" class="btn btn-sm btn-rounded btn-info">
+                                    <a href="subject/{{$subject->id}}" class="btn btn-sm btn-rounded btn-primary">
                                         <i class="feather-edit"></i>&nbsp; Edit
                                     </a>
-                                    <a href="javascript:;" id="{{$course->id}}" class="btn btn-sm btn-danger btn-rounded button_delete">
+                                    <a href="javascript:;" id="{{$subject->id}}" class="btn btn-sm btn-danger btn-rounded button_delete">
                                         <i class="feather-trash"></i>&nbsp; Delete
                                     </a>
                                 </td>
@@ -88,7 +88,7 @@
                     if (confirm("Are you sure you want to delete this?")) {
                         let id = $(this).attr("id");
                         $.ajax({
-                            url: `/course/${id}`,
+                            url: `/subject/${id}`,
                             type: 'DELETE',
                             data: {
                                 "_token": "{{ csrf_token() }}",

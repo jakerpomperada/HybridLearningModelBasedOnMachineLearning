@@ -37,7 +37,7 @@
                         </div>
 
                         <div class="text-end text-center">
-                            <button type="submit" class="btn btn-info">
+                            <button type="submit" class="btn btn-primary">
                                 <i class="fas fa-pen"></i>&nbsp;
                                 Update</button>
                         </div>

@@ -23,6 +23,7 @@
     });
 
     Route::resource('/course', 'CourseController');
+    Route::resource('/subject', 'SubjectController');
 
     Route::get('/', 'LoginController@index');
     Route::post('/login', 'LoginController@login');

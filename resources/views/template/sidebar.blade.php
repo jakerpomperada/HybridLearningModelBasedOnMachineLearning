@@ -15,10 +15,10 @@
                     <a href="/course"><i class="fas fa-building"></i> <span>Courses</span></a>
                 </li>
                 <li>
-                    <a href="#"><i class="fas fa-book-reader"></i> <span> Subjects</span></a>
+                    <a href="/subject"><i class="fas fa-book-reader"></i> <span> Subjects</span></a>
                 </li>
                 <li>
-                    <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Teachers</span></a>
+                    <a href="/teacher"><i class="fas fa-chalkboard-teacher"></i> <span> Teachers</span></a>
                 </li>
 
                 <li class="submenu">
