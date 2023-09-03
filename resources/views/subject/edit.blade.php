@@ -8,8 +8,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="page-title">Update Course</h3>
-
+                    <h3 class="page-title">Update Subject</h3>
                 </div>
             </div>
         </div>
@@ -20,19 +19,19 @@
             <div class="card flex-fill">
 
                 <div class="card-body">
-                    {!! Form::open(['url' => '/course/' . $course->id, 'method' => 'PUT']) !!}
+                    {!! Form::open(['url' => '/subject/' . $subject->id, 'method' => 'PUT']) !!}
                     @include('template.alert')
                     <br/>
                         <div class="form-group row">
-                            {!! Form::label('course_code', 'Code:', ['class' => 'col-lg-3 col-form-label']); !!}
+                            {!! Form::label('subject_code', 'Code:', ['class' => 'col-lg-3 col-form-label']); !!}
                             <div class="col-lg-9">
-                               {!! Form::text('course_code',$course->code, ['class' => 'form-control']); !!}
+                               {!! Form::text('subject_code',$subject->code, ['class' => 'form-control']); !!}
                             </div>
                         </div>
                         <div class="form-group row">
-                            {!! Form::label('course_description', 'Description:', ['class' => 'col-lg-3 col-form-label']); !!}
+                            {!! Form::label('subject_description', 'Description:', ['class' => 'col-lg-3 col-form-label']); !!}
                             <div class="col-lg-9">
-                                {!! Form::text('course_description',$course->description, ['class' => 'form-control']); !!}
+                                {!! Form::text('subject_description',$subject->description, ['class' => 'form-control']); !!}
                             </div>
                         </div>
 

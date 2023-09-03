@@ -4,6 +4,7 @@
 
     use Domain\Modules\Subject\Entities\Subject;
     use Domain\Modules\Subject\Repositories\ISubjectRepository;
+    use Illuminate\Http\RedirectResponse;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Validator;
     use Illuminate\View\View;
@@ -39,12 +40,47 @@
             ]);
         }
 
+        public function show($id) : View {
+
+            $subject = $this->subjectRepository->Find($id);
+
+            return view('subject.edit')->with([
+                'subject' => $subject
+            ]);
+        }
+
+        public function update(Request $req, string $id) {
+
+            $val = Validator::make($req->all(), [
+                'subject_code'        => 'required',
+                'subject_description' => 'required'
+            ]);
+
+            if ($val->fails()) {
+                return redirectWithErrors($val);
+            }
+
+            $subject = new Subject(
+                $req->input('subject_code'),
+                $req->input('subject_description'),
+                $id
+            );
+
+            $this->subjectRepository->Update($subject);
+
+            return redirectWithAlert('/subject', [
+                'alert-info' => 'Subject has been updated!'
+            ]);
+
+
+        }
+
         public function create(): View
         {
             return view('subject.create');
         }
 
-        public function store(Request $req)
+        public function store(Request $req) : RedirectResponse
         {
 
             $val = Validator::make($req->all(), [

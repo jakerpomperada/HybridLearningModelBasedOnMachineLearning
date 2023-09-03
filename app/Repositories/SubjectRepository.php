@@ -21,7 +21,10 @@
 
         public function Update(Subject $subject): void
         {
-            // TODO: Implement Update() method.
+           SubjectDB::where(['id' => $subject->getId()])->update([
+               'code'        => $subject->getCode(),
+               'description' => $subject->getDescription()
+           ]);
         }
 
         public function Delete(string $id): void
@@ -32,5 +35,10 @@
         public function GetAllPaginate(int $page, int $limit): Paginator
         {
            return SubjectDB::paginate($limit);
+        }
+
+        public function Find(string $id): object
+        {
+            return SubjectDB::find($id);
         }
     }
