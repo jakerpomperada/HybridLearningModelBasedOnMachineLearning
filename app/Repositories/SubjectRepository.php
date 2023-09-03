@@ -29,7 +29,7 @@
 
         public function Delete(string $id): void
         {
-            // TODO: Implement Delete() method.
+            SubjectDB::destroy($id);
         }
 
         public function GetAllPaginate(int $page, int $limit): Paginator

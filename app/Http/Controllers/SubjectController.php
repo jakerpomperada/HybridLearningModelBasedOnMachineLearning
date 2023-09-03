@@ -4,8 +4,10 @@
 
     use Domain\Modules\Subject\Entities\Subject;
     use Domain\Modules\Subject\Repositories\ISubjectRepository;
+    use Illuminate\Http\JsonResponse;
     use Illuminate\Http\RedirectResponse;
     use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\Session;
     use Illuminate\Support\Facades\Validator;
     use Illuminate\View\View;
 
@@ -103,6 +105,18 @@
                 'alert-success' => 'New subject has been added!'
             ]);
 
+
+        }
+
+        public function destroy(string $id) : JsonResponse {
+
+            $this->subjectRepository->Delete($id);
+
+            Session::flash('alert-danger', 'Subject has been deleted');
+
+            return response()->json([
+                'success' => true
+            ]);
 
         }
 
