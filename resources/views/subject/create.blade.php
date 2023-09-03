@@ -24,15 +24,15 @@
                     @include('template.alert')
                     <br/>
                         <div class="form-group row">
-                            {!! Form::label('course_code', 'Code:', ['class' => 'col-lg-3 col-form-label']); !!}
+                            {!! Form::label('subject_code', 'Code:', ['class' => 'col-lg-3 col-form-label']); !!}
                             <div class="col-lg-9">
-                               {!! Form::text('course_code',null, ['class' => 'form-control']); !!}
+                               {!! Form::text('subject_code',null, ['class' => 'form-control']); !!}
                             </div>
                         </div>
                         <div class="form-group row">
-                            {!! Form::label('course_description', 'Description:', ['class' => 'col-lg-3 col-form-label']); !!}
+                            {!! Form::label('subject_description', 'Description:', ['class' => 'col-lg-3 col-form-label']); !!}
                             <div class="col-lg-9">
-                                {!! Form::text('course_description',null, ['class' => 'form-control']); !!}
+                                {!! Form::text('subject_description',null, ['class' => 'form-control']); !!}
                             </div>
                         </div>
 
