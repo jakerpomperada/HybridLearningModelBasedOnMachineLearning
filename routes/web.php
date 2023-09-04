@@ -24,6 +24,7 @@
 
     Route::resource('/course', 'CourseController');
     Route::resource('/subject', 'SubjectController');
+    Route::resource('/teacher', 'TeacherController');
 
     Route::get('/', 'LoginController@index');
     Route::post('/login', 'LoginController@login');
