@@ -25,6 +25,7 @@
     Route::resource('/course', 'CourseController');
     Route::resource('/subject', 'SubjectController');
     Route::resource('/teacher', 'TeacherController');
+    Route::post('image-upload', 'UploadImageController@store');
 
     Route::get('/', 'LoginController@index');
     Route::post('/login', 'LoginController@login');

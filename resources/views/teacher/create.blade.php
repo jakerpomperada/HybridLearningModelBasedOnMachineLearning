@@ -22,22 +22,23 @@
         </div>
 
     <div class="row">
-        <div class="col-lg-3 col-sm-2"></div>
-        <div class="col-xl-6 col-sm-12 d-flex">
-            <div class="card flex-fill">
+                            <div class="col-lg-3 col-sm-2"></div>
+                            <div class="col-xl-6 col-sm-12 d-flex">
+                                <div class="card flex-fill">
 
-                <div class="card-body">
-                    {!! Form::open(['url' => '/subject', 'method' => 'POST']) !!}
-                    @include('template.alert')
-                    <br/>
-                        <div class="form-group row">
-                            <div class="profile-user-box">
+                                    <div class="card-body">
+                                        {!! Form::open(['url' => '/teacher', 'method' => 'POST']) !!}
+                                        @include('template.alert')
+                                        <br/>
+                                        <div class="form-group row">
+                                            <div class="profile-user-box">
                                 <div class="profile-user-img">
                                     <img class="rounded-circle profile-pic" src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg" alt="Profile">
                                     <i class="fa fa-camera upload-button" style="    position: absolute;
     margin-top: 66%;
     margin-left: -31%;"></i>
-                                    <input class="file-upload" type="file" accept="image/*"/>
+                                    <input id="image" name="image" class="file-upload" type="file" accept="image/*"/>
+                                    <input type="hidden" name="image_name" id="image_name" />
                                 </div>
                             </div>
                         </div>
@@ -84,13 +85,13 @@
                     <div class="form-group row">
                         {!! Form::label('address', 'Address:', ['class' => 'col-lg-3 col-form-label']); !!}
                         <div class="col-lg-9">
-                            {!!   Form::textarea('address', null, [
+                            {!!
+                   Form::textarea('address', null, [
                     'class'      => 'form-control',
                     'rows'       => 1,
                     'name'       => 'address',
-                    'id'         => 'address',
-
-                ]) !!}
+                    'id'         => 'address'
+                    ]) !!}
                         </div>
                     </div>
 
@@ -117,15 +118,36 @@
 
     <script>
         $(document).ready(function() {
+            let readURL = function(input) {
 
-
-            var readURL = function(input) {
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
 
                     reader.onload = function (e) {
                         $('.profile-pic').attr('src', e.target.result);
                     }
+
+                    let formData = new FormData();
+                    formData.append('image', input.files[0]);
+
+
+                    $.ajax({
+                        type:'POST',
+                        url: "/image-upload?_token={{csrf_token()}}",
+                        data: formData,
+                        contentType: false,
+                        processData: false,
+                        success: (res) => {
+                            $("#image_name").val(res.image_name);
+
+                        },
+
+                        error: function(response){
+                            alert('Error uploading image!');
+                        }
+
+                    });
+
 
                     reader.readAsDataURL(input.files[0]);
                 }
