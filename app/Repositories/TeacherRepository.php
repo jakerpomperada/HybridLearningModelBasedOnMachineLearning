@@ -44,7 +44,7 @@
 
         public function Delete(string $id): void
         {
-            // TODO: Implement Delete() method.
+            DB::table('teachers')->delete($id);
         }
 
         public function GetAllPaginate(int $page, int $limit): Paginator

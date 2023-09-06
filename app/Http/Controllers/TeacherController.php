@@ -6,7 +6,9 @@
     use Domain\Modules\Teacher\Entities\Teacher;
     use Domain\Modules\Teacher\Repositories\ITeacherRepository;
     use Domain\Shared\Image;
+    use Illuminate\Http\JsonResponse;
     use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\Session;
     use Illuminate\Support\Facades\Validator;
     use Illuminate\View\View;
 
@@ -142,6 +144,19 @@
             return redirectWithAlert('/teacher', [
                 'alert-info' => 'Teacher has been updated!'
             ]);
+        }
+
+
+        public function destroy(string $id) : JsonResponse {
+
+            $this->teacherRepository->Delete($id);
+
+            Session::flash('alert-danger', 'Teacher has been deleted');
+
+            return response()->json([
+                'success' => true
+            ]);
+
         }
 
 
