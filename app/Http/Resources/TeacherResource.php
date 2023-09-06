@@ -40,7 +40,7 @@
                     'image'          => $t->getImage()->getImageLink(),
                     'id_number'      => $t->getIdNumber(),
                     'complete_name'  => $t->completeName(),
-                    'birthdate'      => $t->getBirthdate(),
+                    'birthdate'      => $t->getBirthdateLongFormat(),
                     'contact_number' => $t->getContactNumber(),
                     'address'        => $t->getAddress(),
                 ];

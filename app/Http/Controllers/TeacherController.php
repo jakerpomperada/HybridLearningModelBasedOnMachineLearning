@@ -21,7 +21,7 @@
         }
 
 
-        public function index()
+        public function index(): View
         {
 
             $data = $this->teacherRepository->GetAllPaginate(1, 5);
@@ -37,6 +37,37 @@
         public function create(): View
         {
             return view('teacher.create');
+        }
+
+        public function show($id): View
+        {
+            $d = $this->teacherRepository->Find($id);
+            $t = new Teacher(
+                $d->id_number,
+                $d->firstname,
+                $d->lastname,
+                $d->middlename,
+                $d->birthdate,
+                $d->contact_number,
+                $d->address,
+                $d->id
+            );
+            $t->setImage(new Image($d->image));
+
+            return view('teacher.edit')->with([
+                'teacher' => (object)[
+                    'id'             => $t->getId(),
+                    'image_name'     => $t->getImage()->getImageName(),
+                    'image_link'     => $t->getImage()->getImageLink(),
+                    'id_number'      => $t->getIdNumber(),
+                    'firstname'      => $t->getFirstname(),
+                    'lastname'       => $t->getLastname(),
+                    'middlename'     => $t->getMiddlename(),
+                    'birthdate'      => $t->getBirthdate(),
+                    'contact_number' => $t->getContactNumber(),
+                    'address'        => $t->getAddress(),
+                ]
+            ]);
         }
 
 

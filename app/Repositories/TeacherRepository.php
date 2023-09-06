@@ -42,4 +42,9 @@
         {
           return TeacherDB::paginate($limit);
         }
+
+        public function Find(string $id): object|null
+        {
+          return DB::table('teachers')->where(['id' => $id])->first();
+        }
     }

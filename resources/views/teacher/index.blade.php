@@ -61,7 +61,7 @@
                                     <td>{{ $teacher->contact_number }}</td>
                                     <td>{{ $teacher->address }}</td>
                                     <td>
-                                        <a href="subject/{{$teacher->id}}" class="btn btn-sm btn-rounded btn-primary">
+                                        <a href="teacher/{{$teacher->id}}" class="btn btn-sm btn-rounded btn-primary">
                                             <i class="feather-edit"></i>&nbsp; Edit
                                         </a>
                                         <a href="javascript:;" id="{{$teacher->id}}" class="btn btn-sm btn-danger btn-rounded button_delete">
@@ -100,7 +100,7 @@
                 if (confirm("Are you sure you want to delete this?")) {
                     let id = $(this).attr("id");
                     $.ajax({
-                        url: `/subject/${id}`,
+                        url: `/student/${id}`,
                         type: 'DELETE',
                         data: {
                             "_token": "{{ csrf_token() }}",

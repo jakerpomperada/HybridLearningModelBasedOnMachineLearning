@@ -3,6 +3,7 @@
 	namespace Domain\Modules\Teacher\Entities;
 	use Domain\Shared\Entity;
     use Domain\Shared\Image;
+    use Illuminate\Support\Carbon;
 
     class Teacher extends Entity
 	{
@@ -75,6 +76,10 @@
         public function getBirthdate(): string
         {
             return $this->birthdate;
+        }
+
+        public function getBirthdateLongFormat() : string {
+            return  Carbon::parse($this->birthdate)->format('M. d y');
         }
 
         public function getContactNumber(): string
