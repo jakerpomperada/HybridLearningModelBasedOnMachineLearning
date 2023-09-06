@@ -108,5 +108,41 @@
 
         }
 
+        public function update(Request $req, $id) {
+            $val = Validator::make($req->all(), [
+                'id_number'      => 'required',
+                'image_name'     => 'required|string',
+                'firstname'      => 'required',
+                'middlename'     => 'required',
+                'lastname'       => 'required',
+                'birthdate'      => 'required',
+                'contact_number' => 'required|numeric',
+                'address'        => 'required',
+            ]);
+
+            if ($val->fails()) {
+                return redirectWithInput($val);
+            }
+
+
+            $teacher = new Teacher(
+                $req->input('id_number'),
+                $req->input('firstname'),
+                $req->input('middlename'),
+                $req->input('lastname'),
+                $req->input('birthdate'),
+                $req->input('contact_number'),
+                $req->input('address'),
+                $id
+            );
+            $teacher->setImage(new Image($req->input('image_name')));
+
+            $this->teacherRepository->Update($teacher);
+
+            return redirectWithAlert('/teacher', [
+                'alert-info' => 'Teacher has been updated!'
+            ]);
+        }
+
 
     }

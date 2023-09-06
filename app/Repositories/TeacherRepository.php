@@ -30,7 +30,16 @@
 
         public function Update(Teacher $teacher): void
         {
-            // TODO: Implement Update() method.
+           TeacherDB::where(['id' => $teacher->getId()])->update([
+               'image'          => $teacher->getImage()->getImageName(),
+               'id_number'      => $teacher->getIdNumber(),
+               'firstname'      => $teacher->getFirstname(),
+               'lastname'       => $teacher->getLastname(),
+               'middlename'     => $teacher->getMiddlename(),
+               'birthdate'      => $teacher->getBirthdate(),
+               'contact_number' => $teacher->getContactNumber(),
+               'address'        => $teacher->getAddress()
+           ]);
         }
 
         public function Delete(string $id): void

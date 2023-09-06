@@ -27,7 +27,7 @@
                                 <div class="card flex-fill">
 
                                     <div class="card-body">
-                                        {!! Form::open(['url' => '/teacher', 'method' => 'POST']) !!}
+                                        {!! Form::open(['url' => '/teacher/'. $teacher->id, 'method' => 'PUT']) !!}
                                         @include('template.alert')
                                         <br/>
                                         <div class="form-group row">
@@ -94,10 +94,7 @@
                     ]) !!}
                         </div>
                     </div>
-
-
-
-                        <div class="text-end text-center">
+                                        <div class="text-end text-center">
                             <button type="submit" class="btn btn-info">
                                 <i class="fas fa-pen"></i>&nbsp;
                                 Update</button>

@@ -48,7 +48,7 @@
         }
 
         public function completeName(): string {
-            return "df";
+
             return $this->lastname.", ". $this->firstname ." ". ucfirst(substr($this->middlename,1));
         }
 
@@ -79,7 +79,7 @@
         }
 
         public function getBirthdateLongFormat() : string {
-            return  Carbon::parse($this->birthdate)->format('M. d y');
+            return  Carbon::parse($this->birthdate)->format('M. d, Y');
         }
 
         public function getContactNumber(): string
