@@ -49,19 +49,22 @@
                             </thead>
                             <tbody>
 
-                            @foreach($teachers as $subject)
+                            @foreach($teachers as $teacher)
                                 <tr>
-                                    <td>{{ $subject->code }}</td>
-                                    <td>{{ $subject->description }}</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
                                     <td>
-                                        <a href="subject/{{$subject->id}}" class="btn btn-sm btn-rounded btn-primary">
+                                        <img style="width: 60px" class="rounded-circle profile-pic"
+                                             src="{{$teacher->image}}" alt="Profile">
+                                    </td>
+                                    <td>{{ $teacher->id_number }}</td>
+                                    <td>{{ $teacher->complete_name }}</td>
+                                    <td>{{ $teacher->birthdate }}</td>
+                                    <td>{{ $teacher->contact_number }}</td>
+                                    <td>{{ $teacher->address }}</td>
+                                    <td>
+                                        <a href="subject/{{$teacher->id}}" class="btn btn-sm btn-rounded btn-primary">
                                             <i class="feather-edit"></i>&nbsp; Edit
                                         </a>
-                                        <a href="javascript:;" id="{{$subject->id}}" class="btn btn-sm btn-danger btn-rounded button_delete">
+                                        <a href="javascript:;" id="{{$teacher->id}}" class="btn btn-sm btn-danger btn-rounded button_delete">
                                             <i class="feather-trash"></i>&nbsp; Delete
                                         </a>
                                     </td>

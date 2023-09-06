@@ -20,5 +20,9 @@
 
         }
 
+        public function getImageLink() : string {
+            return config('app.url') . "/storage/images/" . $this->image_name;
+        }
+
 
     }

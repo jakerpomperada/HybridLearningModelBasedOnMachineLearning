@@ -46,6 +46,11 @@
             $this->image = $image;
         }
 
+        public function completeName(): string {
+            return "df";
+            return $this->lastname.", ". $this->firstname ." ". ucfirst(substr($this->middlename,1));
+        }
+
 
         public function getIdNumber(): string
         {

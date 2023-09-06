@@ -2,6 +2,7 @@
 
     namespace App\Http\Controllers;
 
+    use App\Http\Resources\TeacherResource;
     use Domain\Modules\Teacher\Entities\Teacher;
     use Domain\Modules\Teacher\Repositories\ITeacherRepository;
     use Domain\Shared\Image;
@@ -20,13 +21,16 @@
         }
 
 
-        public function index(): View
+        public function index()
         {
-            $teachers = [];
+
+            $data = $this->teacherRepository->GetAllPaginate(1, 5);
+
+            $teachers = (new TeacherResource($data->items()))->data();
 
             return view('teacher.index')->with([
                 'teachers' => $teachers,
-                'paginate' => ''
+                'paginate' => $data->links()
             ]);
         }
 
@@ -40,7 +44,7 @@
         {
             $val = Validator::make($req->all(), [
                 'id_number'      => 'required',
-                'image_name'      => 'required|string',
+                'image_name'     => 'required|string',
                 'firstname'      => 'required',
                 'middlename'     => 'required',
                 'lastname'       => 'required',

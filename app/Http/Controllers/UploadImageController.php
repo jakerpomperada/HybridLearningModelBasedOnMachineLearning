@@ -12,7 +12,7 @@
 
             $imageName = time() . '.' . $image->extension();
 
-            $upload = $image->move(storage_path('images'), $imageName);
+            $upload = $image->move(storage_path('app/public/images'), $imageName);
 
             return response()->json([
                 'success'    => true,

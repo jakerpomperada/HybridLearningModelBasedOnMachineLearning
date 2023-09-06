@@ -4,7 +4,9 @@
 
     use Domain\Modules\Teacher\Entities\Teacher;
     use Domain\Modules\Teacher\Repositories\ITeacherRepository;
+    use Illuminate\Contracts\Pagination\Paginator;
     use Illuminate\Support\Facades\DB;
+    use App\Models\Teacher as TeacherDB;
 
     class TeacherRepository implements ITeacherRepository
     {
@@ -23,7 +25,7 @@
                 'address'        => $teacher->getAddress(),
                 'created_at'     => now(),
                 'updated_at'     => now(),
-            ]);
+                ]);
         }
 
         public function Update(Teacher $teacher): void
@@ -36,8 +38,8 @@
             // TODO: Implement Delete() method.
         }
 
-        public function GetAllPaginate(int $page, int $limit): void
+        public function GetAllPaginate(int $page, int $limit): Paginator
         {
-            // TODO: Implement GetAllPaginate() method.
+          return TeacherDB::paginate($limit);
         }
     }
