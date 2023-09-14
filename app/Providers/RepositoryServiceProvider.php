@@ -21,6 +21,11 @@
                 'Domain\Modules\Teacher\Repositories\ITeacherRepository',
                 'App\Repositories\TeacherRepository'
             );
+
+            $this->app->bind(
+                'Domain\Modules\Student\Repositories\IStudentRepository',
+                'App\Repositories\StudentRepository'
+            );
         }
 	}
 

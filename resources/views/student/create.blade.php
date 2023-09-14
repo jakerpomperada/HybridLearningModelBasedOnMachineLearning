@@ -15,19 +15,19 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="page-title">Add New Teacher</h3>
+                    <h3 class="page-title">Add New Student</h3>
 
                 </div>
             </div>
         </div>
 
     <div class="row">
-                            <div class="col-lg-3 col-sm-2"></div>
-                            <div class="col-xl-6 col-sm-12 d-flex">
+                            <div class="col-lg-2 col-sm-2"></div>
+                            <div class="col-xl-7 col-sm-12 d-flex">
                                 <div class="card flex-fill">
 
                                     <div class="card-body">
-                                        {!! Form::open(['url' => '/teacher', 'method' => 'POST']) !!}
+                                        {!! Form::open(['url' => '/student', 'method' => 'POST']) !!}
                                         @include('template.alert')
                                         <br/>
                                         <div class="form-group row">
@@ -42,6 +42,25 @@
                                 </div>
                             </div>
                         </div>
+
+                                        <div class="form-group row">
+                                            {!! Form::label('username', 'Username:', ['class' => 'col-lg-3 col-form-label']); !!}
+                                            <div class="col-lg-9">
+                                                {!! Form::text('username',null, ['class' => 'form-control']); !!}
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            {!! Form::label('id_number', 'Password:', ['class' => 'col-lg-3 col-form-label']); !!}
+                                            <div class="col-lg-9">
+                                                {!! Form::password('password', ['class' => 'form-control']); !!}
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            {!! Form::label('id_number', 'Confirm Password:', ['class' => 'col-lg-3 col-form-label']); !!}
+                                            <div class="col-lg-9">
+                                                {!! Form::password('confirm_password', ['class' => 'form-control']); !!}
+                                            </div>
+                                        </div>
 
 
                         <div class="form-group row">
