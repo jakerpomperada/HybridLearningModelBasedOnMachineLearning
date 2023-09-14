@@ -13,7 +13,8 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->string('image');
+            $table->uuid('user_id')->index();
+            $table->string('image')->nullable();
             $table->string('id_number');
             $table->string('firstname');
             $table->string('lastname');
@@ -22,6 +23,13 @@ return new class extends Migration
             $table->string('contact_number');
             $table->text('address');
             $table->timestamps();
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE');
+            
         });
     }
 
