@@ -20,6 +20,9 @@
                 <li>
                     <a href="/teacher"><i class="fas fa-chalkboard-teacher"></i> <span> Teachers</span></a>
                 </li>
+                <li>
+                    <a href="/student"><i class="fas fa-graduation-cap"></i> <span>Students</span></a>
+                </li>
 
                 <li class="submenu">
                     <a href="#"><i class="fas fa-list"></i> <span>Curriculum</span><span class="menu-arrow"></span></a>
@@ -28,9 +31,7 @@
                         <li><a href="/">Subject Curriculum</a></li>
                     </ul>
                 </li>
-                <li>
-                    <a href="/"><i class="fas fa-graduation-cap"></i> <span>Students</span></a>
-                </li>
+
 
 
                 <li class="menu-title">

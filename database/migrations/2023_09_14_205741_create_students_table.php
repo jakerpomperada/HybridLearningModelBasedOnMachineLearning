@@ -29,7 +29,7 @@ return new class extends Migration
                 ->on('users')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
-            
+
         });
     }
 

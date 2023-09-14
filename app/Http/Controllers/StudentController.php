@@ -1,10 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+    namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+    use Illuminate\Http\Request;
 
-class StudentController extends Controller
-{
-    //
-}
+    class StudentController extends Controller
+    {
+
+
+        public function index() {
+            return view('student.index')->with([
+                'students' => [],
+                'paginate' => ''
+            ]);
+        }
+    }
