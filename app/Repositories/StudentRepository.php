@@ -44,7 +44,7 @@
 
         public function GetAllPaginate(int $page, int $limit): Paginator
         {
-            // TODO: Implement GetAllPaginate() method.
+            return StudentDB::paginate($limit);
         }
 
         public function Find(string $id): object|null

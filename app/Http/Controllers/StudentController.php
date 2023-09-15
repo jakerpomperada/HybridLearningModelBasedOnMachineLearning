@@ -2,6 +2,7 @@
 
     namespace App\Http\Controllers;
 
+    use App\Http\Resources\StudentResource;
     use Domain\Modules\Student\Entities\Student;
     use Domain\Modules\Student\Repositories\IStudentRepository;
     use Domain\Shared\Image;
@@ -21,11 +22,15 @@
         }
 
 
-        public function index(): View
+        public function index()
         {
+            $students_data = $this->studentRepository->GetAllPaginate(1, 5);
+
+            $students = StudentResource::collection($students_data->items())->resolve();
+
             return view('student.index')->with([
-                'students' => [],
-                'paginate' => ''
+                'students' => $students,
+                'paginate' => $students_data->links()
             ]);
         }
 
@@ -56,7 +61,6 @@
             }
 
 
-
             $student = new Student(
                 $req->input('id_number'),
                 $req->input('firstname'),
@@ -70,8 +74,8 @@
             $student->setImage(new Image($req->input('image_name')));
 
             $student->setAccount(new User(
-                $req->input('username'),
-                $req->input('password'))
+                    $req->input('username'),
+                    $req->input('password'))
             );
 
 

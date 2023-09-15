@@ -53,7 +53,7 @@
                                 <tr>
                                     <td>
                                         <img style="width: 60px" class="rounded-circle profile-pic"
-                                             src="{{$student->image}}" alt="Profile">
+                                             src="{{$student->image_link}}" alt="Profile">
                                     </td>
                                     <td>{{ $student->id_number }}</td>
                                     <td>{{ $student->complete_name }}</td>
