@@ -7,7 +7,6 @@
 @endpush
 
 
-
 @section('content')
 
     <div class="content container-fluid">
@@ -131,8 +130,8 @@
 @push('scripts')
 
     <script>
-        $(document).ready(function () {
-            let readURL = function (input) {
+        $(document).ready(function() {
+            let readURL = function(input) {
 
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
@@ -146,7 +145,7 @@
 
 
                     $.ajax({
-                        type: 'POST',
+                        type:'POST',
                         url: "/image-upload?_token={{csrf_token()}}",
                         data: formData,
                         contentType: false,
@@ -156,7 +155,7 @@
 
                         },
 
-                        error: function (response) {
+                        error: function(response){
                             alert('Error uploading image!');
                         }
 
@@ -168,11 +167,11 @@
             }
 
 
-            $(".file-upload").on('change', function () {
+            $(".file-upload").on('change', function(){
                 readURL(this);
             });
 
-            $(".upload-button").on('click', function () {
+            $(".upload-button").on('click', function() {
                 $(".file-upload").click();
             });
         });
