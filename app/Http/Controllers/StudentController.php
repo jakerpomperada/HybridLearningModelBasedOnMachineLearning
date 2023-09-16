@@ -7,6 +7,7 @@
     use Domain\Modules\Student\Repositories\IStudentRepository;
     use Domain\Shared\Image;
     use Domain\Shared\User;
+    use Error;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Validator;
     use Illuminate\View\View;
@@ -26,13 +27,18 @@
         {
             $students_data = $this->studentRepository->GetAllPaginate(1, 5);
 
-            $students = StudentResource::collection($students_data->items())->resolve();
+            $students_data_aggregates = collect($students_data->items())->map( function ($stud) {
+                return $this->studentRepository->Aggregates($stud);
+            });
+
+            $students = StudentResource::collection($students_data_aggregates)->resolve();
 
             return view('student.index')->with([
                 'students' => $students,
                 'paginate' => $students_data->links()
             ]);
         }
+
 
         public function create()
         {
@@ -61,22 +67,7 @@
             }
 
 
-            $student = new Student(
-                $req->input('id_number'),
-                $req->input('firstname'),
-                $req->input('middlename'),
-                $req->input('lastname'),
-                $req->input('birthdate'),
-                $req->input('contact_number'),
-                $req->input('address')
-            );
-
-            $student->setImage(new Image($req->input('image_name')));
-
-            $student->setAccount(new User(
-                    $req->input('username'),
-                    $req->input('password'))
-            );
+            $student = $this->setStudentAggregate($req);
 
 
             $this->studentRepository->Save($student);
@@ -85,4 +76,81 @@
                 'alert-success' => 'New Student has been added!'
             ]);
         }
+
+        /**
+         * @param Request $req
+         * @return Student
+         */
+        public function setStudentAggregate(Request $req, ?string $id = null): Student
+        {
+            $student = new Student(
+                $req->input('id_number'),
+                $req->input('firstname'),
+                $req->input('middlename'),
+                $req->input('lastname'),
+                $req->input('birthdate'),
+                $req->input('contact_number'),
+                $req->input('address'),
+                $id
+            );
+
+            $student->setImage(new Image($req->input('image_name')));
+
+            $student->setAccount(new User(
+                    $req->input('username'),
+                    $req->input('password'))
+            );
+            return $student;
+        }
+
+        public function show(string $id): View
+        {
+
+            $student_data = $this->studentRepository->Find($id);
+            $student      = (new StudentResource($student_data))->resolve();
+
+            return view('student.edit')->with([
+                'student' => (object)$student
+            ]);
+        }
+
+        public function update(Request $req, $id)
+        {
+            try {
+                $val = Validator::make($req->all(), [
+                    'id_number'      => 'required',
+                    'username'       => 'required',
+                    'image_name'     => 'required|string',
+                    'firstname'      => 'required',
+                    'middlename'     => 'required',
+                    'lastname'       => 'required',
+                    'birthdate'      => 'required',
+                    'contact_number' => 'required|numeric',
+                    'address'        => 'required',
+                ]);
+
+                if ($val->fails()) {
+                    throw new Error($val->getMessageBag()->all()[0]);
+                }
+
+                $student_data = $this->studentRepository->Find($id);
+
+                if (!$student_data) new Error('Student not exists in Database');
+
+                $student = $this->setStudentAggregate($req, $id);
+
+                $this->studentRepository->Update($student, $student_data->getAccount()->getId());
+
+                return redirectWithAlert('/student', [
+                   'alert-info' => 'Student has been updated!'
+                ]);
+
+            } catch (Error $error) {
+                return redirectExceptionWithInput($error);
+            }
+
+
+        }
+
+
     }

@@ -61,7 +61,7 @@
                                     <td>{{ $student->contact_number }}</td>
                                     <td>{{ $student->address }}</td>
                                     <td>
-                                        <a href="teacher/{{$student->id}}" class="btn btn-sm btn-rounded btn-primary">
+                                        <a href="student/{{$student->id}}" class="btn btn-sm btn-rounded btn-primary">
                                             <i class="feather-edit"></i>&nbsp; Edit
                                         </a>
                                         <a href="javascript:;" id="{{$student->id}}" class="btn btn-sm btn-danger btn-rounded button_delete">

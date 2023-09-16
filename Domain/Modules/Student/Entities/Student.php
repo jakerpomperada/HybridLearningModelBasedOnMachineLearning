@@ -1,13 +1,15 @@
 <?php
 
-	namespace Domain\Modules\Student\Entities;
-	use Domain\Shared\Entity;
+    namespace Domain\Modules\Student\Entities;
+
+    use Domain\Shared\Entity;
     use Domain\Shared\Image;
     use Domain\Shared\User;
+    use Error;
     use Illuminate\Support\Carbon;
 
     class Student extends Entity
-	{
+    {
         protected string $id_number;
         protected string $firstname;
         protected string $middlename;
@@ -20,13 +22,13 @@
 
 
         public function __construct(
-            string $id_number,
-            string $firstname,
-            string $middlename,
-            string $lastname,
-            string $birthdate,
-            string $contact_number,
-            string $address,
+            string  $id_number,
+            string  $firstname,
+            string  $middlename,
+            string  $lastname,
+            string  $birthdate,
+            string  $contact_number,
+            string  $address,
             ?string $id = null)
         {
             parent::__construct($id);
@@ -39,12 +41,13 @@
             $this->address        = $address;
         }
 
-        public function setAccount(User $user) : void
+        public function setAccount(User $user): void
         {
             $this->user = $user;
         }
 
-        public function getAccount() : User {
+        public function getAccount(): User
+        {
             return $this->user;
         }
 
@@ -58,9 +61,10 @@
             $this->image = $image;
         }
 
-        public function completeName(): string {
+        public function completeName(): string
+        {
 
-            return $this->lastname.", ". $this->firstname ." ". ucfirst(substr($this->middlename,1));
+            return $this->lastname . ", " . $this->firstname . " " . ucfirst(substr($this->middlename, 1));
         }
 
 
@@ -89,8 +93,9 @@
             return $this->birthdate;
         }
 
-        public function getBirthdateLongFormat() : string {
-            return  Carbon::parse($this->birthdate)->format('M. d, Y');
+        public function getBirthdateLongFormat(): string
+        {
+            return Carbon::parse($this->birthdate)->format('M. d, Y');
         }
 
         public function getContactNumber(): string
@@ -103,8 +108,24 @@
             return $this->address;
         }
 
+        public function changePassword(string $previousHashPassword): void
+        {
 
+            if ( !empty($this->user->getPassword()) && !$this->user->isPasswordMatch($previousHashPassword)) {
+                throw new Error("Previous password dont' match!");
+            }
 
+        }
+
+        public function getPassword(): string
+        {
+            return $this->user->getPassword();
+        }
+
+        public function getUsername(): string
+        {
+            return $this->user->getUsername();
+        }
 
 
     }

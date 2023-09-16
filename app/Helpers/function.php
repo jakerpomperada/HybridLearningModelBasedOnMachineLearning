@@ -32,6 +32,11 @@
         return Redirect::back()->withInput()->withErrors($validator->getMessageBag()->all()[0]);
     }
 
+    function redirectExceptionWithInput(Error $validator): RedirectResponse
+    {
+        return Redirect::back()->withInput()->withErrors($validator->getMessage());
+    }
+
 
     function redirectWithAlert(string $loc, array $alert): RedirectResponse
     {

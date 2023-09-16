@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Student extends Model
 {
@@ -14,5 +15,9 @@ class Student extends Model
     protected $table = 'students';
     protected $keyType = 'string';
     protected $guarded = [];
+
+    public function User() : BelongsTo {
+        return $this->belongsTo(User::class);
+    }
 
 }

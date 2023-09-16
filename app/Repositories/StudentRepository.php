@@ -2,9 +2,11 @@
 
     namespace App\Repositories;
 
-    use App\Models\User;
+    use App\Models\User as UserDB;
     use Domain\Modules\Student\Entities\Student;
     use Domain\Modules\Student\Repositories\IStudentRepository;
+    use Domain\Shared\Image;
+    use Domain\Shared\User;
     use Illuminate\Contracts\Pagination\Paginator;
     use App\Models\Student as StudentDB;
 
@@ -14,7 +16,7 @@
         public function Save(Student $student): void
         {
 
-            $user = User::create([
+            $user = UserDB::create([
                 'username' => $student->getAccount()->getUsername(),
                 'password' => $student->getAccount()->getHashPassword(),
                 'type'     => 'student'
@@ -32,9 +34,28 @@
             ]);
         }
 
-        public function Update(Student $student): void
+        public function Update(Student $student, string $user_id): void
         {
-            // TODO: Implement Update() method.
+
+            if (!empty($student->getPassword())) {
+                UserDB::where('id', $user_id)->update([
+                    'password' => $student->getAccount()->getHashPassword(),
+                ]);
+            }
+            UserDB::where('id', $user_id)->update([
+                'username' => $student->getAccount()->getUsername(),
+            ]);
+
+            StudentDB::where('id', $student->getId())->update([
+                'image'          => $student->getImage()->getImageName(),
+                'id_number'      => $student->getIdNumber(),
+                'firstname'      => $student->getFirstname(),
+                'lastname'       => $student->getLastname(),
+                'middlename'     => $student->getMiddlename(),
+                'birthdate'      => $student->getBirthdate(),
+                'contact_number' => $student->getContactNumber(),
+                'address'        => $student->getAddress(),
+            ]);
         }
 
         public function Delete(string $id): void
@@ -47,8 +68,33 @@
             return StudentDB::paginate($limit);
         }
 
-        public function Find(string $id): object|null
+        public function Find(string $id): Student|null
         {
-            // TODO: Implement Find() method.
+            $data = StudentDB::with(['User'])->where(['id' => $id])->first();
+
+            return (!$data) ? null : $this->Aggregates($data);
+        }
+
+        public function Aggregates(object $data): Student
+        {
+            $student = new Student(
+                $data->id_number,
+                $data->firstname,
+                $data->lastname,
+                $data->middlename,
+                $data->birthdate,
+                $data->contact_number,
+                $data->address,
+                $data->id
+            );
+
+            $student->setAccount(new User(
+                $data->User->username,
+                $data->User->password,
+                $data->User->id
+            ));
+            $student->setImage(new Image($data->image));
+
+            return $student;
         }
     }

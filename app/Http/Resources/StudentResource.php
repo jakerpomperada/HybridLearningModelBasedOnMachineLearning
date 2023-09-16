@@ -13,26 +13,24 @@
 
         public function toArray(Request $request): object
         {
-            $st = new Student(
-                $this->id_number,
-                $this->firstname,
-                $this->lastname,
-                $this->middlename,
-                $this->birthdate,
-                $this->contact_number,
-                $this->address,
-                $this->id
-            );
-            $st->setImage(new Image($this->image_name));
-            return (object) [
-                'id'             => $st->getId(),
-                'image_name'     => $st->getImage()->getImageName(),
-                'image_link'     => $st->getImage()->getImageLink(),
-                'id_number'      => $st->getIdNumber(),
-                'complete_name'  => $st->completeName(),
-                'birthdate'      => $st->getBirthdateLongFormat(),
-                'contact_number' => $st->getContactNumber(),
-                'address'        => $st->getAddress(),
+            /**
+             * @var Student $this
+             */
+
+            return (object)[
+                'id'             => $this->getId(),
+                'image_name'     => $this->getImage()->getImageName(),
+                'image_link'     => $this->getImage()->getImageLink(),
+                'id_number'      => $this->getIdNumber(),
+                'complete_name'  => $this->completeName(),
+                'firstname'      => $this->getFirstname(),
+                'lastname'       => $this->getLastname(),
+                'middlename'     => $this->getMiddlename(),
+                '_birthdate'     => $this->getBirthdate(),
+                'birthdate'      => $this->getBirthdateLongFormat(),
+                'contact_number' => $this->getContactNumber(),
+                'address'        => $this->getAddress(),
+                'username'       => $this->getUsername()
             ];
         }
     }
