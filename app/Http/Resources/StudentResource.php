@@ -30,6 +30,7 @@
                 'birthdate'      => $this->getBirthdateLongFormat(),
                 'contact_number' => $this->getContactNumber(),
                 'address'        => $this->getAddress(),
+                '_address'       => $this->getAddress()->minifyAddress(),
                 'username'       => $this->getUsername()
             ];
         }

@@ -5,6 +5,7 @@
     use App\Http\Resources\StudentResource;
     use Domain\Modules\Student\Entities\Student;
     use Domain\Modules\Student\Repositories\IStudentRepository;
+    use Domain\Shared\Address;
     use Domain\Shared\Image;
     use Domain\Shared\User;
     use Error;
@@ -91,7 +92,7 @@
                 $req->input('lastname'),
                 $req->input('birthdate'),
                 $req->input('contact_number'),
-                $req->input('address'),
+                new Address($req->input('address')),
                 $id
             );
 

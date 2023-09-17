@@ -59,7 +59,7 @@
                                     <td>{{ $student->complete_name }}</td>
                                     <td>{{ $student->birthdate }}</td>
                                     <td>{{ $student->contact_number }}</td>
-                                    <td>{{ $student->address }}</td>
+                                    <td>{{ $student->_address }}</td>
                                     <td>
                                         <a href="student/{{$student->id}}" class="btn btn-sm btn-rounded btn-primary">
                                             <i class="feather-edit"></i>&nbsp; Edit

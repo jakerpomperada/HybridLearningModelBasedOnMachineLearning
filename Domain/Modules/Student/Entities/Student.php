@@ -2,6 +2,7 @@
 
     namespace Domain\Modules\Student\Entities;
 
+    use Domain\Shared\Address;
     use Domain\Shared\Entity;
     use Domain\Shared\Image;
     use Domain\Shared\User;
@@ -16,7 +17,7 @@
         protected string $lastname;
         protected string $birthdate;
         protected string $contact_number;
-        protected string $address;
+        protected Address $address;
         protected Image $image;
         protected User $user;
 
@@ -28,7 +29,7 @@
             string  $lastname,
             string  $birthdate,
             string  $contact_number,
-            string  $address,
+            Address  $address,
             ?string $id = null)
         {
             parent::__construct($id);
@@ -103,10 +104,11 @@
             return $this->contact_number;
         }
 
-        public function getAddress(): string
+        public function getAddress(): Address
         {
             return $this->address;
         }
+
 
         public function changePassword(string $previousHashPassword): void
         {

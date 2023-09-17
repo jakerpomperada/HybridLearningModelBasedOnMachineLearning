@@ -5,6 +5,7 @@
     use App\Models\User as UserDB;
     use Domain\Modules\Student\Entities\Student;
     use Domain\Modules\Student\Repositories\IStudentRepository;
+    use Domain\Shared\Address;
     use Domain\Shared\Image;
     use Domain\Shared\User;
     use Illuminate\Contracts\Pagination\Paginator;
@@ -54,7 +55,7 @@
                 'middlename'     => $student->getMiddlename(),
                 'birthdate'      => $student->getBirthdate(),
                 'contact_number' => $student->getContactNumber(),
-                'address'        => $student->getAddress(),
+                'address'        => $student->getAddress()->value(),
             ]);
         }
 
@@ -84,7 +85,7 @@
                 $data->middlename,
                 $data->birthdate,
                 $data->contact_number,
-                $data->address,
+                new Address($data->address),
                 $data->id
             );
 
