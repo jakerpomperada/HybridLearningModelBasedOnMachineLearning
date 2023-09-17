@@ -26,6 +26,7 @@
     Route::resource('/subject', 'SubjectController');
     Route::resource('/teacher', 'TeacherController');
     Route::resource('/student', 'StudentController');
+    Route::resource('/academic-term', 'AcademicTermController');
 
     Route::post('image-upload', 'UploadImageController@store');
 

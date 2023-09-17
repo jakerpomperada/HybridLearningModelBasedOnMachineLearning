@@ -27,7 +27,7 @@
                 <li class="submenu">
                     <a href="#"><i class="fas fa-list"></i> <span>Academic Term</span><span class="menu-arrow"></span></a>
                     <ul>
-                        <li><a href="/">View Terms</a></li>
+                        <li><a href="/academic-term">View Terms</a></li>
                         <li><a href="/">Manage Subject Term</a></li>
                     </ul>
                 </li>
