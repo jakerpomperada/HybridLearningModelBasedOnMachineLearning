@@ -1,6 +1,19 @@
 
 
 @extends('template.main')
+
+@push('styles')
+
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.1/themes/base/jquery-ui.css" />
+    <style>
+        .ui-datepicker-calendar {
+            display: none;
+        }
+        .ui-datepicker-month {
+            display: none;
+        }
+    </style>
+@endpush
 @section('content')
 
 <div class="content container-fluid">
@@ -8,7 +21,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="page-title">Add New Subject</h3>
+                    <h3 class="page-title">Add Academic Term</h3>
 
                 </div>
             </div>
@@ -20,21 +33,21 @@
             <div class="card flex-fill">
 
                 <div class="card-body">
-                    {!! Form::open(['url' => '/subject', 'method' => 'POST']) !!}
+                    {!! Form::open(['url' => '/academic-term', 'method' => 'POST']) !!}
                     @include('template.alert')
                     <br/>
                         <div class="form-group row">
-                            {!! Form::label('subject_code', 'Code:', ['class' => 'col-lg-3 col-form-label']); !!}
+                            {!! Form::label('year_from', 'From Year:', ['class' => 'col-lg-3 col-form-label']); !!}
                             <div class="col-lg-9">
-                               {!! Form::text('subject_code',null, ['class' => 'form-control']); !!}
+                               {!! Form::text('year_from',null, ['class' => 'form-control datepicker-year']); !!}
                             </div>
                         </div>
-                        <div class="form-group row">
-                            {!! Form::label('subject_description', 'Description:', ['class' => 'col-lg-3 col-form-label']); !!}
-                            <div class="col-lg-9">
-                                {!! Form::text('subject_description',null, ['class' => 'form-control']); !!}
-                            </div>
+                    <div class="form-group row">
+                        {!! Form::label('year_to', 'To Year:', ['class' => 'col-lg-3 col-form-label']); !!}
+                        <div class="col-lg-9">
+                            {!! Form::text('year_to',null, ['class' => 'form-control datepicker-year']); !!}
                         </div>
+                    </div>
 
                         <div class="text-end text-center">
                             <button type="submit" class="btn btn-success">
@@ -51,4 +64,30 @@
 
 
 @endsection
+
+@push('scripts')
+    <script src="https://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function(){
+
+
+
+            $('.datepicker-year').datepicker( {
+                changeMonth: true,
+                changeYear: true,
+                showButtonPanel: true,
+                dateFormat: 'yy',
+                onClose: function(dateText, inst) {
+                    var month = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                    var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                    $(this).datepicker('setDate', new Date(year, month, 1));
+                }
+            });
+
+
+
+        });
+    </script>
+
+@endpush
 

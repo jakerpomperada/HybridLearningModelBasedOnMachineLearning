@@ -26,6 +26,11 @@
                 'Domain\Modules\Student\Repositories\IStudentRepository',
                 'App\Repositories\StudentRepository'
             );
+
+            $this->app->bind(
+                'Domain\Modules\AcademicTerm\Repositories\IAcademicTermRepository',
+                'App\Repositories\AcademicTermRepository'
+            );
         }
 	}
 

@@ -12,7 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('academic_terms', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
+            $table->year('year_from');
+            $table->year('year_to');
             $table->timestamps();
         });
     }

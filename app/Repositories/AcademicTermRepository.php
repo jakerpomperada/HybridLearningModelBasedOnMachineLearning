@@ -1,17 +1,24 @@
 <?php
 
-	namespace App\Repositories;
+    namespace App\Repositories;
 
-	use Domain\Modules\AcademicTerm\Entities\AcademicTerm;
+    use Domain\Modules\AcademicTerm\Entities\AcademicTerm;
     use Domain\Modules\AcademicTerm\Repositories\IAcademicTermRepository;
     use Illuminate\Contracts\Pagination\Paginator;
+    use Illuminate\Support\Facades\DB;
+
+    use App\Models\AcademicTerm as AcademicTermDB;
 
     class AcademicTermRepository implements IAcademicTermRepository
-	{
+    {
 
         public function Save(AcademicTerm $academicTerm): void
         {
-            // TODO: Implement Save() method.
+            AcademicTermDB::create([
+                'year_from' => $academicTerm->getYearFrom(),
+                'year_to'   => $academicTerm->getYearTo(),
+            ]);
+
         }
 
         public function Update(AcademicTerm $academicTerm): void
