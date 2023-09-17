@@ -25,10 +25,10 @@
                 </li>
 
                 <li class="submenu">
-                    <a href="#"><i class="fas fa-list"></i> <span>Curriculum</span><span class="menu-arrow"></span></a>
+                    <a href="#"><i class="fas fa-list"></i> <span>Academic Term</span><span class="menu-arrow"></span></a>
                     <ul>
-                        <li><a href="/">Curriculum List</a></li>
-                        <li><a href="/">Subject Curriculum</a></li>
+                        <li><a href="/">View Terms</a></li>
+                        <li><a href="/">Manage Subject Term</a></li>
                     </ul>
                 </li>
 
