@@ -27,11 +27,12 @@
 
             $at = $this->academicTermRepository->GetAllPaginate(1,6);
 
-            $terms = AcademicTermResource::collection($at->items())->resolve();
+
+            $terms = AcademicTermResource::collection($at->terms)->resolve();
 
             return view('academic-term.index')->with([
                 'terms'    => $terms,
-                'paginate' => $at->links()
+                'paginate' => $at->paginate
             ]);
         }
 
@@ -65,4 +66,18 @@
             }
 
         }
+
+
+        public function show(string $id) : View {
+
+            $data = $this->academicTermRepository->find($id);
+
+            $term = (new AcademicTermResource($data))->resolve();
+
+            return view('academic-term.edit')->with([
+                'term' => (object) $term
+            ]);
+        }
+
+
     }

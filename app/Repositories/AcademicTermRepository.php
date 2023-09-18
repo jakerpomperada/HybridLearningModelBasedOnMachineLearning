@@ -31,13 +31,27 @@
             // TODO: Implement Delete() method.
         }
 
-        public function GetAllPaginate(int $page, int $limit): Paginator
+        public function GetAllPaginate(int $page, int $limit): object
         {
-           return AcademicTermDB::paginate($limit);
+            $data = AcademicTermDB::paginate($limit);
+
+            $terms =  collect($data->items())->map(function ($d) {
+                return $this->Aggregate($d);
+            });
+
+            return (object) [
+                'terms' => $terms,
+                'paginate' => $data->links()
+            ];
         }
 
-        public function find(string $id): AcademicTerm|null
+        public function Find(string $id): AcademicTerm|null
         {
-            // TODO: Implement find() method.
+            $data = DB::table('academic_terms')->find($id);
+            return !$data ? null :  $this->Aggregate($data);
+        }
+
+        public function Aggregate( object $term) : AcademicTerm {
+            return new AcademicTerm($term->year_from, $term->year_to, $term->id);
         }
     }

@@ -15,10 +15,15 @@
          */
         public function toArray(Request $request)
         {
-            $term = new AcademicTerm($this->year_from, $this->year_to, $this->id);
+            /**
+             * @var AcademicTerm $this
+             */
+
             return (object) [
-                'id'            => $term->getId(),
-                'academic_year' => $term->getTerm()
+                'id'            => $this->getId(),
+                'academic_year' => $this->getTerm(),
+                'year_from'     => $this->getYearFrom(),
+                'year_to'       => $this->getYearTo()
             ];
         }
     }

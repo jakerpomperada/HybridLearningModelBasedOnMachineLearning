@@ -13,9 +13,9 @@
 
         public function Delete(string $id) : void;
 
-        public function GetAllPaginate(int $page, int $limit) : Paginator;
+        public function GetAllPaginate(int $page, int $limit) : object;
 
-        public function find(string $id) : AcademicTerm | null;
+        public function Find(string $id) : AcademicTerm | null;
 
 
 
