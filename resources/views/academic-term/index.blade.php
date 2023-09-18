@@ -127,7 +127,7 @@
                     if (confirm("Are you sure you want to delete this?")) {
                         let id = $(this).attr("id");
                         $.ajax({
-                            url: `/subject/${id}`,
+                            url: `/academic-term/${id}`,
                             type: 'DELETE',
                             data: {
                                 "_token": "{{ csrf_token() }}",

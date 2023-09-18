@@ -7,6 +7,7 @@
     use Domain\Modules\AcademicTerm\Repositories\IAcademicTermRepository;
     use Error;
     use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\Session;
     use Illuminate\Support\Facades\Validator;
     use Illuminate\View\View;
 
@@ -106,6 +107,18 @@
             } catch (Error $error) {
                 return redirectExceptionWithInput($error);
             }
+        }
+
+        public function destroy(string $id) {
+
+            $this->academicTermRepository->Delete($id);
+
+            Session::flash('alert-danger', 'Academic Term has been deleted');
+
+            return response()->json([
+                'success' => true
+            ]);
+
         }
 
 
