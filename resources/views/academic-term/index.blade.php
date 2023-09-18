@@ -83,15 +83,15 @@
                             </thead>
                             <tbody>
 
-                            @foreach($terms as $subject)
+                            @foreach($terms as $term)
                             <tr>
-                                <td>{{ $subject->code }}</td>
-                                <td>{{ $subject->description }}</td>
+                                <td>{{ $term->academic_year }}</td>
+                                <td>&nbsp;</td>
                                 <td>
-                                    <a href="subject/{{$subject->id}}" class="btn btn-sm btn-rounded btn-primary">
+                                    <a href="academic-term/{{$term->id}}" class="btn btn-sm btn-rounded btn-primary">
                                         <i class="feather-edit"></i>&nbsp; Edit
                                     </a>
-                                    <a href="javascript:;" id="{{$subject->id}}" class="btn btn-sm btn-danger btn-rounded button_delete">
+                                    <a href="javascript:;" id="{{$term->id}}" class="btn btn-sm btn-danger btn-rounded button_delete">
                                         <i class="feather-trash"></i>&nbsp; Delete
                                     </a>
                                 </td>

@@ -2,6 +2,7 @@
 
     namespace App\Http\Controllers;
 
+    use App\Http\Resources\AcademicTermResource;
     use Domain\Modules\AcademicTerm\Entities\AcademicTerm;
     use Domain\Modules\AcademicTerm\Repositories\IAcademicTermRepository;
     use Error;
@@ -24,9 +25,13 @@
         public function index(): View
         {
 
+            $at = $this->academicTermRepository->GetAllPaginate(1,6);
+
+            $terms = AcademicTermResource::collection($at->items())->resolve();
+
             return view('academic-term.index')->with([
-                'terms'    => [],
-                'paginate' => ''
+                'terms'    => $terms,
+                'paginate' => $at->links()
             ]);
         }
 

@@ -33,7 +33,7 @@
 
         public function GetAllPaginate(int $page, int $limit): Paginator
         {
-            // TODO: Implement GetAllPaginate() method.
+           return AcademicTermDB::paginate($limit);
         }
 
         public function find(string $id): AcademicTerm|null

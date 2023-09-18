@@ -42,6 +42,10 @@
            return $this->year_from - $this->year_to == -1;
         }
 
+        public function getTerm() : string {
+            return $this->year_from .'-'.$this->year_to;
+        }
+
 
 
 
