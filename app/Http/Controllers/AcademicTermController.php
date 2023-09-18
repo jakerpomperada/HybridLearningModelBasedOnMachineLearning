@@ -80,4 +80,33 @@
         }
 
 
+        public function update(Request $req, string $id) {
+            try {
+                $val = Validator::make($req->all(), [
+                    'year_from' => 'required|int',
+                    'year_to'   => 'required|int',
+                ]);
+
+                if ($val->fails()) {
+                    throw new Error($val->getMessageBag()->all()[0]);
+                }
+
+                $academic_term = new AcademicTerm(
+                    $req->input('year_from'),
+                    $req->input('year_to'),
+                    $id
+                );
+
+                $this->academicTermRepository->Update($academic_term);
+
+                return redirectWithAlert('/academic-term', [
+                    'alert-info' => 'Academic Term has been updated!'
+                ]);
+
+            } catch (Error $error) {
+                return redirectExceptionWithInput($error);
+            }
+        }
+
+
     }

@@ -33,7 +33,7 @@
                 <div class="card flex-fill">
 
                     <div class="card-body">
-                        {!! Form::open(['url' => '/academic-term', 'method' => 'POST']) !!}
+                        {!! Form::open(['url' => '/academic-term/' . $term->id, 'method' => 'PUT']) !!}
                         @include('template.alert')
                         <br/>
                         <div class="form-group row">

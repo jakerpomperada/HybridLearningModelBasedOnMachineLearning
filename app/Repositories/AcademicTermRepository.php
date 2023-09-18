@@ -23,7 +23,10 @@
 
         public function Update(AcademicTerm $academicTerm): void
         {
-            // TODO: Implement Update() method.
+            AcademicTermDB::where(['id' => $academicTerm->getId()])->update([
+                'year_from' => $academicTerm->getYearFrom(),
+                'year_to'   => $academicTerm->getYearTo(),
+            ]);
         }
 
         public function Delete(string $id): void
