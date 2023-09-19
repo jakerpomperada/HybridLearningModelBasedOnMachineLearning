@@ -61,7 +61,7 @@
 
         public function Delete(string $id): void
         {
-           StudentDB::destroy($id);
+            StudentDB::destroy($id);
         }
 
         public function GetAllPaginate(int $page, int $limit): Paginator
@@ -97,5 +97,16 @@
             $student->setImage(new Image($data->image));
 
             return $student;
+        }
+
+        public function GetYearLevel(): array
+        {
+            return [
+                '1st'  => 'First Year',
+                '2nd'  => 'Second Year',
+                '3rd'  => 'Third Year',
+                '4rth' => 'Fourth Year',
+
+            ];
         }
     }

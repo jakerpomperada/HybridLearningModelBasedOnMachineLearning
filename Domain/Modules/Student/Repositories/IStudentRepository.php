@@ -17,4 +17,6 @@
 
         public function Aggregates(object $data) : Student;
 
+        public function GetYearLevel() : array;
+
 	}

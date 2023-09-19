@@ -28,6 +28,9 @@
     Route::resource('/student', 'StudentController');
     Route::resource('/academic-term', 'AcademicTermController');
 
+    Route::get('/subject-term', 'SubjectTermController@index');
+    Route::get('/subject-term/data', 'SubjectTermController@getData');
+
     Route::post('image-upload', 'UploadImageController@store');
 
     Route::get('/', 'LoginController@index');

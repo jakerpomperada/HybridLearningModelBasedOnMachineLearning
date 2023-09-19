@@ -16,6 +16,7 @@
 
         public function GetAllPaginate(int $page, int $limit) : Paginator;
 
+        public function GetAll() : object;
         public function Find(string $id) : object;
 
 

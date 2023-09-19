@@ -41,4 +41,9 @@
         {
             return SubjectDB::find($id);
         }
+
+        public function GetAll(): object
+        {
+            return SubjectDB::all();
+        }
     }

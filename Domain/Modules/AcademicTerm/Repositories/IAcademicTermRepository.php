@@ -4,6 +4,7 @@
 
 	use Domain\Modules\AcademicTerm\Entities\AcademicTerm;
     use Illuminate\Contracts\Pagination\Paginator;
+    use Ramsey\Collection\Collection;
 
     interface IAcademicTermRepository
 	{
@@ -15,7 +16,13 @@
 
         public function GetAllPaginate(int $page, int $limit) : object;
 
+        public function GetAll() : object;
+
         public function Find(string $id) : AcademicTerm | null;
+
+        public function GetSemesters() : array;
+
+
 
 
 

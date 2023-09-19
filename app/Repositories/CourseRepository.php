@@ -46,4 +46,9 @@
         {
             return DB::table('courses')->where(['id' => $id])->first();
         }
+
+        public function GetAll(): object
+        {
+            return CourseDB::all();
+        }
     }

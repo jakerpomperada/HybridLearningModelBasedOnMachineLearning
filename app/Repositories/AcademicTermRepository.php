@@ -5,6 +5,7 @@
     use Domain\Modules\AcademicTerm\Entities\AcademicTerm;
     use Domain\Modules\AcademicTerm\Repositories\IAcademicTermRepository;
     use Illuminate\Contracts\Pagination\Paginator;
+    use Illuminate\Support\Collection;
     use Illuminate\Support\Facades\DB;
 
     use App\Models\AcademicTerm as AcademicTermDB;
@@ -48,6 +49,15 @@
             ];
         }
 
+        public function GetAll(): object
+        {
+            $data = AcademicTermDB::all();
+
+            return $data->map(function ($d) {
+                return $this->Aggregate($d);
+            });
+        }
+
         public function Find(string $id): AcademicTerm|null
         {
             $data = DB::table('academic_terms')->find($id);
@@ -56,5 +66,13 @@
 
         public function Aggregate( object $term) : AcademicTerm {
             return new AcademicTerm($term->year_from, $term->year_to, $term->id);
+        }
+
+        public function GetSemesters(): array
+        {
+            return [
+                '1st' => 'First Semester',
+                '2nd' => 'Second Semester'
+            ];
         }
     }
