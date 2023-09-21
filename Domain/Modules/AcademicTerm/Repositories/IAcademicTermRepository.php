@@ -22,6 +22,14 @@
 
         public function GetSemesters() : array;
 
+        public function SaveSubjectTerm(
+                    $course,
+                    $academic_term,
+                    $year_level,
+                    $subject,
+                    $semester,
+                );
+
 
 
 

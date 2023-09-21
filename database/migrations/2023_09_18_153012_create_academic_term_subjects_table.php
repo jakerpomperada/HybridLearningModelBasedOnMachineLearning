@@ -12,14 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('academic_term_subjects', function (Blueprint $table) {
-            $table->uuid('academic_term_id')->primary();
+            $table->uuid('id')->primary();
+            $table->uuid('academic_term_semester_id')->index();
             $table->uuid('course_id')->index();
             $table->uuid('subject_id')->index();
             $table->timestamps();
 
-            $table->foreign('academic_term_id')
+            $table->foreign('academic_term_semester_id')
                 ->references('id')
-                ->on('academic_terms')
+                ->on('academic_term_semesters')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
 

@@ -20,6 +20,8 @@
                 'year_to'   => $academicTerm->getYearTo(),
             ]);
 
+
+
         }
 
         public function Update(AcademicTerm $academicTerm): void
@@ -74,5 +76,10 @@
                 '1st' => 'First Semester',
                 '2nd' => 'Second Semester'
             ];
+        }
+
+        public function SaveSubjectTerm($course, $academic_term, $year_level, $subject, $semester,)
+        {
+
         }
     }

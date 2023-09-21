@@ -9,7 +9,9 @@
     use Domain\Modules\Course\Repositories\ICourseRepository;
     use Domain\Modules\Student\Repositories\IStudentRepository;
     use Domain\Modules\Subject\Repositories\ISubjectRepository;
+    use Error;
     use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\Validator;
 
     class SubjectTermController extends Controller
     {
@@ -62,5 +64,40 @@
                 ],
                 'success' => true
             ]);
+        }
+
+        public function store(Request $req)
+        {
+
+            try {
+                $val = Validator::make($req->all(), [
+                    'course'        => 'required',
+                    'academic_term' => 'required',
+                    'year_level'    => 'required',
+                    'subject'       => 'required',
+                    'semester'      => 'required'
+                ]);
+
+                if ($val->fails()) {
+                    throw new Error($val->getMessageBag()->all()[0]);
+                }
+
+                $this->academicTermRepository->SaveSubjectTerm(
+                    $req->course,
+                    $req->academic_term,
+                    $req->year_level,
+                    $req->subject,
+                    $req->semester,
+                );
+
+
+                return $req->all();
+
+
+            } catch (Error $error) {
+                return redirectExceptionWithInput($error);
+            }
+
+
         }
     }

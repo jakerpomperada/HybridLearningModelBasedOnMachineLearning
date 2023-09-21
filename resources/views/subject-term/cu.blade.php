@@ -10,13 +10,17 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="field-1" class="form-label">Academic Term:</label>
-                            <input name="academic_term" type="text" class="form-control" id="academic_term" placeholder="John">
+                            <select name=academic_terms" id="academic_terms" class="form-control"></select>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="field-2" class="form-label">Semester:</label>
-                            <input name="semester" type="text" class="form-control" id="semester" placeholder="Doe">
+                            <select name=semesters" id="semesters" class="form-control">
+                                <option value="-1">Select Semester</option>
+                                <option value="1st">First Semester</option>
+                                <option value="2nd">Second Semester</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -24,13 +28,13 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="field-1" class="form-label">Course:</label>
-                            <input type="text" name="course" class="form-control" id="course" placeholder="John">
+                            <select name=courses" id="courses" class="form-control"></select>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">
                             <label for="field-2" class="form-label">Year Level:</label>
-                            <input type="text" name="year_level" class="form-control" id="year_level" placeholder="Doe">
+                            <select name=year_level" id="year_level" class="form-control"></select>
                         </div>
                     </div>
                 </div>
@@ -38,16 +42,14 @@
                     <div class="col-md-12">
                         <div class="mb-3">
                             <label for="field-3" class="form-label">Subject:</label>
-                            <input type="text" name="subject" class="form-control" id="subject" placeholder="Address" />
+                            <select name=subjects" id="subjects" class="form-control"></select>
                         </div>
                     </div>
                 </div>
-
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary waves-effect" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-info waves-effect waves-light">Save changes</button>
+                <button type="button" class="btn btn-info waves-effect waves-light" id="save_subject_term">Save changes</button>
             </div>
         </div>
     </div>
