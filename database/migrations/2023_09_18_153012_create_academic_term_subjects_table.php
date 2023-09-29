@@ -16,6 +16,7 @@ return new class extends Migration
             $table->uuid('academic_term_semester_id')->index();
             $table->uuid('course_id')->index();
             $table->uuid('subject_id')->index();
+            $table->char('year_level', 6);
             $table->timestamps();
 
             $table->foreign('academic_term_semester_id')

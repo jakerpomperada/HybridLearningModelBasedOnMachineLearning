@@ -82,12 +82,24 @@
                     throw new Error($val->getMessageBag()->all()[0]);
                 }
 
+                $course_id        = $req->input('course');
+                $academic_term_id = $req->input('academic_term');
+                $year_level    = $req->input('year_level');
+                $subject_id       = $req->input('subject');
+                $semester      = $req->input('semester');
+
+
+                $academic_semester = $this->academicTermRepository->FindAcademicSemester(
+                    $academic_term_id,
+                    $semester
+                );
+
+
                 $this->academicTermRepository->SaveSubjectTerm(
-                    $req->course,
-                    $req->academic_term,
-                    $req->year_level,
-                    $req->subject,
-                    $req->semester,
+                    $academic_semester->id,
+                    $course_id,
+                    $subject_id,
+                    $year_level
                 );
 
 

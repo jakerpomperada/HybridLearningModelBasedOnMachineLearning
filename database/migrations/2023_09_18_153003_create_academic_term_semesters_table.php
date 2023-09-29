@@ -19,7 +19,7 @@ return new class extends Migration
 
             $table->foreign('academic_id')
                 ->references('id')
-                ->on('users')
+                ->on('academic_terms')
                 ->onUpdate('CASCADE')
                 ->onDelete('CASCADE');
         });
