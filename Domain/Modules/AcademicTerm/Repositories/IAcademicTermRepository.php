@@ -31,5 +31,9 @@
 
         public function FindAcademicSemester(string $academic_id, string $semester): object|null;
 
+        public function GetAllSubjectTermPaginate(int $page, int $limit) : Paginator;
+
+
+
 
     }

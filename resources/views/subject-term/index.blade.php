@@ -110,14 +110,15 @@
                             </thead>
                             <tbody>
 
-                            @foreach([] as $subject)
+
+                            @foreach($subjects as $subject)
                                 <tr>
-                                    <td>{{ $subject->code }}</td>
+                                    <td>{{ $subject->subject_code }}</td>
                                     <td>{{ $subject->description }}</td>
-                                    <td>{{ $subject->description }}</td>
-                                    <td>{{ $subject->description }}</td>
-                                    <td>{{ $subject->description }}</td>
-                                    <td>{{ $subject->description }}</td>
+                                    <td>{{ $subject->term }}</td>
+                                    <td>{{ $subject->semester }}</td>
+                                    <td>{{ $subject->course }}</td>
+                                    <td>{{ $subject->year }}</td>
                                     <td>
                                         <a href="subject/{{$subject->id}}" class="btn btn-sm btn-rounded btn-primary">
                                             <i class="feather-edit"></i>&nbsp; Edit
@@ -136,7 +137,7 @@
 
                     </div>
                     <div style="margin-left:auto; margin-right: auto;">
-                        {{--                        {!!  $paginate !!}--}}
+                                                {!!  $paginate !!}
                     </div>
 
                 </div>
@@ -225,7 +226,7 @@
                 dataType: "json",
                 encode: true,
             }).done(function (data) {
-                console.log(data);
+                location.reload();
             });
 
 

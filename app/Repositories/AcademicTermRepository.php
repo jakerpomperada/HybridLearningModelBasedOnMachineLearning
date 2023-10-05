@@ -2,6 +2,7 @@
 
     namespace App\Repositories;
 
+    use App\Models\AcademicTermSubject;
     use Domain\Modules\AcademicTerm\Entities\AcademicTerm;
     use Domain\Modules\AcademicTerm\Repositories\IAcademicTermRepository;
     use Illuminate\Contracts\Pagination\Paginator;
@@ -107,6 +108,11 @@
                 'academic_id' => $academic_id,
                 'semester'    => $semester,
             ])->first();
+        }
+
+        public function GetAllSubjectTermPaginate(int $page, int $limit): Paginator
+        {
+            return AcademicTermSubject::with(['AcademicTermSemester.AcademicTerm', 'Course'])->paginate($limit);
         }
 
 
