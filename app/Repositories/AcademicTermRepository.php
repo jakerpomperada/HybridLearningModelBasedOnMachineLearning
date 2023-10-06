@@ -115,6 +115,13 @@
 			return AcademicTermSubject::with(['AcademicTermSemester.AcademicTerm', 'Course'])->paginate($limit);
 		}
 		
+		public function FindSubjectTerm(string $id): null|object
+		{
+			return AcademicTermSubject::with(['AcademicTermSemester.AcademicTerm', 'Course'])->where([
+				'id' => $id
+			])->first();
+		}
+		
 		
 		public function SaveSubjectTerm(string $academic_term_semester_id, string $course_id, string $subject_id, string $year_level): void
 		{
@@ -125,6 +132,19 @@
 				'subject_id'                => $subject_id,
 				'year_level'                => $year_level,
 				'created_at'                => now(),
+				'updated_at'                => now(),
+			]);
+		}
+		
+		
+		public function UpdateSubjectTerm(string $academic_term_semester_id, string $course_id, string $subject_id, string $year_level, string $id): void
+		{
+			DB::table('academic_term_subjects')->where(['id' => $id])->update([
+				'id'                        => uuid(),
+				'academic_term_semester_id' => $academic_term_semester_id,
+				'course_id'                 => $course_id,
+				'subject_id'                => $subject_id,
+				'year_level'                => $year_level,
 				'updated_at'                => now(),
 			]);
 		}

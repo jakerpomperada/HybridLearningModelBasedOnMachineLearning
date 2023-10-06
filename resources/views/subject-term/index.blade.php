@@ -120,7 +120,7 @@
                                     <td>{{ $subject->course }}</td>
                                     <td>{{ $subject->year }}</td>
                                     <td>
-                                        <a href="subject/{{$subject->id}}" class="btn btn-sm btn-rounded btn-primary">
+                                        <a href="subject-term/{{$subject->id}}" class="btn btn-sm btn-rounded btn-primary">
                                             <i class="feather-edit"></i>&nbsp; Edit
                                         </a>
                                         <a href="javascript:" id="{{$subject->id}}"
@@ -180,7 +180,7 @@
         $("#cu_subject_term_add_button").click(function () {
             $('#cu_subject_term_modal').modal('show');
             $.ajax({
-                url: `/subject-term/data`,
+                url: `/subject-term/get/data`,
                 type: 'GET',
                 data: {
                     "_token": "{{ csrf_token() }}",

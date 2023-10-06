@@ -28,11 +28,23 @@
             string $subject_id,
             string $year_level
         ): void;
+	    
+	    public function UpdateSubjectTerm(
+		    string $academic_term_semester_id,
+		    string $course_id,
+		    string $subject_id,
+		    string $year_level,
+		    string $id
+	    ): void;
+		
+		
 
         public function FindAcademicSemester(string $academic_id, string $semester): object|null;
 
         public function GetAllSubjectTermPaginate(int $page, int $limit) : Paginator;
-
+	    
+	    
+	    public function FindSubjectTerm(string $id) : null | object;
 
 
 
