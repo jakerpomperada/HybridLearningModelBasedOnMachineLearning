@@ -29,6 +29,14 @@ class AcademicTermSubject extends Model
     public function Course(): BelongsTo {
         return $this->belongsTo(Course::class);
     }
+	
+	
+	public function getYearLevel(): string {
+		return $this->year_level . " Year";
+	}
+	
+	
+	
 
 
 

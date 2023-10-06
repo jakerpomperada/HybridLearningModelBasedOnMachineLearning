@@ -45,7 +45,7 @@ class SubjectTermController extends Controller
 	            'term'         => $i->AcademicTermSemester->getTerm(),
 	            'semester'     => $i->AcademicTermSemester->getSemester(),
 	            'course'       => $i->Course->code,
-	            'year'         => $i->year_level
+	            'year'         => $i->getYearLevel()
             ];
         });
 		

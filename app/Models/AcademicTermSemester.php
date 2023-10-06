@@ -26,7 +26,7 @@ class AcademicTermSemester extends Model
     }
 
     public function getSemester() : string {
-        return $this->semester . ' sssSemester';
+        return $this->semester . ' Semester';
     }
 
 
