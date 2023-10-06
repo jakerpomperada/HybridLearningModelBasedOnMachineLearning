@@ -148,4 +148,8 @@
 				'updated_at'                => now(),
 			]);
 		}
+		
+		public function DeleteSubjectTerm(string $id) : void {
+			DB::table('academic_term_subjects')->where(['id' => $id])->delete();
+		}
 	}

@@ -11,6 +11,7 @@
 	use Domain\Modules\Subject\Repositories\ISubjectRepository;
 	use Error;
 	use Illuminate\Http\Request;
+	use Illuminate\Support\Facades\Session;
 	use Illuminate\Support\Facades\Validator;
 	
 	class SubjectTermController extends Controller
@@ -232,4 +233,18 @@
 				return redirectExceptionWithInput($error);
 			}
 		}
+		
+		
+		public function destroy(string $id) {
+			
+			$this->academicTermRepository->DeleteSubjectTerm($id);
+			
+			Session::flash('alert-danger', 'Subject Term has been deleted');
+			
+			return response()->json([
+				'success' => true
+			]);
+		}
+		
+		
 	}

@@ -31,6 +31,7 @@
     Route::get('/subject-term', 'SubjectTermController@index');
 	Route::get('/subject-term/{id}', 'SubjectTermController@show');
 	Route::put('/subject-term/{id}', 'SubjectTermController@update');
+	Route::delete('/subject-term/{id}', 'SubjectTermController@destroy');
     Route::post('/subject-term', 'SubjectTermController@store');
     Route::get('/subject-term/get/data', 'SubjectTermController@getData');
 
