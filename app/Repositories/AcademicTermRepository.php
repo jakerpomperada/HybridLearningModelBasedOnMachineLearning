@@ -92,6 +92,7 @@
 			$data = DB::table('academic_terms')->find($id);
 			return !$data ? null : $this->Aggregate($data);
 		}
+
 		
 		public function GetSemesters(): array
 		{
@@ -149,7 +150,8 @@
 			]);
 		}
 		
-		public function DeleteSubjectTerm(string $id) : void {
+		public function DeleteSubjectTerm(string $id): void
+		{
 			DB::table('academic_term_subjects')->where(['id' => $id])->delete();
 		}
 	}

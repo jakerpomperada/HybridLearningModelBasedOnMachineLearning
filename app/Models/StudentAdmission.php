@@ -11,7 +11,7 @@ class StudentAdmission extends Model
 	use Uuid;
 	
 	public $incrementing = false;
-	protected $table = 'student_admission';
+	protected $table = 'student_admissions';
 	protected $keyType = 'string';
 	protected $guarded = [];
 }

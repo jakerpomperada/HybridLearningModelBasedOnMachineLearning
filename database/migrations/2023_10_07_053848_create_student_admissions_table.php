@@ -12,8 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('student_admissions', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->uuid('id')->primary();
+	        $table->uuid('academic_term_id')->index();
+	        $table->uuid('student_id')->index();
+	        $table->uuid('course_id')->index();
+	        $table->uuid('year_level');
+	        $table->uuid('section');
+			$table->timestamps();
         });
     }
 

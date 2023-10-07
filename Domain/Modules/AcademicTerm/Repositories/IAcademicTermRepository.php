@@ -19,7 +19,8 @@
         public function GetAll(): object;
 
         public function Find(string $id): AcademicTerm|null;
-
+		
+		
         public function GetSemesters(): array;
 
         public function SaveSubjectTerm(

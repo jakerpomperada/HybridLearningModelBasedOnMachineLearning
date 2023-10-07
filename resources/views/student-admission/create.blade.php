@@ -20,7 +20,7 @@
                 <div class="card flex-fill">
 
                     <div class="card-body">
-                        {!! Form::open(['url' => '/subject', 'method' => 'POST']) !!}
+                        {!! Form::open(['url' => '/student-admission', 'method' => 'POST']) !!}
                         @include('template.alert')
                         <br/>
                         <div class="form-group row">

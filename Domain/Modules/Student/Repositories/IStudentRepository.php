@@ -21,5 +21,7 @@
         public function GetYearLevel() : array;
 		
 		public function GetAll() : Collection;
+		
+		public function RegisterAdmission($academic_term_id, $student_id, $course_id, $year_level, $section): void;
 
 	}
