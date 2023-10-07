@@ -10,7 +10,8 @@
     use Domain\Shared\User;
     use Illuminate\Contracts\Pagination\Paginator;
     use App\Models\Student as StudentDB;
-
+    use Illuminate\Database\Eloquent\Collection;
+    
     class StudentRepository implements IStudentRepository
     {
 
@@ -31,7 +32,7 @@
                 'middlename'     => $student->getMiddlename(),
                 'birthdate'      => $student->getBirthdate(),
                 'contact_number' => $student->getContactNumber(),
-                'address'        => $student->getAddress(),
+                'address'        => $student->getAddress()->minifyAddress(),
             ]);
         }
 
@@ -81,8 +82,8 @@
             $student = new Student(
                 $data->id_number,
                 $data->firstname,
-                $data->lastname,
                 $data->middlename,
+	            $data->lastname,
                 $data->birthdate,
                 $data->contact_number,
                 new Address($data->address),
@@ -109,4 +110,9 @@
 
             ];
         }
+		
+		public function GetAll(): Collection
+		{
+			return StudentDB::all();
+		}
     }

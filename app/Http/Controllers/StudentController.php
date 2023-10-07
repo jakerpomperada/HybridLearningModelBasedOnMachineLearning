@@ -110,7 +110,7 @@
 
             $student_data = $this->studentRepository->Find($id);
             $student      = (new StudentResource($student_data))->resolve();
-
+			
             return view('student.edit')->with([
                 'student' => (object)$student
             ]);

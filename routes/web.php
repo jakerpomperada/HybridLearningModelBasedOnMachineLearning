@@ -34,6 +34,8 @@
 	Route::delete('/subject-term/{id}', 'SubjectTermController@destroy');
     Route::post('/subject-term', 'SubjectTermController@store');
     Route::get('/subject-term/get/data', 'SubjectTermController@getData');
+	
+	Route::resource('/student-admission', 'StudentAdmissionController');
 
     Route::post('image-upload', 'UploadImageController@store');
 

@@ -24,11 +24,14 @@
                     <a href="/student"><i class="fas fa-graduation-cap"></i> <span>Students</span></a>
                 </li>
 
-                <li class="submenu">
+                <li class="subdrop">
                     <a href="#"><i class="fas fa-list"></i> <span>Academic Term</span><span class="menu-arrow"></span></a>
-                    <ul>
+                    <ul style="display: block">
                         <li><a href="/academic-term">View Terms</a></li>
-                        <li><a href="/subject-term">Manage Subject Term</a></li>
+                         <li><a href="/subject-term">Manage Subject Term</a></li>
+                        <li><a href="/student-admission">Student Admission</a></li>
+                        <li><a href="/subject-term">Teaching Load</a></li>
+
                     </ul>
                 </li>
 

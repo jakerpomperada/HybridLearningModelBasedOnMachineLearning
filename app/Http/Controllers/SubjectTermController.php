@@ -5,6 +5,7 @@
 	use App\Http\Resources\AcademicTermResource;
 	use App\Http\Resources\CourseResource;
 	use App\Http\Resources\SubjectResource;
+	use App\Services\BaseDataDropDownService;
 	use Domain\Modules\AcademicTerm\Repositories\IAcademicTermRepository;
 	use Domain\Modules\Course\Repositories\ICourseRepository;
 	use Domain\Modules\Student\Repositories\IStudentRepository;
@@ -23,13 +24,16 @@
 		
 		protected ISubjectRepository $subjectRepository;
 		
+		protected BaseDataDropDownService $baseDataDropDownService;
 		
-		public function __construct(IAcademicTermRepository $academicTermRepository, IStudentRepository $studentRepository, ICourseRepository $courseRepository, ISubjectRepository $subjectRepository)
+		
+		public function __construct(BaseDataDropDownService $baseDataDropDownService, IAcademicTermRepository $academicTermRepository, IStudentRepository $studentRepository, ICourseRepository $courseRepository, ISubjectRepository $subjectRepository)
 		{
 			$this->academicTermRepository = $academicTermRepository;
 			$this->studentRepository      = $studentRepository;
 			$this->courseRepository       = $courseRepository;
 			$this->subjectRepository      = $subjectRepository;
+			$this->baseDataDropDownService = $baseDataDropDownService;
 		}
 		
 		
@@ -63,50 +67,16 @@
 			
 			$subject_term = $this->academicTermRepository->FindSubjectTerm($id);
 			
-			$terms = AcademicTermResource::collection(
-				$this->academicTermRepository->GetAll()
-			)->resolve();
-			
-			$courses = CourseResource::collection(
-				$this->courseRepository->GetAll()
-			)->resolve();
-			
-			$subjects = SubjectResource::collection(
-				$this->subjectRepository->GetAll()
-			)->resolve();
-			
-			$semesters = $this->academicTermRepository->GetSemesters();
-			
-			$year_level = $this->studentRepository->GetYearLevel();
-
-//		--------------------- Terms ------------------------------------
-			
-			$terms = collect($terms)->mapWithKeys(function ($item, $key) {
-				return [$item->id => $item->academic_year];
-			});
-			
-			$courses = collect($courses)->mapWithKeys(function ($item, $key) {
-				return [$item['id'] => $item['code']];
-			});
-			
-			$subjects = collect($subjects)->mapWithKeys(function ($item, $key) {
-				return [$item['id'] => $item['code']];
-			});
-			
-			
-			$semesters = collect($semesters)->mapWithKeys(function ($item, $key) {
-				return [$key => $item];
-			});
-			
+			$base_data = $this->baseDataDropDownService->getBaseData();
 			
 			return view('subject-term.edit')->with([
-				'subject_term' => $subject_term,
-				'subject'         => $subjects,
-				'terms'           => $terms,
-				'semesters'       => $semesters,
-				'courses'         => $courses,
-				'year_level'      => $year_level,
-				'subjects'        => $subjects,
+				'subject_term'    => $subject_term,
+				'subject'         => $base_data->subject,
+				'terms'           => $base_data->terms,
+				'semesters'       => $base_data->semesters,
+				'courses'         => $base_data->courses,
+				'year_level'      => $base_data->year_level,
+				'subjects'        => $base_data->subjects,
 				'subject_term_id' => $id
 			]);
 		}
@@ -228,14 +198,15 @@
 				return redirectWithAlert('/subject-term', [
 					'alert-info' => 'Subject Term has been updated!'
 				]);
-			
+				
 			} catch (Error $error) {
 				return redirectExceptionWithInput($error);
 			}
 		}
 		
 		
-		public function destroy(string $id) {
+		public function destroy(string $id)
+		{
 			
 			$this->academicTermRepository->DeleteSubjectTerm($id);
 			

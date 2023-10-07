@@ -5,8 +5,9 @@
 	use Domain\Modules\Student\Entities\Student;
     use Domain\Modules\Teacher\Entities\Teacher;
     use Illuminate\Contracts\Pagination\Paginator;
-
-    interface IStudentRepository
+	use Illuminate\Database\Eloquent\Collection;
+	
+	interface IStudentRepository
 	{
         public function Save(Student $student) : void;
         public function Update(Student $student, string $user_id) : void;
@@ -18,5 +19,7 @@
         public function Aggregates(object $data) : Student;
 
         public function GetYearLevel() : array;
+		
+		public function GetAll() : Collection;
 
 	}

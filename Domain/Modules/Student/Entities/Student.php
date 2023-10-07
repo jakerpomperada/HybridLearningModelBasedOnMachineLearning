@@ -65,7 +65,7 @@
         public function completeName(): string
         {
 
-            return $this->lastname . ", " . $this->firstname . " " . ucfirst(substr($this->middlename, 1));
+            return $this->lastname . ", " . $this->firstname . " " . ucfirst($this->middlename);
         }
 
 

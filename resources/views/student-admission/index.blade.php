@@ -12,7 +12,7 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col">
-                    <h3 class="page-title"><i class="fas fa-book-reader"></i>&nbsp;&nbsp; Subject Terms Information</h3>
+                    <h3 class="page-title"><i class="fas fa-book-reader"></i>&nbsp;&nbsp; Student Admission Information</h3>
 
                 </div>
             </div>
@@ -22,62 +22,7 @@
         <div class="row">
             {{--            <div class="col-lg-1"></div>--}}
             <div class="col-lg-12 col-sm-12">
-                <div class="row">
-                    <div class="col-sm-12">
 
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-title">Filter:</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm">
-                                        <form class="needs-validation" novalidate="">
-                                            <div class="input-group input-group-sm">
-                                                <div class="input-group">
-                                                    <select name="academic_year" class="form-control col-lg-3">
-                                                        <option value="">--Academic Year--</option>
-                                                        <option value="">2024-2025</option>
-                                                        <option value="">2023</option>
-                                                    </select>
-                                                    &nbsp;
-                                                    <select name="academic_year" class="form-control col-lg-3">
-                                                        <option value="">--Semester--</option>
-                                                        <option value="">2024-2025</option>
-                                                        <option value="">2023</option>
-                                                    </select>
-                                                    &nbsp;
-                                                    <select name="academic_year" class="form-control col-lg-3">
-                                                        <option value="">--Course--</option>
-                                                        <option value="">2024-2025</option>
-                                                        <option value="">2023</option>
-                                                    </select>
-                                                    &nbsp;
-                                                    <select name="year_level" class="form-control col-lg-3">
-                                                        <option value="">--Year Level--</option>
-                                                        <option value="">2024-2025</option>
-                                                        <option value="">2023</option>
-                                                    </select>
-                                                    &nbsp;
-
-
-                                                    <div class="input-group-append">
-                                                        <button type="button" class="btn btn-info">Filter</button>
-                                                        <button type="button" class="btn btn-outline-light">Clear
-                                                        </button>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
                 @include('template.alert')
                 <div class="card card-table">
                     <div class="card-body">
@@ -86,11 +31,9 @@
                             <div class="row align-items-center">
 
                                 <div class="col-auto text-end">
-                                    {{--                                    <button type="button" class="btn btn-sm btn-success" data-bs-toggle="modal" data-bs-target="#con-close-modal">Responsive Modal</button>--}}
-                                    <button id="cu_subject_term_add_button" class="btn btn-sm btn-success"
-                                            data-bs-toggle="modal" data-bs-target="#con-close-modal"><i
-                                            class="fas fa-plus"></i> &nbsp; Add Subject Term
-                                    </button>
+                                    <a href="/student-admission/create" class="btn btn-sm btn-success"><i
+                                                class="fas fa-plus"></i> &nbsp; Add New Student Admission
+                                    </a>
                                 </div>
                             </div>
                         </div>
@@ -98,19 +41,19 @@
                         <table class="table table-hover table-center mb-0 table-striped mb-0 text-center">
                             <thead>
                             <tr>
-                                <th>Subject Code</th>
-                                <th>Subject Description</th>
+                                <th>Student Name</th>
+                                <th>Course</th>
+                                <th>Year and Section</th>
                                 <th>Academic Term</th>
                                 <th>Semester</th>
-                                <th>Course</th>
-                                <th>Year Level</th>
+
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
 
 
-                            @foreach($subjects as $subject)
+                            @foreach([] as $subject)
                                 <tr>
                                     <td>{{ $subject->subject_code }}</td>
                                     <td>{{ $subject->description }}</td>
@@ -136,7 +79,7 @@
 
                     </div>
                     <div style="margin-left:auto; margin-right: auto;">
-                                                {!!  $paginate !!}
+                        {!!  $paginate !!}
                     </div>
 
                 </div>
