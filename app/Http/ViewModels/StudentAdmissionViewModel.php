@@ -33,12 +33,11 @@
 				$student->id
 			);
 			
-		
-			
 			
 			$this->student->setCurrentTerm(new AcademicTerm(
 				$this->sa->AcademicTermSemester->AcademicTerm->year_from,
-				$this->sa->AcademicTermSemester->AcademicTerm->year_to
+				$this->sa->AcademicTermSemester->AcademicTerm->year_to,
+				$this->sa->AcademicTermSemester->semester
 			));
 			
 			$this->student->setCurrentCourse(new Course(
@@ -66,7 +65,7 @@
 		
 		public function semester(): string
 		{
-			return "1st Semester";
+			return $this->student->getCurrentTerm()->displaySemester();
 		}
 		
 		public function student(): string

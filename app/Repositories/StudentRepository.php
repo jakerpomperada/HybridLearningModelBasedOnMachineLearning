@@ -132,9 +132,22 @@
 			]);
 		}
 		
+		public function UpdateAdmission($academic_semester_id, $student_id, $course_id, $year_level,
+		                                         $section, $id): void
+		{
+			DB::table('student_admissions')->where(['id' => $id])->update([
+				'academic_term_semester_id' => $academic_semester_id,
+				'student_id'                => $student_id,
+				'course_id'                 => $course_id,
+				'year_level'                => $year_level,
+				'section'                   => $section,
+				'updated_at'                => now(),
+			]);
+		}
+		
 		public function FindAdmissionData(string $id): object|null
 		{
-			return StudentAdmission::with(['Student','Course','AcademicTermSemester.AcademicTerm'])->where([
+			return StudentAdmission::with(['Student', 'Course', 'AcademicTermSemester.AcademicTerm'])->where([
 				'id' => $id
 			])->first();
 		}

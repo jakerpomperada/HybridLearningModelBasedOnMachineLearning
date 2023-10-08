@@ -110,6 +110,49 @@
 			
 		}
 		
+		public function update(Request $req, string $id): RedirectResponse
+		{
+			try {
+				$val = Validator::make($req->all(), [
+					'academic_term' => 'required',
+					'semester'      => 'required',
+					'student'       => 'required',
+					'course'        => 'required',
+					'year_level'    => 'required',
+					'section'       => 'required',
+				]);
+				
+				if ($val->fails()) {
+					return redirectWithInput($val);
+				}
+				
+				$term_semester = $this->academicTermRepository->FindAcademicSemester(
+					$req->input('academic_term'),
+					$req->input('semester')
+				);
+				
+				if (!$term_semester) throw new Error('Academic Semester Term Not found!');
+				
+				$this->studentRepository->UpdateAdmission(
+					$term_semester->id,
+					$req->input('student'),
+					$req->input('course'),
+					$req->input('year_level'),
+					$req->input('section'),
+					$id
+				);
+				
+				return redirectWithAlert('/student-admission', [
+					'alert-info' => 'Student Admission Updated Successfully!'
+				]);
+				
+			} catch (Error $error) {
+				return redirectExceptionWithInput($error);
+			}
+			
+			
+		}
+		
 		public function show(string $id)
 		{
 			
