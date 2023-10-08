@@ -46,6 +46,9 @@
 	    
 	    
 	    public function FindSubjectTerm(string $id) : null | object;
+		
+		
+		public function GetAllStudentAdmission() : Paginator;
 
 
 

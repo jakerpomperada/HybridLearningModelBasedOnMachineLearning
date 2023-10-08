@@ -3,6 +3,7 @@
 	namespace App\Repositories;
 	
 	use App\Models\AcademicTermSubject;
+	use App\Models\StudentAdmission;
 	use Domain\Modules\AcademicTerm\Entities\AcademicTerm;
 	use Domain\Modules\AcademicTerm\Repositories\IAcademicTermRepository;
 	use Illuminate\Contracts\Pagination\Paginator;
@@ -154,4 +155,12 @@
 		{
 			DB::table('academic_term_subjects')->where(['id' => $id])->delete();
 		}
+		
+		
+		public function GetAllStudentAdmission(): Paginator
+		{
+			return StudentAdmission::with(['Student','Course','AcademicTerm'])->paginate(5);
+		}
+		
+		
 	}

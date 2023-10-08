@@ -2,6 +2,7 @@
 	
 	namespace App\Http\Controllers;
 	
+	use App\Http\ViewModels\StudentAdmissionViewModel;
 	use App\Models\StudentAdmission;
 	use App\Services\BaseDataDropDownService;
 	use Domain\Modules\AcademicTerm\Repositories\IAcademicTermRepository;
@@ -17,11 +18,7 @@
 		protected IAcademicTermRepository $academicTermRepository;
 		protected IStudentRepository $studentRepository;
 		
-		/**
-		 * @param BaseDataDropDownService $baseDataDropDownService
-		 * @param IAcademicTermRepository $academicTermRepository
-		 * @param IStudentRepository $studentRepository
-		 */
+		
 		public function __construct(BaseDataDropDownService $baseDataDropDownService, IAcademicTermRepository $academicTermRepository, IStudentRepository $studentRepository)
 		{
 			$this->baseDataDropDownService = $baseDataDropDownService;
@@ -32,9 +29,27 @@
 		
 		public function index(): View
 		{
+			
+			
+			$student_admissions_data = $this->academicTermRepository->GetAllStudentAdmission();
+			$student_admissions = collect($student_admissions_data->items())->map(function ($data) {
+				
+				$sa = new StudentAdmissionViewModel($data);
+				return (object) [
+					'id'            => $sa->id(),
+					'student_name'  => $sa->student(),
+					'course'        => $sa->course(),
+					'year_section'  => $sa->yearSection(),
+					'academic_term' => $sa->academic_term(),
+					'semester'      => $sa->semester(),
+				];
+			});
+			
+			
+			
 			return view('student-admission.index')->with([
-				'admissions' => [],
-				'paginate'   => ''
+				'student_admissions' => $student_admissions,
+				'paginate'   => $student_admissions_data->links()
 			]);
 		}
 		

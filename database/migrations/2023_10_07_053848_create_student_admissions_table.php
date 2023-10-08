@@ -19,6 +19,24 @@ return new class extends Migration
 	        $table->uuid('year_level');
 	        $table->uuid('section');
 			$table->timestamps();
+	        
+	        $table->foreign('academic_term_id')
+		        ->references('id')
+		        ->on('academic_terms')
+		        ->onUpdate('CASCADE')
+		        ->onDelete('CASCADE');
+	        
+	        $table->foreign('student_id')
+		        ->references('id')
+		        ->on('students')
+		        ->onUpdate('CASCADE')
+		        ->onDelete('CASCADE');
+	        
+	        $table->foreign('course_id')
+		        ->references('id')
+		        ->on('courses')
+		        ->onUpdate('CASCADE')
+		        ->onDelete('CASCADE');
         });
     }
 

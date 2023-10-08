@@ -51,21 +51,19 @@
                             </tr>
                             </thead>
                             <tbody>
-
-
-                            @foreach([] as $subject)
+                            @foreach($student_admissions as $admission)
                                 <tr>
-                                    <td>{{ $subject->subject_code }}</td>
-                                    <td>{{ $subject->description }}</td>
-                                    <td>{{ $subject->term }}</td>
-                                    <td>{{ $subject->semester }}</td>
-                                    <td>{{ $subject->course }}</td>
-                                    <td>{{ $subject->year }}</td>
+                                    <td>{{ $admission->student_name }}</td>
+                                    <td>{{ $admission->course }}</td>
+                                    <td>{{ $admission->year_section }}</td>
+                                    <td>{{ $admission->academic_term }}</td>
+                                    <td>{{ $admission->semester }}</td>
+
                                     <td>
-                                        <a href="subject-term/{{$subject->id}}" class="btn btn-sm btn-rounded btn-primary">
+                                        <a href="subject-term/{{$admission->id}}" class="btn btn-sm btn-rounded btn-primary">
                                             <i class="feather-edit"></i>&nbsp; Edit
                                         </a>
-                                        <a href="javascript:" id="{{$subject->id}}"
+                                        <a href="javascript:" id="{{$admission->id}}"
                                            class="btn btn-sm btn-danger btn-rounded button_delete">
                                             <i class="feather-trash"></i>&nbsp; Delete
                                         </a>
