@@ -29,4 +29,6 @@
 		
 		public function FindAdmissionData(string $id): object | null;
 		
+		public function RemoveAdmission(string $id): void;
+		
 	}

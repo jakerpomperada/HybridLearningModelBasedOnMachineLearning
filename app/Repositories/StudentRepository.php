@@ -151,4 +151,11 @@
 				'id' => $id
 			])->first();
 		}
+		
+		public function RemoveAdmission(string $id): void
+		{
+			DB::table('student_admissions')->delete($id);
+		}
+		
+		
 	}

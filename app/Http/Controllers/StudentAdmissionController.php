@@ -10,6 +10,7 @@
 	use Error;
 	use Illuminate\Http\RedirectResponse;
 	use Illuminate\Http\Request;
+	use Illuminate\Support\Facades\Session;
 	use Illuminate\Support\Facades\Validator;
 	use Illuminate\View\View;
 	
@@ -181,6 +182,17 @@
 				'courses'    => $data->courses,
 				'year_level' => $data->year_level,
 				'sections'   => $data->sections
+			]);
+		}
+		
+		public function destroy(string $id) {
+			
+			$this->studentRepository->RemoveAdmission($id);
+			
+			Session::flash('alert-danger', 'Student has been deleted');
+			
+			return response()->json([
+				'success' => true
 			]);
 		}
 		
