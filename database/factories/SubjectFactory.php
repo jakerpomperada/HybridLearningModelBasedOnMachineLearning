@@ -16,8 +16,12 @@ class SubjectFactory extends Factory
      */
     public function definition(): array
     {
-        return [
-            //
-        ];
+	    return [
+		    'id'          => uuid(),
+		    'code'        => $this->faker->countryCode,
+		    'description' => $this->faker->country,
+		    'created_at'  => now(),
+		    'updated_at'  => now(),
+	    ];
     }
 }
