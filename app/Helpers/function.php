@@ -5,7 +5,16 @@
     use Illuminate\Support\Facades\Redirect;
     use Illuminate\Support\Str;
     use Illuminate\Validation\Validator;
-
+	
+	
+	function shortenString($string) {
+		if (strlen($string) > 15) {
+			return substr($string, 0, 15) . '...';
+		}
+		return $string;
+	}
+	
+	
     function validateErrorResponse(Validator $validator): JsonResponse
     {
         return response()->json([

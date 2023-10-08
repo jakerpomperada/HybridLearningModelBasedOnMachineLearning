@@ -36,6 +36,14 @@ class StudentAdmission extends Model
 		);
 	}
 	
+	public function AcademicTermSemester(): BelongsTo {
+		return $this->belongsTo(
+			AcademicTermSemester::class,
+			'academic_term_semester_id',
+			'id'
+		);
+	}
+	
 	
 	
 	

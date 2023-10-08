@@ -42,7 +42,7 @@
                     'complete_name'  => $t->completeName(),
                     'birthdate'      => $t->getBirthdateLongFormat(),
                     'contact_number' => $t->getContactNumber(),
-                    'address'        => $t->getAddress(),
+                    'address'        => shortenString($t->getAddress()),
                 ];
             });
 

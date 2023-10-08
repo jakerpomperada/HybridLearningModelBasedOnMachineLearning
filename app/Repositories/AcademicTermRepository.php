@@ -159,7 +159,7 @@
 		
 		public function GetAllStudentAdmission(): Paginator
 		{
-			return StudentAdmission::with(['Student','Course','AcademicTerm'])->paginate(5);
+			return StudentAdmission::with(['Student','Course','AcademicTermSemester.AcademicTerm'])->paginate(5);
 		}
 		
 		

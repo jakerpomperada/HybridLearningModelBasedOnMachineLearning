@@ -2,6 +2,7 @@
 	
 	namespace App\Repositories;
 	
+	use App\Models\StudentAdmission;
 	use App\Models\User as UserDB;
 	use Domain\Modules\Student\Entities\Student;
 	use Domain\Modules\Student\Repositories\IStudentRepository;
@@ -117,17 +118,24 @@
 			return StudentDB::all();
 		}
 		
-		public function RegisterAdmission($academic_term_id, $student_id, $course_id, $year_level, $section): void
+		public function RegisterAdmission($academic_semester_id, $student_id, $course_id, $year_level, $section): void
 		{
 			DB::table('student_admissions')->insert([
-				'id'               => uuid(),
-				'academic_term_id' => $academic_term_id,
-				'student_id'       => $student_id,
-				'course_id'        => $course_id,
-				'year_level'       => $year_level,
-				'section'          => $section,
-				'created_at'       => now(),
-				'updated_at'       => now(),
+				'id'                        => uuid(),
+				'academic_term_semester_id' => $academic_semester_id,
+				'student_id'                => $student_id,
+				'course_id'                 => $course_id,
+				'year_level'                => $year_level,
+				'section'                   => $section,
+				'created_at'                => now(),
+				'updated_at'                => now(),
 			]);
+		}
+		
+		public function FindAdmissionData(string $id): object|null
+		{
+			return StudentAdmission::with(['Student','Course','AcademicTermSemester.AcademicTerm'])->where([
+				'id' => $id
+			])->first();
 		}
 	}

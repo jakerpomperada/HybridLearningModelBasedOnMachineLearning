@@ -8,6 +8,7 @@
 	use Domain\Modules\AcademicTerm\Repositories\IAcademicTermRepository;
 	use Domain\Modules\Student\Repositories\IStudentRepository;
 	use Error;
+	use Illuminate\Http\RedirectResponse;
 	use Illuminate\Http\Request;
 	use Illuminate\Support\Facades\Validator;
 	use Illuminate\View\View;
@@ -29,13 +30,11 @@
 		
 		public function index(): View
 		{
-			
-			
 			$student_admissions_data = $this->academicTermRepository->GetAllStudentAdmission();
-			$student_admissions = collect($student_admissions_data->items())->map(function ($data) {
+			$student_admissions      = collect($student_admissions_data->items())->map(function ($data) {
 				
 				$sa = new StudentAdmissionViewModel($data);
-				return (object) [
+				return (object)[
 					'id'            => $sa->id(),
 					'student_name'  => $sa->student(),
 					'course'        => $sa->course(),
@@ -46,10 +45,9 @@
 			});
 			
 			
-			
 			return view('student-admission.index')->with([
 				'student_admissions' => $student_admissions,
-				'paginate'   => $student_admissions_data->links()
+				'paginate'           => $student_admissions_data->links()
 			]);
 		}
 		
@@ -58,8 +56,6 @@
 			$data = $this->baseDataDropDownService->getBaseData();
 			
 			$students = $this->baseDataDropDownService->students();
-			
-			
 			return view('student-admission.create')->with([
 				'students'   => $students,
 				'subjects'   => $data->subjects,
@@ -72,7 +68,7 @@
 		}
 		
 		
-		public function store(Request $req)
+		public function store(Request $req): RedirectResponse
 		{
 			try {
 				$val = Validator::make($req->all(), [
@@ -88,15 +84,16 @@
 					return redirectWithInput($val);
 				}
 				
-				$term = $this->academicTermRepository->FindAcademicSemester(
+				$term_semester = $this->academicTermRepository->FindAcademicSemester(
 					$req->input('academic_term'),
 					$req->input('semester')
 				);
 				
-				if (!$term) throw new Error('Academic Term Not found!');
+				if (!$term_semester) throw new Error('Academic Semester Term Not found!');
 				
 				$this->studentRepository->RegisterAdmission(
-					$term->id, $req->input('student'),
+					$term_semester->id,
+					$req->input('student'),
 					$req->input('course'),
 					$req->input('year_level'),
 					$req->input('section'),
@@ -111,6 +108,37 @@
 			}
 			
 			
+		}
+		
+		public function show(string $id)
+		{
+			
+			$admission = $this->studentRepository->FindAdmissionData($id);
+			
+			
+			$data = $this->baseDataDropDownService->getBaseData();
+			
+			$students = $this->baseDataDropDownService->students();
+			
+			return view('student-admission.edit')->with([
+				'admission'  => (object)[
+					'id'                        => $admission->id,
+					'academic_term_semester_id' => $admission->academic_term_semester_id,
+					'student_id'                => $admission->student_id,
+					'course_id'                 => $admission->course_id,
+					'year_level'                => $admission->year_level,
+					'section'                   => $admission->section,
+					'semester'                  => $admission->AcademicTermSemester->semester,
+					'academic_term_id'          => $admission->AcademicTermSemester->AcademicTerm->id
+				],
+				'students'   => $students,
+				'subjects'   => $data->subjects,
+				'terms'      => $data->terms,
+				'semesters'  => $data->semesters,
+				'courses'    => $data->courses,
+				'year_level' => $data->year_level,
+				'sections'   => $data->sections
+			]);
 		}
 		
 		

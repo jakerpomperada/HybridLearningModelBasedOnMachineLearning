@@ -3,6 +3,7 @@
 	namespace Database\Seeders;
 	
 	// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+	use App\Models\AcademicTerm;
 	use App\Models\Subject;
 	use App\Models\User;
 	use Database\Factories\StudentFactory;
@@ -22,7 +23,8 @@
 				StudentSeeder::class,
 				TeacherSeeder::class,
 				CourseSeeder::class,
-				SubjectSeeder::class
+				SubjectSeeder::class,
+				AcademicTermSeeder::class
 			]);
 		}
 	}

@@ -22,6 +22,8 @@
 		
 		public function GetAll() : Collection;
 		
-		public function RegisterAdmission($academic_term_id, $student_id, $course_id, $year_level, $section): void;
+		public function RegisterAdmission($academic_semester_id, $student_id, $course_id, $year_level, $section): void;
 
+		public function FindAdmissionData(string $id): object | null;
+		
 	}
