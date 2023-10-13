@@ -24,8 +24,8 @@
                     <div class="card-body">
                         <div class="db-widgets d-flex justify-content-between align-items-center">
                             <div class="db-info">
-                                <h6>Students</h6>
-                                <h3>50055</h3>
+                                <h6>Number of Students</h6>
+                                <h3>78</h3>
                             </div>
                             <div class="db-icon">
                                 <img src="{{asset("assets/img/icons/dash-icon-01.svg")}}" alt="Dashboard Icon">
@@ -39,8 +39,8 @@
                     <div class="card-body">
                         <div class="db-widgets d-flex justify-content-between align-items-center">
                             <div class="db-info">
-                                <h6>Awards</h6>
-                                <h3>50+</h3>
+                                <h6>Number of Teachers </h6>
+                                <h3>9</h3>
                             </div>
                             <div class="db-icon">
                                 <img src="{{asset("assets/img/icons/dash-icon-02.svg")}}" alt="Dashboard Icon">
@@ -54,8 +54,8 @@
                     <div class="card-body">
                         <div class="db-widgets d-flex justify-content-between align-items-center">
                             <div class="db-info">
-                                <h6>Department</h6>
-                                <h3>30+</h3>
+                                <h6>Total Courses</h6>
+                                <h3>5</h3>
                             </div>
                             <div class="db-icon">
                                 <img src="{{asset("assets/img/icons/dash-icon-03.svg")}}" alt="Dashboard Icon">
@@ -69,8 +69,8 @@
                     <div class="card-body">
                         <div class="db-widgets d-flex justify-content-between align-items-center">
                             <div class="db-info">
-                                <h6>Revenue</h6>
-                                <h3>$505</h3>
+                                <h6>Total Subjects</h6>
+                                <h3>13</h3>
                             </div>
                             <div class="db-icon">
                                 <img src="{{asset("assets/img/icons/dash-icon-04.svg")}}" alt="Dashboard Icon">
