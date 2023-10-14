@@ -58,7 +58,6 @@
 <script src="{{asset("assets/js/feather.min.js")}}"></script>
 <script src="{{asset("assets/plugins/slimscroll/jquery.slimscroll.min.js")}}"></script>
 <script src="{{asset("assets/plugins/apexchart/apexcharts.min.js")}}"></script>
-<script src="{{asset("assets/plugins/apexchart/chart-data.js")}}"></script>
 <script src="{{asset("assets/js/script.js")}}"></script>
 
 @stack('scripts')
