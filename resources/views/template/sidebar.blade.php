@@ -29,18 +29,8 @@
                 <li><a href="/academic-term">View Terms</a></li>
                 <li><a href="/subject-term">Manage Subject Term</a></li>
                 <li><a href="/student-admission">Student Admission</a></li>
-                <li><a href="/subject-term">Teaching Load</a></li>
+                <li><a href="/teaching-load">Teaching Load</a></li>
 
-{{--                <li class="subdrop">--}}
-{{--                    <a href="#"><i class="fas fa-list"></i> <span>Academic Term</span><span class="menu-arrow"></span></a>--}}
-{{--                    <ul style="display: block">--}}
-{{--                        <li><a href="/academic-term">View Terms</a></li>--}}
-{{--                         <li><a href="/subject-term">Manage Subject Term</a></li>--}}
-{{--                        <li><a href="/student-admission">Student Admission</a></li>--}}
-{{--                        <li><a href="/subject-term">Teaching Load</a></li>--}}
-
-{{--                    </ul>--}}
-{{--                </li>--}}
 
 
 

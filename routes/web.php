@@ -36,6 +36,7 @@
     Route::get('/subject-term/get/data', 'SubjectTermController@getData');
 	
 	Route::resource('/student-admission', 'StudentAdmissionController');
+	Route::resource('/teaching-load', 'TeachingLoadController');
 
     Route::post('image-upload', 'UploadImageController@store');
 

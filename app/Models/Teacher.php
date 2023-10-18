@@ -14,4 +14,9 @@ class Teacher extends Model
     protected $table = 'teachers';
     protected $keyType = 'string';
     protected $guarded = [];
+	
+	
+	public function completeName(): string {
+		return $this->lastname ." ". $this->firstname;
+	}
 }
