@@ -3,13 +3,11 @@
 	namespace App\Http\Controllers;
 	
 	use App\Services\BaseDataDropDownService;
-	use Domain\Modules\Course\Repositories\ICourseRepository;
-	use Domain\Modules\Subject\Repositories\ISubjectRepository;
 	use Domain\Modules\Teacher\Repositories\ITeacherRepository;
+	use Error;
 	use Illuminate\Http\Request;
 	use Illuminate\Support\Facades\Validator;
 	use Illuminate\View\View;
-	use Error;
 	
 	class TeachingLoadController extends Controller
 	{
@@ -73,7 +71,7 @@
 				if ($val->fails()) {
 					throw new Error($val->getMessageBag()->all()[0]);
 				}
-			
+				
 				$this->teacherRepository->SaveTeachingLoad(
 					$req->teacher,
 					$req->subject,
@@ -86,9 +84,6 @@
 				return redirectWithAlert('/teaching-load', [
 					'alert-success' => 'New teaching load has been added!'
 				]);
-				
-				
-				
 				
 			} catch (Error $error) {
 				return redirectExceptionWithInput($error);

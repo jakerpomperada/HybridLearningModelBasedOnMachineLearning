@@ -3,7 +3,6 @@
 	namespace App\Http\Controllers;
 	
 	use App\Http\ViewModels\StudentAdmissionViewModel;
-	use App\Models\StudentAdmission;
 	use App\Services\BaseDataDropDownService;
 	use Domain\Modules\AcademicTerm\Repositories\IAcademicTermRepository;
 	use Domain\Modules\Student\Repositories\IStudentRepository;

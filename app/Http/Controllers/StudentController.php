@@ -13,7 +13,7 @@
     use Illuminate\Support\Facades\Session;
     use Illuminate\Support\Facades\Validator;
     use Illuminate\View\View;
-
+    
     class StudentController extends Controller
     {
 

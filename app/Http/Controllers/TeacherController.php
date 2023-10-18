@@ -11,7 +11,7 @@
     use Illuminate\Support\Facades\Session;
     use Illuminate\Support\Facades\Validator;
     use Illuminate\View\View;
-
+    
     class TeacherController extends Controller
     {
 
