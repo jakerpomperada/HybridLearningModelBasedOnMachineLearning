@@ -97,8 +97,8 @@
 			]);
 		}
 		
-		public function FindTeachingLoad(string $teacher_id): object
+		public function FindTeachingLoad(string $id): object | null
 		{
-			return (object)[];
+			return DB::table('teaching_loads')->where(['id' => $id])->first();
 		}
 	}

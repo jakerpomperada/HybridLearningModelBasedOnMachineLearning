@@ -105,6 +105,70 @@
 			
 		}
 		
+		public function show($id)
+		{
+			
+			$teaching_load = $this->teacherRepository->FindTeachingLoad($id);
+			
+			$data = $this->baseDataDropDownService->getBaseData();
+			
+			$teachers = $this->teacherRepository->GetAll();
+			
+			$teachers = $teachers->mapWithKeys(function ($item, $key) {
+				return [$item->id => $item->completeName()];
+			});
+			
+			return view('teaching-load.edit')->with([
+				'tl'         => $teaching_load,
+				'teachers'   => $teachers,
+				'subjects'   => $data->subjects,
+				'terms'      => $data->terms,
+				'semesters'  => $data->semesters,
+				'courses'    => $data->courses,
+				'year_level' => $data->year_level,
+				'sections'   => $data->sections
+			]);
+		}
+		
+		public function update(Request $req, string $id): RedirectResponse
+		{
+			try {
+				
+				$val = Validator::make($req->all(), [
+					'teacher'    => 'required',
+					'subject'    => 'required',
+					'year_level' => 'required',
+					'section'    => 'required',
+					'semester'   => 'required',
+					'course'     => 'required',
+				]);
+				
+				if ($val->fails()) {
+					throw new Error($val->getMessageBag()->all()[0]);
+				}
+				
+				$teaching_load = $this->teacherRepository->FindTeachingLoad($id);
+				
+				$this->teacherRepository->UpdateTeachingLoad(
+					$req->teacher,
+					$req->subject,
+					$req->year_level,
+					$req->section,
+					$req->semester,
+					$req->course,
+					$teaching_load->id
+				);
+				
+				return redirectWithAlert('/teaching-load', [
+					'alert-info' => 'Teaching load has been updated!'
+				]);
+				
+			} catch (Error $error) {
+				return redirectExceptionWithInput($error);
+			}
+			
+			
+		}
 		
 		
 	}
