@@ -5,6 +5,7 @@
 	use App\Services\BaseDataDropDownService;
 	use Domain\Modules\Teacher\Repositories\ITeacherRepository;
 	use Error;
+	use Illuminate\Http\RedirectResponse;
 	use Illuminate\Http\Request;
 	use Illuminate\Support\Facades\Validator;
 	use Illuminate\View\View;
@@ -22,12 +23,12 @@
 		}
 		
 		
-		public function index()
+		public function index(): View
 		{
 			$data = $this->teacherRepository->GetAllTeachingLoadPaginate(request()->input('page') ?? 1, 5);
 			
 			$teaching_loads = collect($data->items())->map(function ($i) {
-				return (object) [
+				return (object)[
 					'id'                  => $i->id,
 					'teacher'             => $i->getTeacherCompleteName(),
 					'subject_code'        => $i->getSubjectCode(),
@@ -37,9 +38,6 @@
 					'year_level'          => $i->getYearLevel(),
 				];
 			});
-			
-			
-			
 			
 			return view('teaching-load.index')->with([
 				'teaching_loads' => $teaching_loads,
@@ -70,10 +68,8 @@
 			]);
 		}
 		
-		public function store(Request $req)
+		public function store(Request $req): RedirectResponse
 		{
-			
-			
 			try {
 				
 				$val = Validator::make($req->all(), [
@@ -108,6 +104,7 @@
 			
 			
 		}
+		
 		
 		
 	}
