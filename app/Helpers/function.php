@@ -7,6 +7,23 @@
     use Illuminate\Validation\Validator;
 	
 	
+	
+	function yearLevel(string $level)  : string {
+		return match ($level) {
+			'1st' => 'First Year',
+			'2nd' => 'Second Year',
+			'3rd' => 'Third Year',
+			default => 'Fourth Year',
+		};
+	}
+	
+	function semester(string $sem)  : string {
+		return match ($sem) {
+			'1st' => 'First Semester',
+			default => 'Second Semester',
+		};
+	}
+	
 	function shortenString($string) {
 		if (strlen($string) > 15) {
 			return substr($string, 0, 15) . '...';

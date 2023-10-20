@@ -52,20 +52,20 @@
                             <tbody>
 
 
-                            @foreach($subjects as $subject)
+                            @foreach($teaching_loads as $teaching_load)
                                 <tr>
-                                    <td>{{ $subject->subject_code }}</td>
-                                    <td>{{ $subject->description }}</td>
-                                    <td>{{ $subject->term }}</td>
-                                    <td>{{ $subject->semester }}</td>
-                                    <td>{{ $subject->course }}</td>
-                                    <td>{{ $subject->year }}</td>
+                                    <td>{{ $teaching_load->teacher }}</td>
+                                    <td>{{ $teaching_load->subject_code }}</td>
+                                    <td>{{ $teaching_load->subject_description }}</td>
+                                    <td>{{ $teaching_load->semester }}</td>
+                                    <td>{{ $teaching_load->course }}</td>
+                                    <td>{{ $teaching_load->year_level }}</td>
                                     <td>
-                                        <a href="subject-term/{{$subject->id}}"
+                                        <a href="subject-term/{{$teaching_load->id}}"
                                            class="btn btn-sm btn-rounded btn-primary">
                                             <i class="feather-edit"></i>&nbsp; Edit
                                         </a>
-                                        <a href="javascript:" id="{{$subject->id}}"
+                                        <a href="javascript:" id="{{$teaching_load->id}}"
                                            class="btn btn-sm btn-danger btn-rounded button_delete">
                                             <i class="feather-trash"></i>&nbsp; Delete
                                         </a>

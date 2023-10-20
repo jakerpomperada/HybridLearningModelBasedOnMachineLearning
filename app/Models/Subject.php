@@ -14,4 +14,12 @@ class Subject extends Model
     protected $table = 'subjects';
     protected $keyType = 'string';
     protected $guarded = [];
+	
+	public function getCode(): string {
+		return strtoupper($this->code);
+	}
+	
+	public function getDescription() : string {
+		return ucfirst($this->description);
+	}
 }

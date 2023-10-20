@@ -15,6 +15,10 @@ class Course extends Model
     protected $table = 'courses';
     protected $keyType = 'string';
     protected $guarded = [];
+	
+	public function getCode(): string {
+		return $this->code;
+	}
 
 
 }

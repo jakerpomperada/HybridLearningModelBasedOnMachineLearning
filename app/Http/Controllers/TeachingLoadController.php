@@ -24,9 +24,26 @@
 		
 		public function index()
 		{
+			$data = $this->teacherRepository->GetAllTeachingLoadPaginate(request()->input('page') ?? 1, 5);
+			
+			$teaching_loads = collect($data->items())->map(function ($i) {
+				return (object) [
+					'id'                  => $i->id,
+					'teacher'             => $i->getTeacherCompleteName(),
+					'subject_code'        => $i->getSubjectCode(),
+					'subject_description' => $i->getSubjectDescription(),
+					'semester'            => $i->getSemester(),
+					'course'              => $i->getCourse(),
+					'year_level'          => $i->getYearLevel(),
+				];
+			});
+			
+			
+			
+			
 			return view('teaching-load.index')->with([
-				'subjects' => [],
-				'paginate' => ""
+				'teaching_loads' => $teaching_loads,
+				'paginate'       => $data->links()
 			]);
 			
 		}

@@ -2,6 +2,7 @@
 	
 	namespace App\Repositories;
 	
+	use App\Models\TeachingLoad;
 	use Domain\Modules\Teacher\Entities\Teacher;
 	use Domain\Modules\Teacher\Repositories\ITeacherRepository;
 	use Illuminate\Contracts\Pagination\Paginator;
@@ -76,5 +77,28 @@
 				'created_at' => now(),
 				'updated_at' => now(),
 			]);
+		}
+		
+		public function GetAllTeachingLoadPaginate(int $page, int $limit): Paginator
+		{
+			return TeachingLoad::with(['Teacher', 'Subject', 'Course'])->paginate($limit);
+		}
+		
+		public function UpdateTeachingLoad(string $teacher_id, string $subject_id, string $year_level, string $section, string $semester, string $course_id, string $id): void
+		{
+			TeachingLoad::find($id)->update([
+				'teacher_id' => $teacher_id,
+				'subject_id' => $subject_id,
+				'year_level' => $year_level,
+				'section'    => $section,
+				'semester'   => $semester,
+				'course_id'  => $course_id,
+				'updated_at' => now(),
+			]);
+		}
+		
+		public function FindTeachingLoad(string $teacher_id): object
+		{
+			return (object)[];
 		}
 	}
