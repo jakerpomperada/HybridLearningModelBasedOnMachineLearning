@@ -43,4 +43,6 @@
 			string $course_id
 		): void;
 		
+		public function DeleteTeachingLoad(string $id) : void;
+		
 	}

@@ -7,6 +7,7 @@
 	use Error;
 	use Illuminate\Http\RedirectResponse;
 	use Illuminate\Http\Request;
+	use Illuminate\Support\Facades\Session;
 	use Illuminate\Support\Facades\Validator;
 	use Illuminate\View\View;
 	
@@ -168,6 +169,18 @@
 			}
 			
 			
+		}
+		
+		
+		public function destroy(string $id)  {
+			
+			$this->teacherRepository->DeleteTeachingLoad($id);
+			
+			Session::flash('alert-danger', 'Teaching Load has been deleted');
+			
+			return response()->json([
+				'success' => true
+			]);
 		}
 		
 		

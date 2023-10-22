@@ -101,4 +101,9 @@
 		{
 			return DB::table('teaching_loads')->where(['id' => $id])->first();
 		}
+		
+		public function DeleteTeachingLoad(string $id): void
+		{
+				DB::table('teaching_loads')->delete($id);
+		}
 	}
