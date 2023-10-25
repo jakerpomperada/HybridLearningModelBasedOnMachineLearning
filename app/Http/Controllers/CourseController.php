@@ -24,14 +24,14 @@
         public function index() : View {
             $courses = $this->courseRepository->GetAllPaginate(1,5);
 
-            return view('course.index')->with([
+            return view('admin.course.index')->with([
                 'courses' => $courses->items(),
                 'paginate' => $courses->links()
             ]);
         }
 
         public function create() : View {
-            return view('course.create');
+            return view('admin.course.create');
         }
 
         public function store(Request $req) : RedirectResponse {
@@ -60,7 +60,7 @@
 
             $course = $this->courseRepository->Find($id);
 
-            return view('course.edit')->with([
+            return view('admin.course.edit')->with([
                 'course' => $course
             ]);
         }

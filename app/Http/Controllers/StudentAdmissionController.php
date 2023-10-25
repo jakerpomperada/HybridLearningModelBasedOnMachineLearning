@@ -45,7 +45,7 @@
 			});
 			
 			
-			return view('student-admission.index')->with([
+			return view('admin.student-admission.index')->with([
 				'student_admissions' => $student_admissions,
 				'paginate'           => $student_admissions_data->links()
 			]);
@@ -56,7 +56,7 @@
 			$data = $this->baseDataDropDownService->getBaseData();
 			
 			$students = $this->baseDataDropDownService->students();
-			return view('student-admission.create')->with([
+			return view('admin.student-admission.create')->with([
 				'students'   => $students,
 				'subjects'   => $data->subjects,
 				'terms'      => $data->terms,
@@ -163,7 +163,7 @@
 			
 			$students = $this->baseDataDropDownService->students();
 			
-			return view('student-admission.edit')->with([
+			return view('admin.student-admission.edit')->with([
 				'admission'  => (object)[
 					'id'                        => $admission->id,
 					'academic_term_semester_id' => $admission->academic_term_semester_id,

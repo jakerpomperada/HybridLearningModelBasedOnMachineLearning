@@ -28,26 +28,6 @@
     <li><a href="/student-admission">Student Admission</a></li>
     <li><a href="/teaching-load">Teaching Load</a></li>
     <li class="menu-title">
-        <span>Learning Assessments</span>
-    </li>
-
-    <li>
-        <a href="#"><i class="fas fa-file-invoice-dollar"></i> <span>Attendance</span></a>
-    </li>
-    <li>
-        <a href="holiday.html"><i class="fas fa-holly-berry"></i> <span>Class Participation</span></a>
-    </li>
-    <li>
-        <a href="fees.html"><i class="fas fa-comment-dollar"></i> <span>Task Performance</span></a>
-    </li>
-    <li>
-        <a href="exam.html"><i class="fas fa-clipboard-list"></i> <span>Quizzes</span></a>
-    </li>
-    <li>
-        <a href="event.html"><i class="fas fa-calendar-day"></i> <span>Exams</span></a>
-    </li>
-
-    <li class="menu-title">
         <span>Reports</span>
     </li>
     <li>

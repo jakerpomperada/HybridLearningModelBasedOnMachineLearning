@@ -31,7 +31,7 @@
 
             $terms = AcademicTermResource::collection($at->terms)->resolve();
 
-            return view('academic-term.index')->with([
+            return view('admin.academic-term.index')->with([
                 'terms'    => $terms,
                 'paginate' => $at->paginate
             ]);
@@ -39,7 +39,7 @@
 
         public function create(): View
         {
-            return view('academic-term.create');
+            return view('admin.academic-term.create');
         }
 
         public function store(Request $req)
@@ -75,7 +75,7 @@
 
             $term = (new AcademicTermResource($data))->resolve();
 
-            return view('academic-term.edit')->with([
+            return view('admin.academic-term.edit')->with([
                 'term' => (object) $term
             ]);
         }

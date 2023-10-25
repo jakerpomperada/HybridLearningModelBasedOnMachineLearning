@@ -40,7 +40,7 @@
 				];
 			});
 			
-			return view('teaching-load.index')->with([
+			return view('admin.teaching-load.index')->with([
 				'teaching_loads' => $teaching_loads,
 				'paginate'       => $data->links()
 			]);
@@ -58,7 +58,7 @@
 				return [$item->id => $item->completeName()];
 			});
 			
-			return view('teaching-load.create')->with([
+			return view('admin.teaching-load.create')->with([
 				'teachers'   => $teachers,
 				'subjects'   => $data->subjects,
 				'terms'      => $data->terms,
@@ -119,7 +119,7 @@
 				return [$item->id => $item->completeName()];
 			});
 			
-			return view('teaching-load.edit')->with([
+			return view('admin.teaching-load.edit')->with([
 				'tl'         => $teaching_load,
 				'teachers'   => $teachers,
 				'subjects'   => $data->subjects,

@@ -29,6 +29,7 @@
     @stack('styles')
 </head>
 <body>
+{{$role = \Illuminate\Support\Facades\Session::get('role')}}
 
 <div class="main-wrapper">
 

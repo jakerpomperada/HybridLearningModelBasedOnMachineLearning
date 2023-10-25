@@ -35,7 +35,7 @@
 
             $students = StudentResource::collection($students_data_aggregates)->resolve();
 
-            return view('student.index')->with([
+            return view('admin.student.index')->with([
                 'students' => $students,
                 'paginate' => $students_data->links()
             ]);
@@ -44,7 +44,7 @@
 
         public function create()
         {
-            return view('student.create');
+            return view('admin.student.create');
         }
 
         public function store(Request $req)
@@ -111,7 +111,7 @@
             $student_data = $this->studentRepository->Find($id);
             $student      = (new StudentResource($student_data))->resolve();
 			
-            return view('student.edit')->with([
+            return view('admin.student.edit')->with([
                 'student' => (object)$student
             ]);
         }

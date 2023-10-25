@@ -21,8 +21,17 @@
     Route::group(['prefix' => 'admin'], function () {
         Route::get('dashboard', 'DashboardAdminController@index');
     });
-
-    Route::resource('/course', 'CourseController');
+	
+	Route::group(['prefix' => 'teacher', 'namespace' => 'Teacher'], function () {
+		Route::get('dashboard', 'DashboardController@index');
+	});
+	
+	
+	
+	
+	
+	
+	Route::resource('/course', 'CourseController');
     Route::resource('/subject', 'SubjectController');
     Route::resource('/teacher', 'TeacherController');
     Route::resource('/student', 'StudentController');

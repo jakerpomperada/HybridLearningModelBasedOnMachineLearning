@@ -48,12 +48,12 @@
                             @csrf
                             <div class="form-group">
                                 <label>Username <span class="login-danger">*</span></label>
-                                <input class="form-control" type="text">
+                                <input name="username" class="form-control" type="text">
                                 <span class="profile-views"><i class="fas fa-user-circle"></i></span>
                             </div>
                             <div class="form-group">
                                 <label>Password <span class="login-danger">*</span></label>
-                                <input class="form-control pass-input" type="text">
+                                <input name="password" class="form-control pass-input" type="text">
                                 <span class="profile-views feather-eye toggle-password"></span>
                             </div>
 

@@ -36,7 +36,7 @@
             });
 
 
-            return view('subject.index')->with([
+            return view('admin.subject.index')->with([
                 'subjects' => $subjects,
                 'paginate' => $data->links()
             ]);
@@ -46,7 +46,7 @@
 
             $subject = $this->subjectRepository->Find($id);
 
-            return view('subject.edit')->with([
+            return view('admin.subject.edit')->with([
                 'subject' => $subject
             ]);
         }
@@ -79,7 +79,7 @@
 
         public function create(): View
         {
-            return view('subject.create');
+            return view('admin.subject.create');
         }
 
         public function store(Request $req) : RedirectResponse

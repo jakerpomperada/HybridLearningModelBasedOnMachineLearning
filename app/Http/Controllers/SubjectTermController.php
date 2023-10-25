@@ -56,7 +56,7 @@
 
 
 //            Subject Code	Subject Description	Academic Term	Semester	Course	Year Level
-			return view('subject-term.index')->with([
+			return view('admin.subject-term.index')->with([
 				'subjects' => $subjects,
 				'paginate' => $result->links()
 			]);
@@ -69,7 +69,7 @@
 			
 			$base_data = $this->baseDataDropDownService->getBaseData();
 			
-			return view('subject-term.edit')->with([
+			return view('admin.subject-term.edit')->with([
 				'subject_term'    => $subject_term,
 				'subject'         => $base_data->subject,
 				'terms'           => $base_data->terms,

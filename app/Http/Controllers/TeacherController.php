@@ -30,7 +30,7 @@
 
             $teachers = (new TeacherResource($data->items()))->data();
 
-            return view('teacher.index')->with([
+            return view('admin.teacher.index')->with([
                 'teachers' => $teachers,
                 'paginate' => $data->links()
             ]);
@@ -38,7 +38,7 @@
 
         public function create(): View
         {
-            return view('teacher.create');
+            return view('admin.teacher.create');
         }
 
         public function show($id): View
@@ -56,7 +56,7 @@
             );
             $t->setImage(new Image($d->image));
 
-            return view('teacher.edit')->with([
+            return view('admin.teacher.edit')->with([
                 'teacher' => (object)[
                     'id'             => $t->getId(),
                     'image_name'     => $t->getImage()->getImageName(),
