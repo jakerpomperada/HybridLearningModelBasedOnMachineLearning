@@ -12,7 +12,7 @@
     </li>
 
     <li>
-        <a href="teacher/attendance"><i class="fas fa-file-invoice-dollar"></i> <span>Attendance</span></a>
+        <a href="/teacher/student-attendance"><i class="fas fa-file-invoice-dollar"></i> <span>Attendance</span></a>
     </li>
     <li>
         <a href="holiday.html"><i class="fas fa-holly-berry"></i> <span>Class Participation</span></a>

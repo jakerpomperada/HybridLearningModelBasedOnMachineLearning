@@ -53,6 +53,10 @@
 			return semester($this->semester);
 		}
 		
+		public function getSection() : string {
+			return strtoupper($this->section);
+		}
+		
 		public function getCourse(): string
 		{
 			return $this->Course->getCode();

@@ -20,6 +20,8 @@
 		
 		public function GetAllTeachingLoadPaginate(int $page, int $limit) : Paginator;
 		
+		public function GetAllTeachingLoads(string $teacher_id) : Collection;
+		
 		public function FindTeachingLoad(string $id) : object | null;
 		
 		public function UpdateTeachingLoad(

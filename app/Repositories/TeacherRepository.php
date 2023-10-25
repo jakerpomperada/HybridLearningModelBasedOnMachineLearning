@@ -106,4 +106,9 @@
 		{
 				DB::table('teaching_loads')->delete($id);
 		}
+		
+		public function GetAllTeachingLoads(string $teacher_id): Collection
+		{
+			return TeachingLoad::where(['teacher_id' => $teacher_id])->get();
+		}
 	}
