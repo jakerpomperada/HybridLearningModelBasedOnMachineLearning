@@ -8,6 +8,7 @@
 	use Domain\Modules\Teacher\Repositories\ITeacherRepository;
 	use Illuminate\Http\Request;
 	use Error;
+	use Illuminate\Support\Facades\Session;
 	use Illuminate\Support\Facades\Validator;
 	
 	class StudentAttendanceController extends Controller
@@ -198,6 +199,21 @@
 				return redirectWithAlert('/teacher/student-attendance?subject_load=' . $teaching_load_id, [
 					'alert-success' => 'Attendance has been updated!'
 				]);
+			
+		}
+		
+		public function destroy() {
+			$date             = request()->input('date');
+			$teaching_load_id = request()->input('teaching_load_id');
+			
+			$this->teacherRepository->DeleteStudentAttendance($teaching_load_id, $date);
+			
+			Session::flash('alert-danger', 'Student Attendance has been deleted!');
+			
+			return response()->json([
+				'success' => true
+			]);
+			
 			
 		}
 		

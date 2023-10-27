@@ -128,6 +128,33 @@
 
     <script src="{{asset('assets/plugins/datatables/datatables.min.js')}}"></script>
 
+
+    <script>
+        $(document).ready(function () {
+
+            $(".button_delete").click(function () {
+                if (confirm("Are you sure you want to delete this?")) {
+                    let teaching_load_id = $(this).attr("teaching_load_id");
+                    let date = $(this).attr("date");
+                    $.ajax({
+                        url: `/teacher/student-attendance/delete?teaching_load_id=${teaching_load_id}&date=${date}`,
+                        type: 'DELETE',
+                        data: {
+                            "_token": "{{ csrf_token() }}",
+                        },
+                        success: function (result) {
+                            location.reload();
+                        }
+                    });
+                } else {
+                    return false;
+                }
+            });
+        });
+    </script>
+
+
+
 @endpush
 
 
