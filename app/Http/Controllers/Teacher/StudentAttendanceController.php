@@ -8,6 +8,7 @@
 	class StudentAttendanceController extends Controller
 	{
 		use TeacherControllerTrait;
+		
 		protected ITeacherRepository $teacherRepository;
 		
 		public function __construct(ITeacherRepository $teacherRepository)
@@ -16,24 +17,28 @@
 		}
 		
 		
-		public function index() {
+		public function index()
+		{
 			
-			$loading = $this->teacherRepository->GetAllTeachingLoads(
+			$loading       = $this->teacherRepository->GetAllTeachingLoads(
 				$this->getTeacherId()
 			);
-			$subject_loads = $loading->mapWithKeys(function ($item, $i){
+			$subject_loads = $loading->mapWithKeys(function ($item, $i) {
 				return [
-					$item->id => ''.$item->getSubjectCode().' ['.$item->getYearLevel().'-'.$item->getSection().']'
+					$item->id => '' . $item->getSubjectCode() . ' [' . $item->getYearLevel() . '-' . $item->getSection() . ']'
 				];
 			});
 			
 			
+			
+			
+			
 			return view('teacher.student-attendance.index')->with([
-				'semester' => $this->getCurrentTerm()->displaySemester(),
-				'term' => $this->getCurrentTerm()->getTerm(),
-				'subject_loads' => $subject_loads
-				
+				'semester'      => $this->getCurrentTerm()->displaySemester(),
+				'term'          => $this->getCurrentTerm()->getTerm(),
+				'subject_loads' => $subject_loads,
+				'subject_load_id' => request()->input('subject_load')
 			]);
-		
+			
 		}
 	}
