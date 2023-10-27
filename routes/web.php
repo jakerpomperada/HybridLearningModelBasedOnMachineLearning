@@ -25,6 +25,7 @@
 	Route::group(['prefix' => 'teacher', 'namespace' => 'Teacher'], function () {
 		Route::get('dashboard', 'DashboardController@index');
 		Route::resource('student-attendance', 'StudentAttendanceController');
+		Route::resource('student-participation', 'StudentParticipationController');
 	});
 	
 	

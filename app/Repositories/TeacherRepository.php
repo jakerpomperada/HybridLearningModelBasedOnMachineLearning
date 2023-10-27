@@ -3,6 +3,7 @@
 	namespace App\Repositories;
 	
 	use App\Models\StudentAttendance;
+	use App\Models\StudentParticipationCategory;
 	use App\Models\TeachingLoad;
 	use Domain\Modules\Teacher\Entities\Teacher;
 	use Domain\Modules\Teacher\Repositories\ITeacherRepository;
@@ -145,6 +146,13 @@
 		public function SaveStudentAttendance(array $records): void
 		{
 			DB::table('student_attendances')->insert($records);
+		}
+		
+		public function GetAllStudentParticipationCategoryGroupByDate(string $subject_load_id): Paginator
+		{
+			return StudentParticipationCategory::where([
+				'subject_load_id' => $subject_load_id
+			])->paginate(5);
 		}
 		
 		

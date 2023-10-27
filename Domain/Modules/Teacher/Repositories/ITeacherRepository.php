@@ -58,6 +58,8 @@
 		public function DeleteStudentAttendance(string $teaching_load_id, string $date) : void;
 		
 		public function SaveStudentAttendance(array $records) : void;
+		
+		public function GetAllStudentParticipationCategoryGroupByDate(string $subject_load_id) : Paginator;
 	
 	
 	
