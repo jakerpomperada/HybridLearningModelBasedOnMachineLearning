@@ -124,4 +124,28 @@
 		{
 			return DB::table('student_attendances')->where(['teaching_load_id' => $teaching_load_id, 'date' => $date])->get();
 		}
+		
+		public function showAllStudentAttendance(string $teaching_load_id, string $date): Collection
+		{
+			return StudentAttendance::with(['StudentAdmission.Student'])->where([
+				'date'             => $date,
+				'teaching_load_id' => $teaching_load_id,
+			])->get();
+		}
+		
+		
+		public function DeleteStudentAttendance(string $teaching_load_id, string $date): void
+		{
+			DB::table('student_attendances')->where([
+				'teaching_load_id' => $teaching_load_id,
+				'date' => $date
+			])->delete();
+		}
+		
+		public function SaveStudentAttendance(array $records): void
+		{
+			DB::table('student_attendances')->insert($records);
+		}
+		
+		
 	}

@@ -125,7 +125,7 @@
 				}
 				
 				
-				$this->studentRepository->recordAttendance($result);
+				$this->teacherRepository->SaveStudentAttendance($result);
 				
 				return redirectWithAlert('/teacher/student-attendance', [
 					'alert-success' => 'New Attendance has been recorded!'
@@ -135,4 +135,71 @@
 				return redirectExceptionWithInput($error);
 			}
 		}
+		
+		public function show()
+		{
+			
+			$teaching_load_id = request()->input('teaching_load_id');
+			$date             = request()->input('date');
+			
+			$student_attendances = $this->teacherRepository->showAllStudentAttendance(
+				$teaching_load_id, $date
+			);
+			
+			
+			$students_data_aggregates = $student_attendances->map(function ($attendance) {
+				$admission             = $attendance->StudentAdmission;
+				$student               = $this->studentRepository->Aggregates($admission->Student);
+				$student->admission_id = $admission->id;
+				$student->attendance   = $attendance;
+				return $student;
+			});
+			
+			$students = StudentResource::collection($students_data_aggregates)->resolve();
+			
+			
+			return view('teacher.student-attendance.edit')->with([
+				'students'         => $students,
+				'teaching_load_id' => $teaching_load_id,
+				'date'             => $date
+			]);
+		}
+		
+		
+		public function update(Request $req)
+		{
+//
+				
+				$date             = request()->input('date');
+				$teaching_load_id = request()->input('teaching_load_id');
+				
+				
+				$this->teacherRepository->DeleteStudentAttendance($teaching_load_id, $date);
+				$result = [];
+				
+				foreach ($req->status as $admission_id => $status) {
+					$result[] = [
+						'id'                   => uuid(),
+						'date'                 => $date,
+						'teaching_load_id'     => $teaching_load_id,
+						'student_admission_id' => $admission_id,
+						'status'               => $status['attendance'],
+						'note'                 => $status['note'] ?? null,
+						'created_at'           => now(),
+						'updated_at'           => now(),
+					];
+				}
+				
+				
+				$this->teacherRepository->SaveStudentAttendance($result);
+				
+				
+				
+				return redirectWithAlert('/teacher/student-attendance?subject_load=' . $teaching_load_id, [
+					'alert-success' => 'Attendance has been updated!'
+				]);
+			
+		}
+		
+		
 	}

@@ -18,11 +18,11 @@
 		
 		public function GetAll(): Collection;
 		
-		public function GetAllTeachingLoadPaginate(int $page, int $limit) : Paginator;
+		public function GetAllTeachingLoadPaginate(int $page, int $limit): Paginator;
 		
-		public function GetAllTeachingLoads(string $teacher_id) : Collection;
+		public function GetAllTeachingLoads(string $teacher_id): Collection;
 		
-		public function FindTeachingLoad(string $id) : object | null;
+		public function FindTeachingLoad(string $id): object|null;
 		
 		public function UpdateTeachingLoad(
 			string $teacher_id,
@@ -45,10 +45,20 @@
 			string $course_id
 		): void;
 		
-		public function DeleteTeachingLoad(string $id) : void;
+		public function DeleteTeachingLoad(string $id): void;
 		
-		public function GetAllStudentAttendanceGroupByDate(string  $teaching_load_id): Paginator;
+		public function GetAllStudentAttendanceGroupByDate(string $teaching_load_id): Paginator;
 		
-		public function GetAllStudentAttendanceFindByDate(string  $teaching_load_id, string $date) : \Illuminate\Support\Collection;
+		public function GetAllStudentAttendanceFindByDate(string $teaching_load_id, string $date): \Illuminate\Support\Collection;
 		
+		
+		public function showAllStudentAttendance(string $teaching_load_id, string $date) : Collection;
+		
+		
+		public function DeleteStudentAttendance(string $teaching_load_id, string $date) : void;
+		
+		public function SaveStudentAttendance(array $records) : void;
+	
+	
+	
 	}

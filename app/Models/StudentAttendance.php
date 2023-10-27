@@ -67,4 +67,8 @@
 			return $count;
 		}
 		
+		public function isChecked(string $value): string  {
+			return $this->status == $value ? 'checked' : '';
+		}
+		
 	}

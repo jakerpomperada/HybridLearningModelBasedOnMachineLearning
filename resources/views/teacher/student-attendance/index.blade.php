@@ -93,11 +93,11 @@
                                         <td>{{ $sa->absent }}</td>
                                         <td>{{ $sa->excuse }}</td>
                                         <td>
-                                            <a href="subject-term/{{$sa->date}}"
+                                            <a href="/teacher/student-attendance/edit?date={{$sa->date}}&teaching_load_id={{$sa->teaching_load_id}}"
                                                class="btn btn-sm btn-rounded btn-primary">
                                                 <i class="feather-edit"></i>&nbsp; Edit
                                             </a>
-                                            <a href="javascript:" id="{{$sa->date}}"
+                                            <a href="javascript:" date="{{$sa->date}}" teaching_load_id="{{$sa->teaching_load_id}}"
                                                class="btn btn-sm btn-danger btn-rounded button_delete">
                                                 <i class="feather-trash"></i>&nbsp; Delete
                                             </a>
