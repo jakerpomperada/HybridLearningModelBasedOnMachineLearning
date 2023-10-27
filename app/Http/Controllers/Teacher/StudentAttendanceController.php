@@ -47,10 +47,10 @@
 					$subject_load_id
 				);
 				
-				$student_attendance = collect($student_attendance->items())->map(function ($i) {
+				$student_attendance = collect($student_attendance->items())->map(function ($i) use ($subject_load_id) {
 					
 					$data = $this->teacherRepository->GetAllStudentAttendanceFindByDate(
-						$i->teaching_load_id, $i->date
+						$subject_load_id, $i->date
 					);
 					
 					
@@ -128,8 +128,8 @@
 				
 				$this->teacherRepository->SaveStudentAttendance($result);
 				
-				return redirectWithAlert('/teacher/student-attendance', [
-					'alert-success' => 'New Attendance has been recorded!'
+				return redirectWithAlert('/teacher/student-attendance?subject_load=' . $teaching_load_id, [
+					'alert-success' => 'Attendance has been updated!'
 				]);
 				
 			} catch (Error $error) {

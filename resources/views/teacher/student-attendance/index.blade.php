@@ -39,7 +39,7 @@
                                                         <option value="">{{$term}} [{{$semester}}]</option>
                                                     </select>
                                                     <div class="col-lg-9">
-                                                        {!! Form::select('subject_load', $subject_loads, null, ['placeholder' => '-- Select Subject Load --', 'class' => 'form-control']); !!}
+                                                        {!! Form::select('subject_load', $subject_loads, $subject_load_id, ['placeholder' => '-- Select Subject Load --', 'class' => 'form-control']); !!}
                                                     </div>
                                                     <div class="input-group-append">
                                                         <button type="submit" class="btn btn-info">Filter</button>
