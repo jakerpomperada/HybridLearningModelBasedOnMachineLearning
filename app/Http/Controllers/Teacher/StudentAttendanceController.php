@@ -30,7 +30,9 @@
 		public function index()
 		{
 			
-			$loading  = $this->teacherRepository->GetAllTeachingLoads(
+			$subject_load_id = request()->input('subject_load');
+			
+			$loading       = $this->teacherRepository->GetAllTeachingLoads(
 				$this->getTeacherId()
 			);
 			$subject_loads = $loading->mapWithKeys(function ($item, $i) {
@@ -39,11 +41,41 @@
 				];
 			});
 			
+			if ($subject_load_id) {
+				$student_attendance = $this->teacherRepository->GetAllStudentAttendanceGroupByDate(
+					$subject_load_id
+				);
+				
+				$student_attendance = collect($student_attendance->items())->map(function ($i) {
+					
+					$data = $this->teacherRepository->GetAllStudentAttendanceFindByDate(
+						$i->teaching_load_id, $i->date
+					);
+					
+					
+					return (object)[
+						'date'             => $i->date,
+						'subject'          => $i->TeachingLoad->Subject->code,
+						'year_section'     => $i->TeachingLoad->getYearSection(),
+						'present'          => $i->countPresent($data),
+						'absent'           => $i->countAbsent($data),
+						'excuse'           => $i->countExcuse($data),
+						'teaching_load_id' => $i->teaching_load_id
+					];
+				});
+				
+				
+			} else {
+				$student_attendance = [];
+			}
+			
+			
 			return view('teacher.student-attendance.index')->with([
-				'semester'        => $this->getCurrentTerm()->displaySemester(),
-				'term'            => $this->getCurrentTerm()->getTerm(),
-				'subject_loads'   => $subject_loads,
-				'subject_load_id' => request()->input('subject_load')
+				'semester'            => $this->getCurrentTerm()->displaySemester(),
+				'term'                => $this->getCurrentTerm()->getTerm(),
+				'subject_loads'       => $subject_loads,
+				'subject_load_id'     => $subject_load_id,
+				'student_attendances' => $student_attendance
 			]);
 			
 		}
@@ -91,7 +123,7 @@
 						'updated_at'           => now(),
 					];
 				}
-			
+				
 				
 				$this->studentRepository->recordAttendance($result);
 				

@@ -2,6 +2,7 @@
 	
 	namespace App\Repositories;
 	
+	use App\Models\StudentAttendance;
 	use App\Models\TeachingLoad;
 	use Domain\Modules\Teacher\Entities\Teacher;
 	use Domain\Modules\Teacher\Repositories\ITeacherRepository;
@@ -97,18 +98,30 @@
 			]);
 		}
 		
-		public function FindTeachingLoad(string $id): object | null
+		public function FindTeachingLoad(string $id): object|null
 		{
 			return DB::table('teaching_loads')->where(['id' => $id])->first();
 		}
 		
 		public function DeleteTeachingLoad(string $id): void
 		{
-				DB::table('teaching_loads')->delete($id);
+			DB::table('teaching_loads')->delete($id);
 		}
 		
 		public function GetAllTeachingLoads(string $teacher_id): Collection
 		{
 			return TeachingLoad::where(['teacher_id' => $teacher_id])->get();
+		}
+		
+		public function GetAllStudentAttendanceGroupByDate(string $teaching_load_id): Paginator
+		{
+			return StudentAttendance::with([
+				'TeachingLoad.Subject'
+			])->where(['teaching_load_id' => $teaching_load_id])->groupBy('date')->paginate(5);
+		}
+		
+		public function GetAllStudentAttendanceFindByDate(string $teaching_load_id, string $date): \Illuminate\Support\Collection
+		{
+			return DB::table('student_attendances')->where(['teaching_load_id' => $teaching_load_id, 'date' => $date])->get();
 		}
 	}

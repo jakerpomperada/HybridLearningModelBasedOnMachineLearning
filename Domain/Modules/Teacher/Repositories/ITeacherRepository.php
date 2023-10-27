@@ -47,4 +47,8 @@
 		
 		public function DeleteTeachingLoad(string $id) : void;
 		
+		public function GetAllStudentAttendanceGroupByDate(string  $teaching_load_id): Paginator;
+		
+		public function GetAllStudentAttendanceFindByDate(string  $teaching_load_id, string $date) : \Illuminate\Support\Collection;
+		
 	}

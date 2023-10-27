@@ -67,6 +67,10 @@
 			return  yearLevel($this->year_level);
 		}
 		
+		public function getYearSection() : string {
+			return $this->getYearLevel() ." - ". $this->getSection();
+		}
+		
 		
 		
 		
