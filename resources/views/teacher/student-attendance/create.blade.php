@@ -14,7 +14,7 @@
     </style>
 @endpush
 @section('content')
-
+    {!! Form::open(['url' => '/teacher/student-attendance?teaching_load_id=' . $teaching_load_id, 'method' => 'POST']) !!}
     <div class="content container-fluid">
 
         <div class="page-header">
@@ -50,7 +50,7 @@
                                         <div class="input-group">
                                             <div class="col-lg-4"></div>
                                             <div class="col-lg-4">
-                                                {!! Form::date('attendance_date', now(), ['class' => 'form-control']); !!}
+                                                {!! Form::date('date', now(), ['class' => 'form-control']); !!}
                                             </div>
                                         </div>
                                     </div>
@@ -63,7 +63,7 @@
 
             </div>
         </div>
-        {!! Form::open(['url' => '/teacher/student-attendance', 'method' => 'POST']) !!}
+
         <div class="row">
             <div class="card card-table">
                 <div class="card-body">
@@ -80,13 +80,14 @@
                         </thead>
                         <tbody>
                         @foreach($students as $student)
+                            <input id="attendance_date" type="hidden" name="status[{{$student->admission_id}}]['date]"  value="{{now()}}">
                             <tr>
                                 <td>{{$student->id_number}}</td>
                                 <td>{{$student->complete_name}}</td>
-                                <td><input name="status[{{$student->id}}]" type="radio" value="present"></td>
-                                <td><input name="status[{{$student->id}}]" type="radio" value="absent"></td>
-                                <td><input name="status[{{$student->id}}]" type="radio" value="excuse"></td>
-                                <td><input name="note[{{$student->id}}]" class="form-control" type="text" value=""></td>
+                                <td><input name="status[{{$student->admission_id}}][attendance]" required type="radio" value="present"></td>
+                                <td><input name="status[{{$student->admission_id}}][attendance]" required type="radio" value="absent"></td>
+                                <td><input name="status[{{$student->admission_id}}][attendance]" required type="radio" value="excuse"></td>
+                                <td><input name="status[{{$student->admission_id}}][note]" class="form-control" type="text" value=""></td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -100,14 +101,14 @@
 
             </div>
         </div>
-        {!! Form::close() !!}
+
 
     </div>
+    {!! Form::close() !!}
 
 @endsection
 
 @push('scripts')
-
 
 @endpush
 

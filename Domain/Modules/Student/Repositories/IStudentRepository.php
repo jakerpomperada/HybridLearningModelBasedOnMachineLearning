@@ -31,4 +31,8 @@
 		
 		public function RemoveAdmission(string $id): void;
 		
+		public function GetAllAdmission() : Collection;
+		
+		public function recordAttendance(array $records) : void;
+		
 	}

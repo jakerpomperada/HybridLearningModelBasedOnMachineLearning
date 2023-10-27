@@ -24,7 +24,9 @@
 				TeacherSeeder::class,
 				CourseSeeder::class,
 				SubjectSeeder::class,
-				AcademicTermSeeder::class
+				AcademicTermSeeder::class,
+				StudentAdmissionSeeder::class,
+				TeachingLoadSeeder::class
 			]);
 		}
 	}

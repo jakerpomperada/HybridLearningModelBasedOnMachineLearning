@@ -157,5 +157,15 @@
 			DB::table('student_admissions')->delete($id);
 		}
 		
+		public function GetAllAdmission(): Collection
+		{
+			return StudentAdmission::with(['Student'])->get();
+		}
+		
+		public function recordAttendance(array $records): void
+		{
+			DB::table('student_attendances')->insert($records);
+		}
+		
 		
 	}

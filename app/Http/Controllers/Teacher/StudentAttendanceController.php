@@ -7,6 +7,8 @@
 	use Domain\Modules\Student\Repositories\IStudentRepository;
 	use Domain\Modules\Teacher\Repositories\ITeacherRepository;
 	use Illuminate\Http\Request;
+	use Error;
+	use Illuminate\Support\Facades\Validator;
 	
 	class StudentAttendanceController extends Controller
 	{
@@ -28,7 +30,7 @@
 		public function index()
 		{
 			
-			$loading       = $this->teacherRepository->GetAllTeachingLoads(
+			$loading  = $this->teacherRepository->GetAllTeachingLoads(
 				$this->getTeacherId()
 			);
 			$subject_loads = $loading->mapWithKeys(function ($item, $i) {
@@ -38,29 +40,67 @@
 			});
 			
 			return view('teacher.student-attendance.index')->with([
-				'semester'      => $this->getCurrentTerm()->displaySemester(),
-				'term'          => $this->getCurrentTerm()->getTerm(),
-				'subject_loads' => $subject_loads,
+				'semester'        => $this->getCurrentTerm()->displaySemester(),
+				'term'            => $this->getCurrentTerm()->getTerm(),
+				'subject_loads'   => $subject_loads,
 				'subject_load_id' => request()->input('subject_load')
 			]);
 			
 		}
 		
-		public function create() {
-			$students = $this->studentRepository->GetAll();
+		public function create()
+		{
+			$admissions = $this->studentRepository->GetAllAdmission();
 			
-			$students_data_aggregates = collect($students)->map( function ($stud) {
-				return $this->studentRepository->Aggregates($stud);
+			
+			$students_data_aggregates = $admissions->map(function ($admission) {
+				$student               = $this->studentRepository->Aggregates($admission->Student);
+				$student->admission_id = $admission->id;
+				return $student;
 			});
+			
 			
 			$students = StudentResource::collection($students_data_aggregates)->resolve();
 			
+			
 			return view('teacher.student-attendance.create')->with([
-				'students' => $students
+				'students'         => $students,
+				'teaching_load_id' => request()->input('subject_load')
 			]);
 		}
 		
-		public function store(Request $req) {
-				$req->dd();
+		public function store(Request $req)
+		{
+			try {
+				
+				$date             = request()->input('date');
+				$teaching_load_id = request()->input('teaching_load_id');
+				
+				
+				$result = [];
+				
+				foreach ($req->status as $admission_id => $status) {
+					$result[] = [
+						'id'                   => uuid(),
+						'date'                 => $date,
+						'teaching_load_id'     => $teaching_load_id,
+						'student_admission_id' => $admission_id,
+						'status'               => $status['attendance'],
+						'note'                 => $status['note'] ?? null,
+						'created_at'           => now(),
+						'updated_at'           => now(),
+					];
+				}
+			
+				
+				$this->studentRepository->recordAttendance($result);
+				
+				return redirectWithAlert('/teacher/student-attendance', [
+					'alert-success' => 'New Attendance has been recorded!'
+				]);
+				
+			} catch (Error $error) {
+				return redirectExceptionWithInput($error);
+			}
 		}
 	}

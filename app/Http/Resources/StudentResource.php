@@ -31,7 +31,9 @@
                 'contact_number' => $this->getContactNumber(),
                 'address'        => $this->getAddress()->value(),
                 '_address'       => $this->getAddress()->minifyAddress(),
-                'username'       => $this->getUsername()
+                'username'       => $this->getUsername(),
+	            'admission_id' => $this->admission_id ?? null
+	         
             ];
         }
     }
