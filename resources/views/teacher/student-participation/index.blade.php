@@ -77,27 +77,28 @@
                                     <th>Date</th>
                                     <th>Subject</th>
                                     <th>Year and Section</th>
+                                    <th>Title</th>
                                     <th>Points</th>
-                                    <th>Note</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
 
-                                @foreach($student_attendances as $sa)
+                                @foreach($student_participations as $sp)
                                     <tr>
-                                        <td>{{ $sa->date }}</td>
-                                        <td>{{ $sa->subject }}</td>
-                                        <td>{{ $sa->year_section }}</td>
-                                        <td>{{ $sa->excuse }}</td>
-                                        <td></td>
+                                        <td>{{ $sp->date }}</td>
+                                        <td>{{ $sp->subject }}</td>
+                                        <td>{{ $sp->year_section }}</td>
+                                        <td>{{ $sp->title }}</td>
+                                        <td>{{ $sp->points }}</td>
+                                        
                                         <td>
-                                            <a href="/teacher/student-attendance/edit?date={{$sa->date}}&teaching_load_id={{$sa->teaching_load_id}}"
+                                            <a href="/teacher/student-attendance/edit?date={{$sp->date}}&teaching_load_id={{$sp->teaching_load_id}}"
                                                class="btn btn-sm btn-rounded btn-primary">
                                                 <i class="feather-edit"></i>&nbsp; Edit
                                             </a>
-                                            <a href="javascript:" date="{{$sa->date}}"
-                                               teaching_load_id="{{$sa->teaching_load_id}}"
+                                            <a href="javascript:" date="{{$sp->date}}"
+                                               teaching_load_id="{{$sp->teaching_load_id}}"
                                                class="btn btn-sm btn-danger btn-rounded button_delete">
                                                 <i class="feather-trash"></i>&nbsp; Delete
                                             </a>
@@ -121,14 +122,6 @@
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
 
 @endsection
 

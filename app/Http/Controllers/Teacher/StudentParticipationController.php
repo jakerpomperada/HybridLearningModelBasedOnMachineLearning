@@ -41,37 +41,34 @@
 			$subject_loads = $this->teacherService->getSubjectLoads($this->getTeacherId());
 			
 			if ($subject_load_id) {
-				$student_attendance = $this->teacherRepository->GetAllStudentParticipationByTeachingLoadGroupByDate(
+				$student_participations = $this->teacherRepository->GetAllStudentParticipationByTeachingLoadGroupByDate(
 					$subject_load_id
 				);
 				
-				$student_attendance = collect($student_attendance->items())->map(function ($i) use ($subject_load_id) {
-					
-					$data = $this->teacherRepository->GetAllStudentAttendanceFindByDate(
-						$subject_load_id, $i->date
-					);
+				
+				$student_participations = collect($student_participations->items())->map(function ($i) use ($subject_load_id) {
 					
 					
 					return (object)[
 						'date'             => $i->date,
-						'subject'          => $i->TeachingLoad->Subject->code,
 						'year_section'     => $i->TeachingLoad->getYearSection(),
-						'present'          => $i->countPresent($data),
-						'absent'           => $i->countAbsent($data),
-						'excuse'           => $i->countExcuse($data),
+						'subject'          => $i->TeachingLoad->Subject->code,
+						'title'            => $i->title,
+						'points'           => $i->points,
 						'teaching_load_id' => $i->teaching_load_id
 					];
 				});
+				
 			} else {
 				$student_attendance = [];
 			}
 			
 			return view('teacher.student-participation.index')->with([
-				'semester'            => $this->getCurrentTerm()->displaySemester(),
-				'term'                => $this->getCurrentTerm()->getTerm(),
-				'subject_loads'       => $subject_loads,
-				'subject_load_id'     => $subject_load_id,
-				'student_attendances' => $student_attendance
+				'semester'               => $this->getCurrentTerm()->displaySemester(),
+				'term'                   => $this->getCurrentTerm()->getTerm(),
+				'subject_loads'          => $subject_loads,
+				'subject_load_id'        => $subject_load_id,
+				'student_participations' => $student_participations
 			]);
 			
 		}
@@ -119,7 +116,7 @@
 			
 			
 			foreach ($req->input('scores') as $id => $score) {
-								$this->teacherRepository->SaveStudentParticipationScore(
+				$this->teacherRepository->SaveStudentParticipationScore(
 					new ParticipationScore($score), $participation->getId(), $id
 				);
 			}

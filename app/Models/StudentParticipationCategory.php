@@ -13,18 +13,17 @@ class StudentParticipationCategory extends Model
 	use Uuid;
 	
 	public $incrementing = false;
-	protected $table = 'student_attendances';
+	protected $table = 'student_participation_categories';
 	protected $keyType = 'string';
 	protected $guarded = [];
-	
 	
 	public function TeachingLoad(): BelongsTo
 	{
 		return $this->belongsTo(TeachingLoad::class);
 	}
 	
-	public function StudentParticipations() : HasMany {
-		return $this->hasMany(StudentParticipations::class);
+	public function getYearSection() : string {
+		return "";
 	}
 	
 	
