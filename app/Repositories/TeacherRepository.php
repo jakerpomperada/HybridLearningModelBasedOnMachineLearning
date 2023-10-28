@@ -5,6 +5,8 @@
 	use App\Models\StudentAttendance;
 	use App\Models\StudentParticipationCategory;
 	use App\Models\TeachingLoad;
+	use Domain\Modules\Teacher\Entities\ParticipationCategory;
+	use Domain\Modules\Teacher\Entities\ParticipationScore;
 	use Domain\Modules\Teacher\Entities\Teacher;
 	use Domain\Modules\Teacher\Repositories\ITeacherRepository;
 	use Illuminate\Contracts\Pagination\Paginator;
@@ -139,7 +141,7 @@
 		{
 			DB::table('student_attendances')->where([
 				'teaching_load_id' => $teaching_load_id,
-				'date' => $date
+				'date'             => $date
 			])->delete();
 		}
 		
@@ -148,11 +150,38 @@
 			DB::table('student_attendances')->insert($records);
 		}
 		
-		public function GetAllStudentParticipationCategoryGroupByDate(string $subject_load_id): Paginator
+		
+		public function GetAllStudentParticipationByTeachingLoadGroupByDate(string $teaching_load_id): Paginator
 		{
 			return StudentParticipationCategory::where([
-				'subject_load_id' => $subject_load_id
+				'teaching_load_id' => $teaching_load_id
 			])->paginate(5);
+		}
+		
+		public function SaveStudentParticipationCategory(ParticipationCategory $participationCategory, string $teaching_load_id): void
+		{
+			
+			DB::table('student_participation_categories')->insert([
+				'id'               => $participationCategory->getId(),
+				'date'             => $participationCategory->getDate(),
+				'teaching_load_id' => $teaching_load_id,
+				'points'           => $participationCategory->getPoints(),
+				'title'            => $participationCategory->getTitle(),
+				'created_at'       => now(),
+				'updated_at'       => now(),
+			]);
+		}
+		
+		public function SaveStudentParticipationScore(ParticipationScore $participationScore, string $student_participation_category_id, string $student_admission_id): void
+		{
+			DB::table('student_participations')->insert([
+				'id'                                => uuid(),
+				'student_participation_category_id' => $student_participation_category_id,
+				'student_admission_id'              => $student_admission_id,
+				'score'                             => $participationScore->getScore(),
+				'created_at'                        => now(),
+				'updated_at'                        => now(),
+			]);
 		}
 		
 		

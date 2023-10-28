@@ -64,12 +64,13 @@
                                 <div class="row align-items-center">
 
                                     <div class="col-auto text-end">
-                                        <a href="/teacher/student-attendance/create?subject_load={{$subject_load_id}}" class="btn btn-sm btn-success">
-                                            <i class="fas fa-plus"></i> &nbsp;Record Participation </a>
+                                        <a href="/teacher/student-participation/create?teaching_load_id={{$subject_load_id}}"
+                                           class="btn btn-sm btn-success">
+                                            <i class="fas fa-plus"></i> &nbsp; Record Participation
+                                        </a>
                                     </div>
                                 </div>
                             </div>
-
                             <table class="table table-hover table-center mb-0 table-striped mb-0 text-center">
                                 <thead>
                                 <tr>
@@ -95,7 +96,8 @@
                                                class="btn btn-sm btn-rounded btn-primary">
                                                 <i class="feather-edit"></i>&nbsp; Edit
                                             </a>
-                                            <a href="javascript:" date="{{$sa->date}}" teaching_load_id="{{$sa->teaching_load_id}}"
+                                            <a href="javascript:" date="{{$sa->date}}"
+                                               teaching_load_id="{{$sa->teaching_load_id}}"
                                                class="btn btn-sm btn-danger btn-rounded button_delete">
                                                 <i class="feather-trash"></i>&nbsp; Delete
                                             </a>
@@ -119,6 +121,14 @@
             </div>
         </div>
     </div>
+
+
+
+
+
+
+
+
 
 @endsection
 
@@ -150,8 +160,6 @@
             });
         });
     </script>
-
-
 
 @endpush
 

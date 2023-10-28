@@ -2,6 +2,8 @@
 	
 	namespace Domain\Modules\Teacher\Repositories;
 	
+	use Domain\Modules\Teacher\Entities\ParticipationCategory;
+	use Domain\Modules\Teacher\Entities\ParticipationScore;
 	use Domain\Modules\Teacher\Entities\Teacher;
 	use Illuminate\Contracts\Pagination\Paginator;
 	use Illuminate\Database\Eloquent\Collection;
@@ -59,8 +61,21 @@
 		
 		public function SaveStudentAttendance(array $records) : void;
 		
-		public function GetAllStudentParticipationCategoryGroupByDate(string $subject_load_id) : Paginator;
+		
+		public function GetAllStudentParticipationByTeachingLoadGroupByDate(
+			string $teaching_load_id
+		) : Paginator;
+		
+		public function SaveStudentParticipationCategory(
+			ParticipationCategory $participationCategory, string  $teaching_load_id) :
+		void;
+		
+		public function SaveStudentParticipationScore(
+			ParticipationScore $participationScore,
+			string $student_participation_category_id,
+			string $student_admission_id
+		) : void;
 	
-	
+		
 	
 	}

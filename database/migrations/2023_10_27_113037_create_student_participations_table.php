@@ -12,8 +12,24 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('student_participations', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+	        $table->uuid('id')->primary();
+			$table->uuid('student_participation_category_id')->index();
+			$table->uuid('student_admission_id')->index();
+			$table->float('score');
+			
+	        $table->timestamps();
+			
+	        $table->foreign('student_participation_category_id')
+		        ->references('id')
+		        ->on('student_participation_categories')
+		        ->onUpdate('CASCADE')
+		        ->onDelete('CASCADE');
+			
+	        $table->foreign('student_admission_id')
+		        ->references('id')
+		        ->on('student_admissions')
+		        ->onUpdate('CASCADE')
+		        ->onDelete('CASCADE');
         });
     }
 

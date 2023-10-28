@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('student_participation_categories', function (Blueprint $table) {
 	        $table->uuid('id')->primary();
+			$table->date('date');
 			$table->uuid('teaching_load_id')->index();
 			$table->integer('points');
 	        $table->string('title');
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('student_participation_topics');
+        Schema::dropIfExists('student_participation_categories');
     }
 };
