@@ -33,10 +33,7 @@
 		
 		public function index()
 		{
-			
-			
-			$subject_load_id = request()->input('subject_load');
-			
+			$subject_load_id = request()->input('teaching_load_id');
 			
 			$subject_loads = $this->teacherService->getSubjectLoads($this->getTeacherId());
 			
@@ -44,10 +41,7 @@
 				$student_participations = $this->teacherRepository->GetAllStudentParticipationByTeachingLoadGroupByDate(
 					$subject_load_id
 				);
-				
-				
 				$student_participations = collect($student_participations->items())->map(function ($i) use ($subject_load_id) {
-					
 					
 					return (object)[
 						'date'             => $i->date,
@@ -60,7 +54,7 @@
 				});
 				
 			} else {
-				$student_attendance = [];
+				$student_participations = [];
 			}
 			
 			return view('teacher.student-participation.index')->with([

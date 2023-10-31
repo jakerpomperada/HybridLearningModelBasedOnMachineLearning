@@ -39,7 +39,7 @@
                                                         <option value="">{{$term}} [{{$semester}}]</option>
                                                     </select>
                                                     <div class="col-lg-9">
-                                                        {!! Form::select('subject_load', $subject_loads, $subject_load_id, ['placeholder' => '-- Select Subject Load --', 'class' => 'form-control']); !!}
+                                                        {!! Form::select('teaching_load_id', $subject_loads, $subject_load_id, ['placeholder' => '-- Select Subject Load --', 'class' => 'form-control']); !!}
                                                     </div>
                                                     <div class="input-group-append">
                                                         <button type="submit" class="btn btn-info">Filter</button>
@@ -91,7 +91,7 @@
                                         <td>{{ $sp->year_section }}</td>
                                         <td>{{ $sp->title }}</td>
                                         <td>{{ $sp->points }}</td>
-                                        
+
                                         <td>
                                             <a href="/teacher/student-attendance/edit?date={{$sp->date}}&teaching_load_id={{$sp->teaching_load_id}}"
                                                class="btn btn-sm btn-rounded btn-primary">
