@@ -18,7 +18,7 @@
         <a href="/teacher/student-participation"><i class="fas fa-holly-berry"></i> <span>Class Participation</span></a>
     </li>
     <li>
-        <a href="fees.html"><i class="fas fa-comment-dollar"></i> <span>Task Performance</span></a>
+        <a href="/teacher/student-task_performance"><i class="fas fa-comment-dollar"></i> <span>Task Performance</span></a>
     </li>
     <li>
         <a href="exam.html"><i class="fas fa-clipboard-list"></i> <span>Quizzes</span></a>

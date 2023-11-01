@@ -26,6 +26,7 @@
 		Route::get('dashboard', 'DashboardController@index');
 		Route::resource('student-attendance', 'StudentAttendanceController');
 		Route::resource('student-participation', 'StudentParticipationController');
+		Route::resource('student-task_performance', 'StudentTaskPerformanceController');
 	});
 	
 	

@@ -26,7 +26,8 @@
 				SubjectSeeder::class,
 				AcademicTermSeeder::class,
 				StudentAdmissionSeeder::class,
-				TeachingLoadSeeder::class
+				TeachingLoadSeeder::class,
+				StudentTaskPerformanceSeeder::class
 			]);
 		}
 	}

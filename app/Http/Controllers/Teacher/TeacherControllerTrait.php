@@ -5,6 +5,6 @@
 	trait TeacherControllerTrait
 	{
 		public function getTeacherId(): string {
-			return '2d954119-2db6-4949-89ed-e41d3f8e97dc';
+			return 'faf112dd-bcfd-40d1-a9d1-27f166bf2def';
 		}
 	}

@@ -66,6 +66,10 @@
 			string $teaching_load_id
 		) : Paginator;
 		
+		public function GetAllStudentTaskPerformanceByTeachingLoadGroupByDate(
+			string $teaching_load_id
+		) : Paginator;
+		
 		public function SaveStudentParticipationCategory(
 			ParticipationCategory $participationCategory, string  $teaching_load_id) :
 		void;
