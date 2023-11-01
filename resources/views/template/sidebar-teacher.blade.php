@@ -21,7 +21,7 @@
         <a href="/teacher/student-task_performance"><i class="fas fa-comment-dollar"></i> <span>Task Performance</span></a>
     </li>
     <li>
-        <a href="exam.html"><i class="fas fa-clipboard-list"></i> <span>Quizzes</span></a>
+        <a href="/teacher/student-quiz"><i class="fas fa-clipboard-list"></i> <span>Quizzes</span></a>
     </li>
     <li>
         <a href="event.html"><i class="fas fa-calendar-day"></i> <span>Exams</span></a>

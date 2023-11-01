@@ -27,6 +27,7 @@
 		Route::resource('student-attendance', 'StudentAttendanceController');
 		Route::resource('student-participation', 'StudentParticipationController');
 		Route::resource('student-task_performance', 'StudentTaskPerformanceController');
+		Route::resource('student-quiz', 'StudentQuizController');
 	});
 	
 	
