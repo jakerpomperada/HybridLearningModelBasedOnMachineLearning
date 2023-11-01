@@ -8,6 +8,8 @@
 	use App\Models\TeachingLoad;
 	use Domain\Modules\Teacher\Entities\ParticipationCategory;
 	use Domain\Modules\Teacher\Entities\ParticipationScore;
+	use Domain\Modules\Teacher\Entities\TaskPerformanceCategory;
+	use Domain\Modules\Teacher\Entities\TaskPerformanceScore;
 	use Domain\Modules\Teacher\Entities\Teacher;
 	use Domain\Modules\Teacher\Repositories\ITeacherRepository;
 	use Illuminate\Contracts\Pagination\Paginator;
@@ -189,6 +191,31 @@
 				'score'                             => $participationScore->getScore(),
 				'created_at'                        => now(),
 				'updated_at'                        => now(),
+			]);
+		}
+		
+		public function SaveStudentTaskPerformanceCategory(TaskPerformanceCategory $taskPerformance, string $teaching_load_id): void
+		{
+			DB::table('student_task_performance_categories')->insert([
+				'id'               => $taskPerformance->getId(),
+				'date'             => $taskPerformance->getDate(),
+				'teaching_load_id' => $teaching_load_id,
+				'points'           => $taskPerformance->getPoints(),
+				'title'            => $taskPerformance->getTitle(),
+				'created_at'       => now(),
+				'updated_at'       => now(),
+			]);
+		}
+		
+		public function SaveStudentTaskPerformanceScore(TaskPerformanceScore $taskPerformanceScore, string $student_taskPerformance_category_id, string $student_admission_id): void
+		{
+			DB::table('student_task_performances')->insert([
+				'id'                   => uuid(),
+				'stpc_id'              => $student_taskPerformance_category_id,
+				'student_admission_id' => $student_admission_id,
+				'score'                => $taskPerformanceScore->getScore(),
+				'created_at'           => now(),
+				'updated_at'           => now(),
 			]);
 		}
 		

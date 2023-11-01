@@ -4,6 +4,8 @@
 	
 	use Domain\Modules\Teacher\Entities\ParticipationCategory;
 	use Domain\Modules\Teacher\Entities\ParticipationScore;
+	use Domain\Modules\Teacher\Entities\TaskPerformanceCategory;
+	use Domain\Modules\Teacher\Entities\TaskPerformanceScore;
 	use Domain\Modules\Teacher\Entities\Teacher;
 	use Illuminate\Contracts\Pagination\Paginator;
 	use Illuminate\Database\Eloquent\Collection;
@@ -79,6 +81,19 @@
 			string $student_participation_category_id,
 			string $student_admission_id
 		) : void;
+		
+		public function SaveStudentTaskPerformanceCategory(
+			TaskPerformanceCategory $taskPerformance, string  $teaching_load_id) :
+		void;
+		
+		public function SaveStudentTaskPerformanceScore(
+			TaskPerformanceScore $taskPerformanceScore,
+			string $student_taskPerformance_category_id,
+			string $student_admission_id
+		) : void;
+		
+	
+	
 	
 		
 	

@@ -66,7 +66,7 @@
                                     <div class="col-auto text-end">
                                         <a href="/teacher/student-task_performance/create?teaching_load_id={{$subject_load_id}}"
                                            class="btn btn-sm btn-success">
-                                            <i class="fas fa-plus"></i> &nbsp; Record Participation
+                                            <i class="fas fa-plus"></i> &nbsp; Record Task Performance
                                         </a>
                                     </div>
                                 </div>

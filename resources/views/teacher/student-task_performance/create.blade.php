@@ -14,13 +14,13 @@
     </style>
 @endpush
 @section('content')
-    {!! Form::open(['url' => '/teacher/student-participation?teaching_load_id=' . $teaching_load_id, 'method' => 'POST']) !!}
+    {!! Form::open(['url' => '/teacher/student-task_performance?teaching_load_id=' . $teaching_load_id, 'method' => 'POST']) !!}
     <div class="content container-fluid">
 
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col mb-3">
-                    <h3 class="page-title">Record New Student Participation </h3>
+                    <h3 class="page-title"><i class="fas fa-list"></i> &nbsp; Record New Student Task Performance </h3>
                 </div>
             </div>
             <div class="row align-items-center">
@@ -56,7 +56,7 @@
                                 <div class="row">
                                     <div class="col-md-7">
                                         <div class="form-group">
-                                            <label>Class Participation Title:</label>
+                                            <label>Task Performance Title:</label>
                                             {{Form::text('title', null, ['class' => 'form-control'])}}
                                         </div>
                                     </div>
