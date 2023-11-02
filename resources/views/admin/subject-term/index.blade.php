@@ -146,7 +146,7 @@
 
 @endsection
 
-@include('subject-term.cu')
+@include('admin.subject-term.cu')
 
 @push('scripts')
 

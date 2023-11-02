@@ -23,21 +23,21 @@
     <li class="menu-title">
         <span>Academic Term</span>
     </li>
-    <li><a href="/academic-term">View Terms</a></li>
-    <li><a href="/subject-term">Manage Subject Term</a></li>
-    <li><a href="/student-admission">Student Admission</a></li>
-    <li><a href="/teaching-load">Teaching Load</a></li>
-    <li class="menu-title">
-        <span>Reports</span>
-    </li>
-    <li>
-        <a href="sports.html"><i class="fas fa-baseball-ball"></i><span>Sports</span></a>
-    </li>
-    <li>
-        <a href="hostel.html"><i class="fas fa-hotel"></i> <span>Hostel</span></a>
-    </li>
-    <li>
-        <a href="transport.html"><i class="fas fa-bus"></i> <span>Transport</span></a>
-    </li>
+    <li><a href="/academic-term"><i class="fas fa-calendar-alt"></i> &nbsp; View Terms</a></li>
+    <li><a href="/subject-term"><i class="fas fa-sticky-note"></i> &nbsp;Manage Subject Term</a></li>
+    <li><a href="/student-admission"><i class="fas fa-school"></i> &nbsp;&nbsp;Student Admission</a></li>
+    <li><a href="/teaching-load"><i class="fas fa-book-open"></i> &nbsp;&nbsp;Teaching Load</a></li>
+{{--    <li class="menu-title">--}}
+{{--        <span>Reports</span>--}}
+{{--    </li>--}}
+{{--    <li>--}}
+{{--        <a href="sports.html"><i class="fas fa-baseball-ball"></i><span>Sports</span></a>--}}
+{{--    </li>--}}
+{{--    <li>--}}
+{{--        <a href="hostel.html"><i class="fas fa-hotel"></i> <span>Hostel</span></a>--}}
+{{--    </li>--}}
+{{--    <li>--}}
+{{--        <a href="transport.html"><i class="fas fa-bus"></i> <span>Transport</span></a>--}}
+{{--    </li>--}}
 
 </ul>
