@@ -3,6 +3,7 @@
 	namespace App\Http\Controllers\Teacher;
 	
 	use App\Http\Controllers\Controller;
+	use App\Http\Resources\StudentResource;
 	use App\Repositories\TeacherRepository;
 	use App\Services\TeacherService;
 	use Domain\Modules\Student\Repositories\IStudentRepository;
@@ -63,5 +64,33 @@
 			]);
 			
 			
+		}
+		
+		public function create() {
+			$teaching_load_id = request()->input('teaching_load_id');
+			
+			
+			$admissions = $this->studentRepository->GetAllAdmission();
+			
+			$teaching_load = $this->teacherRepository->FindTeachingLoad($teaching_load_id);
+			
+			dd($teaching_load);
+			
+			dd($admissions);
+			
+			$students_data_aggregates = $admissions->map(function ($admission) {
+				$student               = $this->studentRepository->Aggregates($admission->Student);
+				$student->admission_id = $admission->id;
+				return $student;
+			});
+			
+			
+			$students = StudentResource::collection($students_data_aggregates)->resolve();
+			
+			
+			return view('teacher.student-quiz.create')->with([
+				'students'         => $students,
+				'teaching_load_id' => request()->input('teaching_load_id')
+			]);
 		}
 	}

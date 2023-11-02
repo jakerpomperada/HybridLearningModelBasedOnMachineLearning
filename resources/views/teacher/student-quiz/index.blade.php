@@ -63,9 +63,9 @@
                                 <div class="row align-items-center">
 
                                     <div class="col-auto text-end">
-                                        <a href="/teacher/student-task_performance/create?teaching_load_id={{$subject_load_id}}"
+                                        <a href="/teacher/student-quiz/create?teaching_load_id={{$subject_load_id}}"
                                            class="btn btn-sm btn-success">
-                                            <i class="fas fa-plus"></i> &nbsp; Record Task Performance
+                                            <i class="fas fa-plus"></i> &nbsp; Record New Quiz
                                         </a>
                                     </div>
                                 </div>
@@ -92,7 +92,7 @@
                                         <td>{{ $sp->points }}</td>
 
                                         <td>
-                                            <a href="/teacher/student-task_performance/edit?date={{$sp->date}}&teaching_load_id={{$sp->teaching_load_id}}"
+                                            <a href="/teacher/student-quiz/edit?date={{$sp->date}}&teaching_load_id={{$sp->teaching_load_id}}"
                                                class="btn btn-sm btn-rounded btn-primary">
                                                 <i class="feather-edit"></i>&nbsp; Edit
                                             </a>
@@ -137,7 +137,7 @@
                     let teaching_load_id = $(this).attr("teaching_load_id");
                     let date = $(this).attr("date");
                     $.ajax({
-                        url: `/teacher/student-attendance/delete?teaching_load_id=${teaching_load_id}&date=${date}`,
+                        url: `/teacher/student-quiz/delete?teaching_load_id=${teaching_load_id}&date=${date}`,
                         type: 'DELETE',
                         data: {
                             "_token": "{{ csrf_token() }}",
