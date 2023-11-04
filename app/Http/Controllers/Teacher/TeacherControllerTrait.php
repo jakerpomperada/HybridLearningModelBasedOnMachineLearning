@@ -2,9 +2,17 @@
 	
 	namespace App\Http\Controllers\Teacher;
 	
+	use App\Models\Teacher;
+	use Illuminate\Support\Facades\Auth;
+	use Illuminate\Support\Facades\DB;
+	
 	trait TeacherControllerTrait
 	{
 		public function getTeacherId(): string {
-			return 'faf112dd-bcfd-40d1-a9d1-27f166bf2def';
+			$id = Auth::id();
+			$teacher = DB::table('teachers')->where([
+				'user_id' => $id
+			])->first();
+			return $teacher->id;
 		}
 	}
