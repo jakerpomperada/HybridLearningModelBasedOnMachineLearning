@@ -20,6 +20,7 @@
 			User::query()->delete();
 			
 			$this->call([
+				UserSeeder::class,
 				StudentSeeder::class,
 				TeacherSeeder::class,
 				CourseSeeder::class,

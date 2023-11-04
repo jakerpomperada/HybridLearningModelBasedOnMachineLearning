@@ -20,7 +20,7 @@ class StudentTaskPerformanceCategoryFactory extends Factory
 	    return [
 		    'id'               => uuid(),
 		    'date'             => now(),
-		    'teaching_load_id' => TeachingLoad::factory(),
+		    'teaching_load_id' => TeachingLoad::inRandomOrder()->first(),
 		    'points'           => 100,
 		    'title'            => $this->faker->title,
 		    'created_at'       => now(),

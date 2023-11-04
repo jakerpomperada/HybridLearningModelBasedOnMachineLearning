@@ -23,9 +23,9 @@
 		{
 			return [
 				'id'                        => uuid(),
-				'academic_term_semester_id' => AcademicTermSemester::factory(),
-				'student_id'                => Student::factory(),
-				'course_id'                 => Course::factory(),
+				'academic_term_semester_id' => AcademicTermSemester::inRandomOrder()->first(),
+				'student_id'                => Student::inRandomOrder()->first(),
+				'course_id'                 => Course::inRandomOrder()->first(),
 				'year_level'                => '1st',
 				'section'                   => 'a',
 				'created_at'                => now(),

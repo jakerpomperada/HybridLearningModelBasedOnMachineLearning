@@ -20,7 +20,7 @@
 		{
 			return [
 				'id'             => uuid(),
-				'user_id'        => User::factory(),
+				'user_id'        => User::inRandomOrder()->where(['type' => 'teacher'])->first(),
 				'image'          => 'temp.jpg',
 				'id_number'      => $this->faker->numberBetween(111111111, 999999999),
 				'firstname'      => $this->faker->firstName,

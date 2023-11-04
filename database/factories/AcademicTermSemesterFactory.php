@@ -20,7 +20,7 @@
 		{
 			return [
 				'id'          => uuid(),
-				'academic_id' => AcademicTerm::factory(),
+				'academic_id' => AcademicTerm::inRandomOrder()->first(),
 				'semester'    => '1st',
 				'created_at'  => now(),
 				'updated_at'  => now(),

@@ -22,12 +22,12 @@
 		{
 			return [
 				'id'         => uuid(),
-				'teacher_id' => Teacher::factory(),
-				'subject_id' => Subject::factory(),
+				'teacher_id' => Teacher::inRandomOrder()->first(),
+				'subject_id' => Subject::inRandomOrder()->first(),
 				'year_level' => '1st',
 				'section'    => 'a',
 				'semester'   => '1st',
-				'course_id'  => Course::factory(),
+				'course_id'  => Course::inRandomOrder()->first(),
 				'created_at' => now(),
 				'updated_at' => now(),
 			];
