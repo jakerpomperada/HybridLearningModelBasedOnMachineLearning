@@ -129,11 +129,5 @@
 			return redirectWithAlert('/teacher/student-quiz?teaching_load_id=' . $teaching_load_id, [
 				'alert-success' => 'Student Quizzes has been recorded successfully!'
 			]);
-			
-			
-			
-			
-			
-			
 		}
 	}

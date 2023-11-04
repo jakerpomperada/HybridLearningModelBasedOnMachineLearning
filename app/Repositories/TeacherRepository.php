@@ -7,6 +7,8 @@
 	use App\Models\StudentQuizCategory;
 	use App\Models\StudentTaskPerformanceCategory;
 	use App\Models\TeachingLoad;
+	use Domain\Modules\Teacher\Entities\ExamCategory;
+	use Domain\Modules\Teacher\Entities\ExamScore;
 	use Domain\Modules\Teacher\Entities\ParticipationCategory;
 	use Domain\Modules\Teacher\Entities\ParticipationScore;
 	use Domain\Modules\Teacher\Entities\QuizCategory;
@@ -252,6 +254,31 @@
 				'student_quiz_category_id' => $student_taskPerformance_category_id,
 				'student_admission_id'     => $student_admission_id,
 				'score'                    => $quizScore->getScore(),
+				'created_at'               => now(),
+				'updated_at'               => now(),
+			]);
+		}
+		
+		public function SaveStudentExamCategory(ExamCategory $examCategory, string $teaching_load_id): void
+		{
+			DB::table('student_exam_categories')->insert([
+				'id'               => $examCategory->getId(),
+				'date'             => $examCategory->getDate(),
+				'teaching_load_id' => $teaching_load_id,
+				'points'           => $examCategory->getPoints(),
+				'title'            => $examCategory->getTitle(),
+				'created_at'       => now(),
+				'updated_at'       => now(),
+			]);
+		}
+		
+		public function SaveStudentExamScore(ExamScore $examScore, string $student_exam_category_id, string $student_admission_id): void
+		{
+			DB::table('student_exams')->insert([
+				'id'                       => uuid(),
+				'student_exam_category_id' => $student_exam_category_id,
+				'student_admission_id'     => $student_admission_id,
+				'score'                    => $examScore->getScore(),
 				'created_at'               => now(),
 				'updated_at'               => now(),
 			]);

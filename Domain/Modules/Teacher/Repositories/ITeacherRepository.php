@@ -2,6 +2,8 @@
 	
 	namespace Domain\Modules\Teacher\Repositories;
 	
+	use Domain\Modules\Teacher\Entities\ExamCategory;
+	use Domain\Modules\Teacher\Entities\ExamScore;
 	use Domain\Modules\Teacher\Entities\ParticipationCategory;
 	use Domain\Modules\Teacher\Entities\ParticipationScore;
 	use Domain\Modules\Teacher\Entities\QuizCategory;
@@ -105,6 +107,18 @@
 		public function SaveStudentQuizScore(
 			QuizScore $quizScore,
 			string $student_taskPerformance_category_id,
+			string $student_admission_id
+		) : void;
+		
+		
+		
+		public function SaveStudentExamCategory(
+			ExamCategory $examCategory, string  $teaching_load_id) :
+		void;
+		
+		public function SaveStudentExamScore(
+			ExamScore $examScore,
+			string $student_exam_category_id,
 			string $student_admission_id
 		) : void;
 		

@@ -14,7 +14,7 @@
     </style>
 @endpush
 @section('content')
-    {!! Form::open(['url' => '/teacher/student-quiz?teaching_load_id=' . $teaching_load_id, 'method' => 'POST']) !!}
+    {!! Form::open(['url' => '/teacher/student-exam?teaching_load_id=' . $teaching_load_id, 'method' => 'POST']) !!}
     <div class="content container-fluid">
 
         <div class="page-header">
@@ -111,7 +111,7 @@
 
                     </div>
                     <div style="margin-left:auto; margin-right: auto;">
-                        {{Form::submit('Save Quiz',['class' => 'btn btn-success'])}}
+                        {{Form::submit('Save Exam',['class' => 'btn btn-success'])}}
                     </div>
 
                 </div>

@@ -7,7 +7,10 @@
 	use App\Repositories\TeacherRepository;
 	use App\Services\TeacherService;
 	use Domain\Modules\Student\Repositories\IStudentRepository;
+	use Domain\Modules\Teacher\Entities\ExamCategory;
+	use Domain\Modules\Teacher\Entities\ExamScore;
 	use Illuminate\Http\Request;
+	use Illuminate\Support\Facades\Validator;
 	
 	class StudentExamController extends Controller
 	{
@@ -93,6 +96,39 @@
 					'year'    => $teaching_load->getYearLevel(),
 					'section' => $teaching_load->getSection()
 				]
+			]);
+		}
+		
+		
+		public function store(Request $req) {
+			$val = Validator::make($req->all(), [
+				'date'     => 'required|date',
+				'title'    => 'required',
+				'points'   => 'required|numeric',
+				'scores.*' => 'required'
+			], [
+				'scores.*.required' => 'Some scores cannot be empty!.'
+			]);
+			
+			if ($val->fails()) {
+				return redirectWithInput($val);
+			}
+			
+			
+			$teaching_load_id = $req->input('teaching_load_id');
+			
+			$exam = new ExamCategory($req->input('date'), $req->input('points'), $req->input('title'));
+			$this->teacherRepository->SaveStudentExamCategory($exam, $teaching_load_id);
+			
+			
+			foreach ($req->input('scores') as $id => $score) {
+				$this->teacherRepository->SaveStudentExamScore(
+					new ExamScore($score), $exam->getId(), $id
+				);
+			}
+			
+			return redirectWithAlert('/teacher/student-exam?teaching_load_id=' . $teaching_load_id, [
+				'alert-success' => 'Student Exam     has been recorded successfully!'
 			]);
 		}
 		

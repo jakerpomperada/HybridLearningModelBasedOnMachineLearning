@@ -15,7 +15,7 @@ return new class extends Migration
 	        $table->uuid('id')->primary();
 	        $table->uuid('stpc_id')->index();
 	        $table->uuid('student_admission_id')->index();
-	        $table->float('score');
+	        $table->integer('score');
 	        
 	        $table->timestamps();
 	        
