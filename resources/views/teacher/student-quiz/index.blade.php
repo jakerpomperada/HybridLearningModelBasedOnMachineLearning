@@ -83,21 +83,21 @@
                                 </thead>
                                 <tbody>
 
-                                @foreach($student_participations as $sp)
+                                @foreach($student_quizzes as $sq)
                                     <tr>
-                                        <td>{{ $sp->date }}</td>
-                                        <td>{{ $sp->subject }}</td>
-                                        <td>{{ $sp->year_section }}</td>
-                                        <td>{{ $sp->title }}</td>
-                                        <td>{{ $sp->points }}</td>
+                                        <td>{{ $sq->date }}</td>
+                                        <td>{{ $sq->subject }}</td>
+                                        <td>{{ $sq->year_section }}</td>
+                                        <td>{{ $sq->title }}</td>
+                                        <td>{{ $sq->points }}</td>
 
                                         <td>
-                                            <a href="/teacher/student-quiz/edit?date={{$sp->date}}&teaching_load_id={{$sp->teaching_load_id}}"
+                                            <a href="/teacher/student-quiz/edit?date={{$sq->date}}&teaching_load_id={{$sq->teaching_load_id}}"
                                                class="btn btn-sm btn-rounded btn-primary">
                                                 <i class="feather-edit"></i>&nbsp; Edit
                                             </a>
-                                            <a href="javascript:" date="{{$sp->date}}"
-                                               teaching_load_id="{{$sp->teaching_load_id}}"
+                                            <a href="javascript:" date="{{$sq->date}}"
+                                               teaching_load_id="{{$sq->teaching_load_id}}"
                                                class="btn btn-sm btn-danger btn-rounded button_delete">
                                                 <i class="feather-trash"></i>&nbsp; Delete
                                             </a>

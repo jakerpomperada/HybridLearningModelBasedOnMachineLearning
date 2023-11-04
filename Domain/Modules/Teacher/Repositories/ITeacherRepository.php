@@ -70,6 +70,10 @@
 			string $teaching_load_id
 		) : Paginator;
 		
+		public function GetAllStudentQuizzesByTeachingLoadGroupByDate(
+			string $teaching_load_id
+		): Paginator;
+		
 		public function GetAllStudentTaskPerformanceByTeachingLoadGroupByDate(
 			string $teaching_load_id
 		) : Paginator;

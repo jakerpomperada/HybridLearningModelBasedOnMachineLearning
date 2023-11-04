@@ -38,10 +38,10 @@
 			$subject_loads = $this->teacherService->getSubjectLoads($this->getTeacherId());
 			
 			if ($subject_load_id) {
-				$student_task_performance = $this->teacherRepository->GetAllStudentTaskPerformanceByTeachingLoadGroupByDate(
+				$student_quizzes = $this->teacherRepository->GetAllStudentQuizzesByTeachingLoadGroupByDate(
 					$subject_load_id
 				);
-				$student_task_performance = collect($student_task_performance->items())->map(function ($i) use ($subject_load_id) {
+				$student_quizzes = collect($student_quizzes->items())->map(function ($i) use ($subject_load_id) {
 					
 					return (object)[
 						'date'             => $i->displayDate(),
@@ -55,16 +55,15 @@
 				
 				
 			} else {
-				$student_task_performance = [];
+				$student_quizzes = [];
 			}
-			
 			
 			return view('teacher.student-quiz.index')->with([
 				'semester'               => $this->getCurrentTerm()->displaySemester(),
 				'term'                   => $this->getCurrentTerm()->getTerm(),
 				'subject_loads'          => $subject_loads,
 				'subject_load_id'        => $subject_load_id,
-				'student_participations' => $student_task_performance
+				'student_quizzes' => $student_quizzes
 			]);
 			
 			

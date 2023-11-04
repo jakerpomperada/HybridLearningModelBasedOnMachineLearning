@@ -4,6 +4,7 @@
 	
 	use App\Models\StudentAttendance;
 	use App\Models\StudentParticipationCategory;
+	use App\Models\StudentQuizCategory;
 	use App\Models\StudentTaskPerformanceCategory;
 	use App\Models\TeachingLoad;
 	use Domain\Modules\Teacher\Entities\ParticipationCategory;
@@ -164,6 +165,14 @@
 				'teaching_load_id' => $teaching_load_id
 			])->paginate(5);
 		}
+		
+		public function GetAllStudentQuizzesByTeachingLoadGroupByDate(string $teaching_load_id): Paginator
+		{
+			return StudentQuizCategory::where([
+				'teaching_load_id' => $teaching_load_id
+			])->paginate(5);
+		}
+		
 		
 		public function GetAllStudentTaskPerformanceByTeachingLoadGroupByDate(string $teaching_load_id): Paginator
 		{
