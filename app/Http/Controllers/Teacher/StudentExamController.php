@@ -4,11 +4,11 @@
 	
 	use App\Http\Controllers\Controller;
 	use App\Http\Resources\StudentResource;
-	use App\Repositories\TeacherRepository;
 	use App\Services\TeacherService;
 	use Domain\Modules\Student\Repositories\IStudentRepository;
 	use Domain\Modules\Teacher\Entities\ExamCategory;
 	use Domain\Modules\Teacher\Entities\ExamScore;
+	use Domain\Modules\Teacher\Repositories\ITeacherRepository;
 	use Illuminate\Http\Request;
 	use Illuminate\Support\Facades\Validator;
 	
@@ -18,11 +18,11 @@
 		use TeacherControllerTrait;
 		
 		protected TeacherService $teacherService;
-		protected TeacherRepository $teacherRepository;
+		protected ITeacherRepository $teacherRepository;
 		protected IStudentRepository $studentRepository;
 		
 		
-		public function __construct(TeacherService $teacherService, TeacherRepository $teacherRepository, IStudentRepository $studentRepository)
+		public function __construct(TeacherService $teacherService, ITeacherRepository $teacherRepository, IStudentRepository $studentRepository)
 		{
 			$this->teacherService    = $teacherService;
 			$this->teacherRepository = $teacherRepository;
@@ -37,7 +37,7 @@
 			$subject_loads = $this->teacherService->getSubjectLoads($this->getTeacherId());
 			
 			if ($subject_load_id) {
-				$student_quizzes = $this->teacherRepository->GetAllStudentQuizzesByTeachingLoadGroupByDate(
+				$student_quizzes = $this->teacherRepository->GetAllStudentExamsByTeachingLoadGroupByDate(
 					$subject_load_id
 				);
 				$student_quizzes = collect($student_quizzes->items())->map(function ($i) use ($subject_load_id) {

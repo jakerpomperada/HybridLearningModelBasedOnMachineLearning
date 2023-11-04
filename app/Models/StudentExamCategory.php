@@ -3,9 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class StudentExamCategory extends Model
+class StudentExamCategory extends LearningAssessmentModel
 {
-    use HasFactory;
+	use HasFactory;
+	use Uuid;
+	
+	public $incrementing = false;
+	protected $table = 'student_exam_categories';
+	protected $keyType = 'string';
+	protected $guarded = [];
 }

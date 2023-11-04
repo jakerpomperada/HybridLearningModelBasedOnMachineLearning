@@ -3,9 +3,11 @@
 	namespace App\Repositories;
 	
 	use App\Models\StudentAttendance;
+	use App\Models\StudentExamCategory;
 	use App\Models\StudentParticipationCategory;
 	use App\Models\StudentQuizCategory;
 	use App\Models\StudentTaskPerformanceCategory;
+	use App\Models\Teacher as TeacherDB;
 	use App\Models\TeachingLoad;
 	use Domain\Modules\Teacher\Entities\ExamCategory;
 	use Domain\Modules\Teacher\Entities\ExamScore;
@@ -20,7 +22,6 @@
 	use Illuminate\Contracts\Pagination\Paginator;
 	use Illuminate\Database\Eloquent\Collection;
 	use Illuminate\Support\Facades\DB;
-	use App\Models\Teacher as TeacherDB;
 	
 	class TeacherRepository implements ITeacherRepository
 	{
@@ -171,6 +172,13 @@
 		public function GetAllStudentQuizzesByTeachingLoadGroupByDate(string $teaching_load_id): Paginator
 		{
 			return StudentQuizCategory::where([
+				'teaching_load_id' => $teaching_load_id
+			])->paginate(5);
+		}
+		
+		public function GetAllStudentExamsByTeachingLoadGroupByDate(string $teaching_load_id): Paginator
+		{
+			return StudentExamCategory::where([
 				'teaching_load_id' => $teaching_load_id
 			])->paginate(5);
 		}
