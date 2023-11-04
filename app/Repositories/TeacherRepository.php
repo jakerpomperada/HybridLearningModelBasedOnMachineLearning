@@ -106,7 +106,9 @@
 		
 		public function FindTeachingLoad(string $id): object|null
 		{
-			return DB::table('teaching_loads')->where(['id' => $id])->first();
+			return TeachingLoad::with([
+				'Subject', 'Course'
+			])->where(['id' => $id])->first();
 		}
 		
 		public function DeleteTeachingLoad(string $id): void

@@ -12,7 +12,6 @@
 	{
 		
 		
-		
 		use TeacherControllerTrait;
 		
 		protected TeacherService $teacherService;
@@ -26,6 +25,7 @@
 			$this->teacherRepository = $teacherRepository;
 			$this->studentRepository = $studentRepository;
 		}
+		
 		public function index()
 		{
 			
@@ -66,17 +66,14 @@
 			
 		}
 		
-		public function create() {
+		public function create()
+		{
 			$teaching_load_id = request()->input('teaching_load_id');
 			
 			
 			$admissions = $this->studentRepository->GetAllAdmission();
 			
 			$teaching_load = $this->teacherRepository->FindTeachingLoad($teaching_load_id);
-			
-			dd($teaching_load);
-			
-			dd($admissions);
 			
 			$students_data_aggregates = $admissions->map(function ($admission) {
 				$student               = $this->studentRepository->Aggregates($admission->Student);
@@ -90,7 +87,12 @@
 			
 			return view('teacher.student-quiz.create')->with([
 				'students'         => $students,
-				'teaching_load_id' => request()->input('teaching_load_id')
+				'teaching_load_id' => request()->input('teaching_load_id'),
+				'load'        => (object)[
+					'subject' => $teaching_load->getSubjectCode(),
+					'year'    => $teaching_load->getYearLevel(),
+					'section' => $teaching_load->getSection()
+				]
 			]);
 		}
 	}
