@@ -24,7 +24,7 @@
         <a href="/teacher/student-quiz"><i class="fas fa-clipboard-list"></i> <span>Quizzes</span></a>
     </li>
     <li>
-        <a href="event.html"><i class="fas fa-calendar-day"></i> <span>Exams</span></a>
+        <a href="/teacher/student-exam"><i class="fas fa-calendar-day"></i> <span>Exams</span></a>
     </li>
 
 

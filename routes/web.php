@@ -28,6 +28,7 @@
 		Route::resource('student-participation', 'StudentParticipationController');
 		Route::resource('student-task_performance', 'StudentTaskPerformanceController');
 		Route::resource('student-quiz', 'StudentQuizController');
+		Route::resource('student-exam', 'StudentExamController');
 	});
 	
 	
