@@ -1,11 +1,12 @@
 <div class="header">
 
     <div class="header-left">
-        <a href="index-2.html" class="logo">
+        <a href="https://www.csab.edu.ph/" class="logo">
+            <img src="https://www.csab.edu.ph/wp-content/uploads/2023/09/logo22.png" alt="logo">
             {{--            <img src="{{asset("assets/img/logo.png")}}" alt="Logo">--}}
         </a>
         <a href="index-2.html" class="logo logo-small">
-            <img src="{{asset("assets/img/logo-small.png")}}" alt="Logo" width="30" height="30">
+            <img src="{{asset("assets/img/logo-small.png")}}" alt="Logo">
         </a>
     </div>
 

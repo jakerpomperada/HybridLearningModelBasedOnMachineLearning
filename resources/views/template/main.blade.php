@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+@php use Illuminate\Support\Facades\Session; @endphp
+        <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -10,8 +11,8 @@
     <link rel="shortcut icon" href="{{asset("assets/img/favicon.png")}}">
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&amp;display=swap"
-        rel="stylesheet">
+            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&amp;display=swap"
+            rel="stylesheet">
 
     <link rel="stylesheet" href="{{asset("assets/plugins/bootstrap/css/bootstrap.min.css")}}">
 
@@ -24,12 +25,18 @@
 
     <link rel="stylesheet" href="{{asset("assets/css/style.css")}}">
 
+    <style>
+        .header .header-left .logo img {
+            max-height: 53px;
+            width: auto;
+        }
+    </style>
 
 
     @stack('styles')
 </head>
 <body>
-{{$role = \Illuminate\Support\Facades\Session::get('role')}}
+{{$role = Session::get('role')}}
 
 <div class="main-wrapper">
 
@@ -50,7 +57,6 @@
 
 
 </div>
-
 
 
 </body>
