@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('student_quizzes', function (Blueprint $table) {
 	        $table->uuid('id')->primary();
-	        $table->uuid('student_quiz_id')->index();
+	        $table->uuid('student_quiz_category_id')->index();
 	        $table->uuid('student_admission_id')->index();
 	        $table->float('score');
 	        
 	        $table->timestamps();
 	        
-	        $table->foreign('student_quiz_id')
+	        $table->foreign('student_quiz_category_id')
 		        ->references('id')
 		        ->on('student_quiz_categories')
 		        ->onUpdate('CASCADE')

@@ -8,6 +8,8 @@
 	use App\Models\TeachingLoad;
 	use Domain\Modules\Teacher\Entities\ParticipationCategory;
 	use Domain\Modules\Teacher\Entities\ParticipationScore;
+	use Domain\Modules\Teacher\Entities\QuizCategory;
+	use Domain\Modules\Teacher\Entities\QuizScore;
 	use Domain\Modules\Teacher\Entities\TaskPerformanceCategory;
 	use Domain\Modules\Teacher\Entities\TaskPerformanceScore;
 	use Domain\Modules\Teacher\Entities\Teacher;
@@ -218,6 +220,31 @@
 				'score'                => $taskPerformanceScore->getScore(),
 				'created_at'           => now(),
 				'updated_at'           => now(),
+			]);
+		}
+		
+		public function SaveStudentQuizCategory(QuizCategory $quizCategory, string $teaching_load_id): void
+		{
+			DB::table('student_quiz_categories')->insert([
+				'id'               => $quizCategory->getId(),
+				'date'             => $quizCategory->getDate(),
+				'teaching_load_id' => $teaching_load_id,
+				'points'           => $quizCategory->getPoints(),
+				'title'            => $quizCategory->getTitle(),
+				'created_at'       => now(),
+				'updated_at'       => now(),
+			]);
+		}
+		
+		public function SaveStudentQuizScore(QuizScore $quizScore, string $student_taskPerformance_category_id, string $student_admission_id): void
+		{
+			DB::table('student_quizzes')->insert([
+				'id'                       => uuid(),
+				'student_quiz_category_id' => $student_taskPerformance_category_id,
+				'student_admission_id'     => $student_admission_id,
+				'score'                    => $quizScore->getScore(),
+				'created_at'               => now(),
+				'updated_at'               => now(),
 			]);
 		}
 		

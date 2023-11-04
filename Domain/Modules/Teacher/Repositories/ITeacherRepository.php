@@ -4,6 +4,8 @@
 	
 	use Domain\Modules\Teacher\Entities\ParticipationCategory;
 	use Domain\Modules\Teacher\Entities\ParticipationScore;
+	use Domain\Modules\Teacher\Entities\QuizCategory;
+	use Domain\Modules\Teacher\Entities\QuizScore;
 	use Domain\Modules\Teacher\Entities\TaskPerformanceCategory;
 	use Domain\Modules\Teacher\Entities\TaskPerformanceScore;
 	use Domain\Modules\Teacher\Entities\Teacher;
@@ -86,8 +88,18 @@
 			TaskPerformanceCategory $taskPerformance, string  $teaching_load_id) :
 		void;
 		
+		public function SaveStudentQuizCategory(
+			QuizCategory $quizCategory, string  $teaching_load_id) :
+		void;
+		
 		public function SaveStudentTaskPerformanceScore(
 			TaskPerformanceScore $taskPerformanceScore,
+			string $student_taskPerformance_category_id,
+			string $student_admission_id
+		) : void;
+		
+		public function SaveStudentQuizScore(
+			QuizScore $quizScore,
 			string $student_taskPerformance_category_id,
 			string $student_admission_id
 		) : void;
