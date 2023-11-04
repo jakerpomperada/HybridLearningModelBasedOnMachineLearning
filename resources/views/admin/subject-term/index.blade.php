@@ -62,7 +62,7 @@
 
 
                                                     <div class="input-group-append">
-                                                        <button type="button" class="btn btn-info">Filter</button>
+                                                        <button type="button" class="btn btn-csab">Filter</button>
                                                         <button type="button" class="btn btn-outline-light">Clear
                                                         </button>
 

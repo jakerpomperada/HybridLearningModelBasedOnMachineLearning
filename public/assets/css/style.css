@@ -78,6 +78,7 @@ input:-webkit-autofill:focus {
 	-webkit-box-shadow: 0 0 0px 1000px white inset !important;
 	box-shadow: 0 0 0px 1000px white inset !important;
 }
+
 .form-control {
     border: 1px solid #ddd;
     box-shadow: none;
@@ -2124,7 +2125,7 @@ div.dataTables_wrapper div.dataTables_length select {
 	line-height: 1.2;
 	font-size: 12px;
 	font-weight: 500;
-	color: #3D5EE1 !important;
+	color: #3d5ee1 !important;
 }
 .user-img .user-text h6 {
 	font-size: 14px;
@@ -2388,18 +2389,18 @@ footer p {
 }
 .sidebar-menu li a:hover {
     color: #fff;
-	background: #3D5EE1;
+	background: #3d5ee1;
 	border-radius: 6px;
 }
 .sidebar-menu > ul > li > a:hover {
 	background-color: #fff;
-    color: #3D5EE1; 
+    color: #3d5ee1; 
 	margin: 0px -15px;
 	padding-left: 30px;
 }
 .sidebar-menu li.active > a {
     background-color: #fff;
-    color: #3D5EE1;
+    color: #3d5ee1;
     position: relative;
     margin: 0px -15px;
     padding-left: 30px;
@@ -2411,7 +2412,7 @@ footer p {
     position: absolute;
     left: 0;
     top: 0;
-    background: #3D5EE1;
+    background: #3d5ee1;
     -webkit-transition: all 0.5s;
     -ms-transition: all 0.5s;
     transition: all 0.5s;
@@ -2445,7 +2446,7 @@ footer p {
 }
 .sidebar-menu ul ul a.active {
 	color: #fff;
-	background: #3D5EE1;
+	background: #3d5ee1;
 	border-radius: 6px;
 }
 .mobile_btn {
@@ -3227,7 +3228,7 @@ footer p {
 	margin-right: 5px;
 }
 .circle-blue {
-	background: #3D5EE1;
+	background: #3d5ee1;
 }
 .circle-green {
 	background: #70C4CF;
@@ -3848,8 +3849,8 @@ table.table-inbox tbody tr.checked {
 	padding: 9px 15px;
 }
 .follow-btn-group .follow-btns {
-	background: #3D5EE1;
-	border: 1px solid #3D5EE1;
+	background: #3d5ee1;
+	border: 1px solid #3d5ee1;
 	margin-right: 15px;
 }
 .follow-btn-group .follow-btns:hover {
@@ -3861,8 +3862,8 @@ table.table-inbox tbody tr.checked {
 	border: 1px solid #70C4CF;
 }
 .follow-btn-group .message-btns:hover {
-	background: #3D5EE1;
-	border: 1px solid #3D5EE1;
+	background: #3d5ee1;
+	border: 1px solid #3d5ee1;
 }
 .personal-activity {
 	display: -webkit-box;
@@ -3886,7 +3887,7 @@ table.table-inbox tbody tr.checked {
 	margin-bottom: 0;
 }
 .personal-icons i {
-	color: #3D5EE1;
+	color: #3d5ee1;
 }
 .student-personals-grp .card {
 	border: 2px solid rgba(220, 220, 220, 0.3);
@@ -3944,7 +3945,7 @@ table.table-inbox tbody tr.checked {
 	height: 8px;
 }
 .bg-photoshop {
-	background: #3D5EE1;
+	background: #3d5ee1;
 }
 .bg-editor {
 	background: #70C4CF;
@@ -3984,8 +3985,8 @@ table.table-inbox tbody tr.checked {
 .student-submit .btn-primary {
 	min-width: 160px;
 	border-radius: 10px;
-	background: #3D5EE1;
-	border: 1px solid #3D5EE1;
+	background: #3d5ee1;
+	border: 1px solid #3d5ee1;
 }
 .student-submit .btn-primary:hover {
 	background: #18aefa;
@@ -4200,8 +4201,8 @@ table.table-inbox tbody tr.checked {
 	color: #fff;
 }
 .lesson .btn-info {
-	background: #3D5EE1;
-	border: 1px solid #3D5EE1;
+	background: #3d5ee1;
+	border: 1px solid #3d5ee1;
 }
 .lesson .btn-info:hover {
 	background: #3652bf;
@@ -4227,7 +4228,7 @@ table.table-inbox tbody tr.checked {
 	margin-bottom: 15px;
 }
 .lesson  .lesson-confirm a {
-	color: #3D5EE1;
+	color: #3d5ee1;
 	font-size: 14px;
 }
 .dash-circle {
@@ -4370,13 +4371,13 @@ table.table-inbox tbody tr.checked {
 .calendar-box:before {
 	content: "";
 	position: absolute;
-	background: #3D5EE1;
+	background: #3d5ee1;
 	width: 4px;
 	height: 100%;
 	border-radius: 25px;
 }
 .normal-bg:before {
-	background: #3D5EE1;
+	background: #3d5ee1;
 }
 .break-bg:before {
 	background: #70C4CF;
@@ -4629,13 +4630,13 @@ table.table-inbox tbody tr.checked {
 	margin-bottom: 20px;
 }
 .skip-group .skip-btn:hover {
-	background: #3D5EE1;
-	border: 1px solid #3D5EE1;
+	background: #3d5ee1;
+	border: 1px solid #3d5ee1;
 	color: #fff;
 }
 .skip-group .continue-btn {
-	background: #3D5EE1;
-	border: 1px solid #3D5EE1;
+	background: #3d5ee1;
+	border: 1px solid #3d5ee1;
 	color: #fff;
 }
 .skip-group .continue-btn:hover {
@@ -4644,7 +4645,7 @@ table.table-inbox tbody tr.checked {
 	color: #000;
 }
 .lesson-view-all a {
-	color: #3D5EE1;
+	color: #3d5ee1;
 	font-weight: 500;
 	font-size: 14px;
 }
@@ -8450,7 +8451,7 @@ body[data-layout-mode=dark] .alertify .ajs-footer .ajs-buttons .ajs-button.ajs-o
 		font-size: 18px;
 		height: 40px;
 		width: 40px;
-		background: #3D5EE1;
+		background: #3d5ee1;
 		justify-content: center;
 		padding: 0 12px;
 		border-radius: 10px;

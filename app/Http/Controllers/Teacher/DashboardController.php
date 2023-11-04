@@ -7,7 +7,6 @@
 	class DashboardController
 	{
 		public function index () {
-			
 			return view('teacher/dashboard.index')->with([
 				'role' => Session::get('role')
 			]);

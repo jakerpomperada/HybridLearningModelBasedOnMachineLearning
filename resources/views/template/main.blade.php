@@ -30,6 +30,25 @@
             max-height: 53px;
             width: auto;
         }
+        #toggle_btn {
+            background: red;
+        }
+        .user-img .user-text .text-muted {
+            color: red !important;
+        }
+
+        .btn-csab {
+            background-color: red;
+            border: 1px solid red;
+        }
+
+        .btn-csab:hover, .btn-csab:focus, .btn-csab.active, .btn-csab:active, .open > .dropdown-toggle.btn-csab {
+            background-color: red;
+            border: 1px solid red;
+        }
+        .sidebar-menu > ul > li > a:hover {
+            color: red;
+           }
     </style>
 
 

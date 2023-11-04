@@ -2,15 +2,15 @@
 	
 	namespace App\Repositories;
 	
+	use App\Models\Student as StudentDB;
 	use App\Models\StudentAdmission;
 	use App\Models\User as UserDB;
 	use Domain\Modules\Student\Entities\Student;
 	use Domain\Modules\Student\Repositories\IStudentRepository;
+	use Domain\Modules\User\Entities\User;
 	use Domain\Shared\Address;
 	use Domain\Shared\Image;
-	use Domain\Shared\User;
 	use Illuminate\Contracts\Pagination\Paginator;
-	use App\Models\Student as StudentDB;
 	use Illuminate\Database\Eloquent\Collection;
 	use Illuminate\Support\Facades\DB;
 	

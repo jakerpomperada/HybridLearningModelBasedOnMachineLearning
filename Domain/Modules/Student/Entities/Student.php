@@ -5,11 +5,11 @@
 	
 	use Domain\Modules\Student\ValueObjects\Course;
 	use Domain\Modules\Student\ValueObjects\YearLevel;
+	use Domain\Modules\User\Entities\User;
 	use Domain\Shared\AcademicTerm;
 	use Domain\Shared\Address;
 	use Domain\Shared\Entity;
 	use Domain\Shared\Image;
-	use Domain\Shared\User;
 	use Error;
 	use Illuminate\Support\Carbon;
 	

@@ -4,6 +4,7 @@
 
     use App\Models\User;
     use Illuminate\Database\Eloquent\Factories\Factory;
+    use Illuminate\Support\Facades\Hash;
     use Illuminate\Support\Str;
 
     /**
@@ -21,8 +22,8 @@
             return [
                 'id'         => uuid(),
                 'username'   => $this->faker->userName,
-                'password'   => $this->faker->password,
-                'type'       => 'user',
+                'password'   => Hash::make('test'),
+                'type'       => 'admin',
                 'created_at' => now(),
                 'updated_at' => now(),
             ];

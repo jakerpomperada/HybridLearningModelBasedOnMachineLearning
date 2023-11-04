@@ -5,9 +5,9 @@
     use App\Http\Resources\StudentResource;
     use Domain\Modules\Student\Entities\Student;
     use Domain\Modules\Student\Repositories\IStudentRepository;
+    use Domain\Modules\User\Entities\User;
     use Domain\Shared\Address;
     use Domain\Shared\Image;
-    use Domain\Shared\User;
     use Error;
     use Illuminate\Http\Request;
     use Illuminate\Support\Facades\Session;

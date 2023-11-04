@@ -41,7 +41,7 @@
                                                         {!! Form::select('teaching_load_id', $subject_loads, $subject_load_id, ['placeholder' => '-- Select Subject Load --', 'class' => 'form-control']); !!}
                                                     </div>
                                                     <div class="input-group-append">
-                                                        <button type="submit" class="btn btn-info">Filter</button>
+                                                        <button type="submit" class="btn btn-csab">Filter</button>
                                                     </div>
                                                 </div>
                                             </div>

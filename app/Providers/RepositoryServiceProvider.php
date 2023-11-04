@@ -7,6 +7,13 @@
     class RepositoryServiceProvider extends ServiceProvider
 	{
         public function boot() {
+	        
+	        $this->app->bind(
+		        'Domain\Modules\User\Repositories\IUserRepository',
+		        'App\Repositories\UserRepository'
+	        );
+			
+			
             $this->app->bind(
                 'Domain\Modules\Course\Repositories\ICourseRepository',
                 'App\Repositories\CourseRepository'
@@ -31,6 +38,8 @@
                 'Domain\Modules\AcademicTerm\Repositories\IAcademicTermRepository',
                 'App\Repositories\AcademicTermRepository'
             );
+			
+			
         }
 	}
 

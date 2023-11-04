@@ -28,26 +28,33 @@
         <li class="nav-item dropdown has-arrow new-user-menus">
             <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
 <span class="user-img">
-<img class="rounded-circle" src="{{asset("assets/img/profiles/avatar-02.jpg")}}" width="31" alt="Ryan Taylor">
+<img class="rounded-circle" src="{{asset("assets/img/temp.jpg")}}" width="31" alt="Ryan Taylor">
 <div class="user-text">
-<h6>John Doe</h6>
-<p class="text-muted mb-0">Administrator</p>
+    @if(session('role') != 'admin')
+        <h6>{{session('complete_name')}}</h6>
+    @endif
+
+<p class="text-muted mb-0">{{getRole()}}</p>
 </div>
 </span>
             </a>
             <div class="dropdown-menu">
                 <div class="user-header">
                     <div class="avatar avatar-sm">
-                        <img src="{{asset("assets/img/profiles/avatar-01.jpg")}}" alt="User Image"
+                        <img src="{{asset("assets/img/temp.jpg")}}" alt="User Image"
                              class="avatar-img rounded-circle">
                     </div>
                     <div class="user-text">
-                        <h6>Ryan Taylor</h6>
-                        <p class="text-muted mb-0">Administrator</p>
+                        @if(session('role') != 'admin')
+                            <h6>{{session('complete_name')}}</h6>
+                        @endif
+
+
+                        <p class="text-muted mb-0">{{getRole()}}</p>
                     </div>
                 </div>
                 <a class="dropdown-item" href="profile.html">Settings</a>
-                <a class="dropdown-item" href="/">Logout</a>
+                <a class="dropdown-item" href="/logout">Logout</a>
             </div>
         </li>
 

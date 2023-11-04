@@ -1,10 +1,11 @@
 <?php
 
-	namespace Domain\Shared;
+	namespace Domain\Modules\User\Entities;
 
+	use Domain\Shared\Entity;
 	use Illuminate\Support\Facades\Hash;
-
-    class User extends Entity
+	
+	class User extends Entity
 	{
 
         protected string $username;

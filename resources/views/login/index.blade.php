@@ -43,7 +43,7 @@
                         <h1>Hybrid Learning Model Based on Machine Learning</h1>
                         <br/>
                         <h2>Sign in</h2>
-
+                        @include('template.alert')
                         <form action="/login" method="POST">
                             @csrf
                             <div class="form-group">
