@@ -1,68 +1,135 @@
 <?php
-
-namespace App\Http\Controllers\Teacher;
-
-use App\Http\Controllers\Controller;
-use App\Services\TeacherService;
-use Domain\Modules\Student\Repositories\IStudentRepository;
-use Domain\Modules\Teacher\Repositories\ITeacherRepository;
-use Illuminate\Http\Request;
-
-class StudentQuizAssessmentController extends Controller
-{
 	
-	use TeacherControllerTrait;
+	namespace App\Http\Controllers\Teacher;
 	
-	protected TeacherService $teacherService;
-	protected ITeacherRepository $teacherRepository;
-	protected IStudentRepository $studentRepository;
+	use App\Http\Controllers\Controller;
+	use App\Http\Resources\StudentResource;
+	use App\Services\TeacherService;
+	use Domain\Modules\Student\Repositories\IStudentRepository;
+	use Domain\Modules\Teacher\Entities\QuizAssessmentCategory;
+	use Domain\Modules\Teacher\Repositories\ITeacherRepository;
+	use Illuminate\Http\Request;
+	use Illuminate\Support\Facades\Validator;
 	
-	
-	public function __construct(TeacherService $teacherService, ITeacherRepository $teacherRepository, IStudentRepository $studentRepository)
-	{
-		$this->teacherService    = $teacherService;
-		$this->teacherRepository = $teacherRepository;
-		$this->studentRepository = $studentRepository;
-	}
-	
-	public function index()
+	class StudentQuizAssessmentController extends Controller
 	{
 		
-		$subject_load_id = request()->input('teaching_load_id');
+		use TeacherControllerTrait;
 		
-		$subject_loads = $this->teacherService->getSubjectLoads($this->getTeacherId());
+		protected TeacherService $teacherService;
+		protected ITeacherRepository $teacherRepository;
+		protected IStudentRepository $studentRepository;
 		
-		if ($subject_load_id) {
-			$student_quizzes = $this->teacherRepository->GetAllStudentExamsByTeachingLoadGroupByDate(
-				$subject_load_id
-			);
-			$student_quizzes = collect($student_quizzes->items())->map(function ($i) use ($subject_load_id) {
+		
+		
+		public function __construct(TeacherService $teacherService, ITeacherRepository $teacherRepository, IStudentRepository $studentRepository)
+		{
+			$this->teacherService    = $teacherService;
+			$this->teacherRepository = $teacherRepository;
+			$this->studentRepository = $studentRepository;
+		}
+		
+		public function index()
+		{
+			
+			$subject_load_id = request()->input('teaching_load_id');
+			
+			$subject_loads = $this->teacherService->getSubjectLoads($this->getTeacherId());
+			
+			if ($subject_load_id) {
+				$student_quizzes = $this->teacherRepository->GetAllStudentExamsByTeachingLoadGroupByDate(
+					$subject_load_id
+				);
+				$student_quizzes = collect($student_quizzes->items())->map(function ($i) use ($subject_load_id) {
+					
+					return (object)[
+						'date'             => $i->displayDate(),
+						'year_section'     => $i->TeachingLoad->getYearSection(),
+						'subject'          => $i->TeachingLoad->Subject->code,
+						'title'            => $i->title,
+						'points'           => $i->points,
+						'teaching_load_id' => $i->teaching_load_id
+					];
+				});
 				
-				return (object)[
-					'date'             => $i->displayDate(),
-					'year_section'     => $i->TeachingLoad->getYearSection(),
-					'subject'          => $i->TeachingLoad->Subject->code,
-					'title'            => $i->title,
-					'points'           => $i->points,
-					'teaching_load_id' => $i->teaching_load_id
-				];
+				
+			} else {
+				$student_quizzes = [];
+			}
+			
+			return view('teacher.quiz-assessment.index')->with([
+				'semester'        => $this->getCurrentTerm()->displaySemester(),
+				'term'            => $this->getCurrentTerm()->getTerm(),
+				'subject_loads'   => $subject_loads,
+				'subject_load_id' => $subject_load_id,
+				'student_quizzes' => $student_quizzes
+			]);
+			
+			
+		}
+		
+		public function create()
+		{
+			
+			
+			$teaching_load_id = request()->input('teaching_load_id');
+			
+			
+			$admissions = $this->studentRepository->GetAllAdmission();
+			
+			$teaching_load = $this->teacherRepository->FindTeachingLoad($teaching_load_id);
+			
+			$students_data_aggregates = $admissions->map(function ($admission) {
+				$student               = $this->studentRepository->Aggregates($admission->Student);
+				$student->admission_id = $admission->id;
+				return $student;
 			});
 			
 			
-		} else {
-			$student_quizzes = [];
+			$students = StudentResource::collection($students_data_aggregates)->resolve();
+			
+			
+			return view('teacher.quiz-assessment.create')->with([
+				'students'         => $students,
+				'teaching_load_id' => request()->input('teaching_load_id'),
+				'load'             => (object)[
+					'subject' => $teaching_load->getSubjectCode(),
+					'year'    => $teaching_load->getYearLevel(),
+					'section' => $teaching_load->getSection()
+				]
+			]);
 		}
 		
-		return view('teacher.quiz-assessment.index')->with([
-			'semester'               => $this->getCurrentTerm()->displaySemester(),
-			'term'                   => $this->getCurrentTerm()->getTerm(),
-			'subject_loads'          => $subject_loads,
-			'subject_load_id'        => $subject_load_id,
-			'student_quizzes' => $student_quizzes
-		]);
+		public function store(Request $req)
+		{
+			$val = Validator::make($req->all(), [
+				'date_start'            => 'required|date',
+				'date_end'              => 'required|date',
+				'quiz_assessment_title' => 'required',
+				'teaching_load_id'      => 'required|string'
+			]);
+			
+			if ($val->fails()) {
+				return redirectWithInput($val);
+			}
+			
+			$teaching_load_id  = $req->input('teaching_load_id');
+			
+			$quiz_assessment_cat = new QuizAssessmentCategory(
+				$req->input('date_start'),
+				$req->input('date_end'),
+				$req->input('quiz_assessment_title'),
+				'ungive'
+			);
+			
+			$this->teacherRepository->SaveQuizAssessmentCategory($quiz_assessment_cat, $teaching_load_id);
+			
+			
+			
+			return redirectWithAlert('/teacher/student-quiz-assessment?teaching_load_id=' . $teaching_load_id, [
+				'alert-success' => 'New Student Quiz Assessment has been added!'
+			]);
+		}
 		
 		
 	}
-	
-	
-}

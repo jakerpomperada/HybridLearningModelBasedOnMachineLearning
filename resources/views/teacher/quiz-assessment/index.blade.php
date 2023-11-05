@@ -65,7 +65,7 @@
                                     <div class="col-auto text-end">
                                         <a href="/teacher/student-quiz-assessment/create?teaching_load_id={{$subject_load_id}}"
                                            class="btn btn-sm btn-success">
-                                            <i class="fas fa-plus"></i> &nbsp; Record New Quiz Assessment
+                                            <i class="fas fa-plus"></i> &nbsp; Create New Quiz Assessment
                                         </a>
                                     </div>
                                 </div>

@@ -13,6 +13,7 @@
 	use Domain\Modules\Teacher\Entities\ExamScore;
 	use Domain\Modules\Teacher\Entities\ParticipationCategory;
 	use Domain\Modules\Teacher\Entities\ParticipationScore;
+	use Domain\Modules\Teacher\Entities\QuizAssessmentCategory;
 	use Domain\Modules\Teacher\Entities\QuizCategory;
 	use Domain\Modules\Teacher\Entities\QuizScore;
 	use Domain\Modules\Teacher\Entities\TaskPerformanceCategory;
@@ -290,6 +291,25 @@
 				'created_at'               => now(),
 				'updated_at'               => now(),
 			]);
+		}
+		
+		public function SaveQuizAssessmentCategory(QuizAssessmentCategory $quizAssessmentCategory, string $teaching_load_id): void
+		{
+			DB::table('student_quiz_assessment_categories')->insert([
+				'id'               => $quizAssessmentCategory->getId(),
+				'start_date'       => $quizAssessmentCategory->getDateStart(),
+				'end_date'         => $quizAssessmentCategory->getDateEnd(),
+				'teaching_load_id' => $teaching_load_id,
+				'title'            => $quizAssessmentCategory->getTitle(),
+				'status'           => $quizAssessmentCategory->getStatus(),
+				'created_at'       => now(),
+				'updated_at'       => now(),
+			]);
+		}
+		
+		public function GetQuizAssessmentCategoryByTeachingLoadGroupByDate(string $teaching_load_id): Paginator
+		{
+			return StudentQuizCategory::where(['teaching_load_id' => $teaching_load_id])->paginate(5);
 		}
 		
 		

@@ -6,6 +6,7 @@
 	use Domain\Modules\Teacher\Entities\ExamScore;
 	use Domain\Modules\Teacher\Entities\ParticipationCategory;
 	use Domain\Modules\Teacher\Entities\ParticipationScore;
+	use Domain\Modules\Teacher\Entities\QuizAssessmentCategory;
 	use Domain\Modules\Teacher\Entities\QuizCategory;
 	use Domain\Modules\Teacher\Entities\QuizScore;
 	use Domain\Modules\Teacher\Entities\TaskPerformanceCategory;
@@ -125,6 +126,16 @@
 			string $student_exam_category_id,
 			string $student_admission_id
 		) : void;
+		
+		public function SaveQuizAssessmentCategory(
+			QuizAssessmentCategory $quizAssessmentCategory, string  $teaching_load_id) :
+		void;
+		
+		public function GetQuizAssessmentCategoryByTeachingLoadGroupByDate(
+			string $teaching_load_id
+		) : Paginator;
+		
+		
 		
 	
 	
