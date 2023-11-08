@@ -31,6 +31,7 @@
 		Route::resource('student-quiz-assessment', 'StudentQuizAssessmentController');
 		Route::resource('student-exam', 'StudentExamController');
 		Route::resource('student-exam-assessment', 'StudentExamAssessmentController');
+		Route::resource('student-quiz-assessment-items', 'StudentQuizAssessmentItemController');
 	});
 	
 	

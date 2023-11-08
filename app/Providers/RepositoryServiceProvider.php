@@ -9,6 +9,11 @@
         public function boot() {
 	        
 	        $this->app->bind(
+		        'Domain\Modules\Assessment\Repositories\IAssessmentRepository',
+		        'App\Repositories\AssessmentRepository'
+	        );
+	        
+	        $this->app->bind(
 		        'Domain\Modules\User\Repositories\IUserRepository',
 		        'App\Repositories\UserRepository'
 	        );
