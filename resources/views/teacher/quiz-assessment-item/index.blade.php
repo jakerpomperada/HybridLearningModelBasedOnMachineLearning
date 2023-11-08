@@ -91,7 +91,7 @@
                                         <td>{{ $sq->title }}</td>
                                         <td>{{  $sq->status }}</td>
                                         <td>{{ $sq->total_items }}</td>
-                                        <td> <a href="/teacher/student-quiz-assessment-items?id={{$sq->id}}"
+                                        <td> <a href="/teacher/student-quiz-assessment/edit?id={{$sq->id}}"
                                                 class="btn btn-sm btn-rounded btn-info">
                                                 <i class="feather-list"></i>&nbsp; Show Items
                                             </a>
@@ -103,7 +103,7 @@
                                                class="btn btn-sm btn-rounded btn-danger">
                                                 <i class="feather-trash"></i>&nbsp; Delete
                                             </a>
-
+                                           
                                         </td>
                                     </tr>
                                 @endforeach

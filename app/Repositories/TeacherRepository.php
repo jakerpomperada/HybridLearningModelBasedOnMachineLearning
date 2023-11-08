@@ -5,6 +5,7 @@
 	use App\Models\StudentAttendance;
 	use App\Models\StudentExamCategory;
 	use App\Models\StudentParticipationCategory;
+	use App\Models\StudentQuizAssessmentCategory;
 	use App\Models\StudentQuizCategory;
 	use App\Models\StudentTaskPerformanceCategory;
 	use App\Models\Teacher as TeacherDB;
@@ -310,6 +311,12 @@
 		public function GetQuizAssessmentCategoryByTeachingLoadGroupByDate(string $teaching_load_id): Paginator
 		{
 			return StudentQuizCategory::where(['teaching_load_id' => $teaching_load_id])->paginate(5);
+		}
+		
+		
+		public function GetAllStudentQuizAssessmentByTeachingLoadGroupByDate(string $teaching_load_id): Paginator
+		{
+			return StudentQuizAssessmentCategory::where(['teaching_load_id' => $teaching_load_id])->paginate(5);
 		}
 		
 		

@@ -21,7 +21,6 @@
 		protected IStudentRepository $studentRepository;
 		
 		
-		
 		public function __construct(TeacherService $teacherService, ITeacherRepository $teacherRepository, IStudentRepository $studentRepository)
 		{
 			$this->teacherService    = $teacherService;
@@ -37,24 +36,25 @@
 			$subject_loads = $this->teacherService->getSubjectLoads($this->getTeacherId());
 			
 			if ($subject_load_id) {
-				$student_quizzes = $this->teacherRepository->GetAllStudentExamsByTeachingLoadGroupByDate(
+				$quiz_assessment = $this->teacherRepository->GetAllStudentQuizAssessmentByTeachingLoadGroupByDate(
 					$subject_load_id
 				);
-				$student_quizzes = collect($student_quizzes->items())->map(function ($i) use ($subject_load_id) {
-					
+				
+				$quiz_assessment = collect($quiz_assessment->items())->map(function ($i) use ($subject_load_id) {
 					return (object)[
-						'date'             => $i->displayDate(),
-						'year_section'     => $i->TeachingLoad->getYearSection(),
-						'subject'          => $i->TeachingLoad->Subject->code,
-						'title'            => $i->title,
-						'points'           => $i->points,
-						'teaching_load_id' => $i->teaching_load_id
+						'id'               => $i->id,
+						'start_date'       => $i->displayDateStartDate(),
+						'end_date'         => $i->displayDateEndDate(),
+						'title'            => $i->getTitle(),
+						'teaching_load_id' => $i->teaching_load_id,
+						'status'           => 1,
+						'total_items'      => 1,
 					];
 				});
 				
 				
 			} else {
-				$student_quizzes = [];
+				$quiz_assessment = [];
 			}
 			
 			return view('teacher.quiz-assessment.index')->with([
@@ -62,7 +62,7 @@
 				'term'            => $this->getCurrentTerm()->getTerm(),
 				'subject_loads'   => $subject_loads,
 				'subject_load_id' => $subject_load_id,
-				'student_quizzes' => $student_quizzes
+				'quiz_assessment' => $quiz_assessment
 			]);
 			
 			
@@ -113,7 +113,7 @@
 				return redirectWithInput($val);
 			}
 			
-			$teaching_load_id  = $req->input('teaching_load_id');
+			$teaching_load_id = $req->input('teaching_load_id');
 			
 			$quiz_assessment_cat = new QuizAssessmentCategory(
 				$req->input('date_start'),
@@ -123,8 +123,6 @@
 			);
 			
 			$this->teacherRepository->SaveQuizAssessmentCategory($quiz_assessment_cat, $teaching_load_id);
-			
-			
 			
 			return redirectWithAlert('/teacher/student-quiz-assessment?teaching_load_id=' . $teaching_load_id, [
 				'alert-success' => 'New Student Quiz Assessment has been added!'

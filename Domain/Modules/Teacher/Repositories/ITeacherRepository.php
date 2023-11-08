@@ -135,6 +135,10 @@
 			string $teaching_load_id
 		) : Paginator;
 		
+		public function GetAllStudentQuizAssessmentByTeachingLoadGroupByDate(
+			string $teaching_load_id
+		) : Paginator;
+		
 		
 		
 	
