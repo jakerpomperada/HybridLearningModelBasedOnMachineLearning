@@ -33,27 +33,13 @@
                 <div class="col-4">
                     <h3 class="page-title">Total Questions: 10 </h3>
                 </div>
-
             </div>
         </div>
 
 
         <div class="row">
             <div class="col-lg-12 col-sm-12">
-                <div class="row">
-                    <div class="col-sm-12">
 
-                        <div class="card">
-                            <div class="card-header">
-                                <h5 class="card-title">Date Start:</h5>
-                                <h5 class="card-title">Date Start:</h5>
-                            </div>
-
-                        </div>
-
-
-                    </div>
-                </div>
                 @include('template.alert')
                 <div class="card card-table">
                     <div class="card-body">

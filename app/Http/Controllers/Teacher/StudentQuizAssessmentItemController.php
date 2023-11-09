@@ -3,13 +3,8 @@
 	namespace App\Http\Controllers\Teacher;
 	
 	use App\Http\Controllers\Controller;
-	use App\Models\StudentQuizAssessment;
-	use App\Models\StudentQuizAssessmentQuestion;
-	use App\Repositories\TeacherRepository;
 	use App\Services\TeacherService;
 	use Domain\Modules\Assessment\Repositories\IAssessmentRepository;
-	use Domain\Modules\Student\Repositories\IStudentRepository;
-	use Domain\Modules\Teacher\Entities\QuizAssessmentCategory;
 	use Domain\Modules\Teacher\Entities\QuizAssessmentChoice;
 	use Domain\Modules\Teacher\Entities\QuizAssessmentQuestion;
 	use Error;
