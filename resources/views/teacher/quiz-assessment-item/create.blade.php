@@ -14,59 +14,82 @@
     </style>
 @endpush
 @section('content')
-    {!! Form::open(['url' => '/teacher/student-quiz-assessment?teaching_load_id=' . $teaching_load_id, 'method' => 'POST']) !!}
+    {!! Form::open(['url' => '/teacher/student-quiz-assessment-items?qacategory_id='.$qacategory_id, 'method' => 'POST']) !!}
     <div class="content container-fluid">
+
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col mb-3">
-                    <h3 class="page-title"><i class="fas fa-list"></i> &nbsp Create New Quiz Assessment</h3>
+                    <h3 class="page-title"><i class="fas fa-question"></i> &nbsp Create New Quiz Question</h3>
                 </div>
             </div>
-            <div class="row align-items-center">
-                <div class="col-4">
-                    <h3 class="page-title">Subject: {{$load->subject}}</h3>
-                </div>
-                <div class="col-4">
-                    <h3 class="page-title">Year: {{$load->year}}</h3>
-                </div>
-                <div class="col-4">
-                    <h3 class="page-title">Section: {{$load->section}}</h3>
-                </div>
-            </div>
+
         </div>
 
         <div class="row">
-        <div class="col-3"></div>
-            <div class="col-5">
+
+            <div class="col-sm-12">
                 @include('template.alert')
                 <div class="card">
 
                     <div class="card-body">
-                        <form action="#">
-
-                            <div class="form-group local-forms">
-                                <label>Date Start</label>
-                                <input type="datetime-local" name="date_start" class="form-control">
-
+                        <div class="row">
+                            <div class="col-md-7">
+                                <div class="form-group">
+                                    <label>Question:</label>
+                                    {{Form::text('title', null, ['class' => 'form-control'])}}
+                                </div>
                             </div>
-                            <div class="form-group local-forms">
-                                <label>Date End</label>
-                                <input type="datetime-local" name="date_end" class="form-control">
-                            </div>
-                            <div class="form-group local-forms">
-                                <label>Quiz Assessment Title</label>
-                                {{Form::text('quiz_assessment_title', null, ['class' => 'form-control'])}}
-                            </div>
-
-                            <div class="text-end">
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
 
 
             </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-9">
+                <div class="card card-table">
+                    <div class="card-body">
+                        <table class="table table-hover table-center mb-0 table-striped mb-0 text-center">
+                            <thead>
+                            <tr>
+                                <th>Letter</th>
+                                <th>Choices</th>
+                                <th>Correct?</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                           @foreach ($choices as $i => $choice):
+                            <tr>
+                                <td>{{$choice}}</td>
+                                <td>
+                                    {{Form::text('choices['.$i.']', null, ['class' => 'form-control'])}}
+                                </td>
+                                <td>
+                                    {{Form::radio('answer',$i,['class'=>'form-control'])}}
+                                </td>
+                            </tr>
+                           @endforeach
+                            </tbody>
+
+                        </table>
+
+                    </div>
+                    <div style="margin-left:auto; margin-right: auto;">
+
+                        <button class="btn btn-dark">
+                            <i class="fas fa-holly-berry"></i> &nbsp;
+                            Save Question
+                        </button>
+                    </div>
+{{--                    <button class="btn btn-dark"></button>--}}
+
+                </div>
+            </div>
+
         </div>
 
 

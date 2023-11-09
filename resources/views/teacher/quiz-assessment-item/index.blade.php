@@ -8,9 +8,6 @@
 
 @section('content')
     <div class="content container-fluid">
-
-
-
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col mb-3">
@@ -65,7 +62,7 @@
                             <div class="row align-items-center">
 
                                 <div class="col-auto text-end">
-                                    <a href="/teacher/student-quiz-assessment/create"
+                                    <a href="/teacher/student-quiz-assessment-items/create?qacategory_id={{$qacategory_id}}"
                                        class="btn btn-sm btn-dark">
                                         <i class="fas fa-plus"></i> &nbsp Create New Question
                                     </a>
