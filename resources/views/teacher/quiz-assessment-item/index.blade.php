@@ -9,13 +9,36 @@
 @section('content')
     <div class="content container-fluid">
 
+
+
         <div class="page-header">
             <div class="row align-items-center">
-                <div class="col">
-                    <h3 class="page-title"><i class="fas fa-clipboard-list"></i>&nbsp;&nbsp Student Quiz Assessment</h3>
+                <div class="col mb-3">
+                    <h3 class="page-title"><i class="fas fa-clipboard-list"></i>&nbsp;&nbsp Student Quiz Assessment Items</h3>
                 </div>
             </div>
+            <div class="row align-items-center">
+                <div class="col-4">
+                    <h3 class="page-title">Date Start: Test</h3>
+                </div>
+                <div class="col-4">
+                    <h3 class="page-title">Title: New titlae</h3>
+                </div>
+                <div class="col-4">
+                    <h3 class="page-title">Status: Given</h3>
+                </div>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-4">
+                    <h3 class="page-title">Date End: Test</h3>
+                </div>
+                <div class="col-4">
+                    <h3 class="page-title">Total Questions: 10 </h3>
+                </div>
+
+            </div>
         </div>
+
 
 
         <div class="row">
@@ -25,102 +48,63 @@
 
                         <div class="card">
                             <div class="card-header">
-                                <h5 class="card-title">Filter:</h5>
+                                <h5 class="card-title">Date Start:</h5>
+                                <h5 class="card-title">Date Start:</h5>
                             </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm">
-                                        <form class="needs-validation" method="GET" novalidate="">
-                                            <div class="input-group input-group-sm">
-                                                <div class="input-group">
-                                                    &nbsp; <select disabled name="academic_year"
-                                                                   class="form-control col-lg-2">
-                                                        <option value="">{{$term}} [{{$semester}}]</option>
-                                                    </select>
-                                                    <div class="col-lg-9">
-                                                        {!! Form::select('teaching_load_id', $subject_loads, $subject_load_id, ['placeholder' => '-- Select Subject Load --', 'class' => 'form-control']); !!}
-                                                    </div>
-                                                    <div class="input-group-append">
-                                                        <button type="submit" class="btn btn-csab">Filter</button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
 
 
                     </div>
                 </div>
                 @include('template.alert')
-                @if(isset($subject_load_id))
-                    <div class="card card-table">
-                        <div class="card-body">
+                <div class="card card-table">
+                    <div class="card-body">
 
-                            <div class="page-header">
-                                <div class="row align-items-center">
+                        <div class="page-header">
+                            <div class="row align-items-center">
 
-                                    <div class="col-auto text-end">
-                                        <a href="/teacher/student-quiz-assessment/create?teaching_load_id={{$subject_load_id}}"
-                                           class="btn btn-sm btn-success">
-                                            <i class="fas fa-plus"></i> &nbsp; Create New Quiz Assessment
-                                        </a>
-                                    </div>
+                                <div class="col-auto text-end">
+                                    <a href="/teacher/student-quiz-assessment/create"
+                                       class="btn btn-sm btn-dark">
+                                        <i class="fas fa-plus"></i> &nbsp Create New Question
+                                    </a>
                                 </div>
                             </div>
-                            <table class="table table-hover table-center mb-0 table-striped mb-0 text-center">
-                                <thead>
+                        </div>
+                        <table class="table table-hover table-center mb-0 table-striped mb-0 text-center">
+                            <thead>
+                            <tr>
+                                <th>Question</th>
+                                <th>Correct Answer</th>
+                                <th>View Choices</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            @foreach([] as $sq)
                                 <tr>
-                                    <th>Date Start</th>
-                                    <th>Date End</th>
-                                    <th>Title</th>
-                                    <th>Status</th>
-                                    <th>Total Items</th>
-                                    <th></th>
-                                    <th>Action</th>
+                                    <td>{{ $sq->start_date }}</td>
+                                    <td>{{ $sq->end_date }}</td>
+                                    <td> <a href="/teacher/student-quiz-assessment/edit?id={{$sq->id}}"
+                                            class="btn btn-sm btn-rounded btn-info">
+                                            <i class="feather-list"></i>&nbsp; Show Items
+                                        </a>
+                                    </td>
+
                                 </tr>
-                                </thead>
-                                <tbody>
+                            @endforeach
 
-                                @foreach($quiz_assessment as $sq)
-                                    <tr>
-                                        <td>{{ $sq->start_date }}</td>
-                                        <td>{{ $sq->end_date }}</td>
-                                        <td>{{ $sq->title }}</td>
-                                        <td>{{  $sq->status }}</td>
-                                        <td>{{ $sq->total_items }}</td>
-                                        <td> <a href="/teacher/student-quiz-assessment/edit?id={{$sq->id}}"
-                                                class="btn btn-sm btn-rounded btn-info">
-                                                <i class="feather-list"></i>&nbsp; Show Items
-                                            </a>
-                                        </td>
+                            </tbody>
 
-                                        <td>
-
-                                            <a href="/teacher/student-quiz-assessment/edit?id={{$sq->id}}"
-                                               class="btn btn-sm btn-rounded btn-danger">
-                                                <i class="feather-trash"></i>&nbsp; Delete
-                                            </a>
-                                           
-                                        </td>
-                                    </tr>
-                                @endforeach
-
-                                </tbody>
-
-                            </table>
-
-                        </div>
-                        <div style="margin-left:auto; margin-right: auto;">
-                            {{--                        {!!  $paginate !!}--}}
-                        </div>
+                        </table>
 
                     </div>
-                @else
-                    Please select subject
-                @endif
+                    <div style="margin-left:auto; margin-right: auto;">
+                        {{--                        {!!  $paginate !!}--}}
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>

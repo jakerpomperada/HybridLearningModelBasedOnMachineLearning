@@ -17,22 +17,27 @@
 		use TeacherControllerTrait;
 		
 		protected IAssessmentRepository $assessmentRepository;
+		protected TeacherService $teacherService;
 		
-		
-		public function __construct(IAssessmentRepository $assessmentRepository)
+		public function __construct(IAssessmentRepository $assessmentRepository, TeacherService $teacherService)
 		{
 			$this->assessmentRepository = $assessmentRepository;
+			$this->teacherService       = $teacherService;
 		}
 		
 		
 		public function index()
 		{
 			$assessment_cat_id = request()->input('id');
+			$subject_loads = $this->teacherService->getSubjectLoads($this->getTeacherId());
 			
 			$assessments = $this->assessmentRepository->GetAllQuizByCategoryPaginate(
 				$assessment_cat_id, 5
 			);
 			
-			dd($assessments);
+			return view('teacher.quiz-assessment-item.index')->with([
+				'semester'               => $this->getCurrentTerm()->displaySemester(),
+				'term'                   => $this->getCurrentTerm()->getTerm(),
+			]);
 		}
 	}
