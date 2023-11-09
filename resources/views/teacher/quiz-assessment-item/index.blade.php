@@ -69,7 +69,7 @@
                                 <tr>
                                     <td>{{ $assessment->question }}</td>
                                     <td>{{ $assessment->correct_answer }}</td>
-                                    <td><a href="/teacher/student-quiz-assessment/edit?id={{$assessment->id}}"
+                                    <td><a href="/teacher/student-quiz-assessment-items/{{$assessment->id}}"
                                            class="btn btn-sm btn-rounded btn-info">
                                             <i class="feather-list"></i>&nbsp; Show Items
                                         </a>

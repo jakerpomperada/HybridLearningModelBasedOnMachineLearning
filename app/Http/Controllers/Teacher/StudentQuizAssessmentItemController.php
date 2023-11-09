@@ -98,7 +98,7 @@
 				$this->assessmentRepository->SaveQuizAssessmentQuestions($question, $qacategory_id);
 				
 				return redirectWithAlert('/teacher/student-quiz-assessment-items?id=' . $qacategory_id, [
-					'alert-success' => 'Student Quizzes has been recorded successfully!'
+					'alert-success' => 'Assessment Item has been  recorded successfully!'
 				]);
 				
 				
@@ -107,6 +107,81 @@
 			}
 			
 			
+		}
+		
+		public function show($id)
+		{
+			$ass = $this->assessmentRepository->FindQuizAssessmentQuestions($id);
+			
+			$assessment = (object)[
+				'id'       => $ass->id,
+				'title' => $ass->question,
+				'choices'  => $ass->StudentQuizAssessmentChoice->map(function ($c) {
+					return (object)[
+						'id'         => $c->id,
+						'order'      => $c->order,
+						'choice'     => $c->choice,
+						'is_correct' => $c->is_correct,
+						'letter' => $c->letter(),
+					];
+				})->sortBy('order')
+			];
+			
+			$qacategory_id = request()->input('qacategory_id');
+			
+			return view('teacher.quiz-assessment-item.edit')->with([
+				'choices'       => QuizAssessmentChoice::choices(),
+				'qacategory_id' => $qacategory_id,
+				'assessment' => $assessment
+			]);
+			
+			
+		}
+		
+		public function update(Request $req, $id) {
+			
+			try {
+				$val = Validator::make($req->all(), [
+					'title'     => 'required',
+					'choices.*' => 'sometimes|string|nullable',
+					'answer'    => 'required'
+				]);
+				
+				if ($val->fails()) {
+					return redirectWithInput($val);
+				}
+				
+				$ass = $this->assessmentRepository->FindQuizAssessmentQuestions($id);
+				
+				$answer        = $req->input('answer');
+				$choices       = $req->input('choices');
+				$question      = $req->input('title');
+				$qacategory_id = $ass->qacategory_id;
+				
+				$question = new QuizAssessmentQuestion($question);
+				
+				collect($choices)->map(function ($choice, $i) use ($answer, $question) {
+					$is_answer = false;
+					if ($i == $answer) $is_answer = true;
+					if (empty($choice) && $is_answer) {
+						throw new Error('The correct answer is empty');
+					}
+					
+					if (!empty($choice)) {
+						$question->setChoices(new QuizAssessmentChoice($i, $choice, $is_answer));
+					}
+				});
+				
+				$this->assessmentRepository->UpdateQuizAssessmentQuestions($question, $id);
+				
+				return redirectWithAlert('/teacher/student-quiz-assessment-items?id=' . $qacategory_id, [
+					'alert-info' => 'Assessment Item has been updated successfully!'
+				]);
+				
+				
+			} catch (Error $error) {
+				return redirectExceptionWithInput($error);
+			}
 		}
 		
 		

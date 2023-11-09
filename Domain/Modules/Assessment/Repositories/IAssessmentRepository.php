@@ -11,6 +11,10 @@
 		public function GetAllQuizByCategoryPaginate(string $cat_id, int $page) : Paginator;
 		
 		public function SaveQuizAssessmentQuestions(QuizAssessmentQuestion $assessmentQuestion, string $sqaquestion_id) : void;
+		public function UpdateQuizAssessmentQuestions(QuizAssessmentQuestion $assessmentQuestion, string $quiz_assessment_question_id) : void;
+		
+		public function FindQuizAssessmentQuestions(string $id) : object | null;
+		
 		
 		
 		

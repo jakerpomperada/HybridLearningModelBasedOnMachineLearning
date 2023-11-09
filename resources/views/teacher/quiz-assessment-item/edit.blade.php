@@ -1,12 +1,12 @@
 @extends('template.main')
 @section('content')
-    {!! Form::open(['url' => '/teacher/student-quiz-assessment-items?qacategory_id='.$qacategory_id, 'method' => 'POST']) !!}
+    {!! Form::open(['url' => '/teacher/student-quiz-assessment-items/'.$assessment->id.'?qacategory_id='.$qacategory_id, 'method' => 'PUT']) !!}
     <div class="content container-fluid">
 
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col mb-3">
-                    <h3 class="page-title"><i class="fas fa-question"></i> &nbsp Create New Quiz Question</h3>
+                    <h3 class="page-title"><i class="fas fa-question"></i> &nbsp Update Quiz Question</h3>
                 </div>
             </div>
 
@@ -23,10 +23,11 @@
                             <div class="col-md-7">
                                 <div class="form-group">
                                     <label>Question:</label>
-                                    {!! Form::textarea('title', null, [
+                                    {!! Form::textarea('title', $assessment->title, [
                                     'class'      => 'form-control',
                                     'rows'       => 1,
                                     ]) !!}
+
                                 </div>
                             </div>
                         </div>
@@ -51,18 +52,18 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($choices as $i => $choice)
-                                :
-                                <tr>
-                                    <td>{{$choice}}</td>
-                                    <td>
-                                        {{Form::text('choices['.$i.']', null, ['class' => 'form-control'])}}
-                                    </td>
-                                    <td>
-                                        {{Form::radio('answer',$i,['class'=>'form-control'])}}
-                                    </td>
-                                </tr>
-                            @endforeach
+                           @foreach ($assessment->choices as $choice):
+                            <tr>
+                                <td>{{$choice->letter}}</td>
+                                <td>
+                                    {{Form::text('choices['.$choice->order.']', $choice->choice, ['class' => 'form-control'])}}
+                                </td>
+                                <td>
+                                    <input type="radio" name="answer" {{$choice->is_correct ? "checked='checked'" : null}}" value="{{$choice->order}}" />
+{{--                                    {{Form::radio('answer',$choice->order,['class'=>'form-control'])}}--}}
+                                </td>
+                            </tr>
+                           @endforeach
                             </tbody>
 
                         </table>
@@ -71,11 +72,11 @@
                     <div style="margin-left:auto; margin-right: auto;">
 
                         <button class="btn btn-dark">
-                            <i class="fas fa-holly-berry"></i> &nbsp;
-                            Save Question
+                            <i class="fas fa-pencil-alt"></i> &nbsp;
+                            Update Question
                         </button>
                     </div>
-                    {{--                    <button class="btn btn-dark"></button>--}}
+{{--                    <button class="btn btn-dark"></button>--}}
 
                 </div>
             </div>

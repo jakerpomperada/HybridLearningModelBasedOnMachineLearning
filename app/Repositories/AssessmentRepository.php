@@ -51,4 +51,42 @@
 			}
 			
 		}
+		
+		public function FindQuizAssessmentQuestions(string $id): object|null
+		{
+			return StudentQuizAssessmentQuestion::with(['StudentQuizAssessmentChoice'])->where([
+				'id' => $id,
+			])->first();
+		}
+		
+		public function UpdateQuizAssessmentQuestions(QuizAssessmentQuestion $assessmentQuestion, string $quiz_assessment_question_id): void
+		{
+			
+			DB::table('student_quiz_assessment_questions')->where(['id' => $quiz_assessment_question_id])->update([
+				'question' => $assessmentQuestion->getQuestion(),
+			]);
+			
+			$sqac = DB::table('student_quiz_assessment_choices')->where(['sqaquestion_id' => $quiz_assessment_question_id])->get();
+			
+			foreach ($sqac as $s) {
+			
+			}
+			
+			foreach ($assessmentQuestion->getChoices() as $choice) {
+				/**
+				 * @var QuizAssessmentChoice $choice
+				 */
+				DB::table('student_quiz_assessment_choices')->where(
+					[
+						'sqaquestion_id' => $quiz_assessment_question_id,
+						'order'          => $choice->getOrder()
+					]
+				)->update([
+					'order'      => $choice->getOrder(),
+					'choice'     => $choice->getChoice(),
+					'is_correct' => $choice->isCorrect(),
+				]);
+				
+			}
+		}
 	}
