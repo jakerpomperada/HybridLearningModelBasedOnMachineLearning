@@ -39,10 +39,20 @@
 				$assessment_cat_id, 5
 			);
 			
+			$assessments = collect($assessments->items())->map(function ($ass) {
+				return (object)[
+					'id'             => $ass->id,
+					'question'       => $ass->question,
+					'correct_answer' => $ass->getCorrectAnswer()
+				];
+			});
+			
+			
 			return view('teacher.quiz-assessment-item.index')->with([
 				'semester'      => $this->getCurrentTerm()->displaySemester(),
 				'term'          => $this->getCurrentTerm()->getTerm(),
 				'qacategory_id' => $assessment_cat_id,
+				'assessments'   => $assessments
 			]);
 		}
 		
@@ -92,7 +102,7 @@
 				
 				$this->assessmentRepository->SaveQuizAssessmentQuestions($question, $qacategory_id);
 				
-				return redirectWithAlert('/teacher/student-quiz-assessment-items?id='.$qacategory_id, [
+				return redirectWithAlert('/teacher/student-quiz-assessment-items?id=' . $qacategory_id, [
 					'alert-success' => 'Student Quizzes has been recorded successfully!'
 				]);
 				

@@ -11,7 +11,8 @@
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col mb-3">
-                    <h3 class="page-title"><i class="fas fa-clipboard-list"></i>&nbsp;&nbsp Student Quiz Assessment Items</h3>
+                    <h3 class="page-title"><i class="fas fa-clipboard-list"></i>&nbsp;&nbsp Student Quiz Assessment
+                        Items</h3>
                 </div>
             </div>
             <div class="row align-items-center">
@@ -35,7 +36,6 @@
 
             </div>
         </div>
-
 
 
         <div class="row">
@@ -79,12 +79,12 @@
                             </thead>
                             <tbody>
 
-                            @foreach([] as $sq)
+                            @foreach($assessments as $assessment)
                                 <tr>
-                                    <td>{{ $sq->start_date }}</td>
-                                    <td>{{ $sq->end_date }}</td>
-                                    <td> <a href="/teacher/student-quiz-assessment/edit?id={{$sq->id}}"
-                                            class="btn btn-sm btn-rounded btn-info">
+                                    <td>{{ $assessment->question }}</td>
+                                    <td>{{ $assessment->correct_answer }}</td>
+                                    <td><a href="/teacher/student-quiz-assessment/edit?id={{$assessment->id}}"
+                                           class="btn btn-sm btn-rounded btn-info">
                                             <i class="feather-list"></i>&nbsp; Show Items
                                         </a>
                                     </td>

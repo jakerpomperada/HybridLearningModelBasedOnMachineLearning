@@ -2,6 +2,7 @@
 	
 	namespace App\Repositories;
 	
+	use App\Models\StudentQuizAssessmentChoice;
 	use App\Models\StudentQuizAssessmentQuestion;
 	use Domain\Modules\Assessment\Repositories\IAssessmentRepository;
 	use Domain\Modules\Teacher\Entities\QuizAssessmentChoice;
@@ -15,7 +16,7 @@
 		
 		public function GetAllQuizByCategoryPaginate(string $cat_id, int $page): Paginator
 		{
-			return StudentQuizAssessmentQuestion::where([
+			return StudentQuizAssessmentQuestion::with(['StudentQuizAssessmentChoice'])->where([
 				'qacategory_id' => $cat_id,
 			])->paginate($page);
 		}

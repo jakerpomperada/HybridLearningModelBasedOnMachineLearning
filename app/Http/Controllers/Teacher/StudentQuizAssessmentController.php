@@ -70,10 +70,7 @@
 		
 		public function create()
 		{
-			
-			
 			$teaching_load_id = request()->input('teaching_load_id');
-			
 			
 			$admissions = $this->studentRepository->GetAllAdmission();
 			
@@ -84,7 +81,6 @@
 				$student->admission_id = $admission->id;
 				return $student;
 			});
-			
 			
 			$students = StudentResource::collection($students_data_aggregates)->resolve();
 			
