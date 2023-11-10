@@ -4,6 +4,7 @@
 	
 	use App\Models\StudentQuizAssessmentChoice;
 	use App\Models\StudentQuizAssessmentQuestion;
+	use Domain\Modules\Assessment\Entities\ExamAssessmentCategory;
 	use Domain\Modules\Assessment\Repositories\IAssessmentRepository;
 	use Domain\Modules\Teacher\Entities\QuizAssessmentChoice;
 	use Domain\Modules\Teacher\Entities\QuizAssessmentQuestion;
@@ -88,5 +89,24 @@
 				]);
 				
 			}
+		}
+		
+		public function SaveExamAssessmentCategory(ExamAssessmentCategory $assessment, string $teaching_load_id): void
+		{
+			DB::table('student_exam_assessment_categories')->insert([
+				'id'               => uuid(),
+				'start_date'       => $assessment->getDateStart(),
+				'end_date'         => $assessment->getDateEnd(),
+				'teaching_load_id' => $teaching_load_id,
+				'term'             => $assessment->getTerm(),
+				'status'           => $assessment->getStatus(),
+				'created_at'       => now(),
+				'updated_at'       => now(),
+			]);
+		}
+		
+		public function GetExamAssessmentCategory(string $teaching_load_id, int $page): Paginator
+		{
+			// TODO: Implement GetExamAssessmentCategory() method.
 		}
 	}

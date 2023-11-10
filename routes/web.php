@@ -29,9 +29,11 @@
 		Route::resource('student-task_performance', 'StudentTaskPerformanceController');
 		Route::resource('student-quiz', 'StudentQuizController');
 		Route::resource('student-quiz-assessment', 'StudentQuizAssessmentController');
+		Route::resource('student-quiz-assessment-items', 'StudentQuizAssessmentItemController');
 		Route::resource('student-exam', 'StudentExamController');
 		Route::resource('student-exam-assessment', 'StudentExamAssessmentController');
-		Route::resource('student-quiz-assessment-items', 'StudentQuizAssessmentItemController');
+		Route::resource('student-exam-assessment-items', 'StudentQuizAssessmentItemController');
+		
 	});
 	
 	
