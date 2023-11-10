@@ -84,22 +84,22 @@
                                 </thead>
                                 <tbody>
 
-                                @foreach($quiz_assessment as $sq)
+                                @foreach($exam_assessment as $ea)
                                     <tr>
-                                        <td>{{ $sq->start_date }}</td>
-                                        <td>{{ $sq->end_date }}</td>
-                                        <td>{{ $sq->title }}</td>
-                                        <td>{{  $sq->status }}</td>
-                                        <td>{{ $sq->total_items }}</td>
-                                        <td> <a href="/teacher/student-exam-assessment-items?id={{$sq->id}}"
-                                                class="btn btn-sm btn-rounded btn-info">
+                                        <td>{{ $ea->start_date }}</td>
+                                        <td>{{ $ea->end_date }}</td>
+                                        <td>{{ $ea->term }}</td>
+                                        <td>{{  $ea->status }}</td>
+                                        <td>{{ $ea->total_items }}</td>
+                                        <td><a href="/teacher/student-exam-assessment-items?id={{$ea->id}}"
+                                               class="btn btn-sm btn-rounded btn-info">
                                                 <i class="feather-list"></i>&nbsp; Show Items
                                             </a>
                                         </td>
 
                                         <td>
 
-                                            <a href="/teacher/student-exam-assessment/edit?id={{$sq->id}}"
+                                            <a href="/teacher/student-exam-assessment/edit?id={{$ea->id}}"
                                                class="btn btn-sm btn-rounded btn-danger">
                                                 <i class="feather-trash"></i>&nbsp; Delete
                                             </a>

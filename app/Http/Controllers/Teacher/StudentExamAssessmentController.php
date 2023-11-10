@@ -41,33 +41,33 @@
 			$subject_loads = $this->teacherService->getSubjectLoads($this->getTeacherId());
 			
 			if ($subject_load_id) {
-				$quiz_assessment = $this->teacherRepository->GetAllStudentQuizAssessmentByTeachingLoadGroupByDate(
-					$subject_load_id
+				$exam_assessment = $this->assessmentRepository->GetExamAssessmentCategory(
+					$subject_load_id, 5
 				);
 				
-				$quiz_assessment = collect($quiz_assessment->items())->map(function ($i) use ($subject_load_id) {
+				$exam_assessment = collect($exam_assessment->items())->map(function ($i) use ($subject_load_id) {
 					return (object)[
 						'id'               => $i->id,
 						'start_date'       => $i->displayDateStartDate(),
 						'end_date'         => $i->displayDateEndDate(),
-						'title'            => $i->getTitle(),
+						'term'            => $i->getTerm(),
 						'teaching_load_id' => $i->teaching_load_id,
-						'status'           => 1,
+						'status'           => $i->getStatus(),
 						'total_items'      => 1,
 					];
 				});
-				
-				
 			} else {
-				$quiz_assessment = [];
+				$exam_assessment = [];
 			}
+			
+			
 			
 			return view('teacher.exam-assessment.index')->with([
 				'semester'        => $this->getCurrentTerm()->displaySemester(),
 				'term'            => $this->getCurrentTerm()->getTerm(),
 				'subject_loads'   => $subject_loads,
 				'subject_load_id' => $subject_load_id,
-				'quiz_assessment' => $quiz_assessment
+				'exam_assessment' => $exam_assessment
 			]);
 			
 		}
@@ -124,7 +124,7 @@
 			$this->assessmentRepository->SaveExamAssessmentCategory($exam_assessment_cat, $teaching_load_id);
 			
 			
-			return redirectWithAlert('/teacher/student-quiz-assessment?teaching_load_id=' . $teaching_load_id, [
+			return redirectWithAlert('/teacher/student-exam-assessment?teaching_load_id=' . $teaching_load_id, [
 				'alert-success' => 'New Student Quiz Assessment has been added!'
 			]);
 		}

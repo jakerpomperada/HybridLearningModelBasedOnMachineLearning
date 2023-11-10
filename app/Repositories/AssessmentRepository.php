@@ -2,6 +2,8 @@
 	
 	namespace App\Repositories;
 	
+	use App\Models\StudentExamAssessmentCategory;
+	use App\Models\StudentExamCategory;
 	use App\Models\StudentQuizAssessmentChoice;
 	use App\Models\StudentQuizAssessmentQuestion;
 	use Domain\Modules\Assessment\Entities\ExamAssessmentCategory;
@@ -107,6 +109,6 @@
 		
 		public function GetExamAssessmentCategory(string $teaching_load_id, int $page): Paginator
 		{
-			// TODO: Implement GetExamAssessmentCategory() method.
+			return StudentExamAssessmentCategory::paginate($page);
 		}
 	}
