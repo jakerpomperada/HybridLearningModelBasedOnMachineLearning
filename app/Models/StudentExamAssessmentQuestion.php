@@ -12,17 +12,17 @@ class StudentExamAssessmentQuestion extends Model
 	use Uuid;
 	
 	public $incrementing = false;
-	protected $table = 'student_quiz_assessment_questions';
+	protected $table = 'student_exam_assessment_questions';
 	protected $keyType = 'string';
 	protected $guarded = [];
 	
-	public function StudentQuizAssessmentChoice() : HasMany {
-		return $this->hasMany(StudentExamAssessmentQuestion::class, 'sqaquestion_id');
+	public function StudentExamAssessmentChoice() : HasMany {
+		return $this->hasMany(StudentExamAssessmentChoice::class, 'seaquestion_id');
 	}
 	
 	public function getCorrectAnswer() : string {
 		
-		foreach ($this->StudentQuizAssessmentChoice as $choice) {
+		foreach ($this->StudentExamAssessmentChoice as $choice) {
 			if ($choice->is_correct) return $choice->choice;
 		}
 		return "";

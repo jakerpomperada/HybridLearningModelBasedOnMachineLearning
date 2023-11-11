@@ -37,8 +37,7 @@
 			$assessment_category = $this->assessmentRepository->FindExamAssessmentCategory(
 				$assessment_cat_id
 			);
-			
-			
+		
 			$assessment_items = collect($assessment_items->items())->map(function ($ass) {
 				return (object)[
 					'id'             => $ass->id,
@@ -46,6 +45,7 @@
 					'correct_answer' => $ass->getCorrectAnswer()
 				];
 			});
+			
 			
 			
 			return view('teacher.exam-assessment-item.index')->with([

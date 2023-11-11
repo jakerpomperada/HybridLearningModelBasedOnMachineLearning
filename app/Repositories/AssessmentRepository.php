@@ -29,7 +29,7 @@
 		public function GetAllExamByCategoryPaginate(string $cat_id, int $page): Paginator
 		{
 			return StudentExamAssessmentQuestion::with(['StudentExamAssessmentChoice'])->where([
-				'qacategory_id' => $cat_id,
+				'eacategory_id' => $cat_id,
 			])->paginate($page);
 		}
 		
