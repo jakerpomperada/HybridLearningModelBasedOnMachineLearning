@@ -112,7 +112,7 @@
 		public function show($id)
 		{
 			$ass = $this->assessmentRepository->FindQuizAssessmentQuestions($id);
-			
+		
 			$assessment = (object)[
 				'id'       => $ass->id,
 				'title' => $ass->question,
@@ -139,7 +139,7 @@
 		}
 		
 		public function update(Request $req, $id) {
-			
+		
 			try {
 				$val = Validator::make($req->all(), [
 					'title'     => 'required',

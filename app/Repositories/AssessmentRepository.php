@@ -109,12 +109,6 @@
 				'question' => $assessmentQuestion->getQuestion(),
 			]);
 			
-			$sqac = DB::table('student_quiz_assessment_choices')->where(['sqaquestion_id' => $quiz_assessment_question_id])->get();
-			
-			foreach ($sqac as $s) {
-			
-			}
-			
 			foreach ($assessmentQuestion->getChoices() as $choice) {
 				/**
 				 * @var QuizAssessmentChoice $choice
@@ -132,6 +126,32 @@
 				
 			}
 		}
+		
+		public function UpdateExamAssessmentQuestions(ExamAssessmentQuestion $assessmentQuestion, string $exam_assessment_question_id): void
+		{
+			
+			DB::table('student_exam_assessment_questions')->where(['id' => $exam_assessment_question_id])->update([
+				'question' => $assessmentQuestion->getQuestion(),
+			]);
+			
+			foreach ($assessmentQuestion->getChoices() as $choice) {
+				/**
+				 * @var QuizAssessmentChoice $choice
+				 */
+				DB::table('student_exam_assessment_choices')->where(
+					[
+						'seaquestion_id' => $exam_assessment_question_id,
+						'order'          => $choice->getOrder()
+					]
+				)->update([
+					'order'      => $choice->getOrder(),
+					'choice'     => $choice->getChoice(),
+					'is_correct' => $choice->isCorrect(),
+				]);
+				
+			}
+		}
+		
 		
 		public function SaveExamAssessmentCategory(ExamAssessmentCategory $assessment, string $teaching_load_id): void
 		{
@@ -154,5 +174,9 @@
 		
 		public function FindExamAssessmentCategory(string $id) : object | null {
 			return StudentExamAssessmentCategory::find($id);
+		}
+		
+		public function FindExamAssessmentQuestion(string $id) : object | null   {
+			return StudentExamAssessmentQuestion::find($id);
 		}
 	}

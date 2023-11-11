@@ -1,12 +1,12 @@
 @extends('template.main')
 @section('content')
-    {!! Form::open(['url' => '/teacher/student-quiz-assessment-items/'.$assessment->id.'?qacategory_id='.$qacategory_id, 'method' => 'PUT']) !!}
+    {!! Form::open(['url' => '/teacher/student-exam-assessment-items/'.$ass->id.'?qacategory_id='.$qacategory_id, 'method' => 'PUT']) !!}
     <div class="content container-fluid">
 
         <div class="page-header">
             <div class="row align-items-center">
                 <div class="col mb-3">
-                    <h3 class="page-title"><i class="fas fa-question"></i> &nbsp Update Quiz Question</h3>
+                    <h3 class="page-title"><i class="fas fa-question"></i> &nbsp Update Exam Question</h3>
                 </div>
             </div>
 
@@ -23,7 +23,7 @@
                             <div class="col-md-7">
                                 <div class="form-group">
                                     <label>Question:</label>
-                                    {!! Form::textarea('title', $assessment->title, [
+                                    {!! Form::textarea('title', $ass->question, [
                                     'class'      => 'form-control',
                                     'rows'       => 1,
                                     ]) !!}
@@ -52,7 +52,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                           @foreach ($assessment->choices as $choice):
+                           @foreach ($questions->choices as $choice):
                             <tr>
                                 <td>{{$choice->letter}}</td>
                                 <td>

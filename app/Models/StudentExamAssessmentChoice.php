@@ -7,5 +7,25 @@ use Illuminate\Database\Eloquent\Model;
 
 class StudentExamAssessmentChoice extends Model
 {
-    use HasFactory;
+	use HasFactory;
+	use Uuid;
+	
+	public $incrementing = false;
+	protected $table = 'student_exam_assessment_choices';
+	protected $keyType = 'string';
+	protected $guarded = [];
+	
+	
+	
+	public function letter() : string {
+		return  match ($this->order) {
+			1 => "A",
+			2 => "B",
+			3 => "C",
+			4 => "D",
+			default => "No letter",
+		};
+	}
+	
+	
 }

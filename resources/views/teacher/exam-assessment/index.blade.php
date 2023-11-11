@@ -93,7 +93,7 @@
                                         <td>{{ $ea->total_items }}</td>
                                         <td><a href="/teacher/student-exam-assessment-items?id={{$ea->id}}"
                                                class="btn btn-sm btn-rounded btn-info">
-                                                <i class="feather-list"></i>&nbsp; Show Items
+                                                <i class="feather-list"></i>&nbsp; View Questions
                                             </a>
                                         </td>
 

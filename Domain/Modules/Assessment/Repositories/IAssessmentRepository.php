@@ -22,6 +22,8 @@
 		
 		public function UpdateQuizAssessmentQuestions(QuizAssessmentQuestion $assessmentQuestion, string $quiz_assessment_question_id): void;
 		
+		public function UpdateExamAssessmentQuestions(ExamAssessmentQuestion $assessmentQuestion, string $exam_assessment_question_id): void;
+		
 		public function FindQuizAssessmentQuestions(string $id): object|null;
 		
 		public function SaveExamAssessmentCategory(ExamAssessmentCategory $assessment, string $teaching_load_id): void;
@@ -29,6 +31,8 @@
 		public function GetExamAssessmentCategory(string $teaching_load_id, int $page): Paginator;
 		
 		public function FindExamAssessmentCategory(string $id) : object | null;
+		
+		public function FindExamAssessmentQuestion(string $id) : object | null;
 	
 		
 	}
