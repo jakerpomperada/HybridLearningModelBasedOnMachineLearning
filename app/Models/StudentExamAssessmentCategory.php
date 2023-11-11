@@ -19,12 +19,12 @@ class StudentExamAssessmentCategory extends Model
 	
 	public function displayDateStartDate(): string
 	{
-		return Carbon::parse($this->start_date)->format('Y-m-d H:i:s');
+		return Carbon::parse($this->start_date)->format('F m, Y H:i:s A');
 	}
 	
 	public function displayDateEndDate(): string
 	{
-		return Carbon::parse($this->end_date)->format('Y-m-d H:i:s');
+		return Carbon::parse($this->end_date)->format('F m, Y H:i:s A');
 	}
 	
 	public function getTerm() : string {

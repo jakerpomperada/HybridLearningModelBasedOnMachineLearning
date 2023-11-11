@@ -32,7 +32,7 @@
 		Route::resource('student-quiz-assessment-items', 'StudentQuizAssessmentItemController');
 		Route::resource('student-exam', 'StudentExamController');
 		Route::resource('student-exam-assessment', 'StudentExamAssessmentController');
-		Route::resource('student-exam-assessment-items', 'StudentQuizAssessmentItemController');
+		Route::resource('student-exam-assessment-items', 'StudentExamAssessmentItemController');
 		
 	});
 	

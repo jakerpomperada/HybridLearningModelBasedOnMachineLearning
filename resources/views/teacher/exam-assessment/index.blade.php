@@ -64,7 +64,7 @@
 
                                     <div class="col-auto text-end">
                                         <a href="/teacher/student-exam-assessment/create?teaching_load_id={{$subject_load_id}}"
-                                           class="btn btn-dark">
+                                           class="btn btn-warning">
                                             <i class="fas fa-plus"></i> &nbsp;New Exam Assessment
                                         </a>
                                     </div>
