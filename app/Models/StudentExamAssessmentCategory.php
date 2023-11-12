@@ -32,7 +32,14 @@ class StudentExamAssessmentCategory extends Model
 	}
 	
 	public function getStatus() : string {
-		return $this->status == 1 ? 'Give' : 'UnGive';
+		return $this->status == 'give' ? 'UnGive' : 'Give';
+	}
+	
+	public function getStatusLink(string $teaching_load_id) : string {
+		if ($this->status == 'give') {
+			return 'exam-status-ungive/' . $this->id.'?teaching_load_id='.$teaching_load_id;
+		}
+		return 'exam-status-give/' . $this->id.'?teaching_load_id='.$teaching_load_id;
 	}
 	
 }

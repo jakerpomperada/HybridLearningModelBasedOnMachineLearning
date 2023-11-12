@@ -53,6 +53,7 @@
 						'term'            => $i->getTerm(),
 						'teaching_load_id' => $i->teaching_load_id,
 						'status'           => $i->getStatus(),
+						'status_link'           => $i->getStatusLink($subject_load_id),
 						'total_items'      => 1,
 					];
 				});

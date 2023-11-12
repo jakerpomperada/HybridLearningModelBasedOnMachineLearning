@@ -89,7 +89,9 @@
                                         <td>{{ $ea->start_date }}</td>
                                         <td>{{ $ea->end_date }}</td>
                                         <td>{{ $ea->term }}</td>
-                                        <td>{{  $ea->status }}</td>
+                                        <td>
+                                            <a href="{{$ea->status_link}}">{{  $ea->status }}</a>
+                                        </td>
                                         <td>{{ $ea->total_items }}</td>
                                         <td><a href="/teacher/student-exam-assessment-items?id={{$ea->id}}"
                                                class="btn btn-sm btn-rounded btn-info">

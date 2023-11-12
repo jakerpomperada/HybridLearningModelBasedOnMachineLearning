@@ -33,7 +33,8 @@
 		Route::resource('student-exam', 'StudentExamController');
 		Route::resource('student-exam-assessment', 'StudentExamAssessmentController');
 		Route::resource('student-exam-assessment-items', 'StudentExamAssessmentItemController');
-		
+		Route::get('exam-status-give/{id}', 'ExamAssessmentStatusController@give');
+		Route::get('exam-status-ungive/{id}', 'ExamAssessmentStatusController@ungive');
 	});
 	
 	
