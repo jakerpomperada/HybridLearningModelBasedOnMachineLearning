@@ -35,6 +35,8 @@
 		Route::resource('student-exam-assessment-items', 'StudentExamAssessmentItemController');
 		Route::get('exam-status-give/{id}', 'ExamAssessmentStatusController@give');
 		Route::get('exam-status-ungive/{id}', 'ExamAssessmentStatusController@ungive');
+		Route::get('quiz-status-give/{id}', 'QuizAssessmentStatusController@give');
+		Route::get('quiz-status-ungive/{id}', 'QuizAssessmentStatusController@ungive');
 	});
 	
 	

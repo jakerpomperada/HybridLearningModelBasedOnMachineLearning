@@ -47,7 +47,8 @@
 						'end_date'         => $i->displayDateEndDate(),
 						'title'            => $i->getTitle(),
 						'teaching_load_id' => $i->teaching_load_id,
-						'status'           => 1,
+						'status'           => $i->getStatus(),
+						'status_link'      => $i->getStatusLink($subject_load_id),
 						'total_items'      => 1,
 					];
 				});

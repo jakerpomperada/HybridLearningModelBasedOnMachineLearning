@@ -89,7 +89,9 @@
                                         <td>{{ $sq->start_date }}</td>
                                         <td>{{ $sq->end_date }}</td>
                                         <td>{{ $sq->title }}</td>
-                                        <td>{{  $sq->status }}</td>
+                                        <td>
+                                            <a href="{{$sq->status_link }}">{{  $sq->status }}</a>
+                                        </td>
                                         <td>{{ $sq->total_items }}</td>
                                         <td> <a href="/teacher/student-quiz-assessment-items?id={{$sq->id}}"
                                                 class="btn btn-sm btn-rounded btn-info">
