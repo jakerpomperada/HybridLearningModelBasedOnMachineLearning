@@ -40,6 +40,12 @@
 	});
 	
 	
+	
+	Route::group(['prefix' => 'student', 'namespace' => 'Student', 'middleware' => 'auth'], function () {
+		Route::get('dashboard', 'DashboardController@index');
+	});
+	
+	
 	Route::group(['middleware' => 'auth'], function () {
 		Route::resource('/course', 'CourseController');
 		Route::resource('/subject', 'SubjectController');
