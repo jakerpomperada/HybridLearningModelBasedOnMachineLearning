@@ -143,7 +143,7 @@
 		
 		public function showAllStudentAttendance(string $teaching_load_id, string $date): Collection
 		{
-			return StudentAttendance::with(['StudentAdmission.Student'])->where([
+			return StudentAttendance::with(['Admission.Student'])->where([
 				'date'             => $date,
 				'teaching_load_id' => $teaching_load_id,
 			])->get();

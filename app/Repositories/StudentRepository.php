@@ -3,7 +3,7 @@
 	namespace App\Repositories;
 	
 	use App\Models\Student as StudentDB;
-	use App\Models\StudentAdmission;
+	use App\Models\Admission;
 	use App\Models\User as UserDB;
 	use Domain\Modules\Student\Entities\Student;
 	use Domain\Modules\Student\Repositories\IStudentRepository;
@@ -120,7 +120,7 @@
 		
 		public function RegisterAdmission($academic_semester_id, $student_id, $course_id, $year_level, $section): void
 		{
-			DB::table('student_admissions')->insert([
+			DB::table('admissions')->insert([
 				'id'                        => uuid(),
 				'academic_term_semester_id' => $academic_semester_id,
 				'student_id'                => $student_id,
@@ -135,7 +135,7 @@
 		public function UpdateAdmission($academic_semester_id, $student_id, $course_id, $year_level,
 		                                         $section, $id): void
 		{
-			DB::table('student_admissions')->where(['id' => $id])->update([
+			DB::table('admissions')->where(['id' => $id])->update([
 				'academic_term_semester_id' => $academic_semester_id,
 				'student_id'                => $student_id,
 				'course_id'                 => $course_id,
@@ -147,19 +147,19 @@
 		
 		public function FindAdmissionData(string $id): object|null
 		{
-			return StudentAdmission::with(['Student', 'Course', 'AcademicTermSemester.AcademicTerm'])->where([
+			return Admission::with(['Student', 'Course', 'AcademicTermSemester.AcademicTerm'])->where([
 				'id' => $id
 			])->first();
 		}
 		
 		public function RemoveAdmission(string $id): void
 		{
-			DB::table('student_admissions')->delete($id);
+			DB::table('admissions')->delete($id);
 		}
 		
 		public function GetAllAdmission(): Collection
 		{
-			return StudentAdmission::with(['Student'])->get();
+			return Admission::with(['Student'])->get();
 		}
 		
 		public function recordAttendance(array $records): void

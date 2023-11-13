@@ -2,7 +2,7 @@
 	
 	namespace App\Http\ViewModels;
 	
-	use App\Models\StudentAdmission as StudentAdmissionDB;
+	use App\Models\Admission as StudentAdmissionDB;
 	use Domain\Modules\Student\Entities\Student;
 	use Domain\Modules\Student\ValueObjects\Course;
 	use Domain\Modules\Student\ValueObjects\YearLevel;

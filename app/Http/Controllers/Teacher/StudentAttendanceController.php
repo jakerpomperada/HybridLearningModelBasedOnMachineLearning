@@ -149,7 +149,7 @@
 			
 			
 			$students_data_aggregates = $student_attendances->map(function ($attendance) {
-				$admission             = $attendance->StudentAdmission;
+				$admission             = $attendance->Admission;
 				$student               = $this->studentRepository->Aggregates($admission->Student);
 				$student->admission_id = $admission->id;
 				$student->attendance   = $attendance;

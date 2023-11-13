@@ -6,13 +6,13 @@
 	use App\Models\AcademicTermSemester;
 	use App\Models\Course;
 	use App\Models\Student;
-	use App\Models\StudentAdmission;
+	use App\Models\Admission;
 	use Illuminate\Database\Eloquent\Factories\Factory;
 	
 	/**
-	 * @extends Factory<StudentAdmission>
+	 * @extends Factory<Admission>
 	 */
-	class StudentAdmissionFactory extends Factory
+	class AdmissionFactory extends Factory
 	{
 		/**
 		 * Define the model's default state.

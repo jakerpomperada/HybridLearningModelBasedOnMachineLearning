@@ -3,7 +3,7 @@
 	namespace Database\Seeders;
 	
 	use App\Models\Student;
-	use App\Models\StudentAdmission;
+	use App\Models\Admission;
 	use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 	use Illuminate\Database\Seeder;
 	
@@ -14,10 +14,10 @@
 		 */
 		public function run(): void
 		{
-			StudentAdmission::query()->delete();
+			Admission::query()->delete();
 			
 			foreach (Student::all() as $student) {
-				StudentAdmission::factory()->create([
+				Admission::factory()->create([
 					'student_id' => $student->id
 				]);
 			}

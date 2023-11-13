@@ -31,7 +31,7 @@ return new class extends Migration
 	        
 	        $table->foreign('student_admission_id')
 		        ->references('id')
-		        ->on('student_admissions')
+		        ->on('admissions')
 		        ->onUpdate('CASCADE')
 		        ->onDelete('CASCADE');
         });

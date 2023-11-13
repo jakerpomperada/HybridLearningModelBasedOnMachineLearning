@@ -4,7 +4,8 @@
 	
 	use Domain\Shared\Entity;
 	
-	class StudentAdmission extends Entity
+	class Admission extends Entity
 	{
 	
 	}
+	

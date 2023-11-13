@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class StudentAdmission extends Model
+class Admission extends Model
 {
 	use HasFactory;
 	use Uuid;
 	
 	public $incrementing = false;
-	protected $table = 'student_admissions';
+	protected $table = 'admissions';
 	protected $keyType = 'string';
 	protected $guarded = [];
 	

@@ -18,9 +18,9 @@
 		protected $guarded = [];
 		
 		
-		public function StudentAdmission(): BelongsTo
+		public function Admission(): BelongsTo
 		{
-			return $this->belongsTo(StudentAdmission::class);
+			return $this->belongsTo(Admission::class);
 		}
 		
 		public function TeachingLoad(): BelongsTo

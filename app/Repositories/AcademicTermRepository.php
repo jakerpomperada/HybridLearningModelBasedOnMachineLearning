@@ -3,7 +3,7 @@
 	namespace App\Repositories;
 	
 	use App\Models\AcademicTermSubject;
-	use App\Models\StudentAdmission;
+	use App\Models\Admission;
 	use Domain\Modules\AcademicTerm\Entities\AcademicTerm;
 	use Domain\Modules\AcademicTerm\Repositories\IAcademicTermRepository;
 	use Illuminate\Contracts\Pagination\Paginator;
@@ -159,7 +159,7 @@
 		
 		public function GetAllStudentAdmission(): Paginator
 		{
-			return StudentAdmission::with(['Student','Course','AcademicTermSemester.AcademicTerm'])->paginate(5);
+			return Admission::with(['Student','Course','AcademicTermSemester.AcademicTerm'])->paginate(5);
 		}
 		
 		
