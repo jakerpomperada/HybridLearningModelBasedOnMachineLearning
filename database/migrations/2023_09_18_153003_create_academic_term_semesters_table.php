@@ -15,6 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
             $table->uuid('academic_id')->index();
             $table->char('semester', 3)->default('1st');
+			$table->boolean('is_current')->default(false);
             $table->timestamps();
 
             $table->foreign('academic_id')

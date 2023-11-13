@@ -162,5 +162,9 @@
 			return Admission::with(['Student','Course','AcademicTermSemester.AcademicTerm'])->paginate(5);
 		}
 		
+		public function GetCurrentAcademicTerm() : object {
+			return DB::table('academic_term_semesters')->where(['is_current' => 1])->first();
+		}
+		
 		
 	}

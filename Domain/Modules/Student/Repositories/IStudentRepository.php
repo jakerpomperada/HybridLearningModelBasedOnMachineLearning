@@ -35,4 +35,6 @@
 		
 		public function recordAttendance(array $records) : void;
 		
+		public function GetStudentInfoWithUserId(string $user_id) : object | null;
+		
 	}

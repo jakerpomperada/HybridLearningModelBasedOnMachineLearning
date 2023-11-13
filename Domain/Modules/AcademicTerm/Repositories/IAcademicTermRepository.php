@@ -49,6 +49,8 @@
 		
 		
 		public function GetAllStudentAdmission() : Paginator;
+		
+		public function GetCurrentAcademicTerm() : object;
 
 
 

@@ -167,5 +167,12 @@
 			DB::table('student_attendances')->insert($records);
 		}
 		
+		public function GetStudentInfoWithUserId(string $user_id): object|null
+		{
+			$user =  \App\Models\User::with(['Student'])->where(['id' => $user_id])->first();
+			return $user->Student;
+			
+		}
+		
 		
 	}
