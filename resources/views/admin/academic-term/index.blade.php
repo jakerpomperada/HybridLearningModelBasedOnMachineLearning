@@ -33,29 +33,30 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-sm">
-                                        <form class="needs-validation" novalidate="">
+                                        <form method="POST" action="/admin/set-term" class="needs-validation" novalidate="">
+                                           @csrf()
                                             <div class="input-group input-group-sm">
                                                 <div class="col-3">
-                                                    <select name="academic_year" class="form-control col-lg-3">
-                                                        <option value="">2024-2025</option>
-                                                        <option value="">2023</option>
-                                                    </select>
+                                                    {!!
+                                                        Form::select('academic_year', $term_dropdown, null,
+                                                        [
+											'placeholder' => '-- Select Year --',
+                                        'class' => 'form-control col-lg-3']);
+                                                        !!}
+
+
                                                 </div>
-
-
-                                                &nbsp;
                                                 <select name="semester" class="form-control">
-                                                    <option value="">First Semester</option>
-                                                    <option value="">Second Semester</option>
+                                                    <option value="1st">First Semester</option>
+                                                    <option value="2nd">Second Semester</option>
                                                 </select>
-                                                <button class="btn btn-primary" type="button">Set Default</button>
+                                                <button class="btn btn-primary" type="submit">Set Default</button>
                                             </div>
                                         </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
 
 
                     </div>
@@ -68,7 +69,8 @@
                             <div class="row align-items-center">
 
                                 <div class="col-auto text-end">
-                                    <a href="/academic-term/create" class="btn btn-sm btn-success">Add Academic Term &nbsp;<i class="fas fa-plus"></i></a>
+                                    <a href="/academic-term/create" class="btn btn-sm btn-success">Add Academic Term
+                                        &nbsp;<i class="fas fa-plus"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -84,18 +86,20 @@
                             <tbody>
 
                             @foreach($terms as $term)
-                            <tr>
-                                <td>{{ $term->academic_year }}</td>
-                                <td>&nbsp;</td>
-                                <td>
-                                    <a href="academic-term/{{$term->id}}" class="btn btn-sm btn-rounded btn-primary">
-                                        <i class="feather-edit"></i>&nbsp; Edit
-                                    </a>
-                                    <a href="javascript:;" id="{{$term->id}}" class="btn btn-sm btn-danger btn-rounded button_delete">
-                                        <i class="feather-trash"></i>&nbsp; Delete
-                                    </a>
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td>{{ $term->academic_year }}</td>
+                                    <td>&nbsp;</td>
+                                    <td>
+                                        <a href="academic-term/{{$term->id}}"
+                                           class="btn btn-sm btn-rounded btn-primary">
+                                            <i class="feather-edit"></i>&nbsp; Edit
+                                        </a>
+                                        <a href="javascript:" id="{{$term->id}}"
+                                           class="btn btn-sm btn-danger btn-rounded button_delete">
+                                            <i class="feather-trash"></i>&nbsp; Delete
+                                        </a>
+                                    </td>
+                                </tr>
                             @endforeach
 
                             </tbody>
@@ -120,28 +124,28 @@
     <script src="{{asset('assets/plugins/datatables/datatables.min.js')}}"></script>
 
 
-        <script>
-            $(document).ready(function () {
+    <script>
+        $(document).ready(function () {
 
-                $(".button_delete").click(function () {
-                    if (confirm("Are you sure you want to delete this?")) {
-                        let id = $(this).attr("id");
-                        $.ajax({
-                            url: `/academic-term/${id}`,
-                            type: 'DELETE',
-                            data: {
-                                "_token": "{{ csrf_token() }}",
-                            },
-                            success: function (result) {
-                                location.reload();
-                            }
-                        });
-                    } else {
-                        return false;
-                    }
-                });
+            $(".button_delete").click(function () {
+                if (confirm("Are you sure you want to delete this?")) {
+                    let id = $(this).attr("id");
+                    $.ajax({
+                        url: `/academic-term/${id}`,
+                        type: 'DELETE',
+                        data: {
+                            "_token": "{{ csrf_token() }}",
+                        },
+                        success: function (result) {
+                            location.reload();
+                        }
+                    });
+                } else {
+                    return false;
+                }
             });
-        </script>
-    @endpush
+        });
+    </script>
+@endpush
 
 

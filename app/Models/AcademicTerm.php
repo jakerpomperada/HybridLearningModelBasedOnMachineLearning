@@ -24,5 +24,9 @@ class AcademicTerm extends Model
 		);
 	}
 	
+	public function getYear() : string {
+		return $this->year_from ."-".$this->year_to;
+	}
+	
 
 }

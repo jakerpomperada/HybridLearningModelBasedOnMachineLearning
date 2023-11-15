@@ -93,7 +93,7 @@
 			$data = DB::table('academic_terms')->find($id);
 			return !$data ? null : $this->Aggregate($data);
 		}
-
+		
 		
 		public function GetSemesters(): array
 		{
@@ -159,12 +159,34 @@
 		
 		public function GetAllStudentAdmission(): Paginator
 		{
-			return Admission::with(['Student','Course','AcademicTermSemester.AcademicTerm'])->paginate(5);
+			return Admission::with(['Student', 'Course', 'AcademicTermSemester.AcademicTerm'])->paginate(5);
 		}
 		
-		public function GetCurrentAcademicTerm() : object {
+		public function GetCurrentAcademicTerm(): object
+		{
 			return DB::table('academic_term_semesters')->where(['is_current' => 1])->first();
 		}
 		
 		
+		public function GetAllAcademicTermOnlyYear(): Collection
+		{
+			return AcademicTermDB::all();
+		}
+		
+		public function removeAllSemesterAsCurrent(): void
+		{
+			DB::table('academic_term_semesters')->update([
+				'is_current' => 0
+			]);
+		}
+		
+		public function setAsCurrentSemester(string $academic_year_id, string $semester): void
+		{
+			DB::table('academic_term_semesters')->where([
+				'academic_id' => $academic_year_id,
+				'semester'    => $semester
+			])->update([
+				'is_current' => 1
+			]);
+		}
 	}

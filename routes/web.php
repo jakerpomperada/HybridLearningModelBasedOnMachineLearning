@@ -18,8 +18,10 @@
 	});
 	
 	
-	Route::group(['prefix' => 'admin'], function () {
+	Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 		Route::get('dashboard', 'DashboardAdminController@index');
+		Route::post('set-term', 'SetAcademicTermController@set');
+		
 	});
 	
 	Route::group(['prefix' => 'teacher', 'namespace' => 'Teacher', 'middleware' => 'auth'], function () {
