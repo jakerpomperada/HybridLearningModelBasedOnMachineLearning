@@ -43,6 +43,7 @@
 	Route::group(['prefix' => 'student', 'namespace' => 'Student', 'middleware' => 'auth'], function () {
 		Route::get('dashboard', 'DashboardController@index');
 		Route::resource('subject-taken', 'SubjectTakenController');
+		Route::resource('assessment', 'SubjectAssessmentController');
 	});
 	
 	

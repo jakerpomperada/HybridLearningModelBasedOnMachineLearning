@@ -3,6 +3,7 @@
 	namespace App\Http\Controllers;
 	
 	use App\Services\BaseDataDropDownService;
+	use Domain\Modules\AcademicTerm\Repositories\IAcademicTermRepository;
 	use Domain\Modules\Teacher\Repositories\ITeacherRepository;
 	use Error;
 	use Illuminate\Http\RedirectResponse;
@@ -16,11 +17,13 @@
 		protected BaseDataDropDownService $baseDataDropDownService;
 		protected ITeacherRepository $teacherRepository;
 		
+		protected IAcademicTermRepository $academicTermRepository;
 		
-		public function __construct(BaseDataDropDownService $baseDataDropDownService, ITeacherRepository $teacherRepository)
+		public function __construct(BaseDataDropDownService $baseDataDropDownService, ITeacherRepository $teacherRepository, IAcademicTermRepository $academicTermRepository)
 		{
 			$this->baseDataDropDownService = $baseDataDropDownService;
 			$this->teacherRepository       = $teacherRepository;
+			$this->academicTermRepository  = $academicTermRepository;
 		}
 		
 		
@@ -71,6 +74,7 @@
 		
 		public function store(Request $req): RedirectResponse
 		{
+			
 			try {
 				
 				$val = Validator::make($req->all(), [
@@ -86,6 +90,11 @@
 					throw new Error($val->getMessageBag()->all()[0]);
 				}
 				
+				
+				$default_semester = $this->academicTermRepository->GetCurrentAcademicTerm();
+				
+				
+				
 				$this->teacherRepository->SaveTeachingLoad(
 					$req->teacher,
 					$req->subject,
@@ -93,6 +102,7 @@
 					$req->section,
 					$req->semester,
 					$req->course,
+					$default_semester->id
 				);
 				
 				return redirectWithAlert('/teaching-load', [

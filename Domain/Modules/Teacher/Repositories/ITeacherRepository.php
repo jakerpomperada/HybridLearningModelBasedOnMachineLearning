@@ -51,7 +51,8 @@
 			string $year_level,
 			string $section,
 			string $semester,
-			string $course_id
+			string $course_id,
+			string $academic_term_semester_id
 		): void;
 		
 		public function DeleteTeachingLoad(string $id): void;

@@ -26,20 +26,19 @@
 		
 		public function index()
 		{
-			
+		
 			$user_id      = Auth::id();
-			$current_term = $this->academicTermRepository->GetCurrentAcademicTerm();
+			$current_term_semester = $this->academicTermRepository->GetCurrentAcademicTerm();
 			
 			
 			$student = $this->studentRepository->GetStudentInfoWithUserId($user_id);
 			
 			$admission = Admission::where('student_id', $student->id)->first();
-		
+			
 			$subjects = [];
 			if ($admission) {
 				$terms_subjects = AcademicTermSubject::with(['Subject'])->where([
-					'course_id'  => $admission->course_id,
-					'year_level' => $admission->year_level
+					'academic_term_semester_id'  => $current_term_semester->id
 				])->get();
 				
 			

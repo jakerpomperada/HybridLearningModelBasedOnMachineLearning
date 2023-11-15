@@ -15,6 +15,7 @@ return new class extends Migration
             $table->uuid('id')->primary();
 			$table->uuid('teacher_id')->index();
 			$table->uuid('subject_id')->index();
+	        $table->uuid('academic_term_semester_id')->index();
 			$table->string('year_level');
 			$table->string('section');
 			$table->string('semester');
@@ -38,7 +39,14 @@ return new class extends Migration
 		        ->on('courses')
 		        ->onUpdate('CASCADE')
 		        ->onDelete('CASCADE');
-			
+	        
+	        $table->foreign('academic_term_semester_id')
+		        ->references('id')
+		        ->on('academic_term_semesters')
+		        ->onUpdate('CASCADE')
+		        ->onDelete('CASCADE');
+	        
+	        
         });
     }
 

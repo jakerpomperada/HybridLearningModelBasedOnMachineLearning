@@ -79,18 +79,29 @@
 			return DB::table('teachers')->where(['id' => $id])->first();
 		}
 		
-		public function SaveTeachingLoad(string $teacher_id, string $subject_id, string $year_level, string $section, string $semester, string $course_id): void
+		public function SaveTeachingLoad(
+			string $teacher_id,
+			string $subject_id,
+			string $year_level,
+			string $section,
+			string $semester,
+			string $course_id,
+			string $academic_term_semester_id
+		): void
 		{
+			
+			
 			DB::table('teaching_loads')->insert([
-				'id'         => uuid(),
-				'teacher_id' => $teacher_id,
-				'subject_id' => $subject_id,
-				'year_level' => $year_level,
-				'section'    => $section,
-				'semester'   => $semester,
-				'course_id'  => $course_id,
-				'created_at' => now(),
-				'updated_at' => now(),
+				'id'                        => uuid(),
+				'teacher_id'                => $teacher_id,
+				'subject_id'                => $subject_id,
+				'year_level'                => $year_level,
+				'section'                   => $section,
+				'semester'                  => $semester,
+				'course_id'                 => $course_id,
+				'academic_term_semester_id' => $academic_term_semester_id,
+				'created_at'                => now(),
+				'updated_at'                => now(),
 			]);
 		}
 		
