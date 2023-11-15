@@ -48,8 +48,4 @@
 		}
 		
 		
-		public function unset()
-		{
-		
-		}
 	}
