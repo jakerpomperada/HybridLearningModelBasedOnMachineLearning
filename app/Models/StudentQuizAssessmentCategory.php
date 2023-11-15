@@ -43,4 +43,16 @@
 			return 'quiz-status-give/' . $this->id.'?teaching_load_id='.$teaching_load_id;
 		}
 		
+		public function getTotalItems() : int {
+			return 1;
+		}
+		
+		public function getStudentScores(string $student_id) : int {
+			return 11;
+		}
+		
+		public function studentStatus() : string {
+			return 'taken';
+		}
+		
 	}

@@ -174,5 +174,11 @@
 			
 		}
 		
+		public function FindByUserId(string $user_id): object
+		{
+			$user = \App\Models\User::with(['Student'])->where(['id' => $user_id])->first();
+			return $user->Student;
+		}
+		
 		
 	}

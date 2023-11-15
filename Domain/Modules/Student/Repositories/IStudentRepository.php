@@ -37,4 +37,6 @@
 		
 		public function GetStudentInfoWithUserId(string $user_id) : object | null;
 		
+		public function FindByUserId(string $user_id) : object;
+		
 	}

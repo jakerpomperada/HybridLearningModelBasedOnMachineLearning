@@ -22,7 +22,7 @@
                         <div class="row align-items-center">
 
                             <div class="col-auto text-end">
-                               <h4>Quiz Assessment</h4>
+                                <h4>Quiz Assessment</h4>
                             </div>
                         </div>
                     </div>
@@ -39,13 +39,27 @@
 
                         </tr>
                         </thead>
+
                         <tbody>
+
+                        @foreach($quiz_assessments as $quiz)
+                            <tr>
+                                <td>{{$quiz->start_date}}</td>
+                                <td>{{$quiz->end_date}}</td>
+                                <td>{{$quiz->title}}</td>
+                                <td>{{$quiz->total_items}}</td>
+                                <td>{{$quiz->scores}}</td>
+                                <td>{{$quiz->status}}</td>
+                                <td></td>
+                            </tr>
+
+                        @endforeach
+
+
                         </tbody>
                     </table>
                 </div>
             </div>
-
-
 
 
         </div>
@@ -77,12 +91,22 @@
                         </tr>
                         </thead>
                         <tbody>
+                        @foreach($exam_assessments as $quiz)
+                            <tr>
+                                <td>{{$quiz->start_date}}</td>
+                                <td>{{$quiz->end_date}}</td>
+                                <td>{{$quiz->term}}</td>
+                                <td>{{$quiz->total_items}}</td>
+                                <td>{{$quiz->scores}}</td>
+                                <td>{{$quiz->status}}</td>
+                                <td></td>
+                            </tr>
+
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
             </div>
-
-
 
 
         </div>

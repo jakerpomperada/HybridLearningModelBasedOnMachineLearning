@@ -30,6 +30,8 @@
 		
 		public function GetExamAssessmentCategory(string $teaching_load_id, int $page): Paginator;
 		
+		public function GetQuizAssessmentCategory(string $teaching_load_id, int $page): Paginator;
+		
 		public function FindExamAssessmentCategory(string $id) : object | null;
 		
 		public function FindExamAssessmentQuestion(string $id) : object | null;

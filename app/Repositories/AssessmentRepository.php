@@ -5,6 +5,7 @@
 	use App\Models\StudentExamAssessmentCategory;
 	use App\Models\StudentExamAssessmentQuestion;
 	use App\Models\StudentExamCategory;
+	use App\Models\StudentQuizAssessmentCategory;
 	use App\Models\StudentQuizAssessmentChoice;
 	use App\Models\StudentQuizAssessmentQuestion;
 	use Domain\Modules\Assessment\Entities\ExamAssessmentCategory;
@@ -170,6 +171,13 @@
 		public function GetExamAssessmentCategory(string $teaching_load_id, int $page): Paginator
 		{
 			return StudentExamAssessmentCategory::paginate($page);
+		}
+		
+		public function GetQuizAssessmentCategory(string $teaching_load_id, int $page): Paginator
+		{
+			return StudentQuizAssessmentCategory::where([
+				'teaching_load_id' => $teaching_load_id
+			])->paginate($page);
 		}
 		
 		public function FindExamAssessmentCategory(string $id) : object | null {
