@@ -6,7 +6,15 @@
 	use Illuminate\Support\Str;
 	use Illuminate\Validation\Validator;
 	
-	
+	function display_letter($num) : string {
+		return match ($num) {
+			0 => 'A',
+			1 => 'B',
+			2 => 'C',
+			3 => 'D',
+			default => 'No letter Assign',
+		};
+	}
 	function getRole(): string
 	{
 		if (session('role') == 'admin') {

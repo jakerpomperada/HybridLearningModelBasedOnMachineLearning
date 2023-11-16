@@ -2,6 +2,7 @@
 	
 	namespace App\Http\Controllers;
 	
+	use App\Models\Student;
 	use App\Models\Teacher;
 	use Domain\Modules\User\Entities\User;
 	use Domain\Modules\User\Repositories\IUserRepository;
@@ -58,10 +59,14 @@
 					'role'     => $role,
 				]);
 				
+			
 				
 				if ($role == 'admin') {
 					return redirect('admin/dashboard');
 				} elseif ($role == 'student') {
+					$teacher = Student::where(['user_id' => $user->id])->first();
+					Session::put(['complete_name' => $teacher->completeName()]);
+					
 					return redirect('student/dashboard');
 				} else {
 					$teacher = Teacher::where(['user_id' => $user->id])->first();

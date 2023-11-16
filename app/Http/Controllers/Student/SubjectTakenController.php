@@ -36,7 +36,9 @@
 			$admission = Admission::where('student_id', $student->id)->first();
 			
 			$subjects = [];
+			
 			if ($admission) {
+				
 				$terms_subjects = AcademicTermSubject::with(['Subject'])->where([
 					'academic_term_semester_id' => $current_term_semester->id
 				])->get();

@@ -33,6 +33,7 @@
 			
 			$quiz_assessments = collect($quiz_assessments_data->items())->map(function ($i) use ($student) {
 				return (object)[
+					'id'          => $i->id,
 					'start_date'  => $i->displayDateStartDate(),
 					'end_date'    => $i->displayDateEndDate(),
 					'title'       => $i->getTitle(),
@@ -49,6 +50,7 @@
 			
 			$exam_assessments = collect($exam_assessments_data->items())->map(function ($i) use ($student) {
 				return (object)[
+					'id'          => $i->id,
 					'start_date'  => $i->displayDateStartDate(),
 					'end_date'    => $i->displayDateEndDate(),
 					'term'        => $i->getTerm(),
@@ -57,8 +59,6 @@
 					'status'      => $i->studentStatus($student->id)
 				];
 			});
-			
-			
 			
 			
 			return view('student.subject-assessment.index')->with([

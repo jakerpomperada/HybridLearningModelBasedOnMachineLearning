@@ -26,6 +26,11 @@
                             </div>
                         </div>
                     </div>
+
+
+
+                    @include('template.alert')
+
                     <table class="table table-hover table-center mb-0 table-striped mb-0 text-center">
                         <thead>
                         <tr>
@@ -49,8 +54,15 @@
                                 <td>{{$quiz->title}}</td>
                                 <td>{{$quiz->total_items}}</td>
                                 <td>{{$quiz->scores}}</td>
-                                <td>{{$quiz->status}}</td>
-                                <td></td>
+                                <td>
+                                    <a href="take-quiz/{{$quiz->id}}?num=0">Take Quiz</a>
+{{--                                    @if($quiz->status == "not_taken")--}}
+{{--                                        <a href="quiz-assessment/take">Take Quiz</a>--}}
+{{--                                    @else--}}
+{{--                                        Taken--}}
+{{--                                    @endif--}}
+
+                                </td>
                             </tr>
 
                         @endforeach
@@ -98,8 +110,15 @@
                                 <td>{{$quiz->term}}</td>
                                 <td>{{$quiz->total_items}}</td>
                                 <td>{{$quiz->scores}}</td>
-                                <td>{{$quiz->status}}</td>
-                                <td></td>
+                                <td>
+                                    @if($quiz->status == "not_taken")
+                                        <a href="quiz-assessment/take">Take Quiz</a>
+                                    @else
+                                        Taken
+                                    @endif
+
+                                </td>
+
                             </tr>
 
                         @endforeach

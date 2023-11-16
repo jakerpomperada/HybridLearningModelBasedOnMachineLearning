@@ -46,6 +46,8 @@
 		Route::get('dashboard', 'DashboardController@index');
 		Route::resource('subject-taken', 'SubjectTakenController');
 		Route::resource('assessment', 'SubjectAssessmentController');
+		Route::get('take-quiz/{id}', 'TakeQuizController@show');
+		Route::post('take-quiz', 'TakeQuizController@SaveNextQuiz');
 	});
 	
 	
