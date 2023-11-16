@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Student;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class StudentSeeder extends Seeder
@@ -14,6 +13,6 @@ class StudentSeeder extends Seeder
     public function run(): void
     {
 	    Student::query()->delete();
-        Student::factory()->count(3)->create();
+	    Student::factory()->count(1)->create();
     }
 }
