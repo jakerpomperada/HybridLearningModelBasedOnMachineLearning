@@ -53,7 +53,7 @@
 		
 		public function GetAllStudentAdmission(): Paginator;
 		
-		public function GetCurrentAcademicTerm(): object;
+		public function GetCurrentAcademicTerm(): object | null;
 	
 	public function removeAllSemesterAsCurrent() : void;
 	public function setAsCurrentSemester(string $academic_year_id, string $semester) : void;

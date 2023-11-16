@@ -4,10 +4,17 @@
     <div class="content container-fluid">
 
         <div class="page-header">
-            <div class="row">
+            <div class="row mb-3">
                 <div class="col-sm-12">
                     <div class="page-sub-header">
                         <h3 class="page-title">Welcome Admin!</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="page-sub-header">
+                        <h3 class="page-title">Current Term: {{$term}}</h3>
                     </div>
                 </div>
             </div>

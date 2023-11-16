@@ -162,9 +162,15 @@
 			return Admission::with(['Student', 'Course', 'AcademicTermSemester.AcademicTerm'])->paginate(5);
 		}
 		
-		public function GetCurrentAcademicTerm(): object
+		public function GetCurrentAcademicTerm(): null | object
 		{
-			return DB::table('academic_term_semesters')->where(['is_current' => 1])->first();
+			$sql = "SELECT ats.id, academic_id, semester, is_current, a.year_from, a.year_to ";
+			$sql .= "FROM academic_term_semesters ats ";
+			$sql .= "LEFT JOIN academic_terms a on ats.academic_id = a.id ";
+			$sql .= "WHERE ats.is_current = 1 ";
+			$sql .= "LIMIT 1";
+			$result = DB::select($sql);;
+			return (!$result) ? null : $result[0];
 		}
 		
 		
