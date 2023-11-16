@@ -19,8 +19,8 @@
 			AcademicTermSemester::query()->delete();
 			
 			$a = AcademicTerm::factory()->create([
-				'year_from' => 2020,
-				'year_to'   => 2021,
+				'year_from' => 2023,
+				'year_to'   => 2024,
 			]);
 			
 			AcademicTermSemester::factory()->create([
