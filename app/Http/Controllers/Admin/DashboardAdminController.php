@@ -49,27 +49,28 @@
 			$term = new AcademicTerm($term->year_from, $term->year_to, $term->semester);
 			
 			
-			$data = [
+			$data = (object) [
 				'term'               => $term,
 				'number_of_students' => $number_of_students,
 				'number_of_teachers' => $number_of_teachers,
 				'total_course'       => $this->courseRepository->CountAll(),
 				'total_subjects'     => $this->subjectRepository->CountAll(),
 				'admission'          => (object)[
-					'1st'  => ($this->admissionRepository->CountAll1stYearStudents() / $countAllStudentAdmission) * 100,
-					'2nd'  => ($this->admissionRepository->CountAll2ndYearStudents() / $countAllStudentAdmission) * 100,
-					'3rd'  => ($this->admissionRepository->CountAll3rdYearStudents() / $countAllStudentAdmission) * 100,
-					'4rth' => ($this->admissionRepository->CountAll4rthYearStudents() / $countAllStudentAdmission) * 100,
+					'firstYear'  => ($this->admissionRepository->CountAll1stYearStudents() / $countAllStudentAdmission) * 100,
+					'secondYear'  => ($this->admissionRepository->CountAll2ndYearStudents() / $countAllStudentAdmission) * 100,
+					'thirdYear'  => ($this->admissionRepository->CountAll3rdYearStudents() / $countAllStudentAdmission) * 100,
+					'fourthYear' => ($this->admissionRepository->CountAll4rthYearStudents() / $countAllStudentAdmission) * 100,
 				]
 			
 			];
-			
+		
 		
 			
 			
 			return view('admin.dashboard.index')->with([
 				'role' => Session::get('role'),
-				'term' => $term->getTerm() . " (" . $term->displaySemester() . ")"
+				'term' => $term->getTerm() . " (" . $term->displaySemester() . ")",
+				'data' => $data
 			]);
 		}
 	}

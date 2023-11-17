@@ -56,6 +56,8 @@
 			$data = $this->baseDataDropDownService->getBaseData();
 			
 			$students = $this->baseDataDropDownService->students();
+			
+			
 			return view('admin.student-admission.create')->with([
 				'students'   => $students,
 				'subjects'   => $data->subjects,

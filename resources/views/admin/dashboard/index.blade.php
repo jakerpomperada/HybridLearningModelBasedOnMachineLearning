@@ -27,7 +27,7 @@
                         <div class="db-widgets d-flex justify-content-between align-items-center">
                             <div class="db-info">
                                 <h6>Number of Students</h6>
-                                <h3>78</h3>
+                                <h3>{{$data->number_of_students}}</h3>
                             </div>
                             <div class="db-icon">
                                 <img src="{{asset("assets/img/icons/dash-icon-01.svg")}}" alt="Dashboard Icon">
@@ -42,7 +42,7 @@
                         <div class="db-widgets d-flex justify-content-between align-items-center">
                             <div class="db-info">
                                 <h6>Number of Teachers </h6>
-                                <h3>9</h3>
+                                <h3>{{$data->number_of_teachers}}</h3>
                             </div>
                             <div class="db-icon">
                                 <img src="{{asset("assets/img/icons/dash-icon-02.svg")}}" alt="Dashboard Icon">
@@ -57,7 +57,7 @@
                         <div class="db-widgets d-flex justify-content-between align-items-center">
                             <div class="db-info">
                                 <h6>Total Courses</h6>
-                                <h3>5</h3>
+                                <h3>{{$data->total_course}}</h3>
                             </div>
                             <div class="db-icon">
                                 <img src="{{asset("assets/img/icons/dash-icon-03.svg")}}" alt="Dashboard Icon">
@@ -72,7 +72,7 @@
                         <div class="db-widgets d-flex justify-content-between align-items-center">
                             <div class="db-info">
                                 <h6>Total Subjects</h6>
-                                <h3>13</h3>
+                                <h3>{{$data->total_subjects}}</h3>
                             </div>
                             <div class="db-icon">
                                 <img src="{{asset("assets/img/icons/teacher-icon-02.svg")}}" alt="Dashboard Icon">
@@ -103,29 +103,6 @@
                 </div>
 
             </div>
-{{--            <div class="col-md-12 col-lg-6">--}}
-{{--                <div class="card card-chart">--}}
-{{--                    <div class="card-header">--}}
-{{--                        <div class="row align-items-center">--}}
-{{--                            <div class="col-6">--}}
-{{--                                <h5 class="card-title">Overview</h5>--}}
-{{--                            </div>--}}
-{{--                            <div class="col-6">--}}
-{{--                                <ul class="chart-list-out">--}}
-{{--                                    <li><span class="circle-blue"></span>Teacher</li>--}}
-{{--                                    <li><span class="circle-green"></span>Student</li>--}}
-{{--                                    <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>--}}
-{{--                                </ul>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                    <div class="card-body">--}}
-{{--                        <div id="apexcharts-area"></div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
-{{--            </div>--}}
-
             <div class="col-md-12 col-lg-6">
 
                 <div class="card card-chart">
@@ -340,25 +317,25 @@
         const piedata = [{
             label: 'First Year',
             data: [
-                [1, 10]
+                [1, {{$data->admission->firstYear}}]
             ],
             color: '#664dc9'
         }, {
             label: 'Second Year',
             data: [
-                [1, 50]
+                [1, {{$data->admission->secondYear}}]
             ],
             color: '#44c4fa'
         }, {
             label: 'Third Year',
             data: [
-                [1, 30]
+                [1, {{$data->admission->thirdYear}}]
             ],
             color: '#38cb89'
         }, {
             label: 'Fourth Year',
             data: [
-                [1, 30]
+                [1, {{$data->admission->fourthYear}}]
             ],
             color: '#ef4b4b'
         }
