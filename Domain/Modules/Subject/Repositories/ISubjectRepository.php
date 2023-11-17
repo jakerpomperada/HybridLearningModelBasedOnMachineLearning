@@ -18,6 +18,8 @@
 
         public function GetAll() : object;
         public function Find(string $id) : object;
+		
+		public function CountAll(): int;
 
 
 	}

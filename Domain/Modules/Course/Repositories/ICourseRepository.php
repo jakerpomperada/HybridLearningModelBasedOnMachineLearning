@@ -21,5 +21,7 @@
         public function GetAll() : object;
 
         public function Find(string $id): object | null;
+		
+		public function CountAll(): int;
 
     }

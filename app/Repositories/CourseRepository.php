@@ -41,4 +41,9 @@ class CourseRepository implements ICourseRepository
     {
         return CourseDB::all();
     }
+	
+	public function CountAll(): int
+	{
+		return DB::table('courses')->count();
+	}
 }

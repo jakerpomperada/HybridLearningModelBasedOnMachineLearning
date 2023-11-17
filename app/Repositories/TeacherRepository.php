@@ -330,5 +330,10 @@
 			return StudentQuizAssessmentCategory::where(['teaching_load_id' => $teaching_load_id])->paginate(5);
 		}
 		
+		public function CountAll(): int
+		{
+			return DB::table('teachers')->count();
+		}
+		
 		
 	}

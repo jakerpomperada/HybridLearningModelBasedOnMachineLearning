@@ -6,7 +6,8 @@
     use Domain\Modules\Subject\Repositories\ISubjectRepository;
     use Illuminate\Contracts\Pagination\Paginator;
     use App\Models\Subject as SubjectDB;
-
+    use Illuminate\Support\Facades\DB;
+    
     class SubjectRepository implements ISubjectRepository
     {
 
@@ -46,4 +47,9 @@
         {
             return SubjectDB::all();
         }
+		
+		public function CountAll(): int
+		{
+			return DB::table('subjects')->count();
+		}
     }

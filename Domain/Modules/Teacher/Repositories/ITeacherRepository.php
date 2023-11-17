@@ -141,6 +141,9 @@
 		) : Paginator;
 		
 		
+		public function CountAll() : int;
+		
+		
 		
 	
 	

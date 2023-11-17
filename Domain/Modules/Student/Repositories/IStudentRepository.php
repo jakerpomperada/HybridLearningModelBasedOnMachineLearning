@@ -39,4 +39,6 @@
 		
 		public function FindByUserId(string $user_id) : object;
 		
+		public function CountAll(): int;
+		
 	}

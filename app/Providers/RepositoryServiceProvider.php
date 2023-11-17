@@ -14,6 +14,11 @@
 	        );
 	        
 	        $this->app->bind(
+		        'Domain\Modules\Admission\Repositories\IAdmissionRepository',
+		        'App\Repositories\AdmissionRepository'
+	        );
+	        
+	        $this->app->bind(
 		        'Domain\Modules\User\Repositories\IUserRepository',
 		        'App\Repositories\UserRepository'
 	        );

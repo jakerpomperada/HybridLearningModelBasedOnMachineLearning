@@ -180,5 +180,12 @@
 			return $user->Student;
 		}
 		
+		public function CountAll(): int
+		{
+			return DB::table('students')->count();
+		}
+		
+		
+		
 		
 	}
