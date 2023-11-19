@@ -23,9 +23,15 @@
 				'type'     => 'teacher'
 			]);
 			
-			User::factory()->create([
-				'username' => 'student',
-				'type'     => 'student'
-			]);
+			
+			for ($i = 0; $i < 20; $i++ ) {
+				User::factory()->create([
+					'username' => 'student'.$i,
+					'type'     => 'student'
+				]);
+				
+			}
+			
+			
 		}
 	}

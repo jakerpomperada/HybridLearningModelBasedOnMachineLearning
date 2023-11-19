@@ -15,12 +15,13 @@
 		{
 			Student::query()->delete();
 			
-			$user = User::where([
-				'type' => 'student'
-			])->first();
 			
-			Student::factory()->create([
-				'user_id' => $user->id
-			]);
+			foreach (User::where(['type' => 'student'])->get() as $user) {
+				Student::factory()->create([
+					'user_id' => $user->id
+				]);
+			}
+			
+			
 		}
 	}

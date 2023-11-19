@@ -21,6 +21,34 @@
         </div>
 
         <div class="row">
+
+            <div class="col-md-12 col-lg-6">
+
+                <!-- Revenue Chart -->
+                <div class="card card-chart">
+                    <div class="card-header">
+                        <div class="row align-items-center">
+                            <div class="col-6">
+                                <h5 class="card-title">Overview</h5>
+                            </div>
+                            <div class="col-6">
+                                <ul class="chart-list-out">
+                                    <li><span class="circle-blue"></span>Teacher</li>
+                                    <li><span class="circle-green"></span>Student</li>
+                                    <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="apexcharts-area"></div>
+                    </div>
+                </div>
+                <!-- /Revenue Chart -->
+
+            </div>
+
+
             <div class="col-xl-3 col-sm-6 col-12 d-flex">
                 <div class="card bg-comman w-100">
                     <div class="card-body">
@@ -109,12 +137,12 @@
                     <div class="card-header">
                         <div class="row align-items-center">
                             <div class="col-6">
-                                <h5 class="card-title">Comparison of Student Enrollment</h5>
+                                <h5 class="card-title">Enrollment Prediction By School Year</h5>
                             </div>
                             <div class="col-6">
                                 <ul class="chart-list-out">
-                                    <li><span class="circle-green"></span>Current (2023)</li>
-                                    <li><span class="circle-blue"></span>Previous (2024)</li>
+                                    <li><span class="circle-green"></span>Current S.Y (2023)</li>
+                                    <li><span class="circle-blue"></span>Next S.Y (2024)</li>
 
                                     <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
                                 </ul>

@@ -16,14 +16,23 @@
 		public function run(): void
 		{
 			AcademicTermSubject::query()->delete();
-			AcademicTermSubject::factory()->count(1)->create([
-				'id'                        => uuid(),
-				'academic_term_semester_id' => AcademicTermSemester::factory(),
-				'course_id'                 => Course::factory(),
-				'subject_id'                => Subject::factory(),
-				'year_level'                => '1st',
-				'created_at'                => now(),
-				'updated_at'                => now(),
-			]);
+			
+			
+			$term_semester = AcademicTermSemester::first();
+			$course = Course::first();
+			
+			
+			foreach (Subject::all() as $subject) {
+				AcademicTermSubject::factory()->create([
+					'id'                        => uuid(),
+					'academic_term_semester_id' => $term_semester->id,
+					'course_id'                 => $course->id,
+					'subject_id'                => $subject->id,
+					'year_level'                => '1st',
+					'created_at'                => now(),
+					'updated_at'                => now(),
+				]);
+			}
+			
 		}
 	}
