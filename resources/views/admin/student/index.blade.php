@@ -29,10 +29,16 @@
                         <div class="page-header">
                             <div class="row align-items-center">
 
-                                <div class="col-auto text-end">
+                                <div class="col-5 text-start">
                                     <a href="/student/create" class="btn btn-sm btn-success">Add Student &nbsp;<i class="fas fa-plus"></i></a>
                                 </div>
+                                <div class="col-7 text-end">
+                                    <a href="/student/print/report" class="btn btn-sm btn-info"><i class="fas fa-print"></i>
+                                        &nbsp;
+                                        Print </a>
+                                </div>
                             </div>
+
                         </div>
 
                         <table class="table table-hover table-center mb-0 table-striped mb-0 text-center">

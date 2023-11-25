@@ -56,6 +56,7 @@
 		Route::resource('/subject', 'SubjectController');
 		Route::resource('/teacher', 'TeacherController');
 		Route::resource('/student', 'StudentController');
+		Route::get('/student/print/report', 'StudentController@print');
 		Route::resource('/academic-term', 'AcademicTermController');
 		
 		Route::get('/subject-term', 'SubjectTermController@index');
