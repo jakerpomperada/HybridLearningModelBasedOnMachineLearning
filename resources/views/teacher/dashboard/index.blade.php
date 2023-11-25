@@ -23,7 +23,7 @@
                                 <h3>73</h3>
                             </div>
                             <div class="db-icon">
-                                <img src="assets/img/icons/teacher-icon-01.svg" alt="Dashboard Icon">
+                                <img src="{{asset('assets/img/icons/dash-icon-01.svg')}}" alt="Dashboard Icon">
                             </div>
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                                 <h3>3</h3>
                             </div>
                             <div class="db-icon">
-                                <img src="assets/img/icons/dash-icon-01.svg" alt="Dashboard Icon">
+                                <img src="{{asset('assets/img/icons/teacher-icon-02.svg')}}" alt="Dashboard Icon">
                             </div>
                         </div>
                     </div>
@@ -55,7 +55,7 @@
                                 <h3>3</h3>
                             </div>
                             <div class="db-icon">
-                                <img src="assets/img/icons/teacher-icon-02.svg" alt="Dashboard Icon">
+                                <img src=" {{asset('assets/img/icons/dash-icon-03.svg')}}" alt="Dashboard Icon">
                             </div>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                                 <h3>8</h3>
                             </div>
                             <div class="db-icon">
-                                <img src="assets/img/icons/teacher-icon-03.svg" alt="Dashboard Icon">
+                                <img src="{{asset('assets/img/icons/student-icon-01.svg')}}" alt="Dashboard Icon">
                             </div>
                         </div>
                     </div>
@@ -227,12 +227,12 @@
                             </div>
                             <div class="col-6">
                                 <ul class="chart-list-out">
-                                    <li><span class="circle-green"></span>Current (2023)</li>
-                                    <li><span class="circle-blue"></span>Previous (2024)</li>
+                                    <li><span class="circle-green"></span>Male</li>
+                                    <li><span class="circle-blue"></span>Female</li>
 
                                     <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
                                 </ul>
-                            </div>
+                            </div>  
                         </div>
                     </div>
                     <div class="card-body">
@@ -346,7 +346,6 @@
             return '<div style="font-size:8pt; text-align:center; padding:2px; color:white;">' + label + '<br/>' + Math.round(series.percent) + '%</div>';
         }
 
-
         if ($('#bar').length > 0) {
             var optionsBar = {
                 chart: {
@@ -373,15 +372,15 @@
                     colors: ['transparent']
                 },
                 series: [{
-                    name: "Previous (2022)",
+                    name: "Male",
                     color: '#70C4CF',
-                    data: [420, 532, 516, 575],
+                    data: [55, 50, 75, 65],
                 }, {
-                    name: "Current (2023)",
+                    name: "Female",
                     color: '#3D5EE1',
-                    data: [336, 612, 344, 647],
+                    data: [49, 60, 50, 55],
                 }],
-                labels: [2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020],
+                labels: ['First Year', 'Second Year', 'Third Year', 'Fourth Year'],
                 xaxis: {
                     labels: {
                         show: false
