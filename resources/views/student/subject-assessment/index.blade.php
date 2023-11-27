@@ -26,9 +26,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
                     @include('template.alert')
 
                     <table class="table table-hover table-center mb-0 table-striped mb-0 text-center">
@@ -57,7 +54,7 @@
                                 <td>
                                     @if(!$quiz->status)
                                         <a href="take-quiz/{{$quiz->id}}?num=0">
-                                           Get Quiz
+                                            Get Quiz
                                         </a>
                                     @else
                                         Done

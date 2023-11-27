@@ -103,7 +103,12 @@
 			])->first();
 		}
 
-		public function UpdateQuizAssessmentQuestions(QuizAssessmentQuestion $assessmentQuestion, string $quiz_assessment_question_id): void
+        public function FindQuizCategory(string $id): object|null
+        {
+          return StudentQuizAssessmentCategory::find($id);
+        }
+
+        public function UpdateQuizAssessmentQuestions(QuizAssessmentQuestion $assessmentQuestion, string $quiz_assessment_question_id): void
 		{
 
 			DB::table('student_quiz_assessment_questions')->where(['id' => $quiz_assessment_question_id])->update([

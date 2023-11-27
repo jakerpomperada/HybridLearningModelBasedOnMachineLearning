@@ -23,7 +23,7 @@
             <div class="col-lg-1"></div>
             <div class="col-lg-8 col-sm-12">
                 @include('template.alert')
-                <div class="card card-table">w
+                <div class="card card-table">
                     <div class="card-body">
 
                         <div class="page-header">

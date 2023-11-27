@@ -81,44 +81,10 @@
                     </div>
                 </div>
             </div>
-
-
-
-
-
         </div>
 
         <div class="row">
-
-
             <div class="col-md-12 col-lg-6">
-
-                <div class="card card-chart">
-                    <div class="card-header">
-                        <div class="row align-items-center">
-                            <div class="col-6">
-                                <h5 class="card-title">Comparison of Student Enrollment</h5>
-                            </div>
-                            <div class="col-6">
-                                <ul class="chart-list-out">
-                                    <li><span class="circle-green"></span>Current (2023)</li>
-                                    <li><span class="circle-blue"></span>Previous (2024)</li>
-
-                                    <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div id="bar"></div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="col-md-12 col-lg-6">
-
                 <div class="card card-chart">
                     <div class="card-header">
                         <div class="row align-items-center">
@@ -134,31 +100,68 @@
                         </div>
                     </div>
                 </div>
-
-            </div>
-
-        </div>
-        <div class="row">
-            <div class="col-xl-6 d-flex">
-
-
             </div>
 
             <!-- Chart -->
-            <div class="col-xl-12 d-flex">
+            <div class="col-xl-6 d-flex">
+                <!-- Star Students -->
                 <div class="card flex-fill student-space comman-shadow">
-                    <div class="card-header">
-                        <h5 class="card-title">Term Grade Summary</h5>
+                    <div class="card-header d-flex align-items-center">
+                        <h5 class="card-title">Top Classmates</h5>
+
                     </div>
                     <div class="card-body">
-                        <div id="s-col-stacked"></div>
+                        <div class="table-responsive">
+                            <table class="table star-student table-hover table-center table-borderless table-striped">
+                                <thead class="thead-light">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th class="text-center">Marks</th>
+                                    <th class="text-center">Percentage</th>
+                                    <th class="text-end">Year</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="text-nowrap">
+                                        <div>PRE2209</div>
+                                    </td>
+                                    <td class="text-nowrap">
+                                        <a href="profile.html">
+                                            <img class="rounded-circle" src="{{asset('assets/img/profiles/avatar-02.jpg')}}" width="25" alt="Star Students">
+                                            John Smith
+                                        </a>
+                                    </td>
+                                    <td class="text-center">1185</td>
+                                    <td class="text-center">98%</td>
+                                    <td class="text-end">
+                                        <div>2019</div>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
+                <!-- /Star Students -->
             </div>
             <!-- /Chart -->
 
 
+
+
         </div>
+
+        <div class="row">
+
+
+
+
+
+        </div>
+
 
 
     </div>
@@ -236,25 +239,25 @@
 
 
         const piedata = [{
-            label: 'First Year',
+            label: 'ITE601',
             data: [
                 [1, 10]
             ],
             color: '#664dc9'
         }, {
-            label: 'Second Year',
+            label: 'CCP 1101',
             data: [
                 [1, 50]
             ],
             color: '#44c4fa'
         }, {
-            label: 'Third Year',
+            label: 'ZGE 1108',
             data: [
                 [1, 30]
             ],
             color: '#38cb89'
         }, {
-            label: 'Fourth Year',
+            label: 'MLC 1102',
             data: [
                 [1, 30]
             ],

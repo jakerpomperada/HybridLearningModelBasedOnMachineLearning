@@ -43,7 +43,7 @@ class StudentQuizAssessmentCategory extends Model
 
     public function getStatus(): string
     {
-        return $this->status == 'give' ? 'UnGive' : 'Give';
+        return $this->status == 'give' ? 'UnGiven' : 'Given';
     }
 
     public function getStatusLink(string $teaching_load_id): string
@@ -74,7 +74,7 @@ class StudentQuizAssessmentCategory extends Model
     {
 
         $exists = DB::table('student_quiz_assessment_statuses')->where([
-            'sqac_id' => $this->id,
+            'sqac_id'    => $this->id,
             'student_id' => $student_id,
         ])->exists();
 
@@ -85,5 +85,16 @@ class StudentQuizAssessmentCategory extends Model
     {
         return $this->hasOne(StudentQuizAssessmentStatus::class);
     }
+
+    public function getStartDateLong(): string
+    {
+        return Carbon::parse($this->start_date, )->format('F j, Y, g:i a');
+    }
+
+    public function getEndDateLong(): string
+    {
+        return Carbon::parse($this->end_date)->format('F j, Y, g:i a');
+    }
+
 
 }
