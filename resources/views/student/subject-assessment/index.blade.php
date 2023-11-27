@@ -55,13 +55,13 @@
                                 <td>{{$quiz->total_items}}</td>
                                 <td>{{$quiz->scores}}</td>
                                 <td>
-                                    <a href="take-quiz/{{$quiz->id}}?num=0">Take Quiz</a>
-{{--                                    @if($quiz->status == "not_taken")--}}
-{{--                                        <a href="quiz-assessment/take">Take Quiz</a>--}}
-{{--                                    @else--}}
-{{--                                        Taken--}}
-{{--                                    @endif--}}
-
+                                    @if(!$quiz->status)
+                                        <a href="take-quiz/{{$quiz->id}}?num=0">
+                                           Get Quiz
+                                        </a>
+                                    @else
+                                        Done
+                                    @endif
                                 </td>
                             </tr>
 

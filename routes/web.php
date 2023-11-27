@@ -1,7 +1,7 @@
 <?php
-	
+
 	use Illuminate\Support\Facades\Route;
-	
+
 	/*
 	|--------------------------------------------------------------------------
 	| Web Routes
@@ -12,18 +12,18 @@
 	| be assigned to the "web" middleware group. Make something great!
 	|
 	*/
-	
+
 	Route::get('/', function () {
 		return view('welcome');
 	});
-	
-	
+
+
 	Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 		Route::get('dashboard', 'DashboardAdminController@index');
 		Route::post('set-term', 'SetAcademicTermController@set');
-		
+
 	});
-	
+
 	Route::group(['prefix' => 'teacher', 'namespace' => 'Teacher', 'middleware' => 'auth'], function () {
 		Route::get('dashboard', 'DashboardController@index');
 		Route::resource('student-attendance', 'StudentAttendanceController');
@@ -40,8 +40,8 @@
 		Route::get('quiz-status-give/{id}', 'QuizAssessmentStatusController@give');
 		Route::get('quiz-status-ungive/{id}', 'QuizAssessmentStatusController@ungive');
 	});
-	
-	
+
+
 	Route::group(['prefix' => 'student', 'namespace' => 'Student', 'middleware' => 'auth'], function () {
 		Route::get('dashboard', 'DashboardController@index');
 		Route::resource('subject-taken', 'SubjectTakenController');
@@ -49,8 +49,8 @@
 		Route::get('take-quiz/{id}', 'TakeQuizController@show');
 		Route::post('take-quiz', 'TakeQuizController@SaveNextQuiz');
 	});
-	
-	
+
+
 	Route::group(['middleware' => 'auth'], function () {
 		Route::resource('/course', 'CourseController');
 		Route::resource('/subject', 'SubjectController');
@@ -58,24 +58,25 @@
 		Route::resource('/student', 'StudentController');
 		Route::get('/student/print/report', 'StudentController@print');
 		Route::resource('/academic-term', 'AcademicTermController');
-		
+
 		Route::get('/subject-term', 'SubjectTermController@index');
 		Route::get('/subject-term/{id}', 'SubjectTermController@show');
 		Route::put('/subject-term/{id}', 'SubjectTermController@update');
 		Route::delete('/subject-term/{id}', 'SubjectTermController@destroy');
 		Route::post('/subject-term', 'SubjectTermController@store');
 		Route::get('/subject-term/get/data', 'SubjectTermController@getData');
-		
+
 		Route::resource('/student-admission', 'StudentAdmissionController');
 		Route::resource('/teaching-load', 'TeachingLoadController');
-		
+
 		Route::post('image-upload', 'UploadImageController@store');
-		
-		
+
+
 	});
-	
+
 	Route::get('/', ['as' => 'login', 'uses' => 'LoginController@index']);
 	Route::post('/login', 'LoginController@login');
 	Route::get('/logout', 'LogoutController@index');
+
 
 
