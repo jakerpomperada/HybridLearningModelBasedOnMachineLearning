@@ -24,8 +24,5 @@ class Student extends Model
 		return $this->lastname ." ". $this->firstname;
 	}
 
-    public function getHasInternetConnection() : bool {
-        return true;
-    }
 
 }

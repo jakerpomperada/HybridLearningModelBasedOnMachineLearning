@@ -34,7 +34,7 @@
 				'username'       => $this->getUsername(),
 				'admission_id'   => $this->admission_id ?? null,
 				'attendance'     => $this->attendance ?? null,
-                'has_internet_connection' => $this->getHasInternetConnection() ? 'Yes' : 'No'
+                'has_internet_connection' => $this->isHasInternetConnectivity()
 
 			];
 		}

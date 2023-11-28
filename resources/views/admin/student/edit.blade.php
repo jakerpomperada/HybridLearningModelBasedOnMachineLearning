@@ -98,6 +98,23 @@
                             </div>
                         </div>
 
+
+                        <div class="form-group row">
+                            {!! Form::label('has_internet', 'Has Internet Connectivity:', ['class' => 'col-lg-3 col-form-label']); !!}
+                            <div class="col-lg-9">
+
+                                {!!
+                                       Form::select('has_internet_connectivity', [
+										   true => 'Yes', false => 'No'], $student->has_internet_connection,
+                                       [
+
+                       'class' => 'form-control col-lg-3']);
+                                       !!}
+                            </div>
+                        </div>
+
+
+
                         <div class="form-group row">
                             {!! Form::label('address', 'Address:', ['class' => 'col-lg-3 col-form-label']); !!}
                             <div class="col-lg-9">

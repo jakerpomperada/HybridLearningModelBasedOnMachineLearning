@@ -21,6 +21,7 @@
 		protected string $lastname;
 		protected string $birthdate;
 		protected string $contact_number;
+        protected bool $has_internet_connectivity = false;
 		protected Address $address;
 		protected Image $image;
 		protected User $user;
@@ -168,9 +169,18 @@
 			$this->yearLevel = $yearLevel;
 		}
 
-        public function getHasInternetConnection() : bool {
-            return true;
+
+        public function isHasInternetConnectivity(): bool
+        {
+            return $this->has_internet_connectivity;
         }
+
+        public function setHasInternetConnectivity(bool $has_internet_connectivity): void
+        {
+            $this->has_internet_connectivity = $has_internet_connectivity;
+        }
+
+
 
 
 	}
