@@ -2,7 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\Events\ChangeSemesterTermEvent;
+use App\Models\AcademicTermSemester;
 use Closure;
+use Domain\Shared\AcademicTerm;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -15,6 +18,7 @@ class LoadAcademicTermMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
+
 
 
         return $next($request);

@@ -5,6 +5,8 @@
 
     return [
 
+        'display_current_term' => 'aldjfkdjlfjlj',
+
         /*
         |--------------------------------------------------------------------------
         | Application Name

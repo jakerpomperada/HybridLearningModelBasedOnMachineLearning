@@ -6,18 +6,18 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Validator;
-use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Cache;
 
 
 
 function setCurrentTermToDisplay(AcademicTerm $sem ) : void
 {
     $term = $sem->getTerm() . "(".$sem->displaySemester().")";
-    Session::put('current_term', $term);
+    Cache::put('current_term', $term);
 }
 
 function getCurrentTermToDisplay() : string {
-    return Session::get('current_term');
+    return Cache::get('current_term');
 }
 
 

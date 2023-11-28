@@ -3,7 +3,6 @@
     <div class="header-left">
         <a href="#" class="logo">
             <img src="https://www.csab.edu.ph/wp-content/uploads/2023/09/logo22.png" alt="logo">
-            {{--            <img src="{{asset("assets/img/logo.png")}}" alt="Logo">--}}
         </a>
         <a href="index-2.html" class="logo logo-small">
             <img src="{{asset("assets/img/logo-small.png")}}" alt="Logo">
@@ -21,18 +20,10 @@
         <i class="fas fa-bars"></i>
     </a>
     <div class="top-nav-search mt-3">
-
-            <h6> Current Term: {{getCurrentTermToDisplay()}}</h6>
-
-
+        <h6> Current Term: {{getCurrentTermToDisplay()}}</h6>
     </div>
 
     <ul class="nav user-menu">
-
-
-
-
-
         <li class="nav-item dropdown has-arrow new-user-menus">
             <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
 <span class="user-img">

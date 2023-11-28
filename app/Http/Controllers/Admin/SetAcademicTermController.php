@@ -5,8 +5,10 @@
 	use App\Http\Controllers\Controller;
 	use Domain\Modules\AcademicTerm\Repositories\IAcademicTermRepository;
 	use Error;
-	use Illuminate\Http\Request;
-	use Illuminate\Support\Facades\Validator;
+    use Illuminate\Http\RedirectResponse;
+    use Illuminate\Http\Request;
+    use Illuminate\Support\Facades\Redirect;
+    use Illuminate\Support\Facades\Validator;
 
 	class SetAcademicTermController extends Controller
 	{
@@ -19,11 +21,9 @@
 		}
 
 
-		public function set(Request $req)
+		public function set(Request $req) : RedirectResponse
 		{
-
-
-			$val = Validator::make($req->all(), [
+            $val = Validator::make($req->all(), [
 				'academic_year' => 'required',
 				'semester'      => 'required',
 

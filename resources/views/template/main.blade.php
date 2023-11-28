@@ -1,5 +1,7 @@
 @php use Illuminate\Support\Facades\Session; @endphp
-        <!DOCTYPE html>
+
+
+    <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -11,8 +13,8 @@
     <link rel="shortcut icon" href="{{asset("assets/img/favicon.png")}}">
 
     <link
-            href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&amp;display=swap"
-            rel="stylesheet">
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700&amp;display=swap"
+        rel="stylesheet">
 
     <link rel="stylesheet" href="{{asset("assets/plugins/bootstrap/css/bootstrap.min.css")}}">
 
@@ -30,9 +32,11 @@
             max-height: 53px;
             width: auto;
         }
+
         #toggle_btn {
             background: red;
         }
+
         .user-img .user-text .text-muted {
             color: red !important;
         }
@@ -46,9 +50,10 @@
             background-color: red;
             border: 1px solid red;
         }
+
         .sidebar-menu > ul > li > a:hover {
             color: red;
-           }
+        }
     </style>
 
 
@@ -56,6 +61,7 @@
 </head>
 <body>
 {{$role = Session::get('role')}}
+
 
 <div class="main-wrapper">
 

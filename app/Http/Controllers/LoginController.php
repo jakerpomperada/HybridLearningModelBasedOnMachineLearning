@@ -2,12 +2,14 @@
 
 	namespace App\Http\Controllers;
 
-	use App\Models\Student;
+	use App\Events\ChangeSemesterTermEvent;
+    use App\Models\Student;
 	use App\Models\Teacher;
     use Domain\Modules\AcademicTerm\Repositories\IAcademicTermRepository;
     use Domain\Modules\User\Entities\User;
 	use Domain\Modules\User\Repositories\IUserRepository;
-	use Illuminate\Http\Request;
+    use Domain\Shared\AcademicTerm;
+    use Illuminate\Http\Request;
 	use Illuminate\Support\Facades\Auth;
 	use Illuminate\Support\Facades\Session;
 	use Error;
@@ -45,8 +47,6 @@
 
 				if (!$ud) throw new Error('Username not exists');
 
-                setCurrentTermToDisplay($this->getCurrentTerm());
-
                 $user = new User($username, $password, $ud->id);
 
 				if (!$user->isPasswordMatch($ud->password)) {
@@ -63,6 +63,7 @@
 					'role'     => $role,
 				]);
 
+                event(new ChangeSemesterTermEvent($this->getCurrentTerm()));
 
 
 				if ($role == 'admin') {
