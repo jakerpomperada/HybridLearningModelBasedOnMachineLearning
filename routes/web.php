@@ -21,6 +21,8 @@
 	Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 		Route::get('dashboard', 'DashboardAdminController@index');
 		Route::post('set-term', 'SetAcademicTermController@set');
+        Route::get('/report/socio-economic', 'SocioEconomicReportController@index');
+        Route::get('/print/socio/mobile-phone', 'SocioEconomicReportController@printMobilePhones');
 
 	});
 

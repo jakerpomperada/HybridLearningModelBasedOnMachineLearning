@@ -1,22 +1,22 @@
 <?php
-	
+
 	namespace App\Http\Resources;
-	
+
 	use Domain\Modules\Student\Entities\Student;
 	use Domain\Shared\Image;
 	use Illuminate\Http\Request;
 	use Illuminate\Http\Resources\Json\JsonResource;
 	use Illuminate\Http\Resources\Json\ResourceCollection;
-	
+
 	class StudentResource extends JsonResource
 	{
-		
+
 		public function toArray(Request $request): object
 		{
 			/**
 			 * @var Student $this
 			 */
-			
+
 			return (object)[
 				'id'             => $this->getId(),
 				'image_name'     => $this->getImage()->getImageName(),
@@ -33,8 +33,9 @@
 				'_address'       => $this->getAddress()->minifyAddress(),
 				'username'       => $this->getUsername(),
 				'admission_id'   => $this->admission_id ?? null,
-				'attendance'     => $this->attendance ?? null
-			
+				'attendance'     => $this->attendance ?? null,
+                'has_internet_connection' => $this->getHasInternetConnection() ? 'Yes' : 'No'
+
 			];
 		}
 	}

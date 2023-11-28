@@ -19,9 +19,13 @@ class Student extends Model
     public function User() : BelongsTo {
         return $this->belongsTo(User::class);
     }
-	
+
 	public function completeName() : string {
 		return $this->lastname ." ". $this->firstname;
 	}
+
+    public function getHasInternetConnection() : bool {
+        return true;
+    }
 
 }
