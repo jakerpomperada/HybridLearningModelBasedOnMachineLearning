@@ -6,6 +6,6 @@ src/config/config.php
 .idea
 public
 storage
-database
+./database
 boostrap
 tests
