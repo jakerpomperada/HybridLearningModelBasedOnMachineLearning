@@ -20,9 +20,17 @@
     <a class="mobile_btn" id="mobile_btn">
         <i class="fas fa-bars"></i>
     </a>
+    <div class="top-nav-search mt-3">
 
+            <h6> Current Term: {{getCurrentTermToDisplay()}}</h6>
+
+
+    </div>
 
     <ul class="nav user-menu">
+
+
+
 
 
         <li class="nav-item dropdown has-arrow new-user-menus">
