@@ -1,11 +1,11 @@
-/vendor
+vendor
 composer.phar
 composer.lock
 .DS_Store
 src/config/config.php
 .idea
-/public
-/storage
-/database
-/boostrap
-/tests
+public
+storage
+database
+boostrap
+tests
