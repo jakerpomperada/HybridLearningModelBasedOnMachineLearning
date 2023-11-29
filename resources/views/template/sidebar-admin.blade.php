@@ -25,8 +25,8 @@
     </li>
     <li><a href="/academic-term"><i class="fas fa-calendar-alt"></i> &nbsp;View Terms</a></li>
     <li><a href="/subject-term"><i class="fas fa-sticky-note"></i>Manage Subject Term</a></li>
-    <li><a href="/student-admission"><i class="fas fa-school"></i> &nbsp;Student Admission</a></li>
     <li><a href="/teaching-load"><i class="fas fa-book-open"></i> &nbspTeaching Load</a></li>
+    <li><a href="/student-admission"><i class="fas fa-school"></i> &nbsp;Student Admission</a></li>
 
     <li class="menu-title">
         <span>Reports</span>

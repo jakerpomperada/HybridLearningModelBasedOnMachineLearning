@@ -13,7 +13,6 @@
             <div class="row align-items-center">
                 <div class="col">
                     <h3 class="page-title"><i class="fas fa-book-reader"></i>&nbsp;Teacher Subject Load</h3>
-
                 </div>
             </div>
         </div>
@@ -43,6 +42,7 @@
                                 <th>Teacher Name</th>
                                 <th>Subject Code</th>
                                 <th>Subject Description</th>
+                                <th>Term</th>
                                 <th>Semester</th>
                                 <th>Course</th>
                                 <th>Year Level</th>
@@ -57,6 +57,7 @@
                                     <td>{{ $teaching_load->teacher }}</td>
                                     <td>{{ $teaching_load->subject_code }}</td>
                                     <td>{{ $teaching_load->subject_description }}</td>
+                                    <td>{{$teaching_load->term}}</td>
                                     <td>{{ $teaching_load->semester }}</td>
                                     <td>{{ $teaching_load->course }}</td>
                                     <td>{{ $teaching_load->year_level }}</td>

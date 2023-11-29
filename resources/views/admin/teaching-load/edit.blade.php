@@ -22,7 +22,7 @@
         </div>
 
         <div class="row">
-        <div class="col-xl-3 col-sm-12"></div>
+            <div class="col-xl-3 col-sm-12"></div>
             <div class="col-xl-7 col-sm-12 d-flex">
                 <div class="card flex-fill">
 
@@ -34,7 +34,7 @@
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="field-1" class="form-label">Teacher:</label>
-                                   {!!  Form::select('teacher', $teachers, $tl->teacher_id, ['placeholder' => 'Select Teacher', 'class' => 'form-control']); !!}
+                                    {!!  Form::select('teacher', $teachers, $tl->teacher_id, ['placeholder' => 'Select Teacher', 'class' => 'form-control']); !!}
                                 </div>
                             </div>
                         </div>
@@ -43,6 +43,15 @@
                                 <div class="mb-3">
                                     <label for="field-1" class="form-label">Subject:</label>
                                     {!!  Form::select('subject', $subjects, $tl->subject_id, ['placeholder' => 'Select Subject', 'class' => 'form-control']); !!}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label for="field-2" class="form-label">Course:</label>
+                                    {!!  Form::select('course', $courses, $tl->course_id, ['placeholder' => 'Select Course', 'class' => 'form-control']); !!}
                                 </div>
                             </div>
                         </div>
@@ -65,18 +74,22 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="field-1" class="form-label">Semester:</label>
+
+                                    <label for="field-1" class="form-label">Academic Term:</label>
                                     {!!
-                                        Form::select('semester', [
-	                                        '1st' => 'First Semester',
-	                                        '2nd' => 'Second Semester'
-											], $tl->semester, ['placeholder' => 'Select Semester', 'class' => 'form-control']); !!}
+                                        Form::select('term', $terms, $term_id, ['placeholder' => 'Select Academic Term', 'class' => 'form-control']); !!}
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="field-2" class="form-label">Course:</label>
-                                    {!!  Form::select('course', $courses, $tl->course_id, ['placeholder' => 'Select Course', 'class' => 'form-control']); !!}
+                                    <div class="mb-3">
+                                        <label for="field-1" class="form-label">Semester:</label>
+                                        {!!
+                                            Form::select('semester', [
+                                                '1st' => 'First Semester',
+                                                '2nd' => 'Second Semester'
+                                                ], $tl->semester, ['placeholder' => 'Select Semester', 'class' => 'form-control']); !!}
+                                    </div>
                                 </div>
                             </div>
                         </div>
