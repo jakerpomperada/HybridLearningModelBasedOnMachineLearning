@@ -34,10 +34,24 @@
                 return $this->studentRepository->Aggregates($stud);
             });
 
+            $has_internet = 0;
+            $no_internet = 0;
+            $r = [];
+            foreach ($students_data_aggregates as $st) {
+                if (!$st->isHasInternetConnectivity()) {
+                    $no_internet += 1;
+                } else {
+                    $has_internet += 1;
+                }
+
+            }
+
             $students = StudentResource::collection($students_data_aggregates)->resolve();
 
             return view('admin.reports.mobile-phone')->with([
-                'students' => $students
+                'students'     => $students,
+                'has_internet' => $has_internet,
+                'no_internet'  => $no_internet,
             ]);
         }
     }

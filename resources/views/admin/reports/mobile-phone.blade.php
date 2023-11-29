@@ -51,7 +51,7 @@
                 <td>{{$student->complete_name}}</td>
                 <td>{{$student->birthdate}}</td>
                 <th>{{$student->contact_number}}</th>
-                <th>{{$student->has_internet_connection}}</th>
+                <th>{{$student->has_internet_connection ? "Yes" : "No"}}</th>
             </tr>
 
         @endforeach
@@ -61,17 +61,26 @@
     <br>
     <table style="font-weight: bold">
         <tr>
+
+
             <td width="300px">Student with Internet Connection</td>
-            <td width="150px">100</td>
+            <td width="150px">{{$has_internet}}</td>
         </tr>
         <tr>
             <td>Student with No Internet Connection</td>
-            <td>100</td>
+            <td>{{$no_internet}}</td>
         </tr>
     </table>
 
 </div>
 </body>
+<script>
+    window.print();
+    window.onafterprint = function(event) {
+        window.location.href = '/admin/report/socio-economic'
+    };
+</script>
+
 </html>
 
 

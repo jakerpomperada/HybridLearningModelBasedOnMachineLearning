@@ -23,11 +23,12 @@
                 @include('template.alert')
                 <div class="card card-table">
                     <div class="card-body text-center">
-                        <div class="student-submit mb-4">
-                            <a href="/admin/print/socio/mobile-phone" class="btn btn-primary">Mobile Phone</a>
-                        </div>
+
                          <div class="student-submit">
-                            <button type="submit" class="btn btn-primary">Internet Connectivity</button>
+                             <a href="/admin/print/socio/mobile-phone" class="btn btn-primary btn-lg">
+                                 <span class="fa fa-print me-2" role="status"></span> &nbsp;
+                                 Internet Connectivity Status
+                             </a>
                         </div>
                     </div>
                 </div>

@@ -112,19 +112,16 @@
                                        !!}
                             </div>
                         </div>
-
-
-
                         <div class="form-group row">
                             {!! Form::label('address', 'Address:', ['class' => 'col-lg-3 col-form-label']); !!}
                             <div class="col-lg-9">
-                                {!!
-                       Form::textarea('address', $student->address, [
-                        'class'      => 'form-control',
-                        'rows'       => 1,
-                        'name'       => 'address',
-                        'id'         => 'address'
-                        ]) !!}
+                                {!! Form::textarea('address', $student->address, [
+	                                'class'      => 'form-control',
+	                                'rows'       => 1,
+	                                'name'       => 'address',
+	                                'id'         => 'address'
+	                                ])
+	                            !!}
                             </div>
                         </div>
                         <div class="text-end text-center">
