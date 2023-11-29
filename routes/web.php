@@ -21,8 +21,7 @@
 	Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
 		Route::get('dashboard', 'DashboardAdminController@index');
 		Route::post('set-term', 'SetAcademicTermController@set');
-        Route::get('/report/socio-economic', 'SocioEconomicReportController@index');
-        Route::get('/print/socio/mobile-phone', 'SocioEconomicReportController@printMobilePhones');
+
 
 	});
 
@@ -41,6 +40,7 @@
 		Route::get('exam-status-ungive/{id}', 'ExamAssessmentStatusController@ungive');
 		Route::get('quiz-status-give/{id}', 'QuizAssessmentStatusController@give');
 		Route::get('quiz-status-ungive/{id}', 'QuizAssessmentStatusController@ungive');
+
 	});
 
 
@@ -75,6 +75,12 @@
 
 
 	});
+
+
+    Route::get('/admin/report/socio-economic', 'SocioEconomicReportController@index');
+    Route::get('/admin/print/socio/mobile-phone', 'SocioEconomicReportController@printMobilePhones');
+    Route::get('/teacher/report/socio-economic', 'SocioEconomicReportController@index');
+    Route::get('/teacher/print/socio/mobile-phone', 'SocioEconomicReportController@printMobilePhones');
 
 	Route::get('/', ['as' => 'login', 'uses' => 'LoginController@index']);
 	Route::post('/login', 'LoginController@login');

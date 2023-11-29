@@ -1,10 +1,8 @@
 <?php
 
-    namespace App\Http\Controllers\Admin;
+    namespace App\Http\Controllers;
 
-    use App\Http\Controllers\Controller;
     use App\Http\Resources\StudentResource;
-    use App\Models\Student;
     use Domain\Modules\Student\Repositories\IStudentRepository;
 
     class SocioEconomicReportController extends Controller
@@ -21,7 +19,10 @@
 
         public function index()
         {
-            return view('admin.reports.socio-economic');
+
+            return view('admin.reports.socio-economic')->with([
+                'module' => request()->input('module') ?? 'teacher'
+            ]);
         }
 
 
@@ -52,6 +53,7 @@
                 'students'     => $students,
                 'has_internet' => $has_internet,
                 'no_internet'  => $no_internet,
+
             ]);
         }
     }

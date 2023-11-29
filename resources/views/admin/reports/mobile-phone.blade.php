@@ -61,8 +61,6 @@
     <br>
     <table style="font-weight: bold">
         <tr>
-
-
             <td width="300px">Student with Internet Connection</td>
             <td width="150px">{{$has_internet}}</td>
         </tr>
@@ -76,8 +74,13 @@
 </body>
 <script>
     window.print();
-    window.onafterprint = function(event) {
-        window.location.href = '/admin/report/socio-economic'
+    window.onafterprint = function (event) {
+        @if(request()->input('module') == 'admin')
+            window.location.href = '/admin/report/socio-economic'
+        @else
+            window.location.href = '/teacher/report/socio-economic'
+        @endif
+
     };
 </script>
 

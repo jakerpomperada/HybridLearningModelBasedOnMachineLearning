@@ -25,10 +25,18 @@
                     <div class="card-body text-center">
 
                          <div class="student-submit">
-                             <a href="/admin/print/socio/mobile-phone" class="btn btn-primary btn-lg">
-                                 <span class="fa fa-print me-2" role="status"></span> &nbsp;
-                                 Internet Connectivity Status
-                             </a>
+                             @if($module == 'admin')
+                                 <a href="/admin/print/socio/mobile-phone" class="btn btn-primary btn-lg">
+                                     <span class="fa fa-print me-2" role="status"></span> &nbsp;
+                                     Internet Connectivity Status
+                                 </a>
+                             @else
+                                 <a href="/teacher/print/socio/mobile-phone" class="btn btn-primary btn-lg">
+                                     <span class="fa fa-print me-2" role="status"></span> &nbsp;
+                                     Internet Connectivity Status
+                                 </a>
+                             @endif
+
                         </div>
                     </div>
                 </div>

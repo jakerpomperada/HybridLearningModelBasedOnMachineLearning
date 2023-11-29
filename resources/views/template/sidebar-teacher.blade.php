@@ -41,5 +41,11 @@
         <a href="/teacher/student-exam"><i class="fas fa-calendar-day"></i> <span>Exams</span></a>
     </li>
 
+    <li class="menu-title">
+        <span>Reports</span>
+    </li>
+
+    <li><a href="/teacher/report/socio-economic"><i class="fas fa-book-open"></i> &nbsp; Socio-economic</a></li>
+
 
 </ul>
