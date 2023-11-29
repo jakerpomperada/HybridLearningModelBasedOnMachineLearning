@@ -48,6 +48,17 @@
                         </div>
 
                         <div class="row">
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label for="field-2" class="form-label">Course:</label>
+                                    {!!  Form::select('course', $courses, null, ['placeholder' => 'Select Course', 'class' => 'form-control']); !!}
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="field-1" class="form-label">Year:</label>
@@ -65,22 +76,27 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="field-1" class="form-label">Semester:</label>
+
+                                    <label for="field-1" class="form-label">Academic Term:</label>
                                     {!!
-                                        Form::select('semester', [
-	                                        null => 'Select Semester',
-	                                        '1st' => 'First Semester',
-	                                        '2nd' => 'Second Semester'
-											], null, ['placeholder' => 'Select Course', 'class' => 'form-control']); !!}
+                                        Form::select('term', $terms, null, ['placeholder' => 'Select Academic Term', 'class' => 'form-control']); !!}
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label for="field-2" class="form-label">Course:</label>
-                                    {!!  Form::select('course', $courses, null, ['placeholder' => 'Select Course', 'class' => 'form-control']); !!}
+                                    <div class="mb-3">
+                                        <label for="field-1" class="form-label">Semester:</label>
+                                        {!!
+                                            Form::select('semester', [
+                                                '1st' => 'First Semester',
+                                                '2nd' => 'Second Semester'
+                                                ], null, ['placeholder' => 'Select Semester', 'class' => 'form-control']); !!}
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
+
 
                         <div class="text-end text-center">
                             <button type="submit" class="btn btn-success">
