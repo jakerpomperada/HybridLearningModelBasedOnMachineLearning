@@ -83,7 +83,7 @@ class StudentQuizAssessmentCategory extends Model
 
     public function StudentQuizAssessmentStatus(): HasOne
     {
-        return $this->hasOne(StudentQuizAssessmentStatus::class);
+        return $this->hasOne(StudentQuizAssessmentStatus::class, 'sqac_id', 'id');
     }
 
     public function getStartDateLong(): string
@@ -95,6 +95,8 @@ class StudentQuizAssessmentCategory extends Model
     {
         return Carbon::parse($this->end_date)->format('F j, Y, g:i a');
     }
+
+
 
 
 }

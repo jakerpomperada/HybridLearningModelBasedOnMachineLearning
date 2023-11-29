@@ -180,8 +180,13 @@
 
 		public function GetQuizAssessmentCategory(string $teaching_load_id, int $page): Paginator
 		{
-			return StudentQuizAssessmentCategory::with(['StudentQuizAssessmentQuestion'])->where([
-				'teaching_load_id' => $teaching_load_id
+
+
+			return StudentQuizAssessmentCategory::with([
+                'StudentQuizAssessmentQuestion'
+            ])->where([
+             	'teaching_load_id' => $teaching_load_id,
+                'status' => 'give'
 			])->paginate($page);
 		}
 

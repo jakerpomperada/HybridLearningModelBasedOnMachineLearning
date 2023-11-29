@@ -32,15 +32,14 @@
 			);
 
 
-
 			$quiz_assessments = collect($quiz_assessments_data->items())->map(function ($i) use ($student) {
                 $total_items = $i->getTotalItems();
                 $scores = $i->getStudentScores($student->id);
 
 				return (object)[
 					'id'          => $i->id,
-					'start_date'  => $i->displayDateStartDate(),
-					'end_date'    => $i->displayDateEndDate(),
+					'start_date'  => $i->getStartDateLong(),
+					'end_date'    => $i->getEndDateLong(),
 					'title'       => $i->getTitle(),
 					'total_items' => $total_items,
 					'scores'      => $scores ."/".$total_items,

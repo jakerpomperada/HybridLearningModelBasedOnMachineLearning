@@ -52,10 +52,13 @@
                                 <td>{{$quiz->total_items}}</td>
                                 <td>{{$quiz->scores}}</td>
                                 <td>
-                                    @if(!$quiz->status)
+                                    @if($quiz->total_items <= 0 )
+                                        No Questions Yet.
+                                    @elseif(!$quiz->status)
                                         <a href="take-quiz/{{$quiz->id}}?num=0">
                                             Get Quiz
                                         </a>
+
                                     @else
                                         Done
                                     @endif
