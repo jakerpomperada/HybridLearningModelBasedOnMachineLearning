@@ -190,5 +190,16 @@
             return DB::table('students')->count();
         }
 
+        public function GetAllClassmatesLimitBy(string $academic_sem_id, string $course_id, string $year_level, string $section) : Collection
+        {
+
+            return Admission::where([
+                'academic_term_semester_id' => $academic_sem_id,
+//                'course_id'                 => $course_id,
+//                'year_level'                => $year_level,
+//                'section'                   => $section,
+            ])->get();
+        }
+
 
     }

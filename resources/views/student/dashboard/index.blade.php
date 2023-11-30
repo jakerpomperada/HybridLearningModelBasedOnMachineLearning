@@ -117,28 +117,25 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th class="text-center">Marks</th>
-                                    <th class="text-center">Percentage</th>
-                                    <th class="text-end">Year</th>
+                                    <th class="text-center">Term-Semester</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                @foreach($classmates as $classmate)
+
+
                                 <tr>
                                     <td class="text-nowrap">
-                                        <div>PRE2209</div>
+                                        <div>{{$classmate->id}}</div>
                                     </td>
                                     <td class="text-nowrap">
-                                        <a href="profile.html">
-                                            <img class="rounded-circle" src="{{asset('assets/img/profiles/avatar-02.jpg')}}" width="25" alt="Star Students">
-                                            John Smith
-                                        </a>
+                                        {{$classmate->complete_name}}
                                     </td>
-                                    <td class="text-center">1185</td>
-                                    <td class="text-center">98%</td>
-                                    <td class="text-end">
-                                        <div>2019</div>
+                                    <td class="text-center">
+                                        <div>{{$classmate->term}}</div>
                                     </td>
                                 </tr>
+                                @endforeach
 
                                 </tbody>
                             </table>
