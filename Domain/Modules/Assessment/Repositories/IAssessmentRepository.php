@@ -6,8 +6,9 @@
 	use Domain\Modules\Teacher\Entities\ExamAssessmentQuestion;
 	use Domain\Modules\Teacher\Entities\QuizAssessmentQuestion;
 	use Illuminate\Contracts\Pagination\Paginator;
+    use Illuminate\Database\Eloquent\Collection;
 
-	interface IAssessmentRepository
+    interface IAssessmentRepository
 	{
 
 		public function GetAllQuizByCategoryPaginate(string $cat_id, int $page): Paginator;
@@ -34,9 +35,18 @@
 
 		public function GetQuizAssessmentCategory(string $teaching_load_id, int $page): Paginator;
 
+        public function GetQuizAssessmentCategoryAllWithRelation(array $relations, string $teaching_load_id): Collection|array;
+
+        public function GetQuizQuestionsAllWithRelation(array $relations, string $qacategory_id): Collection|array;
+
 		public function FindExamAssessmentCategory(string $id) : object | null;
 
 		public function FindExamAssessmentQuestion(string $id) : object | null;
+
+        public function GetAllQuizAssessmentByCategoryScores(string $quiz_category_id, string $admission_id ) : array;
+
+        public function FindQuizAssessmentGetScoreByCategory(string $quiz_category_id, string $admission_id ) : object ;
+
 
 
 	}

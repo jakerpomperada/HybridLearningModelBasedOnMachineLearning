@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Support\Carbon;
@@ -94,6 +95,10 @@ class StudentQuizAssessmentCategory extends Model
     public function getEndDateLong(): string
     {
         return Carbon::parse($this->end_date)->format('F j, Y, g:i a');
+    }
+
+    public function TeachingLoad() : BelongsTo {
+        return $this->belongsTo(TeachingLoad::class);
     }
 
 
