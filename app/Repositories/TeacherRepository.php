@@ -330,7 +330,9 @@
 
         public function GetAllStudentQuizAssessmentByTeachingLoadGroupByDate(string $teaching_load_id): Paginator
         {
-            return StudentQuizAssessmentCategory::where(['teaching_load_id' => $teaching_load_id])->paginate(5);
+            return StudentQuizAssessmentCategory::with(['StudentQuizAssessmentQuestion'])
+                ->where(['teaching_load_id' => $teaching_load_id])
+                ->paginate(5);
         }
 
         public function CountAll(): int

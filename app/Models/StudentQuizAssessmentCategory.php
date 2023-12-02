@@ -44,7 +44,7 @@ class StudentQuizAssessmentCategory extends Model
 
     public function getStatus(): string
     {
-        return $this->status == 'give' ? 'UnGiven' : 'Given';
+        return $this->status == 'give' ? 'Ungive' : 'Give';
     }
 
     public function getStatusLink(string $teaching_load_id): string

@@ -54,7 +54,7 @@ class StudentQuizAssessmentItemController extends Controller
                 'start_date' => $cat->getStartDateLong(),
                 'end_date'   => $cat->getEndDateLong(),
                 'title'      => $cat->getTitle(),
-                'status'     => $cat->GetStatus() == 'Given' ? 'UnGiven' : 'Given',
+                'status'     => $cat->GetStatus() == 'Give' ? 'Ungive' : 'Give',
                 'total_items' => $cat->getTotalItems()
             ]
         ]);
