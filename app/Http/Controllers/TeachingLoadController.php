@@ -165,8 +165,6 @@
                     $req->input('term'), $req->input('semester')
                 );
 
-
-
                 $this->teacherRepository->UpdateTeachingLoad(
                     $term->term_semester_id,
                     $req->teacher,

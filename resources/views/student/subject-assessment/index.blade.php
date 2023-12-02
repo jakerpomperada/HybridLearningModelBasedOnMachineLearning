@@ -44,28 +44,40 @@
 
                         <tbody>
 
-                        @foreach($quiz_assessments as $quiz)
+                        @if(!$has_quiz)
                             <tr>
-                                <td>{{$quiz->start_date}}</td>
-                                <td>{{$quiz->end_date}}</td>
-                                <td>{{$quiz->title}}</td>
-                                <td>{{$quiz->total_items}}</td>
-                                <td>{{$quiz->scores}}</td>
-                                <td>
-                                    @if($quiz->total_items <= 0 )
-                                        No Questions Yet.
-                                    @elseif(!$quiz->status)
-                                        <a href="take-quiz/{{$quiz->id}}?num=0">
-                                            Get Quiz
-                                        </a>
-
-                                    @else
-                                        Done
-                                    @endif
+                                <td colspan="6">
+                                    <div class="alert alert-info"><b>No quiz has been added.</b></div>
                                 </td>
                             </tr>
 
-                        @endforeach
+
+                        @else
+                            @foreach($quiz_assessments as $quiz)
+                                <tr>
+                                    <td>{{$quiz->start_date}}</td>
+                                    <td>{{$quiz->end_date}}</td>
+                                    <td>{{$quiz->title}}</td>
+                                    <td>{{$quiz->total_items}}</td>
+                                    <td>{{$quiz->scores}}</td>
+                                    <td>
+                                        @if($quiz->total_items <= 0 )
+                                            No Questions Yet.
+                                        @elseif(!$quiz->status)
+                                            <a href="take-quiz/{{$quiz->id}}?num=0">
+                                                Get Quiz
+                                            </a>
+
+                                        @else
+                                            Done
+                                        @endif
+                                    </td>
+                                </tr>
+
+                            @endforeach
+                        @endif
+
+
 
 
                         </tbody>
@@ -103,25 +115,36 @@
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($exam_assessments as $quiz)
+                        @if(!$has_exam)
+
                             <tr>
-                                <td>{{$quiz->start_date}}</td>
-                                <td>{{$quiz->end_date}}</td>
-                                <td>{{$quiz->term}}</td>
-                                <td>{{$quiz->total_items}}</td>
-                                <td>{{$quiz->scores}}</td>
-                                <td>
-                                    @if($quiz->status == "not_taken")
-                                        <a href="quiz-assessment/take">Take Quiz</a>
-                                    @else
-                                        Taken
-                                    @endif
-
+                                <td colspan="6">
+                                    <div class="alert alert-info"><b>No exam has been added.</b></div>
                                 </td>
-
                             </tr>
+                        @else
 
-                        @endforeach
+                            @foreach($exam_assessments as $quiz)
+                                <tr>
+                                    <td>{{$quiz->start_date}}</td>
+                                    <td>{{$quiz->end_date}}</td>
+                                    <td>{{$quiz->term}}</td>
+                                    <td>{{$quiz->total_items}}</td>
+                                    <td>{{$quiz->scores}}</td>
+                                    <td>
+                                        @if($quiz->status == "not_taken")
+                                            <a href="quiz-assessment/take">Take Quiz</a>
+                                        @else
+                                            Taken
+                                        @endif
+
+                                    </td>
+
+                                </tr>
+
+                            @endforeach
+                        @endif
+
                         </tbody>
                     </table>
                 </div>

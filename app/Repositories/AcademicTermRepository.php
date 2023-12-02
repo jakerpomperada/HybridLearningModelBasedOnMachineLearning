@@ -196,7 +196,7 @@
         {
             $sql = "SELECT at.id as term_id, ats.id as term_semester_id ";
             $sql .= "FROM academic_terms at ";
-            $sql .= " LEFT JOIN machine_learning.academic_term_semesters ats on at.id = ats.academic_id ";
+            $sql .= " LEFT JOIN academic_term_semesters ats on at.id = ats.academic_id ";
             $sql .= "WHERE at.id = '".$term_id."' ";
             $sql .= "  AND ats.semester = '".$semester."' ";
             $sql .= "LIMIT 1";

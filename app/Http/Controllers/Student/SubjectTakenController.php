@@ -56,7 +56,7 @@
 							'id'                  => $terms_subject->id,
 							'subject_code'        => $terms_subject->Subject->code,
 							'subject_description' => $terms_subject->Subject->description,
-							'teaching_load_id'       => $teaching_load->id
+							'teaching_load_id'    => $teaching_load->id
 						];
 					}
 

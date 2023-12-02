@@ -86,28 +86,103 @@
         </div>
 
         <div class="row">
-            <div class="card card-chart">
-                <div class="card-header">
-                    <div class="row align-items-center">
-                        <div class="col-6">
-                            <h5 class="card-title">Retention Annual Forecast</h5>
+            <div class="col-sm-12 col-lg-8">
+                <div class="card card-chart">
+                    <div class="card-header">
+                        <div class="row align-items-center">
+                            <div class="col-6">
+                                <h5 class="card-title">Retention Annual Forecast</h5>
+                            </div>
+                            <div class="col-6">
+                                <ul class="chart-list-out">
+                                    <li><span class="circle-blue"></span>Teacher</li>
+                                    <li><span class="circle-green"></span>Student</li>
+                                    <li class="star-menus"><a href="javascript:"><i class="fas fa-ellipsis-v"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
-                        <div class="col-6">
-                            <ul class="chart-list-out">
-                                <li><span class="circle-blue"></span>Teacher</li>
-                                <li><span class="circle-green"></span>Student</li>
-                                <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li></ul>
+                    </div>
+                    <div class="card-body">
+                        <div id="apexcharts-area"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-lg-4">
+
+                <div class="card flex-fill comman-shadow">
+                    <div class="card-header d-flex align-items-center">
+                        <h5 class="card-title ">Student Activity </h5>
+                        <ul class="chart-list-out student-ellips">
+                            <li class="star-menus"><a href="javascript:"><i class="fas fa-ellipsis-v"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="activity-groups">
+
+                            <div class="activity-awards">
+                                <div class="award-boxs">
+                                    <img class="rounded-circle" src="{{asset("assets/img/temp.jpg")}}" width="50px"/>
+                                </div>
+                                <div class="award-list-outs">
+                                    <h4>McKenzie, Keanu Cremin </h4>
+                                    <h5>View the quiz</h5>
+                                </div>
+                                <div class="award-time-list">
+                                    <span>3 hours ago</span>
+                                </div>
+                            </div>
+
+                            <div class="activity-awards">
+                                <div class="award-boxs">
+                                    <img class="rounded-circle" src="{{asset("assets/img/temp.jpg")}}" width="50px"/>
+                                </div>
+                                <div class="award-list-outs">
+                                    <h4>Ondricka, Samantha Kling</h4>
+                                    <h5>Take the quiz: Emerging Technology</h5>
+                                </div>
+                                <div class="award-time-list">
+                                    <span>5 Hours ago</span>
+                                </div>
+                            </div>
+
+                            <div class="activity-awards">
+                                <div class="award-boxs">
+                                    <img class="rounded-circle" src="{{asset("assets/img/temp.jpg")}}" width="50px"/>
+                                </div>
+                                <div class="award-list-outs">
+                                    <h4>Moen, Sibyl Weissnat</h4>
+                                    <h5>Take the quiz: Artificial Intelligence </h5>
+                                </div>
+                                <div class="award-time-list">
+                                    <span>8 hours ago</span>
+                                </div>
+                            </div>
+
+                            <div class="activity-awards">
+                                <div class="award-boxs">
+                                    <img class="rounded-circle" src="{{asset("assets/img/temp.jpg")}}" width="50px"/>
+                                </div>
+                                <div class="award-list-outs">
+                                    <h4>Ondricka, Samantha Kling </h4>
+                                    <h5>View midterm exam</h5>
+                                </div>
+                                <div class="award-time-list">
+                                    <span>1 Day ago</span>
+                                </div>
+                            </div>
+
+
                         </div>
                     </div>
                 </div>
-                <div class="card-body">
-                    <div id="apexcharts-area"></div>
-                </div>
             </div>
+
+
         </div>
 
         <div class="row">
-            <div class="col-md-12 col-lg-6">
+            <div class="col-md-12 col-lg-4">
 
                 <div class="card card-chart">
                     <div class="card-header">
@@ -126,7 +201,7 @@
                 </div>
 
             </div>
-            <div class="col-md-12 col-lg-6">
+            <div class="col-md-12 col-lg-4">
 
                 <div class="card card-chart">
                     <div class="card-header">
@@ -139,7 +214,8 @@
                                     <li><span class="circle-green"></span>Current S.Y (2023)</li>
                                     <li><span class="circle-blue"></span>Next S.Y (2024)</li>
 
-                                    <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
+                                    <li class="star-menus"><a href="javascript:"><i class="fas fa-ellipsis-v"></i></a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -151,6 +227,76 @@
 
             </div>
 
+            <div class="col-sm-12 col-lg-4">
+
+                <div class="card flex-fill comman-shadow">
+                    <div class="card-header d-flex align-items-center">
+                        <h5 class="card-title ">Teacher Activity</h5>
+                        <ul class="chart-list-out student-ellips">
+                            <li class="star-menus"><a href="javascript:"><i class="fas fa-ellipsis-v"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="activity-groups">
+
+                            <div class="activity-awards">
+                                <div class="award-boxs">
+                                    <img class="rounded-circle" src="{{asset("assets/img/temp.jpg")}}" width="50px"/>
+                                </div>
+                                <div class="award-list-outs">
+                                    <h4>Casey Macdonald</h4>
+                                    <h5>Added new quiz</h5>
+                                </div>
+                                <div class="award-time-list">
+                                    <span>3 hours ago</span>
+                                </div>
+                            </div>
+
+                            <div class="activity-awards">
+                                <div class="award-boxs">
+                                    <img class="rounded-circle" src="{{asset("assets/img/temp.jpg")}}" width="50px"/>
+                                </div>
+                                <div class="award-list-outs">
+                                    <h4>Pierce Murphy</h4>
+                                    <h5>Added quiz: Sample quiz</h5>
+                                </div>
+                                <div class="award-time-list">
+                                    <span>5 Hours ago</span>
+                                </div>
+                            </div>
+
+                            <div class="activity-awards">
+                                <div class="award-boxs">
+                                    <img class="rounded-circle" src="{{asset("assets/img/temp.jpg")}}" width="50px"/>
+                                </div>
+                                <div class="award-list-outs">
+                                    <h4>Moen, Sibyl Weissnat</h4>
+                                    <h5>Take the quiz: Artificial Intelligence </h5>
+                                </div>
+                                <div class="award-time-list">
+                                    <span>8 hours ago</span>
+                                </div>
+                            </div>
+
+                            <div class="activity-awards">
+                                <div class="award-boxs">
+                                    <img class="rounded-circle" src="{{asset("assets/img/temp.jpg")}}" width="50px"/>
+                                </div>
+                                <div class="award-list-outs">
+                                    <h4>Eduardo Carpenter</h4>
+                                    <h5>View midterm exam</h5>
+                                </div>
+                                <div class="award-time-list">
+                                    <span>1 Day ago</span>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
     </div>
@@ -159,9 +305,8 @@
     <script src="{{asset('assets/plugins/flot/jquery.flot.js')}}"></script>
     <script src="{{asset('assets/plugins/flot/jquery.flot.fillbetween.js')}}"></script>
     <script src="{{asset('assets/plugins/flot/jquery.flot.pie.js')}}"></script>
-{{--    <script src="{{asset("assets/plugins/apexchart/chart-data.js")}}"></script>--}}
+    {{--    <script src="{{asset("assets/plugins/apexchart/chart-data.js")}}"></script>--}}
     <script>
-
 
 
         if ($('#apexcharts-area').length > 0) {
@@ -227,7 +372,7 @@
         }
         ];
 
-        $.plot('#flotPie2', piedata, {
+        $.plot('#flotPie2', piedata, { //Number of Enrolled Students
             series: {
                 pie: {
                     show: true,
@@ -325,6 +470,26 @@
             chartBar.render();
         }
 
+
+        $.plot('#socio_economic_status', piedata, {
+            series: {
+                pie: {
+                    show: true,
+                    radius: 1,
+                    innerRadius: 0.5,
+                    label: {
+                        show: true,
+                        radius: 2 / 3,
+                        formatter: labelFormatter,
+                        threshold: 0.1
+                    }
+                }
+            },
+            grid: {
+                hoverable: false,
+                clickable: true
+            }
+        });
 
 
     </script>

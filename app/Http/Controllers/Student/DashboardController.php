@@ -44,8 +44,7 @@
                 return (object)[
                     'id'            => $c->Student->id_number,
                     'complete_name' => $c->Student->completeName(),
-                    'term'          => $displaySemester,
-
+                    'term'          => $displaySemester
                 ];
 
             });
