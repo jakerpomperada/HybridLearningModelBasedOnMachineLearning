@@ -81,7 +81,7 @@
 
         <div class="row">
             <!-- Chart -->
-            <div class="col-md-6">
+            <div class="col-lg-9 col-sm-12">
                 <div class="card">
                     <div class="card-header">
                         <h5 class="card-title">Quiz Performance Forecast</h5>
@@ -92,7 +92,84 @@
                 </div>
             </div>
             <!-- /Chart -->
-            <div class="col-md-12 col-lg-6">
+            <div class="col-lg-3 col-sm-12">
+                <div class="card flex-fill comman-shadow">
+                    <div class="card-header d-flex align-items-center">
+                        <h5 class="card-title ">Student Activity </h5>
+                        <ul class="chart-list-out student-ellips">
+                            <li class="star-menus"><a href="javascript:"><i class="fas fa-ellipsis-v"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="card-body">
+                        <div class="activity-groups">
+
+                            <div class="activity-awards">
+                                <div class="award-boxs">
+                                    <img class="rounded-circle" src="{{asset("assets/img/temp.jpg")}}" width="50px"/>
+                                </div>
+                                <div class="award-list-outs">
+                                    <h4>McKenzie, Keanu Cremin </h4>
+                                    <h5>View the quiz</h5>
+                                </div>
+                                <div class="award-time-list">
+                                    <span>3 hours ago</span>
+                                </div>
+                            </div>
+
+                            <div class="activity-awards">
+                                <div class="award-boxs">
+                                    <img class="rounded-circle" src="{{asset("assets/img/temp.jpg")}}" width="50px"/>
+                                </div>
+                                <div class="award-list-outs">
+                                    <h4>Ondricka, Samantha Kling</h4>
+                                    <h5>Take the quiz: Emerging Technology</h5>
+                                </div>
+                                <div class="award-time-list">
+                                    <span>5 Hours ago</span>
+                                </div>
+                            </div>
+
+                            <div class="activity-awards">
+                                <div class="award-boxs">
+                                    <img class="rounded-circle" src="{{asset("assets/img/temp.jpg")}}" width="50px"/>
+                                </div>
+                                <div class="award-list-outs">
+                                    <h4>Moen, Sibyl Weissnat</h4>
+                                    <h5>Take the quiz: Artificial Intelligence </h5>
+                                </div>
+                                <div class="award-time-list">
+                                    <span>8 hours ago</span>
+                                </div>
+                            </div>
+
+                            <div class="activity-awards">
+                                <div class="award-boxs">
+                                    <img class="rounded-circle" src="{{asset("assets/img/temp.jpg")}}" width="50px"/>
+                                </div>
+                                <div class="award-list-outs">
+                                    <h4>Ondricka, Samantha Kling </h4>
+                                    <h5>View midterm exam</h5>
+                                </div>
+                                <div class="award-time-list">
+                                    <span>1 Day ago</span>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>
+        <div class="row">
+
+            <div class="col-lg-3 col-sm-12">
 
                 <div class="card card-chart">
                     <div class="card-header">
@@ -110,15 +187,37 @@
                     </div>
                 </div>
 
+
+
             </div>
 
+            <div class="col-lg-6 col-sm-12">
 
 
-        </div>
-        <div class="row">
 
-            <div class="col-xl-6 d-flex">
+                <div class="card card-chart">
+                    <div class="card-header">
+                        <div class="row align-items-center">
+                            <div class="col-6">
+                                <h5 class="card-title">Gender-Based Exam Performance Analysis</h5>
+                            </div>
+                            <div class="col-6">
+                                <ul class="chart-list-out">
+                                    <li><span class="circle-green"></span>Male</li>
+                                    <li><span class="circle-blue"></span>Female</li>
 
+                                    <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div id="bar"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-3 col-sm-12">
                 <div class="card flex-fill student-space comman-shadow">
                     <div class="card-header d-flex align-items-center">
                         <h5 class="card-title">Top Students</h5>
@@ -213,33 +312,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-md-12 col-lg-6">
-
-
-
-                <div class="card card-chart">
-                    <div class="card-header">
-                        <div class="row align-items-center">
-                            <div class="col-6">
-                                <h5 class="card-title">Gender-Based Exam Performance Analysis</h5>
-                            </div>
-                            <div class="col-6">
-                                <ul class="chart-list-out">
-                                    <li><span class="circle-green"></span>Male</li>
-                                    <li><span class="circle-blue"></span>Female</li>
-
-                                    <li class="star-menus"><a href="javascript:;"><i class="fas fa-ellipsis-v"></i></a></li>
-                                </ul>
-                            </div>  
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <div id="bar"></div>
-                    </div>
-                </div>
-
             </div>
 
         </div>
